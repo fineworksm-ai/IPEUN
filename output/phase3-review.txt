@@ -1,0 +1,149 @@
+IPEUN 3차 화면 품질 개선 결과
+기준: 4340b44 / 확인일: 2026-10-02
+확인 주소: http://localhost:3000/
+정적 HTML/CSS/JS 유지. A–D 묶음별 로컬 커밋. 푸시 없음.
+
+1. 변경 범위
+
+A. 메인 히어로
+변경 파일: styles.css
+- --hero-paper 제거. 브랜드 슬라이드 배경은 --paper #f5f7f2.
+- --mint-display #009b82를 큰 Beyond 글자에 적용. 면 색상 --mint는 유지.
+- 왼쪽 사진 폭 24% 페이드, 위쪽 사진 높이 36% 페이드.
+  높이 36%는 사진 폭의 약 23.3%에 해당한다. 두 CSS 마스크를 intersect로 결합.
+- 900px 이하에서는 사진 하단 18%도 페이드하여 잘린 직선이 보이지 않게 처리.
+- 모바일 사진·기기 아래 96px을 확보. 버튼 바와 이미지 영역을 분리.
+- 모델 사진 파일·피부색·얼굴·밝기는 수정하지 않음.
+
+B. 제품 컷 및 갤러리
+변경 파일:
+  styles.css, index.html, alljet.html, invera.html
+  assets/media/alljet-front.webp
+  assets/media/alljet-banner.webp
+  assets/media/alljet-angle.webp
+  assets/media/alljet-detail.webp
+  assets/media/invera-front.webp
+  assets/media/invera-side.webp
+  assets/media/invera-open.webp
+- 기존 축소 WebP가 아니라 tmp/pdfs/original-images/의 원본 PNG에서 다시 처리.
+- a<T는 0, 그 외 round((a-T)/(255-T)*255)로 재매핑.
+- All-Jet 4컷과 INVERA 측면은 T=60.
+- INVERA 정면·뚜껑을 연 컷에는 더 진한 바닥 레이어가 남아 T=180 적용.
+- 재매핑 후 남은 알파 1–59 바닥 밴드는 0으로 정리.
+  이 단계의 실효 원본 문턱은 약 106(T=60), 198(T=180).
+- 크기 축소 후 LANCZOS가 만드는 알파 1–15 미세 테두리도 0으로 정리.
+- WebP quality=92, 알파 유지, 확대 없음. 화면·본체·호스 외곽을 배경 3종에서 시각 점검.
+- All-Jet 배너는 600×1191로 축소, HTML width/height 동기화.
+  나머지 원본이 작은 컷은 원본 크기를 유지하고 CSS 표시 크기를 제한.
+  INVERA 히어로 정면은 최대 396px 폭(원본 792px, 2배)으로 제한.
+- .product-shadow의 타원형 radial-gradient를 히어로②③/제품 카드/배너/갤러리에 공통 적용.
+  일반 높이 22px, 갤러리 18px. 사진에 새 그림자를 그리지 않음.
+- INVERA 배너 모델의 아래 30%를 CSS 마스크로 페이드.
+  이미지 고유 비율 및 max-height로 실제 하단과 마스크 끝을 맞춤.
+  기기는 모델 앞 z-index:2, 모델 z-index:0.
+- 갤러리: 같은 --paper 배경, 높이 340px(1440), 225px(390).
+  동일 여백, object-fit:contain / object-position:center bottom.
+- 상단 디테일도 contain 선택. 제품 일부를 추가로 자르는 cover는 사용하지 않음.
+- alljet-angle, invera-side/open, alljet-view-3컷의 표시 폭은 원본 폭 이내.
+  상단 디테일까지 고해상도 원본 TODO 주석 추가.
+- 이미 깨끗했던 제품 컷 8개는 수정하지 않음.
+
+C. 작동 원리
+변경 파일:
+  technology.html, alljet.html
+  assets/media/principle-step-1.webp ~ principle-step-4.webp (신규 변환 파일)
+  assets/media/step-1.webp ~ step-4.webp (보관 위치로 이동)
+- 직접 그림을 확인한 순서:
+  1 좁은 분사: brochure-1-page-2-Im8-722x407.png
+  2 깊은 원뿔: brochure-1-page-2-Im5-726x409.png
+  3 넓은 부채꼴: brochure-1-page-2-Im6-742x418.png
+  4 확산 화살표: brochure-1-page-2-Im7-725x408.png
+- 모두 중앙에서 720×405(16:9)로 자름. 확대·생성 없음.
+- 단계 제목, 설명, alt 문구는 변경하지 않음.
+- 예전 step-1~4.webp는 assets/_unused/에 실제 보관.
+  assets/_unused/는 기존 .gitignore 규칙에 따라 커밋에 포함하지 않음.
+  이전 파일은 백업과 Git 기준 커밋에서도 복구 가능.
+
+D. 인증 배지
+변경 파일: company.html, styles.css, output/phase3-review.txt
+- ISO 13485, ISO 14001, 벤처기업 확인서, All-Jet 상표의 회색 박스를 원형 인장으로 교체.
+- 얇은 1px 민트 외곽선, 보조 링, 기존 인증명과 취득 연월·분야 유지.
+- <article>, 기본 화살표 커서, 확대 동작 없음.
+- 인증·특허 그리드 grid-auto-rows:1fr로 카드 높이 통일.
+- ISO 3종 실제 높이: 1440px 화면 471.5px씩, 390px 화면 463px씩.
+- 기존 자료 요청 TODO 유지. 새 “준비 중/이미지 없음” 문구 없음.
+
+2. 알파 1–59 픽셀 비율 (전체 이미지 픽셀 기준)
+
+파일                                  변경 전    변경 후    최종 크기     처리
+alljet-angle.webp                   47.149%    0.000% 386×560      T=60
+alljet-banner.webp                  17.416%    0.265% 600×1191     T=60
+alljet-cartridge.webp                0.218%    0.218% 913×581      변경 없음
+alljet-detail.webp                  47.756%    0.000% 493×474      T=60
+alljet-front.webp                   24.955%    0.000% 1067×1924    T=60
+alljet-rf-handpiece.webp             0.223%    0.223% 703×592      변경 없음
+alljet-view-front.webp               0.521%    0.521% 500×1036     변경 없음
+alljet-view-left.webp                0.502%    0.502% 500×1154     변경 없음
+alljet-view-right.webp               0.484%    0.484% 500×1156     변경 없음
+invera-banner.webp                   0.351%    0.351% 1200×1312    변경 없음
+invera-cartridge-detached.webp       0.245%    0.245% 970×567      변경 없음
+invera-cartridge.webp                0.307%    0.307% 755×369      변경 없음
+invera-front.webp                   13.750%    0.000% 792×874      T=180
+invera-open.webp                    18.166%    0.000% 394×473      T=180
+invera-side.webp                    24.456%    0.000% 375×433      T=60
+
+처리 대상 7개 전부 1% 미만. 변경하지 않은 8개도 1% 미만.
+원본·처리 전 웹 파일 백업: tmp/phase3-backup/
+처리 스크립트: tmp/phase3-products.py (커밋 제외)
+
+3. 화면 검증
+
+- 격리된 Chrome에서 기존 3000 서버로 확인. 서버 중지·재시작·추가 기동 없음.
+- 자동 전환은 prefers-reduced-motion:reduce로 정지한 상태에서 슬라이드를 직접 이동.
+- 히어로 3장 × 1440×900 / 1024×768 / 768×1024(모바일) / 390×844(모바일).
+  총 12장 캡처 및 시각 점검 완료.
+- 모델 사진 위쪽·왼쪽 경계와 모바일 아래 직선 페이드 확인.
+- 390px 이미지 끝과 버튼 바 사이: 세 슬라이드 모두 28px.
+  768px: 브랜드 28px, All-Jet·INVERA 42px. 공통 그림자 포함해 겹침 없음.
+- 실제 스크린샷 본문/제목 영역 배경 픽셀: RGB(245,247,242), #f5f7f2.
+  Beyond #009b82: 3.239:1.
+  브랜드 본문 #061713: 17.082:1.
+  메뉴·버튼·본문은 사진이 아닌 밝은 영역에 배치.
+- 다른 큰 민트 글자에 --mint 면 색상이 직접 사용되는 부분 없음.
+  기존 --mint-text #007d6c 강조는 대체하지 않음.
+- 전체 제품 컷 15개를 --paper / white / --ink 배경에 올린 브라우저 캡처 완료.
+  뿌연 사각 박스 없음. 화면·유리·호스가 뚫리지 않음을 시각 확인.
+- 갤러리 이미지 영역 높이 동일, 모든 이미지 contain·하단 정렬,
+  측정한 이미지 표시 폭이 원본 폭을 초과하는 컷 없음.
+- 8개 페이지 × 390 / 1440 = 16개 화면:
+  index.html / company.html / technology.html / alljet.html /
+  invera.html / contact.html / privacy.html / product.html.
+  깨진 이미지 0, 콘솔 오류 0, 문서 가로 넘침 0.
+  product.html은 기존대로 alljet.html로 이동함.
+- 모바일 메뉴 Escape 닫기·초점 복귀, 데스크톱 크기로 변경 시 닫힘 확인.
+- JavaScript 차단/실패 상태에서도 reveal 콘텐츠가 숨지 않음 확인.
+- 8개 HTML의 정규화된 텍스트 SHA-256이 작업 전과 동일.
+  모델 파일, 개인정보처리방침, script.js, 로고, 호스팅 설정은 변경하지 않음.
+- git diff --check 통과.
+
+검증 자료 (로컬, 커밋 제외):
+  tmp/phase3-qa/hero-index-{1440,1024,768,390}-slide-{1,2,3}.png
+  tmp/phase3-qa/final-{페이지}-{390,1440}.png
+  tmp/phase3-qa/detail-{페이지}-{390,1440}.png
+  tmp/phase3-qa/alpha-tmp-phase3-products-preview-1440.png
+  tmp/phase3-qa/hero-report.json / final-report.json / alpha-report.json
+
+4. 남은 TODO (이번 범위 밖, 기존 요청 사항 유지)
+
+- 고해상도 원본: alljet-angle, alljet-detail, alljet-view-left/front/right,
+  invera-side, invera-open, rf-technology(메인/기술/All-Jet에 기존 주석).
+- 인증 자료: ISO 13485, ISO 14001, 벤처기업 확인서, All-Jet 상표 이미지.
+- All-Jet 상표 출원번호, 특허 (1)(2) 등록 여부·등록번호.
+- 디자인전문회사 확인증과 디자인연구소 설립 자료가 같은 문서인지 확인.
+- 대표 인사말, 청년창업사관학교 정식 명칭, 디지털이노베이션 대상 주관 기관.
+- INVERA 모델 웹 사용권, INVERA 주요 사양 자료.
+- All-Jet 최종 사양과 브로슈어 사양 비교 확인.
+- No Needle Pain/Infection 인허가 전 표현 사용 여부, 2026년 하반기 출시 일정.
+- 문의 양식 및 개인정보 방침과 실제 문의·자동 수집 방식 일치 여부.
+- 도메인 확정 후 og:image/og:url, 기타 도메인·호스팅·영문 단계 작업.
+  이번에는 문의 양식, 메타 URL, robots/sitemap/404, 영문·호스팅·도메인 모두 작업하지 않음.

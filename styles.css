@@ -350,8 +350,8 @@ a.nav-item:hover,a.nav-item[aria-current="page"] { color:var(--mint-text); }
 .timeline-year li::before { content:""; position:absolute; top:12px; left:-32px; width:7px; height:7px; border-radius:50%; background:var(--mint-text); }
 .timeline-year time { color:var(--muted); font-size:14px; font-weight:650; padding-top:3px; }
 .timeline-year small { display:block; color:var(--muted); font-size:12px; margin-top:5px; }
-.iso-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.document-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.iso-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:24px; }
+.document-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:1fr; gap:20px; }
 .document-card { display:flex; flex-direction:column; padding:22px; text-align:left; color:var(--ink); font:inherit; width:100%; cursor:pointer; transition:transform .25s; }
 button.document-card:hover { transform:translateY(-3px); }
 .document-thumb { display:flex; justify-content:center; align-items:center; height:260px; margin-bottom:22px; width:100%; }
@@ -361,8 +361,11 @@ button.document-card:hover { transform:translateY(-3px); }
 .document-caption p { color:var(--muted); font-size:12px; margin-top:8px; overflow-wrap:anywhere; }
 .document-open { margin-top:auto; padding-top:18px; color:var(--mint-text); font-size:12px; font-weight:650; }
 .placeholder-card { cursor:default; }
-.document-placeholder { display:flex; align-items:center; justify-content:center; height:260px; padding:20px; margin-bottom:22px; background:var(--paper); border-radius:10px; text-align:center; }
-.document-placeholder span { font-size:23px; font-weight:650; letter-spacing:-.04em; }
+.document-badge { display:flex; align-items:center; justify-content:center; height:260px; margin-bottom:22px; text-align:center; }
+.certification-seal { position:relative; display:flex; align-items:center; justify-content:center; width:min(100%,220px); aspect-ratio:1; border:1px solid var(--mint-display); border-radius:50%; background:radial-gradient(circle,var(--white) 58%,var(--mint-wash)); color:var(--teal); }
+.certification-seal::before { content:""; position:absolute; inset:8px; border:1px solid rgba(0,155,130,.24); border-radius:50%; }
+.certification-seal span { max-width:78%; font-size:24px; font-weight:650; line-height:1.4; letter-spacing:-.025em; }
+.iso-grid .certification-seal span { font-size:28px; }
 .iso-grid .document-card { padding:28px; }
 .iso-grid .document-caption h3 { font-size:23px; }
 .location-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
@@ -393,7 +396,8 @@ body.lightbox-open { overflow:hidden; }
   .document-grid { grid-template-columns:repeat(2,1fr); }
   .iso-grid { gap:16px; }
   .iso-grid .document-card { padding:20px; }
-  .iso-grid .document-thumb,.iso-grid .document-placeholder { height:210px; }
+  .iso-grid .document-thumb,.iso-grid .document-badge { height:210px; }
+  .iso-grid .certification-seal span { font-size:24px; }
   .iso-grid .document-caption h3 { font-size:20px; }
   .location-grid { grid-template-columns:1fr; }
 }
@@ -407,13 +411,13 @@ body.lightbox-open { overflow:hidden; }
   .timeline-year li::before { left:-28px; }
   .document-grid { gap:14px; }
   .document-card { padding:16px; }
-  .document-thumb,.document-placeholder { height:170px; margin-bottom:16px; }
+  .document-thumb,.document-badge { height:170px; margin-bottom:16px; }
   .document-caption h3 { font-size:15px; }
-  .document-placeholder { padding:12px; }
-  .document-placeholder span { font-size:18px; }
+  .certification-seal span { font-size:17px; }
   .iso-grid { grid-template-columns:1fr; }
   .iso-grid .document-card { padding:24px; }
-  .iso-grid .document-thumb,.iso-grid .document-placeholder { height:270px; }
+  .iso-grid .document-thumb,.iso-grid .document-badge { height:270px; }
+  .iso-grid .certification-seal span { font-size:28px; }
   .block-title { margin-top:48px; font-size:25px; }
   .lightbox { width:calc(100% - 24px); height:calc(100dvh - 24px); padding:20px; }
   .policy-copy h2 { font-size:25px; }
