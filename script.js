@@ -9,17 +9,32 @@ const updateHeader = () => {
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
+const setMenuOpen = (isOpen, restoreFocus = false) => {
+  document.body.classList.toggle('menu-open', isOpen);
+  menuToggle?.setAttribute('aria-expanded', String(isOpen));
+  menuToggle?.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+  if (restoreFocus) menuToggle?.focus({ preventScroll: true });
+};
+
 menuToggle?.addEventListener('click', () => {
-  const isOpen = document.body.classList.toggle('menu-open');
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
-  menuToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+  setMenuOpen(!document.body.classList.contains('menu-open'));
 });
 
 navigation?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => {
-    document.body.classList.remove('menu-open');
-    menuToggle?.setAttribute('aria-expanded', 'false');
+    setMenuOpen(false);
   });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && document.body.classList.contains('menu-open')) {
+    setMenuOpen(false, true);
+  }
+});
+
+const mobileMenuQuery = window.matchMedia('(max-width: 900px)');
+mobileMenuQuery.addEventListener('change', (event) => {
+  if (!event.matches) setMenuOpen(false);
 });
 
 const observer = new IntersectionObserver(

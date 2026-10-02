@@ -16,14 +16,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="styles.css?v=20261002-5" />
+    <link rel="stylesheet" href="styles.css?v=20261002-6" />
   </head>
   <body class="home-page" id="top">
     <header class="site-header" data-header>
       <a class="brand" href="index.html" aria-label="IPEUN 홈">
         <img src="assets/ipeun-logo.png" width="1037" height="330" alt="IPEUN" />
       </a>
-      <nav class="main-nav" aria-label="주요 메뉴" data-nav>
+      <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴" data-nav>
         <a href="#company">회사소개</a>
         <a href="#technology">기술소개</a>
         <a href="#products">제품소개</a>
@@ -31,7 +31,7 @@
       </nav>
       <div class="header-actions">
         <a class="header-cta" href="#contact">문의하기</a>
-        <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-toggle>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle>
           <span></span><span></span>
         </button>
       </div>

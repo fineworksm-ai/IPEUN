@@ -18,7 +18,7 @@
   --type-body-lg: clamp(16px, 1.08vw, 18px);
   --type-body: 16px;
   --type-small: 13px;
-  --type-label: 11px;
+  --type-label: 12px;
   --tracking-display: -0.045em;
   --tracking-heading: -0.038em;
   --tracking-body: -0.018em;
@@ -402,8 +402,8 @@ textarea {
   display: flex;
   align-items: center;
   gap: 18px;
-  color: rgba(7, 23, 19, 0.56);
-  font-size: 9px;
+  color: rgba(7, 23, 19, 0.72);
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.15em;
   transform: rotate(-90deg) translateX(100%);
@@ -758,15 +758,15 @@ textarea {
 
 .overview-metrics strong small {
   margin-left: 4px;
-  color: var(--mint);
+  color: #007d6c;
   font-size: 0.34em;
   letter-spacing: 0;
 }
 
 .overview-metrics span {
   margin-top: 8px;
-  color: #6c7b76;
-  font-size: 11px;
+  color: #65736e;
+  font-size: 12px;
 }
 
 .principle-section {
@@ -861,15 +861,15 @@ textarea {
 .feature-number {
   align-self: start;
   padding-top: 42px;
-  color: var(--mint);
+  color: #007d6c;
   font-size: 11px;
   font-weight: 800;
 }
 
 .feature-copy > p {
   margin: 0 0 15px;
-  color: #82908b;
-  font-size: 10px;
+  color: #65736e;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
 }
@@ -1263,7 +1263,7 @@ textarea {
 
   .eyebrow {
     margin-bottom: 16px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .section-heading {
@@ -1671,7 +1671,7 @@ textarea {
     --type-body-lg: 16px;
     --type-body: 15px;
     --type-small: 12px;
-    --type-label: 10px;
+    --type-label: 12px;
     --tracking-display: -0.038em;
     --tracking-heading: -0.032em;
     --leading-heading: 1.2;
@@ -1905,8 +1905,8 @@ textarea {
 
 .specs-product figcaption {
   margin-top: 14px;
-  color: #74817d;
-  font-size: 10px;
+  color: #65736e;
+  font-size: 12px;
   font-weight: 750;
   letter-spacing: 0.14em;
   text-align: center;
@@ -2278,7 +2278,7 @@ textarea {
   flex-wrap: wrap;
   gap: 14px;
   margin: 0 0 22px;
-  color: #74817d;
+  color: #65736e;
   font-size: var(--type-label);
   font-weight: 650;
   letter-spacing: 0.1em;
