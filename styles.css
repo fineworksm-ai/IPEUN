@@ -10,7 +10,7 @@
   --white: #ffffff;
   --page: min(88vw, 1480px);
   --header-height: 86px;
-  --type-display: clamp(62px, 6.1vw, 96px);
+  --type-display: clamp(58px, 5.2vw, 96px);
   --type-section: clamp(42px, 4.15vw, 66px);
   --type-subsection: clamp(28px, 2.45vw, 40px);
   --type-card: clamp(24px, 2vw, 32px);
@@ -252,8 +252,9 @@ textarea {
 
 .hero {
   position: relative;
-  min-height: 820px;
-  height: min(100svh, 980px);
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 1916 / 821;
   overflow: hidden;
   color: var(--ink);
   background: #f5f7f2;
@@ -295,9 +296,9 @@ textarea {
   position: absolute;
   z-index: 4;
   top: auto;
-  bottom: 72px;
+  bottom: clamp(24px, 3vw, 72px);
   left: 7.5vw;
-  width: min(48vw, 720px);
+  width: min(36vw, 650px);
   transform: none;
 }
 
@@ -1910,8 +1911,43 @@ textarea {
   }
 
   .hero-copy {
-    left: 8vw;
-    width: 46vw;
+    position: relative;
+    order: 1;
+    inset: auto;
+    width: var(--page);
+    margin: 0 auto;
+    padding: calc(var(--header-height) + 48px) 0 48px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero-people {
+    position: relative;
+    order: 2;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 1916 / 821;
+  }
+
+  .hero-people::after {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: linear-gradient(180deg, #f5f7f2, transparent 18%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero .scroll-indicator {
+    display: none;
   }
 
   .hero-product {
@@ -1937,6 +1973,12 @@ textarea {
     grid-template-columns: 1fr auto;
     height: 72px;
     padding: 0 22px;
+  }
+
+  .site-header.is-scrolled,
+  .product-page .site-header.is-scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .brand,
@@ -2021,40 +2063,8 @@ textarea {
     transform: translateY(-3.7px) rotate(-45deg);
   }
 
-  .hero {
-    min-height: 860px;
-    height: 100svh;
-    max-height: 980px;
-  }
-
-  .hero-copy {
-    top: 15%;
-    bottom: auto;
-    left: 7vw;
-    width: 86vw;
-    transform: none;
-  }
-
   .hero h1 {
     font-size: clamp(51px, 11.5vw, 78px);
-  }
-
-  .hero::before {
-    background: linear-gradient(180deg, rgba(247, 249, 245, 0.99) 0%, rgba(247, 249, 245, 0.95) 44%, rgba(247, 249, 245, 0.45) 60%, rgba(247, 249, 245, 0) 75%);
-  }
-
-  .hero-people {
-    inset: auto 0 0;
-    height: 52%;
-  }
-
-  .hero-people img {
-    right: 0;
-    width: 160%;
-    height: auto;
-    max-width: none;
-    max-height: 100%;
-    object-position: right bottom;
   }
 
   .hero-brand-note {
@@ -2263,14 +2273,6 @@ textarea {
     font-size: 39px;
   }
 
-  .hero {
-    min-height: 840px;
-  }
-
-  .hero-copy {
-    top: 14%;
-  }
-
   .hero h1 {
     font-size: 47px;
   }
@@ -2309,14 +2311,6 @@ textarea {
 
   .hero-product-caption {
     display: none;
-  }
-
-  .hero-people {
-    height: 47%;
-  }
-
-  .hero-people img {
-    object-position: right bottom;
   }
 
   .about-company-heading h2 {
