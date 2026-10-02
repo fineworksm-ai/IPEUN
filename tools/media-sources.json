@@ -1,0 +1,183 @@
+{
+  "archive": "자료.zip",
+  "processing": "Original renders and illustrations retain native cropped pixels and alpha, saved as lossless WebP; event photos use WebP quality 92, max 1800 × 1600, without EXIF metadata. Original product renders are retained. Eleven transparent background-removal PNG derivatives are used on the site; input/output paths and edit prompt are recorded in product-cutouts.json. Already-transparent components are unchanged.",
+  "originals": [
+    {
+      "asset": "assets/media/alljet-render-front.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (LED 점등) (3).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-banner.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (2).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-angle.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (1).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-detail.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (14).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-left.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (17).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-straight.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (3).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-right.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/올젯 본체 (5).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-rf.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/40.68 핸드피스 (1).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/alljet-render-cartridge.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/2. 의료기기(All-Jet)/올젯 렌더링 이미지/무바늘 핸드피스 (1).png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/invera-render-front.webp",
+      "source": "자료/fwd (1)/Invera 렌더링 이미지 (png)/본체 디자인 3차 (KC) -7.1903.png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/invera-render-banner.webp",
+      "source": "자료/fwd (1)/Invera 렌더링 이미지 (png)/본체 디자인 3차 (KC) -7.1901.png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/invera-render-side.webp",
+      "source": "자료/fwd (1)/Invera 렌더링 이미지 (png)/본체 디자인 3차 (KC) -7.1906.png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/invera-render-open.webp",
+      "source": "자료/fwd (1)/Invera 렌더링 이미지 (png)/본체 디자인 3차 (KC) -7.1904.png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/invera-render-cartridge.webp",
+      "source": "자료/fwd (1)/Invera 렌더링 이미지 (png)/인베라 핸드피스 (화이트).1909.png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/invera-render-detached.webp",
+      "source": "자료/fwd (1)/Invera 렌더링 이미지 (png)/인베라 핸드피스 (화이트).1912.png",
+      "type": "original-render"
+    },
+    {
+      "asset": "assets/media/event-forum-group.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2026.07.08_스타트업 상생포럼 2회/학회 참여 이미지/KakaoTalk_20260926_195745793_21.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-forum-presentation.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2026.07.08_스타트업 상생포럼 2회/학회 참여 이미지/KakaoTalk_20260926_195745793_06.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-forum-demo.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2026.07.08_스타트업 상생포럼 2회/학회 참여 이미지/KakaoTalk_20260926_195745793_12.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-buyers-demo.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2026.03.21_해외 바이어 시연회/KakaoTalk_20260402_161843474.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-buyers-conversation.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2026.03.21_해외 바이어 시연회/KakaoTalk_20260402_162113776_05.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-buyers-device.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2026.03.21_해외 바이어 시연회/KakaoTalk_20260402_162113776_01.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-seminar-talk.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2025.12.16_세미나/KakaoTalk_20260402_162510497_02.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/event-seminar-audience.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/4. 마케팅 활동/3. 세미나, 학회 참여 사진/2025.12.16_세미나/KakaoTalk_20260402_162510497_03.jpg",
+      "type": "original-photo"
+    },
+    {
+      "asset": "assets/media/principle-original-1.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/0. 공통/약물주입 피부단층 이미지/4단계-01.png",
+      "type": "original-illustration"
+    },
+    {
+      "asset": "assets/media/principle-original-2.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/0. 공통/약물주입 피부단층 이미지/4단계-02.png",
+      "type": "original-illustration"
+    },
+    {
+      "asset": "assets/media/principle-original-3.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/0. 공통/약물주입 피부단층 이미지/4단계-03.png",
+      "type": "original-illustration"
+    },
+    {
+      "asset": "assets/media/principle-original-4.webp",
+      "source": "자료/(이픈)홈페이지, 카달로그 제작/3. 제품 이미지/0. 공통/약물주입 피부단층 이미지/4단계-04.png",
+      "type": "original-illustration"
+    }
+  ],
+  "documentExtracts": [
+    {
+      "asset": "assets/media/nozzle.webp",
+      "document": "이픈 인베라 인쇄용.pdf",
+      "page": 2,
+      "originalPixels": [
+        695,
+        463
+      ]
+    },
+    {
+      "asset": "assets/media/cooling.webp",
+      "document": "이픈 인베라 인쇄용.pdf",
+      "page": 2,
+      "originalPixels": [
+        694,
+        416
+      ]
+    },
+    {
+      "asset": "assets/media/rf-technology.webp",
+      "document": "이픈 올젯 인쇄용.pdf",
+      "page": 2,
+      "originalPixels": [
+        459,
+        306
+      ]
+    },
+    {
+      "asset": "assets/media/invera-model.webp",
+      "document": "이픈 인베라 인쇄용.pdf",
+      "page": 1,
+      "originalPixels": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "notes": [
+    "Only selected public product images, technical illustrations and event photographs were imported. No patent, certification, agreement or internal IR document images were reintroduced.",
+    "The forum source folder says 2026.07.08; the event poster and linked ETNews article confirm the event occurred on 2026.07.07."
+  ]
+}

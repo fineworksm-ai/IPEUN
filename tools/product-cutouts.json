@@ -1,0 +1,222 @@
+{
+  "method": "Built-in image_gen, edit mode: background-extraction. Transparent alpha PNG output. No CLI fallback.",
+  "promptSummary": "Remove only the white/gray background, floor and cast shadows. Keep the existing device's silhouette, angle, materials, colors, UI text, logos, hoses, syringe, controls and proportions. Preserve internal shading and framing; no redesign or new elements.",
+  "assets": [
+    {
+      "input": "assets/media/invera-render-banner.webp",
+      "output": "assets/media/invera-cutout-banner.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/invera-cutout-banner.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-376ebb9c-9f3f-41f6-946d-6b933b2ba601.png",
+      "asset": "assets/media/invera-cutout-banner.png",
+      "size": [
+        1208,
+        1302
+      ],
+      "transparentPixels": 490669,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1412506
+    },
+    {
+      "input": "assets/media/invera-render-front.webp",
+      "output": "assets/media/invera-cutout-front.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/invera-cutout-front.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-72aac773-820c-40d9-8e64-f85b506be36b.png",
+      "asset": "assets/media/invera-cutout-front.png",
+      "size": [
+        1195,
+        1316
+      ],
+      "transparentPixels": 427149,
+      "corners": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1413544
+    },
+    {
+      "input": "assets/media/alljet-render-front.webp",
+      "output": "assets/media/alljet-cutout-front.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-front.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-465e8b93-441f-4ad1-8985-68e40c594c17.png",
+      "asset": "assets/media/alljet-cutout-front.png",
+      "size": [
+        942,
+        1670
+      ],
+      "transparentPixels": 755999,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1115875
+    },
+    {
+      "input": "assets/media/alljet-render-banner.webp",
+      "output": "assets/media/alljet-cutout-banner.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-banner.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-71cc658f-904b-41e3-afcd-2e2b8b3176ea.png",
+      "asset": "assets/media/alljet-cutout-banner.png",
+      "size": [
+        950,
+        1655
+      ],
+      "transparentPixels": 779481,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1094172
+    },
+    {
+      "input": "assets/media/alljet-render-angle.webp",
+      "output": "assets/media/alljet-cutout-angle.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-angle.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-92c18c7a-aeb9-4ab5-8c84-45a593bfc1a1.png",
+      "asset": "assets/media/alljet-cutout-angle.png",
+      "size": [
+        950,
+        1656
+      ],
+      "transparentPixels": 800322,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1079389
+    },
+    {
+      "input": "assets/media/alljet-render-detail.webp",
+      "output": "assets/media/alljet-cutout-detail.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-detail.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-f58bbc47-9d63-4209-8413-843fab4cb6a9.png",
+      "asset": "assets/media/alljet-cutout-detail.png",
+      "size": [
+        1162,
+        1354
+      ],
+      "transparentPixels": 578243,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1219031
+    },
+    {
+      "input": "assets/media/alljet-render-left.webp",
+      "output": "assets/media/alljet-cutout-left.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-left.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-55614c7e-fc5a-4f60-9a7f-71e8a04109c4.png",
+      "asset": "assets/media/alljet-cutout-left.png",
+      "size": [
+        991,
+        1588
+      ],
+      "transparentPixels": 882846,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1034203
+    },
+    {
+      "input": "assets/media/alljet-render-straight.webp",
+      "output": "assets/media/alljet-cutout-straight.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-straight.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-0b0887ac-f969-4fb8-8efb-0f4ff56250ab.png",
+      "asset": "assets/media/alljet-cutout-straight.png",
+      "size": [
+        895,
+        1758
+      ],
+      "transparentPixels": 680772,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1073510
+    },
+    {
+      "input": "assets/media/alljet-render-right.webp",
+      "output": "assets/media/alljet-cutout-right.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/alljet-cutout-right.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-49bed60f-8a07-416c-a237-69159e6b8f97.png",
+      "asset": "assets/media/alljet-cutout-right.png",
+      "size": [
+        962,
+        1635
+      ],
+      "transparentPixels": 795687,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1204249
+    },
+    {
+      "input": "assets/media/invera-render-side.webp",
+      "output": "assets/media/invera-cutout-side.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/invera-cutout-side.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-7f3b06a5-ee9e-442b-bf09-68c715b68369.png",
+      "asset": "assets/media/invera-cutout-side.png",
+      "size": [
+        1207,
+        1303
+      ],
+      "transparentPixels": 755202,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1100688
+    },
+    {
+      "input": "assets/media/invera-render-open.webp",
+      "output": "assets/media/invera-cutout-open.png",
+      "savedPath": "/Users/yoseprince/Desktop/IPEUN/assets/media/invera-cutout-open.png",
+      "generatedSource": "/Users/yoseprince/.codex/generated_images/01a0cd61-227e-7821-a1bd-2d13a44c97d2/exec-a7177fc3-39f1-4b31-b5eb-37f531b3e5f4.png",
+      "asset": "assets/media/invera-cutout-open.png",
+      "size": [
+        1176,
+        1337
+      ],
+      "transparentPixels": 680661,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bytes": 1247957
+    }
+  ],
+  "unchangedTransparentComponents": [
+    "alljet-render-rf.webp",
+    "alljet-render-cartridge.webp",
+    "invera-render-cartridge.webp",
+    "invera-render-detached.webp"
+  ],
+  "sourcePreservation": "Original source renders are retained; public pages reference sibling cutout files. CSS floor shadows disabled."
+}

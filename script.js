@@ -3,6 +3,22 @@ const menuToggle = document.querySelector('[data-menu-toggle]');
 const navigation = document.querySelector('[data-nav]');
 const mobileMenuQuery = window.matchMedia('(max-width: 900px)');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const isEnglish = document.documentElement.lang.startsWith('en');
+const interfaceText = isEnglish
+  ? { openMenu: 'Open menu', closeMenu: 'Close menu', playSlides: 'Play automatic slides', pauseSlides: 'Pause automatic slides' }
+  : { openMenu: '메뉴 열기', closeMenu: '메뉴 닫기', playSlides: '자동 전환 재생', pauseSlides: '자동 전환 일시정지' };
+
+// Real links also work without JavaScript; enhance them to retain the section.
+const updateLanguageLinks = () => {
+  document.querySelectorAll('[data-language-link]').forEach(link => {
+    const target = new URL(link.dataset.languagePath, window.location.href);
+    target.hash = window.location.hash;
+    link.href = target.href;
+  });
+};
+updateLanguageLinks();
+window.addEventListener('hashchange', updateLanguageLinks);
+document.querySelectorAll('[data-language-link]').forEach(link => link.addEventListener('click', updateLanguageLinks));
 
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
 updateHeader();
@@ -11,7 +27,7 @@ window.addEventListener('scroll', updateHeader, { passive: true });
 const setMenuOpen = (isOpen, restoreFocus = false) => {
   document.body.classList.toggle('menu-open', isOpen);
   menuToggle?.setAttribute('aria-expanded', String(isOpen));
-  menuToggle?.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+  menuToggle?.setAttribute('aria-label', isOpen ? interfaceText.closeMenu : interfaceText.openMenu);
   document.querySelector('main')?.toggleAttribute('inert', isOpen);
   document.querySelector('footer')?.toggleAttribute('inert', isOpen);
   if (!isOpen) {
@@ -51,6 +67,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       event.preventDefault();
       target.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
       history.replaceState(null, '', '#' + id);
+      updateLanguageLinks();
     }
   });
 });
@@ -70,7 +87,7 @@ if (slider) {
     const running = !reducedMotion.matches && !manuallyPaused && !hovered && !focused && !document.hidden;
     slider.classList.toggle('is-running', running);
     pauseButton.hidden = reducedMotion.matches;
-    pauseButton.setAttribute('aria-label', manuallyPaused ? '자동 전환 재생' : '자동 전환 일시정지');
+    pauseButton.setAttribute('aria-label', manuallyPaused ? interfaceText.playSlides : interfaceText.pauseSlides);
     pauseButton.textContent = manuallyPaused ? '▶' : 'Ⅱ';
     if (running) timer = setTimeout(() => showSlide(current + 1), 6000);
   };
@@ -125,6 +142,76 @@ document.addEventListener('keydown', event => {
 });
 
 const lightbox = document.querySelector('[data-lightbox]');
+const inquiryForm = document.querySelector('[data-inquiry-form]');
+if (inquiryForm) {
+  const labels = isEnglish ? {
+    purposes: { demo:'Demo request', service:'A/S service request', materials:'Materials request', other:'Other inquiry' },
+    products: { alljet:'All-Jet', invera:'INVERA', unspecified:'Other / undecided', '':'Not selected' },
+    subject:'[IPEUN Product Inquiry]', purpose:'Purpose', product:'Product', name:'Name', organization:'Organization', email:'Reply email', details:'Inquiry details', optional:'Not provided',
+    empty:'Please enter a value.', copied:'Inquiry details copied. Paste them into an email to admin@i-peun.com.',
+    copyFailed:'Copying is unavailable. Select and copy the inquiry details above.',
+    draft:'Review and send the message in your email app. The inquiry has not been submitted yet.',
+  } : {
+    purposes: { demo:'데모 요청', service:'A/S 접수', materials:'자료 요청', other:'기타 문의' },
+    products: { alljet:'All-Jet', invera:'INVERA', unspecified:'기타 / 미정', '':'미선택' },
+    subject:'[IPEUN 제품문의]', purpose:'문의 목적', product:'제품', name:'성함', organization:'병원·기관명', email:'회신 이메일', details:'문의 내용', optional:'미입력',
+    empty:'내용을 입력해주세요.', copied:'문의 내용을 복사했습니다. admin@i-peun.com으로 보낼 이메일에 붙여넣어주세요.',
+    copyFailed:'자동 복사가 지원되지 않습니다. 위 내용을 선택해 직접 복사해주세요.',
+    draft:'메일 앱에서 확인 후 직접 전송해주세요. 아직 접수된 상태는 아닙니다.',
+  };
+  const purposes = [...inquiryForm.querySelectorAll('input[name="purpose"]')];
+  const error = document.getElementById('purpose-error');
+  const draft = inquiryForm.querySelector('[data-inquiry-draft]');
+  const preview = inquiryForm.querySelector('[data-inquiry-preview]');
+  const status = inquiryForm.querySelector('[data-inquiry-status]');
+  const mailLink = inquiryForm.querySelector('[data-inquiry-mail]');
+  const textFields = ['name','message'].map(name => inquiryForm.elements.namedItem(name));
+  const selectedPurposes = () => purposes.filter(input => input.checked).map(input => labels.purposes[input.value]);
+  const updateDraft = () => {
+    const data = new FormData(inquiryForm);
+    const value = name => String(data.get(name) || '').trim();
+    const chosen = selectedPurposes().join(' / ');
+    const body = [
+      `${labels.purpose}: ${chosen}`, `${labels.product}: ${labels.products[value('product')]}`,
+      `${labels.name}: ${value('name')}`, `${labels.organization}: ${value('organization') || labels.optional}`,
+      `${labels.email}: ${value('email')}`, '', `${labels.details}:`, value('message'),
+    ].join('\n');
+    preview.textContent = body;
+    mailLink.href = `mailto:admin@i-peun.com?subject=${encodeURIComponent(`${labels.subject} ${chosen}`)}&body=${encodeURIComponent(body)}`;
+  };
+  inquiryForm.noValidate = true;
+  inquiryForm.addEventListener('input', () => {
+    if (selectedPurposes().length) { error.hidden = true; inquiryForm.querySelector('fieldset').removeAttribute('aria-invalid'); }
+    textFields.forEach(field => field.setCustomValidity(field.value.trim() ? '' : labels.empty));
+    if (!draft.hidden) updateDraft();
+  });
+  inquiryForm.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!selectedPurposes().length) {
+      error.hidden = false;
+      inquiryForm.querySelector('fieldset').setAttribute('aria-invalid','true');
+      purposes[0].focus();
+      return;
+    }
+    error.hidden = true;
+    textFields.forEach(field => field.setCustomValidity(field.value.trim() ? '' : labels.empty));
+    if (!inquiryForm.reportValidity()) return;
+    updateDraft();
+    draft.hidden = false;
+    status.textContent = labels.draft;
+    // Opens a draft only. Nothing is sent or stored by this website.
+    mailLink.click();
+  });
+  inquiryForm.querySelector('[data-inquiry-copy]').addEventListener('click', async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(preview.textContent);
+      status.textContent = labels.copied;
+    } catch { status.textContent = labels.copyFailed; }
+  });
+  inquiryForm.querySelector('[data-inquiry-compose]').disabled = false;
+}
+
 if (lightbox) {
   let lightboxTrigger;
   document.querySelectorAll('[data-lightbox-src]').forEach(button => {
