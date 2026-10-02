@@ -1,0 +1,243 @@
+IPEUN 홈페이지 2차 작업 결과
+작성일: 2026-10-02
+작업 위치: /Users/yoseprince/Desktop/IPEUN
+로컬 확인: http://localhost:3000/
+
+범위: A~F 단계별 로컬 커밋. 푸시·배포·호스팅·도메인 연결은 하지 않았습니다.
+문의 전송 기능, EN, Home Care 페이지, 홍보센터는 만들지 않았습니다.
+지시서와 tmp/ 원본·중간 파일, 기존 .openai/ 설정은 커밋 대상에 넣지 않았습니다.
+
+단계별 결과 및 변경 파일
+======================
+
+A. 디자인 시스템 · 로고 (커밋 ec6ed29)
+Pretendard와 공통 색상·타이포·카드 규칙을 정리했습니다. 회사 SVG는 실제 벡터인지 확인하고 불필요한 메타데이터를 제거했습니다. All-Jet·INVERA 로고는 브로슈어의 벡터 경로를 추출했습니다. 헤더의 흰 박스는 제거했고, 반전 로고가 없으므로 어두운 푸터에는 흰 박스를 유지했습니다. 심볼 SVG·32px PNG·흰 배경 180px Apple 아이콘을 적용했습니다.
+변경 파일:
+  assets/apple-touch-icon.png
+  assets/favicon-32.png
+  assets/ipeun-logo.png
+  assets/logo/alljet.svg
+  assets/logo/favicon.svg
+  assets/logo/invera.svg
+  assets/logo/ipeun.svg
+  assets/logo/symbol.svg
+  index.html
+  product.html
+  styles.css
+
+B. 메인 허브 재구성 (커밋 5d16140)
+브랜드 → All-Jet → INVERA 3장 히어로, 제품 2종(INVERA 먼저), No Needle 3원칙, 핵심 기술, 기업 신뢰 띠, 회사 바로가기, 문의 순서로 구성했습니다. 6초 자동 전환·이전/다음·현재 위치 표시·호버/포커스/수동 일시정지·동작 줄이기를 지원합니다. 모바일 제품 카드는 가로 scroll-snap으로 구성했습니다.
+변경 파일:
+  assets/media/alljet-angle.webp
+  assets/media/alljet-banner.webp
+  assets/media/alljet-cartridge.webp
+  assets/media/alljet-detail.webp
+  assets/media/alljet-front.webp
+  assets/media/alljet-rf-handpiece.webp
+  assets/media/alljet-view-front.webp
+  assets/media/alljet-view-left.webp
+  assets/media/alljet-view-right.webp
+  assets/media/brand-models.webp
+  assets/media/cooling.webp
+  assets/media/invera-banner.webp
+  assets/media/invera-cartridge-detached.webp
+  assets/media/invera-cartridge.webp
+  assets/media/invera-front.webp
+  assets/media/invera-model.webp
+  assets/media/invera-open.webp
+  assets/media/invera-side.webp
+  assets/media/nozzle.webp
+  assets/media/rf-technology.webp
+  assets/media/step-1.webp
+  assets/media/step-2.webp
+  assets/media/step-3.webp
+  assets/media/step-4.webp
+  index.html
+  product.html
+  script.js
+  styles.css
+
+C. 한국어 페이지 구조 · 메뉴 (커밋 8c0e007)
+회사소개·기술소개·All-Jet·INVERA·고객센터·개인정보처리방침 페이지를 분리했습니다. 데스크톱 호버/Tab 하위메뉴, 모바일 전체화면 아코디언과 Escape·포커스 복귀를 적용했습니다. Home Care는 링크 없는 비활성 항목이고 EN은 노출하지 않았습니다. product.html은 All-Jet으로 자동 이동합니다.
+변경 파일:
+  alljet.html
+  company.html
+  contact.html
+  index.html
+  invera.html
+  privacy.html
+  product.html
+  script.js
+  styles.css
+  technology.html
+
+D. 기업 콘텐츠 · 인증 · 법적 정보 (커밋 ddb82e5)
+클라이언트 자료의 연혁 27건을 2026→2023 순으로 반영했습니다. 공개 원본의 인증·특허·수상 이미지 20개를 사용하고 확대 보기 기능을 적용했습니다. 없는 ISO 13485·ISO 14001·벤처기업 확인서와 상표 자료는 자리표시 카드로 남겼습니다. 특허 4건은 모두 출원으로 표기했습니다. 대표·사업자번호·3개 사업장·전화·팩스·admin 이메일·저작권 연도를 통일하고, 기존 사이트의 개인정보처리방침을 옮겼습니다.
+변경 파일:
+  alljet.html
+  assets/cert/design.webp
+  assets/cert/family-company.webp
+  assets/cert/future-share.webp
+  assets/cert/hankook1.webp
+  assets/cert/hankook2.webp
+  assets/cert/hankook3.webp
+  assets/cert/innovation.webp
+  assets/cert/invention.webp
+  assets/cert/iso-en.webp
+  assets/cert/iso-kr.webp
+  assets/cert/kyunghee.webp
+  assets/cert/naeil.webp
+  assets/cert/patent1.webp
+  assets/cert/patent2.webp
+  assets/cert/patent3.webp
+  assets/cert/patent4.webp
+  assets/cert/rnd.webp
+  assets/cert/social-venture.webp
+  assets/cert/startup.webp
+  assets/cert/worklife.webp
+  company.html
+  contact.html
+  index.html
+  invera.html
+  privacy.html
+  script.js
+  styles.css
+  technology.html
+
+E. 제품 · 고객센터 상세 (커밋 7b54523)
+All-Jet: 브로슈어 기기 배너, 4개 소개 카드, 3개 핵심 기술, 기존 작동 원리 4단계, 기기 사진 6종, RF 핸드피스·RFID 카트리지, 기존 9개 사양과 문의를 구성했습니다. INVERA: 브로슈어 모델·기기 배너, No Needle, 노즐·냉각, 제품 3컷·카트리지 2컷을 구성하고 자료가 없는 사양표는 숨겼습니다. INVERA 본문에는 약물 관련 주장이나 고주파 기능을 넣지 않았습니다. 고객센터에는 전화·팩스·메일, 3개 사업장과 카카오·네이버 지도 링크를 제공합니다.
+변경 파일:
+  alljet.html
+  company.html
+  contact.html
+  index.html
+  invera.html
+  privacy.html
+  styles.css
+  technology.html
+
+F. 공통 마무리 · 검증
+모든 페이지의 메타데이터·아이콘·이미지 치수·접근성 처리를 확인했습니다. 개편 전 CSS 약 2,400줄을 제거하고 소제목·본문·라벨·작은 글씨 대비를 보정했습니다. 제품 사진의 색상 혼합 효과를 제거했습니다. 메인 INVERA 카드는 원본의 투명 컷을 사용해 회색 사각 배경을 피했습니다. 기존 세 모델의 얼굴을 새로 생성하거나 수정하지 않고 웹용 크롭과 반응형 배치를 적용했습니다.
+변경 파일:
+  alljet.html
+  company.html
+  contact.html
+  index.html
+  invera.html
+  privacy.html
+  product.html
+  technology.html
+  styles.css
+  assets/media/brand-models-group.webp
+  output/phase2-review.txt
+
+새 페이지
+=========
+company.html — 회사소개 / 연혁 / 인증·특허 / 오시는 길
+technology.html — 공통 기술 / All-Jet 전용 고주파 / 작동 원리
+alljet.html — 의료기기 All-Jet
+invera.html — 미용기기 INVERA
+contact.html — 고객센터
+privacy.html — 기존 개인정보처리방침
+기존 index.html 재구성, 기존 product.html → alljet.html 자동 이동
+
+이미지 및 로고 처리
+==================
+- 회사 제공 SVG 2종과 브로슈어 제품 로고를 사용했습니다. SVG 5개 모두 viewBox가 있고 <image>/base64 래스터가 없습니다.
+- 회사 로고는 스크롤 전/후와 모든 페이지에서 같은 SVG입니다. 헤더 흰 박스 제거, 푸터 흰 박스 유지.
+- 이전 로고 PNG는 로컬 assets/_unused/ipeun-logo.png에 보관했습니다. _unused/는 기존 gitignore에 의해 커밋 제외입니다.
+- 새 웹용 미디어 25개 및 기업 증빙 20개를 WebP로 적용했습니다. 크기는 원본 해상도 범위에서 조정했고 제품에 초록색 오버레이를 넣지 않았습니다.
+- 모델 이미지 생성 도구를 호출하지 않았습니다. 기존 v15 모델 이미지를 유지하고 화면 구도를 위해 여백만 크롭했습니다. 원본 배경 톤을 이어 사진 경계의 빈 띠를 피했습니다.
+- 2배 표시 해상도를 목표로 최적화하되 작은 원본을 억지로 확대하지 않았습니다. 특히 RF 기술 그림(459×306)은 고해상도 원본이 필요합니다. 기존 모델·일부 브로슈어 컷도 원본 픽셀 수가 선명도의 상한입니다.
+
+검증 결과
+=========
+- 콘텐츠 7페이지 × 320/390/768/1024/1280/1440/1920px = 49개 화면 검증. 768px 이하는 모바일 에뮬레이션.
+- 문서 가로 넘침 0, 깨진 이미지 0, 콘솔 오류 0. 모바일 제품 카드·목차의 내부 가로 넘기기는 의도된 동작입니다.
+- 히어로 3장을 7개 폭에서 별도로 캡처·배치 확인했습니다.
+- Chrome/Safari 실제 탭에서 새 심볼 확인. 헤더/푸터 SVG 표시 확인.
+- 데스크톱 메뉴 호버와 Tab 진입/하위항목 이동 확인.
+- 모바일 3개 아코디언 열기/닫기, 하나만 열림, 스크롤 뒤 100dvh 전체화면, Escape 포커스 복귀와 데스크톱 크기 변경 시 닫힘 확인.
+- Home Care: span, aria-disabled=true, href/tabindex 없음.
+- 내부 링크 166개 및 고유 이동 목적지 41개 확인. 누락 앵커 0, 누락 자산 0, 새 이미지 width/height 누락 0.
+- product.html 리다이렉트 정상.
+- 인증·특허·수상 자료 20개 모두 확대 이미지 로드, Escape 닫기, 트리거 포커스 복귀 확인.
+- 슬라이더 6초 자동 전환, 호버·포커스·수동 일시정지, prefers-reduced-motion 자동 전환 중단, 이전/다음·선택 버튼 확인.
+- 이미지 없는 비활성 슬라이드는 inert/aria-hidden 처리.
+- 라벨 최소 12px, 작은 텍스트 라벨의 일반 배경 대비 4.5:1 이상 확인. 이는 사이트 전체 WCAG 인증을 의미하지 않습니다.
+- index.html에서 JavaScript 차단/실패 시 js 클래스 제거 및 숨겨진 콘텐츠가 없음을 확인했습니다.
+- 금지 문구 HTML 검색 결과 0: No Pain / Just Results / 리프팅 효과 / 콜라겐 / 6개월 / HIFU. 제품 표기·이전 ceo 이메일·PNG 로고 참조도 확인했습니다.
+- node --check script.js, git diff --check 통과.
+- favicon PNG 32×32 RGBA, Apple 아이콘 180×180 RGB·흰 모서리 확인.
+
+클라이언트 확인용 TODO 원문
+=========================
+HTML 주석의 문구를 그대로 모았습니다. 같은 주석의 여러 위치는 묶었습니다.
+
+1. index.html, company.html, technology.html, alljet.html, invera.html, contact.html, privacy.html, product.html
+<!-- TODO: 도메인 확정 후 og:image, og:url 추가 -->
+
+2. index.html, invera.html
+<!-- TODO(클라이언트 확인): 인허가 전 'No Needle Pain/Infection' 표현 사용 가능 여부 -->
+
+3. index.html, technology.html, alljet.html
+<!-- TODO: 고해상도 원본 필요 -->
+
+4. index.html
+<!-- TODO(클라이언트 확인): 2026년 하반기 출시 예정 일정 -->
+
+5. company.html
+<!-- TODO(클라이언트 확인): 대표 인사말 -->
+
+6. company.html
+<!-- TODO(클라이언트 확인): All-Jet 상표 출원번호 -->
+
+7. company.html
+<!-- TODO(클라이언트 확인): 청년창업사관학교 정식 명칭 -->
+
+8. company.html
+<!-- TODO(클라이언트 확인): 디지털이노베이션 대상 주관 기관명 -->
+
+9. company.html
+<!-- TODO(클라이언트 확인): ISO 13485 인증서 이미지 필요 -->
+
+10. company.html
+<!-- TODO(클라이언트 확인): ISO 14001 인증서 이미지 필요 -->
+
+11. company.html
+<!-- TODO(클라이언트 확인): 벤처기업 확인서 인증서 이미지 필요 -->
+
+12. company.html
+<!-- TODO(클라이언트 확인): 디자인전문회사 신고확인증과 2025.10 디자인연구소 설립 제21059호가 같은 문서인지 확인 -->
+
+13. company.html
+<!-- TODO(클라이언트 확인): (1)(2) 등록 여부와 등록번호 -->
+
+14. company.html
+<!-- TODO(클라이언트 확인): All-Jet 상표 출원번호 및 상표 자료 이미지 필요 -->
+
+15. alljet.html
+<!-- TODO(클라이언트 확인): 브로슈어 기준 사양과 최종 제품 사양 확인. 기존 사이트의 구형 모델 사양과 구분 -->
+
+16. invera.html
+<!-- TODO(클라이언트 확인): 모델 사진 웹 사용권 -->
+
+17. invera.html
+<!-- TODO(클라이언트 확인): INVERA 주요 사양 자료 필요 -->
+
+18. contact.html
+<!-- TODO: 문의 양식 -->
+
+19. privacy.html
+<!-- TODO(클라이언트 확인): 현재 메일 문의 방식과 기존 방침의 문의 양식·자동 수집·쿠키 항목 일치 여부 -->
+
+참고 자료
+=========
+구조 참고: https://classys.co.kr/
+제품 구성 참고: https://terasysdnc.co.kr/ddjet/
+기업 증빙 원본: https://www.i-peun.com/
+기존 개인정보처리방침: https://www.i-peun.com/privacy
+제공 브로슈어: 이픈 올젯 인쇄용.pdf / 이픈 인베라 인쇄용.pdf
+제공 회사 벡터: 자산 1.svg / 자산 2.svg
+
+위 TODO의 확인 전에는 출시 일정, 인허가 표현, 최종 사양 및 이미지 사용권을 확정된 상태로 간주하지 않습니다.
