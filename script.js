@@ -123,3 +123,32 @@ document.addEventListener('keydown', event => {
   if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
   else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
 });
+
+const lightbox = document.querySelector('[data-lightbox]');
+if (lightbox) {
+  let lightboxTrigger;
+  document.querySelectorAll('[data-lightbox-src]').forEach(button => {
+    button.addEventListener('click', () => {
+      lightboxTrigger = button;
+      const image = document.createElement('img');
+      image.src = button.dataset.lightboxSrc;
+      image.alt = button.dataset.lightboxTitle;
+      image.width = Number(button.dataset.lightboxWidth);
+      image.height = Number(button.dataset.lightboxHeight);
+      lightbox.querySelector('[data-lightbox-content]').replaceChildren(image);
+      lightbox.querySelector('[data-lightbox-caption]').textContent = button.dataset.lightboxTitle;
+      lightbox.showModal();
+      document.body.classList.add('lightbox-open');
+    });
+  });
+  lightbox.querySelector('[data-lightbox-close]').addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', event => {
+    const bounds = lightbox.getBoundingClientRect();
+    if (event.target === lightbox && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) lightbox.close();
+  });
+  lightbox.addEventListener('close', () => {
+    document.body.classList.remove('lightbox-open');
+    lightbox.querySelector('[data-lightbox-content]').replaceChildren();
+    lightboxTrigger?.focus({ preventScroll: true });
+  });
+}
