@@ -1368,9 +1368,12 @@ textarea {
 }
 
 .reveal {
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(.2,.75,.3,1);
+}
+
+.js .reveal {
   opacity: 0;
   transform: translateY(34px);
-  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(.2,.75,.3,1);
 }
 
 .reveal.is-visible {
@@ -2535,7 +2538,8 @@ textarea {
     transition-duration: 0.01ms !important;
   }
 
-  .reveal {
+  .reveal,
+  .js .reveal {
     opacity: 1;
     transform: none;
   }

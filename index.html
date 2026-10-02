@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="이픈은 하나의 무바늘 정밀 분사 기술을 바탕으로 의료기기 ALL-JET과 미용기기 INVERA를 개발합니다." />
     <title>IPEUN | Care Beyond Needles</title>
-    <link rel="icon" href="assets/ipeun-logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="IPEUN" />
+    <meta property="og:title" content="IPEUN | Care Beyond Needles" />
+    <meta property="og:description" content="이픈은 하나의 무바늘 정밀 분사 기술을 바탕으로 의료기기 ALL-JET과 미용기기 INVERA를 개발합니다." />
+    <!-- TODO: 도메인 확정 후 og:image, og:url 추가 -->
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="styles.css?v=20261002-3" />
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="styles.css?v=20261002-4" />
   </head>
   <body class="home-page" id="top">
     <header class="site-header" data-header>
       <a class="brand" href="index.html" aria-label="IPEUN 홈">
-        <img src="assets/ipeun-logo.png" alt="IPEUN" />
+        <img src="assets/ipeun-logo.png" width="1037" height="330" alt="IPEUN" />
       </a>
       <nav class="main-nav" aria-label="주요 메뉴" data-nav>
         <a href="#company">회사소개</a>
@@ -32,7 +40,7 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-people" aria-hidden="true">
-          <img src="assets/ipeun-hero-models-v15.png" width="1916" height="821" fetchpriority="high" alt="" />
+          <img src="assets/ipeun-hero-models-v15.jpg" width="1916" height="821" fetchpriority="high" alt="" />
         </div>
         <div class="hero-copy">
           <p class="eyebrow">NEEDLE-FREE TECHNOLOGY</p>
@@ -109,7 +117,7 @@
               <h3 id="alljet-title">ALL-JET</h3>
             </div>
             <div class="lineup-card-visual lineup-card-visual-alljet">
-              <img src="assets/alljet-front-hero.png" width="1146" height="1924" loading="lazy" alt="의료기기 ALL-JET 제품 전면" />
+              <img src="assets/alljet-front-hero.png" width="900" height="1511" loading="lazy" alt="의료기기 ALL-JET 제품 전면" />
             </div>
             <div class="lineup-card-copy">
               <p>이픈의 무바늘 정밀 분사 기술을 의료 환경에 맞춰 구현한 의료기기입니다. 40.68 MHz 고주파 기능을 함께 담았습니다.</p>
@@ -122,7 +130,7 @@
               <h3 id="invera-home-title">INVERA</h3>
             </div>
             <div class="lineup-card-visual lineup-card-visual-invera">
-              <img src="assets/invera-product-original.png" width="1631" height="1046" loading="lazy" alt="미용기기 INVERA 제품 전면" />
+              <img src="assets/invera-product-original.png" width="1250" height="801" loading="lazy" alt="미용기기 INVERA 제품 전면" />
             </div>
             <div class="lineup-card-copy">
               <p>올젯과 같은 무바늘 정밀 분사 기술을 바탕으로 만든 미용기기입니다. 피부케어를 위한 새로운 가능성을 제안합니다.</p>
@@ -148,13 +156,13 @@
     </main>
 
     <footer class="site-footer">
-      <a class="footer-brand" href="index.html"><img src="assets/ipeun-logo.png" alt="IPEUN" /></a>
+      <a class="footer-brand" href="index.html"><img src="assets/ipeun-logo.png" width="1037" height="330" alt="IPEUN" /></a>
       <div class="footer-meta">
         <p>주식회사 이픈 · 의료기기 및 미용기기 연구개발</p>
         <p>© 2026 IPEUN Inc. All rights reserved.</p>
       </div>
       <a class="back-to-top" href="#top" aria-label="맨 위로">↑</a>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js" onerror="document.documentElement.classList.remove('js')"></script>
   </body>
 </html>
