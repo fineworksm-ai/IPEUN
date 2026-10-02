@@ -1878,20 +1878,6 @@ textarea {
   transform: translate(-50%, -50%);
 }
 
-.product-notice {
-  padding: 32px 6vw;
-  color: #71807b;
-  background: #e8efec;
-  text-align: center;
-}
-
-.product-notice p {
-  max-width: 930px;
-  margin: 0 auto;
-  font-size: 11px;
-  line-height: 1.75;
-}
-
 @media (max-width: 1180px) {
   :root {
     --page: min(91vw, 1080px);
@@ -2846,7 +2832,6 @@ textarea {
 }
 
 .specs-head > p:last-child,
-.product-notice p,
 .specs-table dt {
   font-size: var(--type-small);
   letter-spacing: -0.01em;
