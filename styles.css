@@ -2804,3 +2804,80 @@ body.lightbox-open { overflow:hidden; }
   .lightbox { width:calc(100% - 24px); height:calc(100dvh - 24px); padding:20px; }
   .policy-copy h2 { font-size:25px; }
 }
+
+/* Product pages and contact */
+.product-banner { padding:calc(var(--header-height) + 50px) 0 70px; background:var(--paper); }
+.banner-grid { display:grid; grid-template-columns:1fr 1.1fr; align-items:center; gap:70px; }
+.banner-copy { max-width:560px; }
+.banner-logo { width:330px; height:auto; margin:22px 0 28px; }
+.banner-statement { font-size:38px; font-weight:600; line-height:1.35; letter-spacing:-.045em; }
+.banner-description { margin-top:25px; color:var(--muted); }
+.banner-copy .text-link { margin-top:32px; }
+.banner-visual { position:relative; height:560px; display:flex; align-items:center; justify-content:center; }
+.banner-visual > img { width:100%; height:100%; object-fit:contain; }
+.invera-page .product-banner { background:var(--white); }
+.banner-visual-invera > .banner-model { position:absolute; right:0; top:0; width:63%; height:90%; object-fit:contain; object-position:right top; }
+.banner-visual-invera > .banner-device { position:absolute; left:0; bottom:0; width:72%; height:64%; object-fit:contain; object-position:left bottom; }
+.product-introduction { max-width:930px; color:var(--muted); margin-bottom:42px; }
+.overview-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.overview-card { padding:28px; }
+.overview-card h3 { font-size:28px; margin-bottom:20px; }
+.overview-card p { color:var(--muted); font-size:17px; }
+.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.gallery-item { padding:24px; }
+.gallery-item img { width:100%; height:340px; object-fit:contain; mix-blend-mode:multiply; }
+.gallery-item figcaption { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; font-weight:600; }
+.component-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.component-item { padding:30px; }
+.component-item img { width:100%; height:300px; object-fit:contain; margin-bottom:26px; }
+.component-item h3 { font-size:28px; margin-bottom:14px; }
+.component-item p { font-size:17px; color:var(--muted); }
+.specification-table { margin:0; border-top:1px solid var(--line); }
+.specification-table > div { display:grid; grid-template-columns:260px 1fr; gap:40px; padding:21px 24px; border-bottom:1px solid var(--line); }
+.specification-table dt { color:var(--muted); }
+.specification-table dd { margin:0; font-weight:500; }
+.inquiry-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.inquiry-card { padding:32px; }
+.inquiry-card h3 { font-size:25px; margin-bottom:24px; }
+.inquiry-card > a,.inquiry-card > p:not(.eyebrow) { font-size:19px; font-weight:500; overflow-wrap:anywhere; }
+.inquiry-action { margin-top:40px; }
+@media(max-width:1180px) {
+  .banner-grid { gap:35px; }
+  .banner-visual { height:480px; }
+  .banner-statement { font-size:34px; }
+  .overview-grid { grid-template-columns:1fr 1fr; }
+  .gallery-item img { height:290px; }
+  .inquiry-card { padding:25px; }
+}
+@media(max-width:900px) {
+  .banner-grid { grid-template-columns:1fr 1fr; gap:24px; }
+  .banner-logo { width:260px; }
+  .banner-statement { font-size:30px; }
+  .banner-visual { height:400px; }
+  .gallery-grid { grid-template-columns:1fr 1fr; gap:18px; }
+  .component-item { padding:24px; }
+  .component-item img { height:240px; }
+  .specification-table > div { grid-template-columns:170px 1fr; gap:28px; padding-inline:0; }
+  .inquiry-grid { grid-template-columns:1fr; }
+}
+@media(max-width:600px) {
+  .product-banner { padding:calc(var(--header-height) + 40px) 0 45px; }
+  .banner-grid { grid-template-columns:1fr; gap:36px; }
+  .banner-logo { width:250px; margin-bottom:22px; }
+  .banner-statement { font-size:28px; }
+  .banner-visual { height:390px; }
+  .banner-visual-invera { height:420px; }
+  .banner-visual-invera > .banner-model { width:65%; height:88%; }
+  .banner-visual-invera > .banner-device { width:75%; height:60%; }
+  .overview-grid { grid-template-columns:1fr; gap:16px; }
+  .overview-card { padding:26px; }
+  .gallery-grid { grid-template-columns:1fr 1fr; gap:14px; }
+  .gallery-item { padding:15px; }
+  .gallery-item img { height:225px; }
+  .gallery-item figcaption { font-size:12px; }
+  .component-grid { grid-template-columns:1fr; }
+  .component-item img { height:260px; }
+  .component-item h3 { font-size:26px; }
+  .specification-table > div { grid-template-columns:1fr; gap:8px; padding:18px 0; }
+  .specification-table dt { font-size:13px; }
+}
