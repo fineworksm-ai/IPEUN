@@ -67,7 +67,8 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .brand-visual { position:absolute; inset:auto 0 0 auto; width:64%; height:auto; aspect-ratio:1266 / 821; max-height:calc(100% - var(--header-height)); -webkit-mask-image:linear-gradient(to right,transparent,#000 24%),linear-gradient(to bottom,transparent,#000 36%); mask-image:linear-gradient(to right,transparent,#000 24%),linear-gradient(to bottom,transparent,#000 36%); -webkit-mask-composite:source-in; mask-composite:intersect; }
 .brand-photo { width:100%; height:100%; object-fit:contain; object-position:right bottom; }
 .hero-product { position:absolute; right:7vw; top:calc(var(--header-height) + 32px); bottom:110px; width:45%; display:flex; align-items:center; justify-content:center; }
-.hero-product img { width:100%; height:100%; object-fit:contain; }
+.hero-product img { width:100%; height:100%; object-fit:contain; object-position:center bottom; }
+.hero-invera .hero-product img { max-width:396px; }
 .hero-invera { background:var(--white); }
 .hero-product-logo { width:min(360px,100%); height:auto; margin-bottom:30px; }
 .hero-title-small { font-size:44px; max-width:440px; line-height:1.25; font-weight:650; letter-spacing:-.045em; }
@@ -85,7 +86,7 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .product-card-logo { width:180px; height:auto; }
 .category-label { color:var(--mint-text); font-size:12px; font-weight:700; letter-spacing:.06em; }
 .product-stage { display:flex; align-items:flex-end; justify-content:center; height:370px; margin:25px 0; }
-.product-stage img { width:100%; height:350px; object-fit:contain; transition:transform .5s ease; }
+.product-stage img { width:100%; height:350px; object-fit:contain; object-position:center bottom; transition:transform .5s ease; }
 .product-card:hover .product-stage img { transform:scale(1.03); }
 .product-card p { min-height:60px; max-width:510px; color:var(--muted); font-size:17px; }
 .product-card .text-link { margin-top:24px; }
@@ -427,10 +428,10 @@ body.lightbox-open { overflow:hidden; }
 .banner-description { margin-top:25px; color:var(--muted); }
 .banner-copy .text-link { margin-top:32px; }
 .banner-visual { position:relative; height:560px; display:flex; align-items:center; justify-content:center; }
-.banner-visual > img { width:100%; height:100%; object-fit:contain; }
+.banner-visual > img { width:100%; height:100%; object-fit:contain; object-position:center bottom; }
 .invera-page .product-banner { background:var(--white); }
-.banner-visual-invera > .banner-model { position:absolute; right:0; top:0; width:63%; height:90%; object-fit:contain; object-position:right top; }
-.banner-visual-invera > .banner-device { position:absolute; left:0; bottom:0; width:72%; height:64%; object-fit:contain; object-position:left bottom; }
+.banner-visual-invera > .banner-model { position:absolute; z-index:0; right:0; top:0; width:63%; height:auto; max-height:90%; object-fit:contain; object-position:right top; -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent); mask-image:linear-gradient(to bottom,#000 70%,transparent); }
+.banner-visual-invera > .banner-device { position:absolute; z-index:2; left:0; bottom:0; width:72%; height:68%; object-fit:contain; object-position:left bottom; }
 .product-introduction { max-width:930px; color:var(--muted); margin-bottom:42px; }
 .overview-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 .overview-card { padding:28px; }
@@ -438,7 +439,19 @@ body.lightbox-open { overflow:hidden; }
 .overview-card p { color:var(--muted); font-size:17px; }
 .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
 .gallery-item { padding:24px; }
-.gallery-item img { width:100%; height:340px; object-fit:contain; }
+.gallery-stage { display:flex; align-items:flex-end; justify-content:center; height:340px; padding:16px 12px 12px; background:var(--paper); border-radius:10px; }
+.gallery-stage img { width:100%; max-width:var(--native-width,100%); height:100%; object-fit:contain; object-position:center bottom; }
+/* One restrained floor shadow, independent of brochure alpha backgrounds. */
+.product-shadow { isolation:isolate; }
+.product-stage,.gallery-stage { position:relative; }
+.product-shadow::after { content:""; position:absolute; z-index:1; pointer-events:none; left:50%; bottom:-5px; width:var(--shadow-width,54%); height:22px; transform:translateX(-50%); background:radial-gradient(ellipse,rgba(6,23,19,.16) 0%,rgba(6,23,19,.06) 40%,transparent 72%); }
+.product-shadow > img { position:relative; z-index:2; }
+.hero-alljet .product-shadow { --shadow-width:36%; }
+.hero-invera .product-shadow { --shadow-width:min(70%,330px); }
+.banner-visual:not(.banner-visual-invera) { --shadow-width:36%; }
+.banner-visual-invera.product-shadow::after { left:36%; width:52%; }
+.gallery-stage.product-shadow::after { bottom:3px; height:18px; }
+.product-stage { --shadow-width:38%; }
 .gallery-item figcaption { margin-top:20px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; font-weight:600; }
 .component-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
 .component-item { padding:30px; }
@@ -459,7 +472,7 @@ body.lightbox-open { overflow:hidden; }
   .banner-visual { height:480px; }
   .banner-statement { font-size:34px; }
   .overview-grid { grid-template-columns:1fr 1fr; }
-  .gallery-item img { height:290px; }
+  .gallery-stage { height:290px; }
   .inquiry-card { padding:25px; }
 }
 @media(max-width:900px) {
@@ -480,13 +493,13 @@ body.lightbox-open { overflow:hidden; }
   .banner-statement { font-size:28px; }
   .banner-visual { height:390px; }
   .banner-visual-invera { height:420px; }
-  .banner-visual-invera > .banner-model { width:65%; height:88%; }
-  .banner-visual-invera > .banner-device { width:75%; height:60%; }
+  .banner-visual-invera > .banner-model { width:65%; height:auto; max-height:88%; }
+  .banner-visual-invera > .banner-device { width:75%; height:66%; }
   .overview-grid { grid-template-columns:1fr; gap:16px; }
   .overview-card { padding:26px; }
   .gallery-grid { grid-template-columns:1fr 1fr; gap:14px; }
   .gallery-item { padding:15px; }
-  .gallery-item img { height:225px; }
+  .gallery-stage { height:225px; padding:12px 8px; }
   .gallery-item figcaption { font-size:12px; }
   .component-grid { grid-template-columns:1fr; }
   .component-item img { height:260px; }
