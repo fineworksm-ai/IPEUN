@@ -12,6 +12,14 @@ const setMenuOpen = (isOpen, restoreFocus = false) => {
   document.body.classList.toggle('menu-open', isOpen);
   menuToggle?.setAttribute('aria-expanded', String(isOpen));
   menuToggle?.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+  document.querySelector('main')?.toggleAttribute('inert', isOpen);
+  document.querySelector('footer')?.toggleAttribute('inert', isOpen);
+  if (!isOpen) {
+    navigation?.querySelectorAll('.nav-group').forEach(group => {
+      group.classList.remove('is-expanded');
+      group.querySelector('[data-submenu-toggle]')?.setAttribute('aria-expanded', 'false');
+    });
+  }
   if (restoreFocus) menuToggle?.focus({ preventScroll: true });
 };
 menuToggle?.addEventListener('click', () => setMenuOpen(!document.body.classList.contains('menu-open')));
@@ -92,3 +100,26 @@ if (slider) {
   reducedMotion.addEventListener('change', updateTimer);
   showSlide(0);
 }
+
+navigation?.querySelectorAll('[data-submenu-toggle]').forEach(button => {
+  button.addEventListener('click', () => {
+    const group = button.closest('.nav-group');
+    const opening = !group.classList.contains('is-expanded');
+    navigation.querySelectorAll('.nav-group').forEach(item => {
+      item.classList.remove('is-expanded');
+      item.querySelector('[data-submenu-toggle]')?.setAttribute('aria-expanded', 'false');
+    });
+    group.classList.toggle('is-expanded', opening);
+    button.setAttribute('aria-expanded', String(opening));
+  });
+});
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Tab' || !document.body.classList.contains('menu-open')) return;
+  const focusable = [...header.querySelectorAll('a, button')].filter(element =>
+    !element.closest('[inert]') && element.getClientRects().length && getComputedStyle(element).visibility === 'visible'
+  );
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+});

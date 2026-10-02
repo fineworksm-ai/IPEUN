@@ -17,15 +17,25 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-  <link rel="stylesheet" href="styles.css?v=20261002-8" />
+  <link rel="stylesheet" href="styles.css?v=20261002-9" />
 </head>
-<body class="home-page site-v2" id="top">
+<body class="site-v2 home-page" id="top">
 <a class="skip-link" href="#main-content">본문 바로가기</a>
 <header class="site-header" data-header>
 <a class="brand" href="index.html" aria-label="IPEUN 홈"><img src="assets/logo/ipeun.svg" width="978" height="219" alt="IPEUN" /></a>
 <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴" data-nav>
-<a href="company.html">회사소개</a><a href="technology.html">기술소개</a><a href="#products">제품소개</a><a href="contact.html">고객센터</a>
+<div class="nav-group">
+<div class="nav-parent"><a href="company.html" >회사소개</a><button class="submenu-toggle" type="button" data-submenu-toggle aria-label="회사소개 하위메뉴" aria-expanded="false" aria-controls="company-menu">⌄</button></div>
+<div class="nav-submenu" id="company-menu"><a class="nav-item" href="company.html#about">이픈 소개</a><a class="nav-item" href="company.html#history">연혁</a><a class="nav-item" href="company.html#certifications">인증·특허</a><a class="nav-item" href="company.html#location">오시는 길</a></div>
+</div>
+<a href="technology.html" >기술소개</a>
+<div class="nav-group ">
+<div class="nav-parent"><a href="index.html#products">제품소개</a><button class="submenu-toggle" type="button" data-submenu-toggle aria-label="제품소개 하위메뉴" aria-expanded="false" aria-controls="product-menu">⌄</button></div>
+<div class="nav-submenu" id="product-menu"><a class="nav-item" href="invera.html" ><span>Aesthetic</span><strong>INVERA</strong></a><a class="nav-item" href="alljet.html" ><span>Medical</span><strong>All-Jet</strong></a><span class="nav-item is-disabled" aria-disabled="true">Home Care</span></div>
+</div>
+<div class="nav-group"><div class="nav-parent"><a href="contact.html" >고객센터</a><button class="submenu-toggle" type="button" data-submenu-toggle aria-label="고객센터 하위메뉴" aria-expanded="false" aria-controls="contact-menu">⌄</button></div><div class="nav-submenu" id="contact-menu"><a class="nav-item" href="contact.html#inquiry">제품문의</a></div></div>
 </nav>
+<!-- 영문 3차: /en/ 동일 구조 및 KR | EN 전환 공간. EN 링크는 표시하지 않습니다. -->
 <div class="header-actions"><a class="header-cta" href="contact.html">문의하기</a><button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle><span></span><span></span></button></div>
 </header>
 <main id="main-content">
