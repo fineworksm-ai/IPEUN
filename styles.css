@@ -999,3 +999,11 @@ body { line-height:1.5; }
 }
 .site-header.is-scrolled,.home-page .site-header.is-scrolled { box-shadow:0 3px 18px rgba(6,23,19,.045); }
 @media(min-width:901px) { .nav-submenu { box-shadow:0 10px 20px rgba(6,23,19,.045); } }
+
+/* Give the needle-free principles its own soft background surface. */
+.home-page .needle-section {
+  background-color:#fff;
+  background-image:linear-gradient(rgba(255,255,255,.65),rgba(255,255,255,.65)),url("assets/media/subpage-background.png");
+  background-position:center; background-size:cover; background-repeat:no-repeat;
+}
+.home-page .needle-circle { box-shadow:0 5px 24px rgba(6,23,19,.055); }
