@@ -955,3 +955,12 @@ body { line-height:1.5; }
 }
 
 .form-field input::placeholder,.form-field textarea::placeholder { color:#737b77; opacity:1; }
+
+/* Crop the supplied background to each existing subpage opening section. */
+#main-content > .subpage-top {
+  background-color:#f6fbff;
+  background-image:url("assets/media/subpage-background.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
