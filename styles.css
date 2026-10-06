@@ -712,21 +712,9 @@ body.lightbox-open { overflow:hidden; }
 .home-page .home-about-copy p + p { margin-top:20px; }
 .home-page .home-about-copy .text-link { margin-top:28px; color:var(--home-ink); }
 .home-page .needle-section .section-head { margin-bottom:56px; }
-.home-page .home-products .product-grid { display:grid; grid-template-columns:1fr; gap:28px; padding:0; overflow:visible; }
-.home-page .home-products .product-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); grid-template-rows:auto 1fr auto; column-gap:48px; padding:56px 64px; border:0; border-radius:24px; box-shadow:none; min-height:460px; }
-.home-page .product-card-invera { background:var(--paper); }
-.home-page .product-card-alljet { background:var(--paper); }
-.home-page .product-card-top { grid-column:1; align-items:flex-start; flex-direction:column; gap:22px; }
-.home-page .product-card-logo { width:230px; max-width:100%; }
-.home-page .category-label { font-size:14px; font-weight:500; line-height:1.5; color:var(--home-muted); letter-spacing:.02em; }
-.home-page .product-card p { grid-column:1; min-height:0; margin-top:32px; max-width:400px; font-size:18px; line-height:1.8; color:var(--home-muted); }
-.home-page .product-card .text-link { grid-column:1; justify-self:start; margin-top:32px; align-self:end; }
-.home-page .product-stage { grid-column:2; grid-row:1 / 4; height:370px; min-width:0; margin:0; align-items:center; }
-.home-page .product-stage img { height:100%; object-position:center; }
-.home-page .product-card-alljet .product-stage { height:410px; }
 .home-page .home-technology { background:var(--paper); }
 .home-page .tech-cards { gap:24px; }
-.home-page .tech-card { display:flex; flex-direction:column; padding:28px; border:0; border-radius:20px; box-shadow:none; }
+.home-page .tech-card { display:flex; flex-direction:column; padding:28px; border:0; border-radius:var(--card-radius); box-shadow:none; }
 .home-page .tech-card .source-figure { margin-bottom:28px; }
 .home-page .source-figure > img { height:210px; aspect-ratio:auto; object-fit:contain; border-radius:0; }
 .home-page .tech-card .eyebrow { margin-bottom:12px; font-size:12px; }
@@ -774,7 +762,6 @@ body.lightbox-open { overflow:hidden; }
   .home-page .hero-slide:not(.hero-brand) .hero-copy { top:136px; }
   .home-page .hero-product-logo { width:300px; }
   .home-page .home-about-grid { gap:48px; }
-  .home-page .home-products .product-card { padding:48px; column-gap:36px; }
   .home-page .tech-card { padding:24px; }
   .home-page .tech-card h3 { font-size:23px; }
   .home-page .source-figure > img { height:180px; }
@@ -797,10 +784,6 @@ body.lightbox-open { overflow:hidden; }
   .home-page .home-about-grid { grid-template-columns:1fr; gap:28px; }
   .home-page .home-about-copy { padding:0; max-width:650px; }
   .home-page .home-about-copy p { font-size:17px; }
-  .home-page .home-products .product-card { padding:36px; column-gap:24px; min-height:400px; }
-  .home-page .product-card-logo { width:190px; }
-  .home-page .product-card p { font-size:17px; margin-top:24px; }
-  .home-page .product-stage,.home-page .product-card-alljet .product-stage { height:340px; }
   .home-page .tech-cards { grid-template-columns:1fr; gap:20px; }
   .home-page .tech-card { display:grid; grid-template-columns:1fr 1fr; gap:0 32px; padding:32px; }
   .home-page .tech-card > .source-figure { grid-column:1; grid-row:1 / 6; margin:0; align-self:start; }
@@ -839,15 +822,6 @@ body.lightbox-open { overflow:hidden; }
   .home-page .home-about { padding:72px 0; }
   .home-page .home-about-grid { gap:24px; }
   .home-page .home-about-copy p { font-size:17px; line-height:1.8; }
-  .home-page .home-products .product-grid { gap:20px; }
-  .home-page .home-products .product-card { grid-template-columns:1fr; grid-template-rows:auto auto auto auto; padding:32px 28px; min-height:0; border-radius:20px; }
-  .home-page .product-card-top { gap:16px; }
-  .home-page .product-card-logo { width:190px; }
-  .home-page .category-label { font-size:14px; }
-  .home-page .product-stage,.home-page .product-card-alljet .product-stage { grid-column:1; grid-row:2; height:280px; margin:28px 0; }
-  .home-page .product-card-alljet .product-stage { height:330px; }
-  .home-page .product-card p { grid-row:3; margin:0; font-size:17px; }
-  .home-page .product-card .text-link { grid-row:4; margin-top:24px; }
   .home-page .tech-card { display:flex; padding:28px; gap:0; }
   .home-page .tech-card > .source-figure { margin-bottom:28px; }
   .home-page .source-figure > img { height:190px; }
@@ -885,7 +859,6 @@ body.lightbox-open { overflow:hidden; }
 /* Explicit homepage section surfaces. */
 .home-page .hero-slide { background:var(--paper); }
 .home-page .home-about,.home-page .home-products,.home-page .home-news { background:var(--white); }
-.home-page .home-products .product-card { background:var(--paper); }
 .home-page .home-technology .tech-card { background:var(--white); }
 
 /* Filled cards and visible keyboard focus, without enclosing outlines. */
@@ -937,3 +910,21 @@ a.card:hover .activity-cover img,a.product-card:hover .product-stage img { trans
   .home-page .hero-slide:not(.hero-brand) .hero-copy { top:104px; left:20px; width:calc(100% - 40px); }
   .home-page .hero-controls { left:20px; gap:10px; }
 }
+
+/* 10 — equal product columns, aligned feet and alpha-preserving cutouts. */
+.home-page .home-products .product-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; padding:0; overflow:visible; }
+.home-page .home-products .product-card { display:flex; flex-direction:column; min-width:0; padding:36px; background:var(--paper); border:0; border-radius:var(--card-radius); box-shadow:none; }
+.home-page .product-card-top { flex-direction:column; align-items:flex-start; gap:16px; }
+.home-page .product-card-logo { width:auto; height:40px; max-width:100%; }
+.home-page .category-label { font-size:14px; font-weight:500; line-height:1.5; color:var(--muted); letter-spacing:.02em; }
+.home-page .product-stage { display:flex; flex:0 0 auto; width:100%; height:480px; margin:28px 0; align-items:flex-end; justify-content:center; }
+.home-page .product-stage img { width:100%; height:82%; object-fit:contain; object-position:center bottom; }
+.home-page .product-card-invera .product-stage img { width:80%; height:auto; max-height:85%; }
+.home-page .product-card p { min-height:0; margin:0; max-width:none; font-size:18px; line-height:1.8; color:var(--muted); }
+@media(max-width:1180px) { .home-page .home-products .product-card { padding:28px; } .home-page .product-stage { height:460px; } }
+@media(max-width:900px) {
+  .home-page .home-products .product-grid { grid-template-columns:1fr; gap:24px; }
+  .home-page .product-stage { height:320px; }
+  .home-page .product-card-invera .product-stage img { width:80%; max-width:350px; }
+}
+@media(max-width:600px) { .home-page .home-products .product-card { padding:28px; } .home-page .product-card p { font-size:17px; } }
