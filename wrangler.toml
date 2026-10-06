@@ -1,0 +1,30 @@
+# IPEUN 웹사이트 — Cloudflare Worker (정적 페이지 서빙 + 관리자 API + D1)
+name = "ipeun"
+main = "worker/index.js"
+compatibility_date = "2025-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+# 저장소 루트를 정적 파일로 서빙한다. 공개하면 안 되는 파일은 .assetsignore 에서 제외한다.
+[assets]
+directory = "."
+binding = "ASSETS"
+# 모든 요청을 Worker가 먼저 받는다: 관리자 데이터 반영(HTMLRewriter), 방문 집계, /api, /admin
+run_worker_first = true
+# 지금 정적 호스팅과 같게 company.html 주소를 그대로 쓴다 (자동 .html 제거를 끄면 _redirects 와 충돌하지 않는다)
+html_handling = "none"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ipeun"
+# 배포 전 `npx wrangler d1 create ipeun` 으로 만든 ID로 바꾼다. 로컬 개발(wrangler dev)은 이 값과 상관없이 동작한다.
+database_id = "00000000-0000-0000-0000-000000000000"
+
+# 한글 → 영문 자동 번역 (ANTHROPIC_API_KEY 시크릿이 없을 때 사용)
+[ai]
+binding = "AI"
+
+# 시크릿(값은 저장소에 넣지 않는다):
+#   npx wrangler secret put ADMIN_PASSWORD     관리자 비밀번호
+#   npx wrangler secret put SESSION_SECRET     로그인 쿠키 서명 키 (긴 임의 문자열)
+#   npx wrangler secret put ANTHROPIC_API_KEY  (선택) 있으면 Claude로 번역
+# 로컬 개발용 값은 .dev.vars 에 둔다 (gitignore 됨).

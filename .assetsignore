@@ -1,0 +1,24 @@
+# 공개 사이트에 올라가면 안 되는 파일 (Workers 정적 자산 업로드 제외 목록)
+.git
+.gitignore
+.assetsignore
+.DS_Store
+**/.DS_Store
+.wrangler
+.dev.vars
+.openai
+node_modules
+worker
+db
+tools
+translations
+tmp
+output
+assets/_unused
+package.json
+package-lock.json
+wrangler.toml
+*.md
+IPEUN 홈페이지
+.dev.vars.example
+AGENTS.md

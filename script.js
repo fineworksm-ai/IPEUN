@@ -181,6 +181,8 @@ if (inquiryForm) {
     empty:'Please enter a value.', copied:'Inquiry details copied. Paste them into an email to admin@i-peun.com.',
     copyFailed:'Copying is unavailable. Select and copy the inquiry details above.',
     draft:'Review and send the message in your email app. The inquiry has not been submitted yet.',
+    consent:'Please agree to the collection and use of personal information.', sending:'Submitting your inquiry…',
+    sent:'Your inquiry has been submitted. We will reply by email.', failed:'The inquiry could not be submitted. You can send it by email instead.',
   } : {
     purposes: { demo:'데모 요청', service:'A/S 접수', materials:'자료 요청', other:'기타 문의' },
     products: { alljet:'All-Jet', invera:'INVERA', unspecified:'기타 / 미정', '':'미선택' },
@@ -188,6 +190,8 @@ if (inquiryForm) {
     empty:'내용을 입력해주세요.', copied:'문의 내용을 복사했습니다. admin@i-peun.com으로 보낼 이메일에 붙여넣어주세요.',
     copyFailed:'자동 복사가 지원되지 않습니다. 위 내용을 선택해 직접 복사해주세요.',
     draft:'메일 앱에서 확인 후 직접 전송해주세요. 아직 접수된 상태는 아닙니다.',
+    consent:'개인정보 수집·이용에 동의해주세요.', sending:'문의를 접수하고 있습니다…',
+    sent:'문의가 접수되었습니다. 회신 이메일로 답변드리겠습니다.', failed:'문의를 접수하지 못했습니다. 아래 내용을 이메일로 보내주세요.',
   };
   const purposes = [...inquiryForm.querySelectorAll('input[name="purpose"]')];
   const error = document.getElementById('purpose-error');
@@ -215,6 +219,42 @@ if (inquiryForm) {
     textFields.forEach(field => field.setCustomValidity(field.value.trim() ? '' : labels.empty));
     if (!draft.hidden) updateDraft();
   });
+  // 관리자 백엔드(Cloudflare Worker)가 있는 사이트에서는 폼에 data-inquiry-endpoint 가 붙고, 문의가 사이트에 접수된다
+  const endpoint = inquiryForm.dataset.inquiryEndpoint;
+  const consent = inquiryForm.querySelector('[data-inquiry-consent]');
+  const submitButton = inquiryForm.querySelector('[data-inquiry-compose]');
+  const sendStatus = document.createElement('p');
+  sendStatus.className = 'field-help inquiry-send-status';
+  sendStatus.setAttribute('role', 'status');
+  if (endpoint) inquiryForm.querySelector('.inquiry-submit > div')?.append(sendStatus);
+  const sendInquiry = async () => {
+    if (consent && !consent.checked) { sendStatus.textContent = labels.consent; consent.focus(); return; }
+    const data = new FormData(inquiryForm);
+    const value = name => String(data.get(name) || '').trim();
+    submitButton.disabled = true;
+    sendStatus.textContent = labels.sending;
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          lang: isEnglish ? 'en' : 'ko', purposes: selectedPurposes(), product: labels.products[value('product')],
+          organization: value('organization'), name: value('name'), email: value('email'), message: value('message'),
+          consent: consent ? consent.checked : true, website: value('website'),
+        }),
+      });
+      if (!response.ok) throw new Error('failed');
+      inquiryForm.reset();
+      draft.hidden = true;
+      sendStatus.textContent = labels.sent;
+    } catch {
+      sendStatus.textContent = labels.failed;
+      updateDraft();
+      draft.hidden = false;
+      status.textContent = labels.draft;
+    } finally {
+      submitButton.disabled = false;
+    }
+  };
   inquiryForm.addEventListener('submit', event => {
     event.preventDefault();
     if (!selectedPurposes().length) {
@@ -226,6 +266,7 @@ if (inquiryForm) {
     error.hidden = true;
     textFields.forEach(field => field.setCustomValidity(field.value.trim() ? '' : labels.empty));
     if (!inquiryForm.reportValidity()) return;
+    if (endpoint) { sendInquiry(); return; }
     updateDraft();
     draft.hidden = false;
     status.textContent = labels.draft;

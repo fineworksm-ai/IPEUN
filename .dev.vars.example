@@ -1,0 +1,4 @@
+# 로컬 개발용 시크릿 (이 파일을 .dev.vars 로 복사해서 값을 채운다. .dev.vars 는 커밋하지 않는다)
+ADMIN_PASSWORD=
+SESSION_SECRET=
+# ANTHROPIC_API_KEY=

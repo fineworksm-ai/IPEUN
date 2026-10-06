@@ -2,3 +2,6 @@
 tmp/
 assets/_unused/
 IPEUN 홈페이지
+node_modules/
+.wrangler/
+.dev.vars
