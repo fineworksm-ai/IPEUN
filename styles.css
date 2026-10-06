@@ -903,3 +903,37 @@ a.card img { transition:transform .3s ease; }
 a.card:hover .activity-cover img,a.product-card:hover .product-stage img { transform:scale(1.03); }
 .patent-section-link { margin-top:36px; }
 @media(prefers-reduced-motion:reduce) { a.card img { transition:none; } }
+
+/* 7 — a continuous, viewport-height hero with a shared copy origin. */
+.home-page .hero-slider { height:100svh; min-height:640px; }
+.home-page .hero-brand .hero-copy,
+.home-page .hero-slide:not(.hero-brand) .hero-copy {
+  top:calc(var(--header-height) + 68px); bottom:auto;
+  left:max(48px,calc((100% - 1240px)/2)); right:auto; width:38%; margin:0;
+}
+.home-page .brand-visual { inset:0; width:100%; height:100%; max-height:none; aspect-ratio:auto; }
+.home-page .brand-photo { width:100%; height:100%; object-fit:cover; object-position:left bottom; }
+.home-page .hero-product { top:calc(var(--header-height) + 40px); bottom:24px; right:5%; width:49%; height:auto; }
+.home-page .hero-product img { width:100%; height:100%; max-width:none; object-fit:contain; object-position:center bottom; }
+.home-page .hero-controls { left:max(48px,calc((100% - 1240px)/2)); right:auto; bottom:24px; padding:0; gap:14px; }
+@media(max-width:1180px) and (min-width:901px) {
+  .home-page .hero-brand .hero-copy,
+  .home-page .hero-slide:not(.hero-brand) .hero-copy { top:136px; }
+}
+@media(max-width:900px) {
+  .home-page .hero-slider { --hero-visual-top:540px; }
+  .home-page .hero-brand .hero-copy,
+  .home-page .hero-slide:not(.hero-brand) .hero-copy { top:112px; left:24px; width:calc(100% - 48px); }
+  .home-page .hero-copy-inner,
+  .home-page .hero-brand .hero-copy-inner,
+  .home-page .hero-slide:not(.hero-brand) .hero-copy-inner { width:100%; max-width:none; }
+  .home-page .brand-visual { top:var(--hero-visual-top); bottom:0; left:0; right:0; width:100%; height:auto; }
+  .home-page .brand-photo { object-fit:cover; object-position:right bottom; }
+  .home-page .hero-product { top:var(--hero-visual-top); bottom:20px; right:10%; width:80%; height:auto; }
+  .home-page .hero-controls { left:24px; right:auto; top:calc(var(--hero-visual-top) - 48px); bottom:auto; gap:12px; }
+}
+@media(max-width:600px) {
+  .home-page .hero-brand .hero-copy,
+  .home-page .hero-slide:not(.hero-brand) .hero-copy { top:104px; left:20px; width:calc(100% - 40px); }
+  .home-page .hero-controls { left:20px; gap:10px; }
+}

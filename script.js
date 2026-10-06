@@ -116,6 +116,21 @@ if (slider) {
   document.addEventListener('visibilitychange', updateTimer);
   reducedMotion.addEventListener('change', updateTimer);
   showSlide(0);
+  // Reserve the same visual area for every slide, below the tallest copy.
+  // Inactive slides retain their layout, so switching slides cannot move it.
+  const syncHeroVisual = () => {
+    if (!mobileMenuQuery.matches) { slider.style.removeProperty('--hero-visual-top'); return; }
+    const origin = slider.getBoundingClientRect().top;
+    const copyBottom = Math.max(...slides.map(slide => slide.querySelector('.hero-copy').getBoundingClientRect().bottom - origin));
+    slider.style.setProperty('--hero-visual-top', `${Math.ceil(copyBottom + 64)}px`);
+  };
+  syncHeroVisual();
+  document.fonts?.ready.then(syncHeroVisual);
+  window.addEventListener('resize', syncHeroVisual, { passive: true });
+  if ('ResizeObserver' in window) {
+    const heroCopyObserver = new ResizeObserver(syncHeroVisual);
+    slides.forEach(slide => heroCopyObserver.observe(slide.querySelector('.hero-copy')));
+  }
 }
 
 navigation?.querySelectorAll('[data-submenu-toggle]').forEach(button => {
