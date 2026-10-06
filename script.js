@@ -270,3 +270,82 @@ if (lightbox && typeof lightbox.showModal === 'function') {
     lightboxTrigger?.focus({ preventScroll: true });
   });
 }
+
+// INVERA 영상: 화면에 보이면 무음 자동 재생, 영상 클릭으로 일시정지, 하단 바(재생 위치 · 음소거 · 전체 화면)
+{
+  const say = (ko, en) => (isEnglish ? en : ko);
+  document.querySelectorAll('[data-film]').forEach(frame => {
+    const video = frame.querySelector('video');
+    const seek = frame.querySelector('[data-film-seek]');
+    const sound = frame.querySelector('[data-film-sound]');
+    const fullscreen = frame.querySelector('[data-film-fullscreen]');
+    let pausedByUser = false;
+    let dragging = false;
+
+    const syncPaused = () => frame.classList.toggle('is-paused', video.paused);
+    video.addEventListener('play', syncPaused);
+    video.addEventListener('pause', syncPaused);
+    if (reducedMotion.matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) video.pause();
+        else if (!pausedByUser) video.play().catch(() => {});
+      }, { threshold: 0.25 }).observe(video);
+    }
+    syncPaused();
+
+    const togglePlay = () => {
+      pausedByUser = !video.paused;
+      if (video.paused) video.play().catch(() => {});
+      else video.pause();
+    };
+    video.addEventListener('click', togglePlay);
+    video.addEventListener('keydown', event => {
+      if (event.key !== ' ' && event.key !== 'Enter') return;
+      event.preventDefault();
+      togglePlay();
+    });
+
+    const paint = ratio => {
+      seek.value = String(Math.round(ratio * 1000));
+      seek.style.setProperty('--progress', `${ratio * 100}%`);
+    };
+    video.addEventListener('timeupdate', () => {
+      if (!dragging && video.duration) paint(video.currentTime / video.duration);
+    });
+    seek.addEventListener('input', () => {
+      dragging = true;
+      const ratio = Number(seek.value) / 1000;
+      paint(ratio);
+      if (video.duration) video.currentTime = ratio * video.duration;
+    });
+    seek.addEventListener('change', () => { dragging = false; });
+
+    sound.addEventListener('click', () => {
+      video.muted = !video.muted;
+      if (!video.muted && video.paused) {
+        pausedByUser = false;
+        video.play().catch(() => {});
+      }
+      sound.setAttribute('aria-pressed', String(!video.muted));
+      sound.setAttribute('aria-label', video.muted ? say('소리 켜기', 'Sound on') : say('소리 끄기', 'Sound off'));
+    });
+
+    fullscreen.addEventListener('click', () => {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else if (frame.requestFullscreen) frame.requestFullscreen();
+      else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    });
+    const syncFullscreen = () => {
+      const active = (document.fullscreenElement || document.webkitFullscreenElement) === frame;
+      frame.classList.toggle('is-fullscreen', active);
+      fullscreen.setAttribute('aria-label', active ? say('전체 화면 종료', 'Exit full screen') : say('전체 화면', 'Full screen'));
+    };
+    document.addEventListener('fullscreenchange', syncFullscreen);
+    document.addEventListener('webkitfullscreenchange', syncFullscreen);
+  });
+}

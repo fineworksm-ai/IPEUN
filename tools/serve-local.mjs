@@ -14,6 +14,7 @@ const mimeTypes = {
   '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg', '.avif': 'image/avif', '.gif': 'image/gif',
   '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.woff': 'font/woff',
+  '.mp4': 'video/mp4',
 };
 const server = http.createServer(async (request, response) => {
   if (!['GET', 'HEAD'].includes(request.method)) {
@@ -38,10 +39,25 @@ const server = http.createServer(async (request, response) => {
     const actual = await realpath(path.join(root, filename));
     if (!actual.startsWith(root + path.sep)) throw new Error('Outside website');
     const body = await readFile(actual);
-    response.writeHead(200, {
-      'Content-Type': mimeTypes[extension], 'Content-Length': body.length,
+    const headers = {
+      'Content-Type': mimeTypes[extension], 'Accept-Ranges': 'bytes',
       'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',
-    });
+    };
+    // Video players (Safari in particular) request byte ranges.
+    const range = /^bytes=(\d*)-(\d*)$/.exec(request.headers.range || '');
+    if (range && (range[1] || range[2])) {
+      const start = range[1] ? Number(range[1]) : Math.max(0, body.length - Number(range[2]));
+      const end = range[1] && range[2] ? Math.min(Number(range[2]), body.length - 1) : body.length - 1;
+      if (start >= body.length || start > end) {
+        response.writeHead(416, { 'Content-Range': `bytes */${body.length}` });
+        response.end();
+        return;
+      }
+      response.writeHead(206, { ...headers, 'Content-Range': `bytes ${start}-${end}/${body.length}`, 'Content-Length': end - start + 1 });
+      response.end(request.method === 'HEAD' ? undefined : body.subarray(start, end + 1));
+      return;
+    }
+    response.writeHead(200, { ...headers, 'Content-Length': body.length });
     response.end(request.method === 'HEAD' ? undefined : body);
   } catch {
     response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
