@@ -1242,3 +1242,19 @@ body { line-height:1.5; }
   .needle-circles .needle-circle p { font-size:16px; margin-top:18px; }
   .invera-page .needle-circle > span { position:static; margin-bottom:10px; }
 }
+
+/* Compact overlapping circles with one soft shadow beneath the group. */
+.needle-circles,.home-page .needle-circles { max-width:980px; margin-inline:auto; filter:drop-shadow(0 7px 9px rgba(6,23,19,.045)); }
+.needle-circles .needle-circle,.home-page .needle-circles .needle-circle { padding:24px 18px; }
+.home-page .needle-circles .needle-circle h3 { font-size:38px; }
+.needle-circles .needle-circle p,.home-page .needle-circles .needle-circle p { font-size:16px; margin-top:20px; }
+@media(max-width:900px) {
+  .needle-circles,.home-page .needle-circles { max-width:760px; }
+  .home-page .needle-circles .needle-circle h3 { font-size:28px; }
+  .needle-circles .needle-circle p { font-size:15px; }
+}
+@media(max-width:600px) {
+  .needle-circles .needle-circle,.home-page .needle-circles .needle-circle,.invera-page .needle-circles .needle-circle { width:240px; max-width:100%; padding:24px 20px; }
+  .home-page .needle-circles .needle-circle h3 { font-size:28px; }
+  .needle-circles .needle-circle p,.home-page .needle-circles .needle-circle p { font-size:15px; margin-top:16px; }
+}
