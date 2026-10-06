@@ -8,7 +8,7 @@ import { loadDictionary, translator, translateMissing, hasKorean } from './trans
 import {
   collect, renderHistory, renderCertifications, renderPatents, patentHeading, renderEventYears,
   renderLatestEvents, renderPress, renderFooterInfo, renderLocations, activePopups, renderPopups,
-  INQUIRY_TEXT, inquiryConsent,
+  INQUIRY_TEXT, inquiryConsent, structuredData,
 } from './render.js';
 
 const CONTENT_KEYS = ['site', 'seo', 'history', 'events', 'media', 'documents', 'popups'];
@@ -56,7 +56,10 @@ function assetRequest(request, env) {
 
 async function route(request, env, ctx, url) {
   if (url.pathname === '/robots.txt' && env.SITE_INDEXABLE !== 'true') {
-    return new Response('User-agent: *\nDisallow: /\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+    // 검색엔진은 막고, 카카오톡·SNS 링크 미리보기 봇만 허용한다
+    const previewBots = ['kakaotalk-scrap', 'facebookexternalhit', 'Twitterbot', 'Slackbot', 'LinkedInBot', 'TelegramBot', 'Discordbot'];
+    const body = previewBots.map((bot) => `User-agent: ${bot}\nAllow: /\n`).join('\n') + '\nUser-agent: *\nDisallow: /\n';
+    return new Response(body, { headers: { 'content-type': 'text/plain; charset=utf-8' } });
   }
   if (url.pathname.startsWith('/api/')) return api(request, env, url);
   if (url.pathname.startsWith('/files/')) return serveFile(env, url);
@@ -82,8 +85,10 @@ async function page(request, env, ctx, url) {
   if (!key) return withVisitor(response, visitor);
 
   const keys = ['site', 'seo', ...(PAGE_CONTENT[key] || [])];
-  const content = await loadContent(env, keys);
-  const T = lang === 'en' ? translator(await loadDictionary(env)) : (value) => value;
+  // DB를 못 읽어도 페이지는 정적 내용 + 공유 태그·구조화 데이터로 서빙한다
+  const content = await loadContent(env, keys).catch((error) => { console.error('content:', error?.message); return {}; });
+  const dictionary = lang === 'en' ? await loadDictionary(env).catch(() => null) : null;
+  const T = dictionary ? translator(dictionary) : (value) => value;
   const rc = { lang, T };
   const rewriter = new HTMLRewriter();
   const inner = (html) => ({ element: (el) => el.setInnerContent(html, { html: true }) });
@@ -100,12 +105,20 @@ async function page(request, env, ctx, url) {
     rewriter.on('meta[name="description"]', { element: (el) => el.setAttribute('content', description) });
     rewriter.on('meta[property="og:description"]', { element: (el) => el.setAttribute('content', description) });
   }
-  if (content.seo?.ogImage?.src) {
-    const image = new URL(content.seo.ogImage.src, url.origin).href;
-    let replaced = false;
-    rewriter.on('meta[property="og:image"]', { element: (el) => { el.setAttribute('content', image); replaced = true; } });
-    rewriter.on('head', { element: (el) => el.onEndTag((end) => { if (!replaced) end.before(`<meta property="og:image" content="${image}" />`, { html: true }); }) });
-  }
+  // 링크 공유 카드: 관리자에서 올린 이미지가 없으면 기본 공유 이미지(1200×630)
+  const custom = content.seo?.ogImage?.src;
+  const ogImage = new URL(custom || '/assets/og-share.jpg', url.origin).href;
+  const pageUrl = `${url.origin}${url.pathname}`;
+  const shareTags = [
+    `<meta property="og:url" content="${pageUrl}" />`,
+    `<meta property="og:image" content="${ogImage}" />`,
+    custom ? '' : '<meta property="og:image:width" content="1200" />\n<meta property="og:image:height" content="630" />',
+    `<meta property="og:image:alt" content="${lang === 'en' ? 'IPEUN — needle-free precision jet technology, All-Jet and INVERA' : '이픈 — 바늘 없는 정밀 분사 기술, All-Jet과 INVERA'}" />`,
+    '<meta name="twitter:card" content="summary_large_image" />',
+    `<script type="application/ld+json">${structuredData(key, lang, url.origin, content.site)}</script>`,
+  ].filter(Boolean).join('\n');
+  rewriter.on('meta[property="og:image"], meta[property="og:url"], meta[name="twitter:card"]', { element: (el) => el.remove() });
+  rewriter.on('head', { element: (el) => el.append(`${shareTags}\n`, { html: true }) });
 
   // 회사 정보 (모든 페이지 푸터, 회사소개 오시는길)
   if (content.site) {
@@ -296,6 +309,10 @@ function stringsFor(key, value) {
 async function saveContent(request, env, key) {
   if (!CONTENT_KEYS.includes(key)) return json({ error: 'unknown section' }, 404);
   const value = await request.json();
+  if (key === 'seo') {
+    const problem = validateSeo(value);
+    if (problem) return json({ error: problem }, 400);
+  }
   const text = JSON.stringify(value);
   if (text.length > 900000) return json({ error: '내용이 너무 큽니다.' }, 413);
   await env.DB.prepare("INSERT INTO content (key, value, updated_at) VALUES (?, ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at")
@@ -307,6 +324,19 @@ async function saveContent(request, env, key) {
     console.error('translate:', error);
     return json({ ok: true, translated: 0, translateError: String(error?.message || error) });
   }
+}
+
+// 관리자 SEO 값 검증: 빈 제목, 페이지 간 같은 제목은 저장하지 않는다 (전 페이지 타이틀이 같아지는 사고 방지)
+function validateSeo(value) {
+  const pages = value?.pages || {};
+  const seen = new Map();
+  for (const [page, meta] of Object.entries(pages)) {
+    const title = String(meta?.title || '').trim();
+    if (!title) return `'${page}' 페이지 제목이 비어 있습니다.`;
+    if (seen.has(title)) return `'${seen.get(title)}'와 '${page}' 페이지 제목이 같습니다: ${title}`;
+    seen.set(title, page);
+  }
+  return null;
 }
 
 async function managedStrings(env) {

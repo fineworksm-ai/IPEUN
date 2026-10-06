@@ -183,3 +183,53 @@ export function inquiryConsent(lang) {
   return `<label class="inquiry-consent"><input type="checkbox" name="consent" value="yes" data-inquiry-consent /><span>${esc(t.consent)} <a href="privacy.html" target="_blank" rel="noopener">${esc(t.policy)}</a></span></label><input class="inquiry-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <style>.inquiry-consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 24px;font-size:15px;line-height:1.6;color:var(--muted,#65736e)}.inquiry-consent input{width:18px;height:18px;margin-top:3px;flex:0 0 18px;accent-color:var(--ink,#061713)}.inquiry-consent a{text-decoration:underline;color:inherit}.inquiry-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}</style>`;
 }
+
+/* ───────── 구조화 데이터 (JSON-LD) ─────────
+   B2B 의료·미용기기 제조: Organization(+인증) + WebSite, 제품 페이지에는 Product(가격 없이).
+   회사 연락처는 관리자 > 사이트 설정 값을 쓰고, 없으면 아래 기본값. 주소(origin)는 접속한 도메인을 따라간다. */
+const ORG_DEFAULT = {
+  ko: { name: '주식회사 이픈', street: '갈매중앙로 190, D동 4층 402호', locality: '구리시', region: '경기도' },
+  en: { name: 'IPEUN Inc.', street: 'Suite 402, 4F, Building D, 190 Galmaejungang-ro', locality: 'Guri-si', region: 'Gyeonggi-do' },
+};
+const PRODUCTS = {
+  alljet: {
+    name: 'All-Jet', alt: '올젯', image: '/assets/media/alljet-cutout-front.webp',
+    ko: { category: '의료기기', description: '바늘 없는 정밀 약물 주입과 40.68 MHz 고주파를 하나의 장비로 구현한 이픈의 무바늘 의료기기입니다.' },
+    en: { category: 'Medical device', description: 'IPEUN’s needle-free medical device combining precision drug delivery and 40.68 MHz radio frequency in one system.' },
+  },
+  invera: {
+    name: 'INVERA', alt: '인베라', image: '/assets/media/invera-cutout-banner.webp',
+    ko: { category: '미용기기', description: '이픈의 무바늘 정밀 분사 기술을 바탕으로 만든 스킨부스팅 미용기기입니다.' },
+    en: { category: 'Aesthetic device', description: 'A skin-boosting aesthetic device built on IPEUN’s needle-free precision jet technology.' },
+  },
+};
+export function structuredData(key, lang, origin, site) {
+  const base = ORG_DEFAULT[lang] || ORG_DEFAULT.ko;
+  const tel = site?.tel || '031-522-4764';
+  const intl = `+82-${tel.replace(/^0/, '')}`;
+  const email = site?.email || 'admin@i-peun.com';
+  const orgId = `${origin}/#organization`;
+  const graph = [
+    {
+      '@type': 'Organization', '@id': orgId,
+      name: base.name, alternateName: ['IPEUN', '이픈'],
+      url: `${origin}/`, logo: `${origin}/assets/logo/ipeun.svg`, image: `${origin}/assets/og-share.jpg`,
+      email, telephone: intl, faxNumber: `+82-${(site?.fax || '02-6008-4408').replace(/^0/, '')}`,
+      taxID: site?.bizNo || '470-81-03525', foundingDate: '2025-05',
+      address: { '@type': 'PostalAddress', streetAddress: base.street, addressLocality: base.locality, addressRegion: base.region, addressCountry: 'KR' },
+      contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: intl, email, url: `${origin}/${lang === 'en' ? 'en/' : ''}contact.html`, availableLanguage: ['Korean', 'English'] },
+      hasCredential: ['ISO 13485:2016', 'ISO 14001:2015', 'ISO 9001:2015'].map((name) => ({ '@type': 'EducationalOccupationalCredential', name, credentialCategory: 'certification' })),
+    },
+    { '@type': 'WebSite', '@id': `${origin}/#website`, url: `${origin}/`, name: 'IPEUN', alternateName: '이픈', inLanguage: lang === 'en' ? 'en' : 'ko', publisher: { '@id': orgId } },
+  ];
+  const product = PRODUCTS[key];
+  if (product) {
+    const local = product[lang] || product.ko;
+    graph.push({
+      '@type': 'Product', '@id': `${origin}/${key}.html#product`,
+      name: product.name, alternateName: product.alt, category: local.category, description: local.description,
+      image: [`${origin}${product.image}`], brand: { '@type': 'Brand', name: 'IPEUN' }, manufacturer: { '@id': orgId },
+    });
+  }
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+}

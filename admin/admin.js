@@ -303,8 +303,29 @@ async function logout() {
 }
 window.addEventListener('beforeunload', (event) => { if (state.dirty.size) { event.preventDefault(); event.returnValue = ''; } });
 
+// SEO 저장 전 검사: 빈 제목·중복 제목은 막고, 너무 짧은 설명은 확인을 받는다
+function checkSeo() {
+  const pages = state.content.seo?.pages || {};
+  const label = Object.fromEntries(PAGES.map((page) => [page.key, page.label]));
+  const seen = new Map();
+  const short = [];
+  for (const [key, meta] of Object.entries(pages)) {
+    const title = String(meta.title || '').trim();
+    if (!title) return { error: `'${label[key] || key}' 페이지 제목이 비어 있습니다.` };
+    if (seen.has(title)) return { error: `'${label[seen.get(title)]}'와 '${label[key]}' 페이지 제목이 같습니다. 페이지마다 다르게 적어주세요.` };
+    seen.set(title, key);
+    if (String(meta.description || '').trim().length < 50) short.push(label[key] || key);
+  }
+  return { short };
+}
+
 async function save(key, button) {
   if (key === 'events') ensureEventIds();
+  if (key === 'seo') {
+    const check = checkSeo();
+    if (check.error) { toast(check.error, 'err'); return; }
+    if (check.short.length && !confirm(`설명이 50자보다 짧은 페이지가 있습니다 (${check.short.join(', ')}).\n검색 결과에 보이는 문장이라 80~120자를 권장합니다. 그래도 저장할까요?`)) return;
+  }
   if (button) { button.disabled = true; button.textContent = '저장 중…'; }
   try {
     const result = await api(`/api/admin/content/${key}`, { method: 'PUT', body: state.content[key] });
