@@ -588,7 +588,7 @@ body.lightbox-open { overflow:hidden; }
 .activity-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
 .activity-cover { display:block; overflow:hidden; background:var(--paper); }
 .activity-cover img { width:100%; aspect-ratio:1.5; object-fit:cover; transition:transform .3s; }
-.activity-card:hover .activity-cover img { transform:scale(1.025); }
+.activity-card:hover .activity-cover img { transform:scale(1.03); }
 .activity-copy { padding:26px; }
 .activity-copy time,.event-heading time,.press-meta { color:var(--muted); font-size:13px; letter-spacing:.01em; }
 .activity-copy h3 { min-height:76px; margin:12px 0 28px; font-size:23px; line-height:1.5; }
@@ -896,3 +896,10 @@ body.lightbox-open { overflow:hidden; }
 .hero-controls { background:none; border:0; border-radius:0; box-shadow:none; }
 button { border:0; }
 :focus-visible { outline:2px solid var(--mint); outline-offset:5px; }
+
+/* One destination per linked card; section links remain separate. */
+a.card:focus-visible { outline:2px solid var(--mint); outline-offset:5px; }
+a.card img { transition:transform .3s ease; }
+a.card:hover .activity-cover img,a.product-card:hover .product-stage img { transform:scale(1.03); }
+.patent-section-link { margin-top:36px; }
+@media(prefers-reduced-motion:reduce) { a.card img { transition:none; } }
