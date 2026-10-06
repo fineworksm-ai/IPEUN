@@ -729,9 +729,9 @@ body.lightbox-open { overflow:hidden; }
 .home-page .activity-copy time { font-size:14px; color:var(--home-muted); }
 .home-page .activity-copy h3 { min-height:72px; font-size:23px; font-weight:600; line-height:1.5; margin:12px 0 24px; }
 .home-page .activity-copy .text-link { font-size:14px; }
-.home-page .contact-band { padding:88px 0; color:var(--home-ink); background:var(--paper); }
-.home-page .contact-band .eyebrow { color:var(--home-accent); }
-.home-page .contact-band .button { background:var(--home-ink); color:var(--white); }
+.home-page .contact-band { padding:88px 0; color:var(--white); background:var(--ink); }
+.home-page .contact-band .eyebrow { color:rgba(255,255,255,.7); }
+.home-page .contact-band .button { background:var(--white); color:var(--ink); }
 .home-page .contact-list { gap:20px; }
 .home-page .contact-list a,.home-page .contact-list p { font-size:17px; }
 .home-page .contact-list span { font-size:12px; color:var(--home-muted); }
@@ -907,3 +907,10 @@ a.card:hover .activity-cover img,a.product-card:hover .product-stage img { trans
   .home-page .product-card-invera .product-stage img { width:80%; max-width:350px; }
 }
 @media(max-width:600px) { .home-page .home-products .product-card { padding:28px; } .home-page .product-card p { font-size:17px; } }
+
+/* 13 — the same solid inquiry surface on every page. */
+.contact-band { background:var(--ink); color:var(--white); }
+.contact-band h2 { color:var(--white); }
+.contact-band .eyebrow,.contact-band .contact-list,.home-page .contact-band .contact-list span,
+.contact-band .contact-list span { color:rgba(255,255,255,.7); }
+.contact-band .button { background:var(--white); color:var(--ink); border:0; }
