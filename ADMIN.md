@@ -48,23 +48,37 @@ npm run dev                      # http://localhost:8787 , 관리자 http://loca
 
 ## 배포 현황
 
-- 주소: https://ipeun.fineworks-m.workers.dev (Fineworks Cloudflare 계정, 2026-10-06 첫 배포)
-- D1: `ipeun` (id는 `wrangler.toml`)
-- 검색 노출: `wrangler.toml`의 `SITE_INDEXABLE = "false"`
-  - 임시 주소라서 모든 페이지에 `X-Robots-Tag: noindex`를 붙이고, robots.txt로 크롤링을 막는다.
-  - 정식 도메인을 연결하는 날 `"true"`로 바꾸고 배포한다.
-- 업데이트 배포: `npm run deploy`
-- 비밀번호 변경: `npx wrangler secret put ADMIN_PASSWORD`
+- 주소: **https://ipeun.pages.dev** (Cloudflare Pages 프로젝트 `ipeun`, Fineworks Cloudflare 계정)
+- 데이터: D1 `ipeun` (id는 `deploy/pages/wrangler.toml`)
+- 검색 노출: `SITE_INDEXABLE = "false"`
+  - 임시 주소라서 모든 응답에 `X-Robots-Tag: noindex`를 붙이고, robots.txt로 크롤링을 막는다.
+  - 정식 도메인을 연결하는 날 `deploy/pages/wrangler.toml`에서 `"true"`로 바꾸고 배포한다.
+- 예전 Worker `ipeun`(ipeun.fineworks-m.workers.dev)은 2026-10-06에 workers.dev 주소를 껐다. Worker 자체는 남아 있다.
 
-## 처음부터 다시 배포할 때
+## 배포
 
 ```bash
-npx wrangler d1 create ipeun          # 출력된 database_id 를 wrangler.toml 에 넣는다
-npm run db:init:remote                # 배포 DB에 테이블 생성
-npx wrangler secret put ADMIN_PASSWORD
-npx wrangler secret put SESSION_SECRET   # 긴 임의 문자열
-# (선택) npx wrangler secret put ANTHROPIC_API_KEY
-npm run deploy                        # https://ipeun.<계정>.workers.dev
+npm run deploy        # = npm run build:pages → wrangler pages deploy (deploy/pages)
+```
+
+- `build:pages`
+  - `.assetsignore`에 없는 공개 파일만 `deploy/pages/dist`로 복사한다.
+  - `worker/`를 `dist/_worker.js`로 묶는다.
+  - 없는 주소용 `404.html`을 만든다.
+  - `_redirects`는 Pages 주소 방식과 충돌해서 빼고, 같은 기능은 Pages가 기본으로 처리한다 (`/invera` → invera.html).
+- 비밀번호 변경: `npx wrangler pages secret put ADMIN_PASSWORD --project-name ipeun` 후 다시 배포
+- (선택) Claude 번역: `npx wrangler pages secret put ANTHROPIC_API_KEY --project-name ipeun` 후 다시 배포
+- 저장소 루트의 `wrangler.toml`은 로컬 개발(`npm run dev`)용이다. `workers_dev = false`라서 실수로 `wrangler deploy`를 해도 workers.dev 주소가 생기지 않는다.
+
+## 처음부터 다시 만들 때
+
+```bash
+npx wrangler d1 create ipeun                     # 새 id를 deploy/pages/wrangler.toml 에 넣는다
+npm run db:init:remote
+npx wrangler pages project create ipeun --production-branch main
+npx wrangler pages secret put ADMIN_PASSWORD --project-name ipeun
+npx wrangler pages secret put SESSION_SECRET --project-name ipeun
+npm run deploy
 ```
 
 ## 주의: 정적 HTML과의 연결

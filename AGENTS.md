@@ -14,3 +14,4 @@
 - 문의 폼(`contact.html`)의 `data-inquiry-form` 구조와 `script.js` 문의 처리 코드는 Worker가 붙이는 `data-inquiry-endpoint`, `[data-inquiry-consent]`와 연결돼 있다.
 - 공개하면 안 되는 파일·폴더를 새로 만들면 `.assetsignore`에 추가한다.
 - `.dev.vars`(로컬 비밀번호)는 커밋하지 않는다.
+- 배포는 사용자가 요청할 때만 `npm run deploy`(Cloudflare Pages, https://ipeun.pages.dev)로 한다. `wrangler deploy`(Workers)로 배포하지 않는다.

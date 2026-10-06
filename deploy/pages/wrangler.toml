@@ -1,0 +1,21 @@
+# Cloudflare Pages 배포 설정 (https://ipeun.pages.dev)
+# 빌드: 저장소 루트에서 `npm run build:pages` → deploy/pages/dist (공개 파일 + _worker.js)
+# 배포: 저장소 루트에서 `npm run deploy`
+name = "ipeun"
+pages_build_output_dir = "./dist"
+compatibility_date = "2025-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# 정식 도메인을 연결하는 날 "true" 로 바꾼다 (그 전까지 검색엔진 비노출)
+SITE_INDEXABLE = "false"
+# Pages 정적 파일 서빙 방식에 맞춰 Worker가 주소를 맞춘다 (worker/index.js)
+PAGES_MODE = "1"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ipeun"
+database_id = "5d6ea2a8-2d19-43a1-b460-516c3e7cbf57"
+
+[ai]
+binding = "AI"

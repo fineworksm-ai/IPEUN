@@ -1,6 +1,10 @@
-# IPEUN 웹사이트 — Cloudflare Worker (정적 페이지 서빙 + 관리자 API + D1)
+# IPEUN 웹사이트 — 로컬 개발용 Worker 설정 (npm run dev)
+# 실제 사이트는 Cloudflare Pages(https://ipeun.pages.dev)로 배포한다: npm run deploy  (설정: deploy/pages/wrangler.toml)
+# 이 파일로 `wrangler deploy` 를 하면 *.workers.dev 주소가 생기지 않도록 막아 둔다.
 name = "ipeun"
 main = "worker/index.js"
+workers_dev = false
+preview_urls = false
 compatibility_date = "2025-09-01"
 compatibility_flags = ["nodejs_compat"]
 

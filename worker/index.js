@@ -22,9 +22,9 @@ const BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|headless
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    // 폴더 주소는 index.html 로 (html_handling = "none")
     if (url.pathname === '/en' || url.pathname === '/admin') return Response.redirect(`${url.origin}${url.pathname}/${url.search}`, 301);
-    if (url.pathname.endsWith('/') && !url.pathname.startsWith('/api/')) {
+    // Workers(html_handling = "none"): 폴더 주소는 index.html 로. Pages 는 정적 서버가 알아서 처리한다
+    if (env.PAGES_MODE !== '1' && url.pathname.endsWith('/') && !url.pathname.startsWith('/api/')) {
       const target = new URL(url);
       target.pathname = `${url.pathname}index.html`;
       request = new Request(target, request);
@@ -39,10 +39,20 @@ export default {
     } catch (error) {
       console.error(error);
       if (url.pathname.startsWith('/api/')) return json({ error: String(error?.message || error) }, 500);
-      return env.ASSETS.fetch(request);
+      return env.ASSETS.fetch(assetRequest(request, env));
     }
   },
 };
+
+// Pages 정적 서버는 company.html 을 /company 로 돌려보낸다(308). 방문자 주소는 그대로 두고 안에서만 바꿔 요청한다
+function assetRequest(request, env) {
+  if (env.PAGES_MODE !== '1') return request;
+  const url = new URL(request.url);
+  const pathname = url.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+  if (pathname === url.pathname) return request;
+  url.pathname = pathname;
+  return new Request(url, request);
+}
 
 async function route(request, env, ctx, url) {
   if (url.pathname === '/robots.txt' && env.SITE_INDEXABLE !== 'true') {
@@ -56,7 +66,7 @@ async function route(request, env, ctx, url) {
 
 /* ───────────────────────── 공개 페이지 ───────────────────────── */
 async function page(request, env, ctx, url) {
-  const response = await env.ASSETS.fetch(request);
+  const response = await env.ASSETS.fetch(assetRequest(request, env));
   const type = response.headers.get('content-type') || '';
   if (request.method !== 'GET' || response.status !== 200 || !type.includes('text/html')) return response;
 
@@ -169,7 +179,7 @@ function withVisitor(response, today) {
 
 /* ───────────────────────── 관리자 정적 파일 ───────────────────────── */
 async function adminAsset(request, env) {
-  const response = await env.ASSETS.fetch(request);
+  const response = await env.ASSETS.fetch(assetRequest(request, env));
   const out = new Response(response.body, response);
   out.headers.set('x-robots-tag', 'noindex, nofollow');
   out.headers.set('cache-control', 'no-store');

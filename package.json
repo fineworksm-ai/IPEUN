@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev --persist-to ../.ipeun-dev-state",
-    "deploy": "wrangler deploy",
+    "build:pages": "node worker/build-pages.mjs",
+    "deploy": "node worker/build-pages.mjs && cd deploy/pages && wrangler pages deploy --branch main --commit-dirty=true",
     "db:init": "wrangler d1 execute ipeun --local --persist-to ../.ipeun-dev-state --file=db/schema.sql",
     "db:init:remote": "wrangler d1 execute ipeun --remote --file=db/schema.sql"
   },

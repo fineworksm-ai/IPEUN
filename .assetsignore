@@ -22,3 +22,4 @@ wrangler.toml
 IPEUN 홈페이지
 .dev.vars.example
 AGENTS.md
+deploy/pages

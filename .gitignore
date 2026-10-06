@@ -5,3 +5,4 @@ IPEUN 홈페이지
 node_modules/
 .wrangler/
 .dev.vars
+deploy/pages/dist/
