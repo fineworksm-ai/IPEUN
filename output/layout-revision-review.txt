@@ -1,0 +1,23 @@
+IPEUN 레이아웃 재정리 — 2026-10-06
+
+히어로: PC 높이 620~740px (1440×900에서는 702px), 모바일 740px.
+모델 세 명은 contain으로 원본 비율 유지. 두 제품은 같은 영역 중앙 정렬.
+메인 인증/특허/연구개발/출시 띠 삭제.
+회사소개 목차 탭과 기업정보 표 삭제. 기존 소개 본문을 상단 슬로건과 같은 섹션으로 통합.
+제품소개 메뉴 → /product → /alljet 또는 /invera. 영문은 /en/ 아래 같은 흐름.
+제품 선택 페이지는 기존 문구와 제품 이미지 두 카드만 사용.
+전체 본문 행간 1.5, 소제목 아래 간격 기본 10px.
+한·영 22개 페이지 × 2개 크기 검사: 깨진 이미지 0, 콘솔 오류 0, 가로 스크롤 0.
+6개 크기 × 3개 슬라이드 × 2개 언어 = 36개 배치 검사 통과.
+회사소개 라이트박스 80회 통과. 실제 제품 메뉴·카드 경로 클릭 6개 통과.
+회사소개 마지막 문단 정렬 조정 후 4개 회사소개 화면과 4개 제품 선택 화면 재촬영.
+
+검사 도구: tools/verify-layout-revision.mjs
+메인: output/layout-revision/home-index-{1440,390}-full.png
+회사소개: output/layout-revision/home-company-{1440,390}-full.png
+제품 선택: output/layout-revision/home-product-{1440,390}-full.png
+첫 화면: output/layout-revision/hero-{ko,en}-{width}x{height}-slide-{1,2,3}.png
+자동 결과: output/layout-revision-results.json
+제품 경로 결과: output/layout-revision-routes.json
+
+로컬 http://localhost:3000 에 적용. 푸시하지 않음.

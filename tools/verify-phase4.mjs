@@ -28,7 +28,9 @@ for (const [file, html] of htmls) {
     const raw = match[1];
     if (/^(https?:|mailto:|tel:|data:)/.test(raw)) continue;
     const [pathname, hash] = raw.split('?')[0].split('#');
-    const target = pathname ? path.resolve(root, path.dirname(file), pathname) : path.join(root, file);
+    const relative = pathname.startsWith('/') ? pathname.slice(1) : path.join(path.dirname(file), pathname);
+    let target = pathname ? path.resolve(root, relative) : path.join(root, file);
+    if (pathname && !path.extname(target)) target += '.html';
     if (!target.startsWith(root + path.sep) || !fs.existsSync(target)) { errors.push(`${file}: missing ${raw}`); continue; }
     if (hash && path.extname(target) === '.html' && !new RegExp(`id="${hash}"`).test(fs.readFileSync(target, 'utf8'))) errors.push(`${file}: missing anchor ${raw}`);
   }

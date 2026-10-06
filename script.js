@@ -119,10 +119,10 @@ if (slider) {
   // Reserve the same visual area for every slide, below the tallest copy.
   // Inactive slides retain their layout, so switching slides cannot move it.
   const syncHeroVisual = () => {
-    if (!mobileMenuQuery.matches) { slider.style.removeProperty('--hero-visual-top'); return; }
+    if (!window.matchMedia('(max-width: 600px)').matches) { slider.style.removeProperty('--hero-visual-top'); return; }
     const origin = slider.getBoundingClientRect().top;
     const copyBottom = Math.max(...slides.map(slide => slide.querySelector('.hero-copy').getBoundingClientRect().bottom - origin));
-    slider.style.setProperty('--hero-visual-top', `${Math.ceil(copyBottom + 64)}px`);
+    slider.style.setProperty('--hero-visual-top', `${Math.ceil(copyBottom + 52)}px`);
   };
   syncHeroVisual();
   document.fonts?.ready.then(syncHeroVisual);

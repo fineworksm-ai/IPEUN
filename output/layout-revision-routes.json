@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/product",
+    "cards": 2
+  },
+  {
+    "path": "/alljet",
+    "title": "All-Jet 의료기기 | IPEUN"
+  },
+  {
+    "path": "/invera",
+    "title": "INVERA 미용기기 | IPEUN"
+  },
+  {
+    "path": "/en/product",
+    "cards": 2
+  },
+  {
+    "path": "/en/alljet",
+    "title": "All-Jet Medical Device | IPEUN"
+  },
+  {
+    "path": "/en/invera",
+    "title": "INVERA Aesthetic Device | IPEUN"
+  }
+]
