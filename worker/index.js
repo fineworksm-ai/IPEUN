@@ -30,10 +30,12 @@ export default {
       request = new Request(target, request);
     }
     try {
-      if (url.pathname.startsWith('/api/')) return await api(request, env, url);
-      if (url.pathname.startsWith('/files/')) return await serveFile(env, url);
-      if (url.pathname.startsWith('/admin/')) return await adminAsset(request, env);
-      return await page(request, env, ctx, url);
+      const response = await route(request, env, ctx, url);
+      if (env.SITE_INDEXABLE === 'true') return response;
+      // 임시 주소: 검색엔진에 노출하지 않는다
+      const hidden = new Response(response.body, response);
+      hidden.headers.set('x-robots-tag', 'noindex, nofollow');
+      return hidden;
     } catch (error) {
       console.error(error);
       if (url.pathname.startsWith('/api/')) return json({ error: String(error?.message || error) }, 500);
@@ -41,6 +43,16 @@ export default {
     }
   },
 };
+
+async function route(request, env, ctx, url) {
+  if (url.pathname === '/robots.txt' && env.SITE_INDEXABLE !== 'true') {
+    return new Response('User-agent: *\nDisallow: /\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+  }
+  if (url.pathname.startsWith('/api/')) return api(request, env, url);
+  if (url.pathname.startsWith('/files/')) return serveFile(env, url);
+  if (url.pathname.startsWith('/admin/')) return adminAsset(request, env);
+  return page(request, env, ctx, url);
+}
 
 /* ───────────────────────── 공개 페이지 ───────────────────────── */
 async function page(request, env, ctx, url) {

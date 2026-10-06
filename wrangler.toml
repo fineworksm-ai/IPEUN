@@ -16,8 +16,13 @@ html_handling = "none"
 [[d1_databases]]
 binding = "DB"
 database_name = "ipeun"
-# 배포 전 `npx wrangler d1 create ipeun` 으로 만든 ID로 바꾼다. 로컬 개발(wrangler dev)은 이 값과 상관없이 동작한다.
-database_id = "00000000-0000-0000-0000-000000000000"
+# 2026-10-06 생성 (Fineworks 계정, APAC). 로컬 개발(wrangler dev)은 이 값과 상관없이 동작한다.
+database_id = "5d6ea2a8-2d19-43a1-b460-516c3e7cbf57"
+
+# 검색엔진 노출: 임시 주소(workers.dev)에서는 "false" 로 둔다.
+# 정식 도메인을 연결하는 날 "true" 로 바꾸고 배포하면 검색 노출이 시작된다.
+[vars]
+SITE_INDEXABLE = "false"
 
 # 한글 → 영문 자동 번역 (ANTHROPIC_API_KEY 시크릿이 없을 때 사용)
 [ai]

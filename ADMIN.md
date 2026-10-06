@@ -46,7 +46,17 @@ npm run dev                      # http://localhost:8787 , 관리자 http://loca
 - 로컬 D1 저장 위치는 저장소 밖(`../.ipeun-dev-state`)이다. 저장소 안에 두면 파일이 바뀔 때마다 개발 서버가 재시작된다.
 - 자동 번역(Workers AI)은 로컬에서도 Cloudflare 원격으로 호출된다 (무료 사용량 안에서 과금될 수 있음).
 
-## 첫 배포
+## 배포 현황
+
+- 주소: https://ipeun.fineworks-m.workers.dev (Fineworks Cloudflare 계정, 2026-10-06 첫 배포)
+- D1: `ipeun` (id는 `wrangler.toml`)
+- 검색 노출: `wrangler.toml`의 `SITE_INDEXABLE = "false"`
+  - 임시 주소라서 모든 페이지에 `X-Robots-Tag: noindex`를 붙이고, robots.txt로 크롤링을 막는다.
+  - 정식 도메인을 연결하는 날 `"true"`로 바꾸고 배포한다.
+- 업데이트 배포: `npm run deploy`
+- 비밀번호 변경: `npx wrangler secret put ADMIN_PASSWORD`
+
+## 처음부터 다시 배포할 때
 
 ```bash
 npx wrangler d1 create ipeun          # 출력된 database_id 를 wrangler.toml 에 넣는다
