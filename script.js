@@ -281,6 +281,7 @@ if (lightbox && typeof lightbox.showModal === 'function') {
     const fullscreen = frame.querySelector('[data-film-fullscreen]');
     let pausedByUser = false;
     let dragging = false;
+    let resumeAfterDrag = false;
 
     const syncPaused = () => frame.classList.toggle('is-paused', video.paused);
     video.addEventListener('play', syncPaused);
@@ -291,7 +292,7 @@ if (lightbox && typeof lightbox.showModal === 'function') {
     } else if ('IntersectionObserver' in window) {
       new IntersectionObserver(([entry]) => {
         if (!entry.isIntersecting) video.pause();
-        else if (!pausedByUser) video.play().catch(() => {});
+        else if (!pausedByUser && !dragging) video.play().catch(() => {});
       }, { threshold: 0.25 }).observe(video);
     }
     syncPaused();
@@ -315,13 +316,43 @@ if (lightbox && typeof lightbox.showModal === 'function') {
     video.addEventListener('timeupdate', () => {
       if (!dragging && video.duration) paint(video.currentTime / video.duration);
     });
-    seek.addEventListener('input', () => {
-      dragging = true;
-      const ratio = Number(seek.value) / 1000;
+    const seekTo = ratio => {
+      ratio = Math.max(0, Math.min(1, ratio));
       paint(ratio);
-      if (video.duration) video.currentTime = ratio * video.duration;
+      if (Number.isFinite(video.duration)) video.currentTime = ratio * video.duration;
+    };
+    const seekAtPointer = event => {
+      const bounds = seek.getBoundingClientRect();
+      seekTo((event.clientX - bounds.left) / bounds.width);
+    };
+    seek.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || !event.isPrimary) return;
+      event.preventDefault();
+      dragging = true;
+      resumeAfterDrag = !video.paused;
+      video.pause();
+      seek.focus({ preventScroll: true });
+      seek.setPointerCapture(event.pointerId);
+      seekAtPointer(event);
     });
-    seek.addEventListener('change', () => { dragging = false; });
+    seek.addEventListener('pointermove', event => {
+      if (dragging && seek.hasPointerCapture(event.pointerId)) seekAtPointer(event);
+    });
+    const finishDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      if (resumeAfterDrag) video.play().catch(() => {});
+      resumeAfterDrag = false;
+    };
+    seek.addEventListener('pointerup', event => {
+      if (!dragging) return;
+      seekAtPointer(event);
+      finishDrag();
+      if (seek.hasPointerCapture(event.pointerId)) seek.releasePointerCapture(event.pointerId);
+    });
+    seek.addEventListener('pointercancel', finishDrag);
+    seek.addEventListener('lostpointercapture', finishDrag);
+    seek.addEventListener('input', () => seekTo(Number(seek.value) / 1000));
 
     sound.addEventListener('click', () => {
       video.muted = !video.muted;
