@@ -2,7 +2,7 @@
 /* Web design system — phase 2 */
 :root {
   --ink: #061713; --ink-soft: var(--ink); --white: #fff;
-  --paper: #f5f7f2; --mint: #00ba9b; --mint-display: #009b82; --mint-text: #007d6c; --teal: #007d6c;
+  --paper: #fff; --mint: #00ba9b; --mint-display: #009b82; --mint-text: #007d6c; --teal: #007d6c;
   --muted: #65736e; --line: rgba(6,23,19,.14); --line-light: rgba(255,255,255,.2);
   --mint-wash: var(--paper); --header-glass: rgba(255,255,255,.96);
   --card-radius: 18px; --card-shadow: none;
@@ -958,8 +958,8 @@ body { line-height:1.5; }
 
 /* Crop the supplied background to each existing subpage opening section. */
 #main-content > .subpage-top {
-  background-color:#f6fbff;
-  background-image:url("assets/media/subpage-background.png");
+  background-color:#fff;
+  background-image:linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)),url("assets/media/subpage-background.png");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
