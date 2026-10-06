@@ -121,9 +121,9 @@ html[lang="en"] .header-cta { white-space:nowrap; }
 .trust-grid p { margin-top:12px; color:var(--muted); font-size:13px; }
 .release-note { display:flex; justify-content:flex-end; margin-top:26px; }
 .release-note span { border:1px solid var(--line); border-radius:30px; padding:6px 14px; font-size:12px; color:var(--muted); }
-.contact-band { padding:90px 0; color:var(--white); background:var(--ink); }
+.contact-band { --contact-ink:#173840; --contact-muted:#4e6d77; padding:90px 0; color:var(--contact-ink); background:#e1f7ff; }
 .contact-grid { display:grid; grid-template-columns:1.35fr 1fr; align-items:end; gap:60px; }
-.contact-band .eyebrow { color:var(--white); }
+.contact-band .eyebrow { color:#244e63; }
 .contact-band .button { margin-top:32px; }
 .contact-list { display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
 .contact-list a,.contact-list p { display:flex; gap:26px; font-size:17px; line-height:1.5; }
@@ -729,9 +729,7 @@ body.lightbox-open { overflow:hidden; }
 .home-page .activity-copy time { font-size:14px; color:var(--home-muted); }
 .home-page .activity-copy h3 { min-height:72px; font-size:23px; font-weight:600; line-height:1.5; margin:12px 0 24px; }
 .home-page .activity-copy .text-link { font-size:14px; }
-.home-page .contact-band { padding:88px 0; color:var(--white); background:var(--ink); }
-.home-page .contact-band .eyebrow { color:rgba(255,255,255,.7); }
-.home-page .contact-band .button { background:var(--white); color:var(--ink); }
+.home-page .contact-band { padding:88px 0; }
 .home-page .contact-list { gap:20px; }
 .home-page .contact-list a,.home-page .contact-list p { font-size:17px; }
 .home-page .contact-list span { font-size:12px; color:var(--home-muted); }
@@ -874,12 +872,11 @@ a.card:hover .activity-cover img,a.product-card:hover .product-stage img { trans
 }
 @media(max-width:600px) { .home-page .home-products .product-card { padding:28px; } .home-page .product-card p { font-size:17px; } }
 
-/* 13 — the same solid inquiry surface on every page. */
-.contact-band { background:var(--ink); color:var(--white); }
-.contact-band h2 { color:var(--white); }
-.contact-band .eyebrow,.contact-band .contact-list,.home-page .contact-band .contact-list span,
-.contact-band .contact-list span { color:rgba(255,255,255,.7); }
-.contact-band .button { background:var(--white); color:var(--ink); border:0; }
+/* 13 — a light sky-blue inquiry surface on every page. */
+.contact-band h2 { color:var(--contact-ink); }
+.contact-band .contact-list,.home-page .contact-band .contact-list span,
+.contact-band .contact-list span { color:var(--contact-muted); }
+.contact-band .button { background:#244e63; color:var(--white); border:0; }
 
 /* Client revision: compact hero, uncropped group photo and centered devices. */
 .home-page .hero-slider { height:clamp(620px,78svh,740px); min-height:0; }
@@ -971,10 +968,19 @@ body { line-height:1.5; }
 .purpose-option:hover { background:var(--white); }
 .purpose-option:has(input:checked) { background:var(--ink); }
 
-/* Restore the homepage palette before the site-wide background revisions. */
-.home-page:not(.product-list-page) { --paper:#f5f7f2; }
-.home-page:not(.product-list-page) .section .card,
-.home-page:not(.product-list-page) .home-news .card,
-.home-page:not(.product-list-page) .home-products .product-card { background:var(--paper); }
-.home-page:not(.product-list-page) .section-paper .card,
-.home-page:not(.product-list-page) .home-technology .card { background:var(--white); }
+/* Consistent light homepage and inquiry/footer surfaces. */
+.home-page:not(.product-list-page) { --paper:#fff; }
+.home-page:not(.product-list-page) .hero-slide {
+  background-color:#fff; background-image:linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.4)),url("assets/media/subpage-background.png"); background-position:center; background-size:cover; background-repeat:no-repeat;
+}
+.home-page:not(.product-list-page) .section .card { background:var(--white); border:1px solid rgba(6,23,19,.08); }
+.contact-band {
+  --contact-ink:var(--ink); --contact-muted:var(--muted);
+  background-color:#fff; background-image:linear-gradient(rgba(255,255,255,.65),rgba(255,255,255,.65)),url("assets/media/subpage-background.png"); background-position:center; background-size:cover; background-repeat:no-repeat;
+  color:var(--ink); border-top:1px solid var(--line);
+}
+.contact-band .eyebrow { color:var(--mint-text); }
+.contact-band .button { background:var(--mint-text); color:var(--white); }
+.site-footer,.home-page .site-footer { background:var(--white); color:var(--ink); border-top:1px solid var(--line); }
+.footer-info,.home-page .footer-info { color:var(--muted); opacity:1; }
+.footer-brand { background:none; padding:0; border-radius:0; }
