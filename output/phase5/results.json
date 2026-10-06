@@ -1,0 +1,5121 @@
+{
+  "pageChecks": [
+    {
+      "url": "/index.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 3,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(255, 255, 255)"
+      ],
+      "file": "index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/index.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 3,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(255, 255, 255)"
+      ],
+      "file": "index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/index.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 3,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(255, 255, 255)"
+      ],
+      "file": "en/index.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/index.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 3,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(255, 255, 255)"
+      ],
+      "file": "en/index.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/company.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "company.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/company.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "company.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/company.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/company.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/company.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/company.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/technology.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "technology.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/technology.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "technology.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/technology.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/technology.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/technology.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/technology.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/alljet.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "alljet.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/alljet.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "alljet.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/alljet.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/alljet.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/alljet.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/alljet.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/invera.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "invera.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/invera.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "invera.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/invera.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/invera.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/invera.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/invera.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/contact.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "contact.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/contact.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "contact.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/contact.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/contact.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/contact.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/contact.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/privacy.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "privacy.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/privacy.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "privacy.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/privacy.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/privacy.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/privacy.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/privacy.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/alljet.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "product.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/alljet.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "product.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/alljet.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/product.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/alljet.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(255, 255, 255)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [
+        {
+          "bg": "rgb(6, 23, 19)",
+          "color": "rgb(255, 255, 255)",
+          "button": "rgb(255, 255, 255)"
+        }
+      ],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/product.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/events.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "events.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/events.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "events.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/events.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/events.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/events.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/events.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/media.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "media.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/media.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "media.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/media.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/media.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/media.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        },
+        {
+          "border": "0px",
+          "shadow": "none",
+          "radius": "18px",
+          "bg": "rgb(245, 247, 242)"
+        }
+      ],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/media.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/publications.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "publications.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/publications.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "publications.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/publications.html",
+      "width": 390,
+      "scrollWidth": 390,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/publications.html",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": []
+    },
+    {
+      "url": "/en/publications.html",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "brokenImages": [],
+      "periodHeadings": [],
+      "nestedLinks": 0,
+      "textLinks": 0,
+      "cards": [],
+      "contact": [],
+      "palette": [
+        "rgb(245, 247, 242)",
+        "rgb(6, 23, 19)"
+      ],
+      "file": "en/publications.html",
+      "viewport": [
+        1440,
+        900
+      ],
+      "errors": []
+    }
+  ],
+  "heroes": [
+    {
+      "file": "index.html",
+      "width": 1920,
+      "height": 1080,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "copy": {
+        "left": 332.5,
+        "right": 1056.390625,
+        "top": 156,
+        "bottom": 681.90625,
+        "width": 723.890625,
+        "height": 525.90625
+      },
+      "visual": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "controls": {
+        "left": 332.5,
+        "right": 602.671875,
+        "top": 1024,
+        "bottom": 1056,
+        "width": 270.171875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1920,
+      "height": 1080,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "copy": {
+        "left": 332.5,
+        "right": 1056.390625,
+        "top": 156,
+        "bottom": 529.296875,
+        "width": 723.890625,
+        "height": 373.296875
+      },
+      "visual": {
+        "left": 876.3125,
+        "right": 1809.75,
+        "top": 128,
+        "bottom": 1056,
+        "width": 933.4375,
+        "height": 928
+      },
+      "controls": {
+        "left": 332.5,
+        "right": 604.375,
+        "top": 1024,
+        "bottom": 1056,
+        "width": 271.875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1920,
+      "height": 1080,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "copy": {
+        "left": 332.5,
+        "right": 1056.390625,
+        "top": 156,
+        "bottom": 529.296875,
+        "width": 723.890625,
+        "height": 373.296875
+      },
+      "visual": {
+        "left": 876.3125,
+        "right": 1809.75,
+        "top": 128,
+        "bottom": 1056,
+        "width": 933.4375,
+        "height": 928
+      },
+      "controls": {
+        "left": 332.5,
+        "right": 604.71875,
+        "top": 1024,
+        "bottom": 1056,
+        "width": 272.21875,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "height": 900,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "copy": {
+        "left": 92.5,
+        "right": 634,
+        "top": 156,
+        "bottom": 670.140625,
+        "width": 541.5,
+        "height": 514.140625
+      },
+      "visual": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "controls": {
+        "left": 92.5,
+        "right": 362.671875,
+        "top": 844,
+        "bottom": 876,
+        "width": 270.171875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "height": 900,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "copy": {
+        "left": 92.5,
+        "right": 634,
+        "top": 156,
+        "bottom": 529.296875,
+        "width": 541.5,
+        "height": 373.296875
+      },
+      "visual": {
+        "left": 655.5,
+        "right": 1353.75,
+        "top": 128,
+        "bottom": 876,
+        "width": 698.25,
+        "height": 748
+      },
+      "controls": {
+        "left": 92.5,
+        "right": 364.375,
+        "top": 844,
+        "bottom": 876,
+        "width": 271.875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "height": 900,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "copy": {
+        "left": 92.5,
+        "right": 634,
+        "top": 156,
+        "bottom": 529.296875,
+        "width": 541.5,
+        "height": 373.296875
+      },
+      "visual": {
+        "left": 655.5,
+        "right": 1353.75,
+        "top": 128,
+        "bottom": 876,
+        "width": 698.25,
+        "height": 748
+      },
+      "controls": {
+        "left": 92.5,
+        "right": 364.71875,
+        "top": 844,
+        "bottom": 876,
+        "width": 272.21875,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1280,
+      "height": 800,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "copy": {
+        "left": 48,
+        "right": 528.6875,
+        "top": 156,
+        "bottom": 638.828125,
+        "width": 480.6875,
+        "height": 482.828125
+      },
+      "visual": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "controls": {
+        "left": 48,
+        "right": 318.171875,
+        "top": 744,
+        "bottom": 776,
+        "width": 270.171875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1280,
+      "height": 800,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "copy": {
+        "left": 48,
+        "right": 528.6875,
+        "top": 156,
+        "bottom": 521.078125,
+        "width": 480.6875,
+        "height": 365.078125
+      },
+      "visual": {
+        "left": 581.90625,
+        "right": 1201.75,
+        "top": 128,
+        "bottom": 776,
+        "width": 619.84375,
+        "height": 648
+      },
+      "controls": {
+        "left": 48,
+        "right": 319.875,
+        "top": 744,
+        "bottom": 776,
+        "width": 271.875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1280,
+      "height": 800,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "copy": {
+        "left": 48,
+        "right": 528.6875,
+        "top": 156,
+        "bottom": 521.078125,
+        "width": 480.6875,
+        "height": 365.078125
+      },
+      "visual": {
+        "left": 581.90625,
+        "right": 1201.75,
+        "top": 128,
+        "bottom": 776,
+        "width": 619.84375,
+        "height": 648
+      },
+      "controls": {
+        "left": 48,
+        "right": 320.21875,
+        "top": 744,
+        "bottom": 776,
+        "width": 272.21875,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1024,
+      "height": 768,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "copy": {
+        "left": 48,
+        "right": 431.40625,
+        "top": 136,
+        "bottom": 588.5,
+        "width": 383.40625,
+        "height": 452.5
+      },
+      "visual": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "controls": {
+        "left": 48,
+        "right": 318.171875,
+        "top": 712,
+        "bottom": 744,
+        "width": 270.171875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1024,
+      "height": 768,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "copy": {
+        "left": 48,
+        "right": 431.40625,
+        "top": 136,
+        "bottom": 463.703125,
+        "width": 383.40625,
+        "height": 327.703125
+      },
+      "visual": {
+        "left": 464.15625,
+        "right": 958.5625,
+        "top": 128,
+        "bottom": 744,
+        "width": 494.40625,
+        "height": 616
+      },
+      "controls": {
+        "left": 48,
+        "right": 319.875,
+        "top": 712,
+        "bottom": 744,
+        "width": 271.875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 1024,
+      "height": 768,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "copy": {
+        "left": 48,
+        "right": 431.40625,
+        "top": 136,
+        "bottom": 463.703125,
+        "width": 383.40625,
+        "height": 327.703125
+      },
+      "visual": {
+        "left": 464.15625,
+        "right": 958.5625,
+        "top": 128,
+        "bottom": 744,
+        "width": 494.40625,
+        "height": 616
+      },
+      "controls": {
+        "left": 48,
+        "right": 320.21875,
+        "top": 712,
+        "bottom": 744,
+        "width": 272.21875,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 768,
+      "height": 1024,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 768,
+        "top": 0,
+        "bottom": 1024,
+        "width": 768,
+        "height": 1024
+      },
+      "copy": {
+        "left": 24,
+        "right": 744,
+        "top": 112,
+        "bottom": 514.390625,
+        "width": 720,
+        "height": 402.390625
+      },
+      "visual": {
+        "left": 0,
+        "right": 768,
+        "top": 579,
+        "bottom": 1024,
+        "width": 768,
+        "height": 445
+      },
+      "controls": {
+        "left": 24,
+        "right": 288.171875,
+        "top": 531,
+        "bottom": 563,
+        "width": 264.171875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 768,
+      "height": 1024,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 768,
+        "top": 0,
+        "bottom": 1024,
+        "width": 768,
+        "height": 1024
+      },
+      "copy": {
+        "left": 24,
+        "right": 744,
+        "top": 112,
+        "bottom": 423.640625,
+        "width": 720,
+        "height": 311.640625
+      },
+      "visual": {
+        "left": 76.8125,
+        "right": 691.203125,
+        "top": 579,
+        "bottom": 1004,
+        "width": 614.390625,
+        "height": 425
+      },
+      "controls": {
+        "left": 24,
+        "right": 289.875,
+        "top": 531,
+        "bottom": 563,
+        "width": 265.875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 768,
+      "height": 1024,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 768,
+        "top": 0,
+        "bottom": 1024,
+        "width": 768,
+        "height": 1024
+      },
+      "copy": {
+        "left": 24,
+        "right": 744,
+        "top": 112,
+        "bottom": 423.640625,
+        "width": 720,
+        "height": 311.640625
+      },
+      "visual": {
+        "left": 76.8125,
+        "right": 691.203125,
+        "top": 579,
+        "bottom": 1004,
+        "width": 614.390625,
+        "height": 425
+      },
+      "controls": {
+        "left": 24,
+        "right": 290.21875,
+        "top": 531,
+        "bottom": 563,
+        "width": 266.21875,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 390,
+      "height": 844,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 844,
+        "width": 390,
+        "height": 844
+      },
+      "copy": {
+        "left": 20,
+        "right": 370,
+        "top": 104,
+        "bottom": 475.9375,
+        "width": 350,
+        "height": 371.9375
+      },
+      "visual": {
+        "left": 0,
+        "right": 390,
+        "top": 540,
+        "bottom": 844,
+        "width": 390,
+        "height": 304
+      },
+      "controls": {
+        "left": 20,
+        "right": 235.171875,
+        "top": 492,
+        "bottom": 524,
+        "width": 215.171875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 390,
+      "height": 844,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 844,
+        "width": 390,
+        "height": 844
+      },
+      "copy": {
+        "left": 20,
+        "right": 370,
+        "top": 104,
+        "bottom": 364.96875,
+        "width": 350,
+        "height": 260.96875
+      },
+      "visual": {
+        "left": 39,
+        "right": 351,
+        "top": 540,
+        "bottom": 824,
+        "width": 312,
+        "height": 284
+      },
+      "controls": {
+        "left": 20,
+        "right": 236.875,
+        "top": 492,
+        "bottom": 524,
+        "width": 216.875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "index.html",
+      "width": 390,
+      "height": 844,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 844,
+        "width": 390,
+        "height": 844
+      },
+      "copy": {
+        "left": 20,
+        "right": 370,
+        "top": 104,
+        "bottom": 364.96875,
+        "width": 350,
+        "height": 260.96875
+      },
+      "visual": {
+        "left": 39,
+        "right": 351,
+        "top": 540,
+        "bottom": 824,
+        "width": 312,
+        "height": 284
+      },
+      "controls": {
+        "left": 20,
+        "right": 237.21875,
+        "top": 492,
+        "bottom": 524,
+        "width": 217.21875,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1920,
+      "height": 1080,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "copy": {
+        "left": 332.5,
+        "right": 1056.390625,
+        "top": 156,
+        "bottom": 681.90625,
+        "width": 723.890625,
+        "height": 525.90625
+      },
+      "visual": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "controls": {
+        "left": 332.5,
+        "right": 604.21875,
+        "top": 1024,
+        "bottom": 1056,
+        "width": 271.71875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1920,
+      "height": 1080,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "copy": {
+        "left": 332.5,
+        "right": 1056.390625,
+        "top": 156,
+        "bottom": 648.078125,
+        "width": 723.890625,
+        "height": 492.078125
+      },
+      "visual": {
+        "left": 876.3125,
+        "right": 1809.75,
+        "top": 128,
+        "bottom": 1056,
+        "width": 933.4375,
+        "height": 928
+      },
+      "controls": {
+        "left": 332.5,
+        "right": 605.921875,
+        "top": 1024,
+        "bottom": 1056,
+        "width": 273.421875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1920,
+      "height": 1080,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1905,
+        "top": 0,
+        "bottom": 1080,
+        "width": 1905,
+        "height": 1080
+      },
+      "copy": {
+        "left": 332.5,
+        "right": 1056.390625,
+        "top": 156,
+        "bottom": 529.296875,
+        "width": 723.890625,
+        "height": 373.296875
+      },
+      "visual": {
+        "left": 876.3125,
+        "right": 1809.75,
+        "top": 128,
+        "bottom": 1056,
+        "width": 933.4375,
+        "height": 928
+      },
+      "controls": {
+        "left": 332.5,
+        "right": 606.265625,
+        "top": 1024,
+        "bottom": 1056,
+        "width": 273.765625,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1440,
+      "height": 900,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "copy": {
+        "left": 92.5,
+        "right": 634,
+        "top": 156,
+        "bottom": 670.140625,
+        "width": 541.5,
+        "height": 514.140625
+      },
+      "visual": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "controls": {
+        "left": 92.5,
+        "right": 364.21875,
+        "top": 844,
+        "bottom": 876,
+        "width": 271.71875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1440,
+      "height": 900,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "copy": {
+        "left": 92.5,
+        "right": 634,
+        "top": 156,
+        "bottom": 648.078125,
+        "width": 541.5,
+        "height": 492.078125
+      },
+      "visual": {
+        "left": 655.5,
+        "right": 1353.75,
+        "top": 128,
+        "bottom": 876,
+        "width": 698.25,
+        "height": 748
+      },
+      "controls": {
+        "left": 92.5,
+        "right": 365.921875,
+        "top": 844,
+        "bottom": 876,
+        "width": 273.421875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1440,
+      "height": 900,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "bottom": 900,
+        "width": 1425,
+        "height": 900
+      },
+      "copy": {
+        "left": 92.5,
+        "right": 634,
+        "top": 156,
+        "bottom": 529.296875,
+        "width": 541.5,
+        "height": 373.296875
+      },
+      "visual": {
+        "left": 655.5,
+        "right": 1353.75,
+        "top": 128,
+        "bottom": 876,
+        "width": 698.25,
+        "height": 748
+      },
+      "controls": {
+        "left": 92.5,
+        "right": 366.265625,
+        "top": 844,
+        "bottom": 876,
+        "width": 273.765625,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1280,
+      "height": 800,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "copy": {
+        "left": 48,
+        "right": 528.6875,
+        "top": 156,
+        "bottom": 638.828125,
+        "width": 480.6875,
+        "height": 482.828125
+      },
+      "visual": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "controls": {
+        "left": 48,
+        "right": 319.71875,
+        "top": 744,
+        "bottom": 776,
+        "width": 271.71875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1280,
+      "height": 800,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "copy": {
+        "left": 48,
+        "right": 528.6875,
+        "top": 156,
+        "bottom": 631.640625,
+        "width": 480.6875,
+        "height": 475.640625
+      },
+      "visual": {
+        "left": 581.90625,
+        "right": 1201.75,
+        "top": 128,
+        "bottom": 776,
+        "width": 619.84375,
+        "height": 648
+      },
+      "controls": {
+        "left": 48,
+        "right": 321.421875,
+        "top": 744,
+        "bottom": 776,
+        "width": 273.421875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1280,
+      "height": 800,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1265,
+        "top": 0,
+        "bottom": 800,
+        "width": 1265,
+        "height": 800
+      },
+      "copy": {
+        "left": 48,
+        "right": 528.6875,
+        "top": 156,
+        "bottom": 521.078125,
+        "width": 480.6875,
+        "height": 365.078125
+      },
+      "visual": {
+        "left": 581.90625,
+        "right": 1201.75,
+        "top": 128,
+        "bottom": 776,
+        "width": 619.84375,
+        "height": 648
+      },
+      "controls": {
+        "left": 48,
+        "right": 321.765625,
+        "top": 744,
+        "bottom": 776,
+        "width": 273.765625,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1024,
+      "height": 768,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "copy": {
+        "left": 48,
+        "right": 431.40625,
+        "top": 136,
+        "bottom": 588.5,
+        "width": 383.40625,
+        "height": 452.5
+      },
+      "visual": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "controls": {
+        "left": 48,
+        "right": 319.71875,
+        "top": 712,
+        "bottom": 744,
+        "width": 271.71875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1024,
+      "height": 768,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "copy": {
+        "left": 48,
+        "right": 431.40625,
+        "top": 136,
+        "bottom": 507.921875,
+        "width": 383.40625,
+        "height": 371.921875
+      },
+      "visual": {
+        "left": 464.15625,
+        "right": 958.5625,
+        "top": 128,
+        "bottom": 744,
+        "width": 494.40625,
+        "height": 616
+      },
+      "controls": {
+        "left": 48,
+        "right": 321.421875,
+        "top": 712,
+        "bottom": 744,
+        "width": 273.421875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 1024,
+      "height": 768,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "bottom": 768,
+        "width": 1009,
+        "height": 768
+      },
+      "copy": {
+        "left": 48,
+        "right": 431.40625,
+        "top": 136,
+        "bottom": 463.703125,
+        "width": 383.40625,
+        "height": 327.703125
+      },
+      "visual": {
+        "left": 464.15625,
+        "right": 958.5625,
+        "top": 128,
+        "bottom": 744,
+        "width": 494.40625,
+        "height": 616
+      },
+      "controls": {
+        "left": 48,
+        "right": 321.765625,
+        "top": 712,
+        "bottom": 744,
+        "width": 273.765625,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 768,
+      "height": 1024,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 768,
+        "top": 0,
+        "bottom": 1024,
+        "width": 768,
+        "height": 1024
+      },
+      "copy": {
+        "left": 24,
+        "right": 744,
+        "top": 112,
+        "bottom": 514.390625,
+        "width": 720,
+        "height": 402.390625
+      },
+      "visual": {
+        "left": 0,
+        "right": 768,
+        "top": 579,
+        "bottom": 1024,
+        "width": 768,
+        "height": 445
+      },
+      "controls": {
+        "left": 24,
+        "right": 289.71875,
+        "top": 531,
+        "bottom": 563,
+        "width": 265.71875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 768,
+      "height": 1024,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 768,
+        "top": 0,
+        "bottom": 1024,
+        "width": 768,
+        "height": 1024
+      },
+      "copy": {
+        "left": 24,
+        "right": 744,
+        "top": 112,
+        "bottom": 466.828125,
+        "width": 720,
+        "height": 354.828125
+      },
+      "visual": {
+        "left": 76.8125,
+        "right": 691.203125,
+        "top": 579,
+        "bottom": 1004,
+        "width": 614.390625,
+        "height": 425
+      },
+      "controls": {
+        "left": 24,
+        "right": 291.421875,
+        "top": 531,
+        "bottom": 563,
+        "width": 267.421875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 768,
+      "height": 1024,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 768,
+        "top": 0,
+        "bottom": 1024,
+        "width": 768,
+        "height": 1024
+      },
+      "copy": {
+        "left": 24,
+        "right": 744,
+        "top": 112,
+        "bottom": 423.640625,
+        "width": 720,
+        "height": 311.640625
+      },
+      "visual": {
+        "left": 76.8125,
+        "right": 691.203125,
+        "top": 579,
+        "bottom": 1004,
+        "width": 614.390625,
+        "height": 425
+      },
+      "controls": {
+        "left": 24,
+        "right": 291.765625,
+        "top": 531,
+        "bottom": 563,
+        "width": 267.765625,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 390,
+      "height": 844,
+      "slide": 1,
+      "hero": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 844,
+        "width": 390,
+        "height": 844
+      },
+      "copy": {
+        "left": 20,
+        "right": 370,
+        "top": 104,
+        "bottom": 475.9375,
+        "width": 350,
+        "height": 371.9375
+      },
+      "visual": {
+        "left": 0,
+        "right": 390,
+        "top": 540,
+        "bottom": 844,
+        "width": 390,
+        "height": 304
+      },
+      "controls": {
+        "left": 20,
+        "right": 236.71875,
+        "top": 492,
+        "bottom": 524,
+        "width": 216.71875,
+        "height": 32
+      },
+      "count": "01",
+      "objectFit": "cover",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 390,
+      "height": 844,
+      "slide": 2,
+      "hero": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 844,
+        "width": 390,
+        "height": 844
+      },
+      "copy": {
+        "left": 20,
+        "right": 370,
+        "top": 104,
+        "bottom": 402.765625,
+        "width": 350,
+        "height": 298.765625
+      },
+      "visual": {
+        "left": 39,
+        "right": 351,
+        "top": 540,
+        "bottom": 824,
+        "width": 312,
+        "height": 284
+      },
+      "controls": {
+        "left": 20,
+        "right": 238.421875,
+        "top": 492,
+        "bottom": 524,
+        "width": 218.421875,
+        "height": 32
+      },
+      "count": "02",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "file": "en/index.html",
+      "width": 390,
+      "height": 844,
+      "slide": 3,
+      "hero": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 844,
+        "width": 390,
+        "height": 844
+      },
+      "copy": {
+        "left": 20,
+        "right": 370,
+        "top": 104,
+        "bottom": 364.96875,
+        "width": 350,
+        "height": 260.96875
+      },
+      "visual": {
+        "left": 39,
+        "right": 351,
+        "top": 540,
+        "bottom": 824,
+        "width": 312,
+        "height": 284
+      },
+      "controls": {
+        "left": 20,
+        "right": 238.765625,
+        "top": 492,
+        "bottom": 524,
+        "width": 218.765625,
+        "height": 32
+      },
+      "count": "03",
+      "objectFit": "contain",
+      "controlBackground": "rgba(0, 0, 0, 0)"
+    }
+  ],
+  "lightboxes": [
+    {
+      "file": "company.html",
+      "width": 390,
+      "total": 20,
+      "passed": 20
+    },
+    {
+      "file": "company.html",
+      "width": 1440,
+      "total": 20,
+      "passed": 20
+    },
+    {
+      "file": "en/company.html",
+      "width": 390,
+      "total": 20,
+      "passed": 20
+    },
+    {
+      "file": "en/company.html",
+      "width": 1440,
+      "total": 20,
+      "passed": 20
+    }
+  ],
+  "interactions": [
+    {
+      "productFocus": {
+        "visible": true,
+        "outline": "2px",
+        "nested": false
+      }
+    },
+    {
+      "hover": "matrix(1.03, 0, 0, 1.03, 0, 0)"
+    },
+    {
+      "selected": {
+        "background": "rgb(6, 23, 19)",
+        "color": "rgb(255, 255, 255)",
+        "inputBackground": "rgb(245, 247, 242)",
+        "inputOutline": "2px"
+      }
+    }
+  ],
+  "failures": []
+}

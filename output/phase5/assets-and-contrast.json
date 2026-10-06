@@ -1,0 +1,26 @@
+{
+  "assets": [
+    {
+      "name": "alljet-cutout-front",
+      "alphaIdentical": true,
+      "alpha1to59Percent": 1.8424,
+      "originalBytes": 1115875,
+      "webpBytes": 168688
+    },
+    {
+      "name": "invera-cutout-banner",
+      "alphaIdentical": true,
+      "alpha1to59Percent": 0.9926,
+      "originalBytes": 1412506,
+      "webpBytes": 162750
+    }
+  ],
+  "contrast": {
+    "061713 on f5f7f2": 17.08,
+    "061713 on ffffff": 18.43,
+    "009b82 on f5f7f2": 3.24,
+    "009b82 on ffffff": 3.49,
+    "007d6c on f5f7f2": 4.69,
+    "007d6c on ffffff": 5.06
+  }
+}

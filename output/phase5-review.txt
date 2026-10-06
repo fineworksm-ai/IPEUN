@@ -1,0 +1,85 @@
+IPEUN 5차 디자인 정리 — 검증 보고 (2026-10-06)
+
+기준: eeba473 WIP: homepage sky surfaces draft
+초안 커밋 3개 파일(index.html, en/index.html, styles.css)을 먼저 보존한 뒤 작업.
+푸시하지 않음. tmp/ 및 기존 미추적 .openai/는 커밋에서 제외.
+
+검증 결과
+- 한·영 22개 페이지 × 390×844 / 1440×900 = 44개 검사 통과.
+- 깨진 이미지 0, 콘솔 오류 0, 가로 스크롤 0.
+- 첫 화면 한·영 × 6개 크기 × 3슬라이드 = 36개 검사 통과.
+- 회사소개 한·영 × 2개 크기 × 20개 문서 = 라이트박스 80회 통과.
+- 제목 끝 마침표 0. 메인 text-link 각 3개. home-explore 0.
+- 하늘색 값·home-sky 변수·그라데이션 배경 0.
+- 실제 카드 테두리 0px, 그림자 none, 공통 반경 18px.
+- 섹션·카드·푸터 배경: white / paper / ink만 확인.
+- 키보드 포커스: 브랜드 초록 2px. 제품 호버: scale(1.03).
+- 문의 옵션 선택: ink 배경 / white 글씨. 입력칸: paper / 초록 2px 링.
+- 브랜드 사진 영역은 화면 바닥까지, 제품은 화면 바닥에서 20~24px 여백.
+- 모바일의 텍스트와 컨트롤은 이미지 영역 위에 배치. 모든 슬라이드의 이미지 시작점은 가장 긴 문구 기준으로 공유.
+
+이미지 및 대비
+- 제품 PNG 합계 2,528,381 bytes → WebP 331,438 bytes.
+- 두 WebP 모두 원본 PNG와 알파 채널이 픽셀 단위로 동일.
+- 알파 1~59 비율: All-Jet 1.8424%, INVERA 0.9926%.
+- paper 위 ink 17.08:1, 큰 초록 3.24:1, 작은 초록 4.69:1.
+- 배경 그라데이션은 사용하지 않음. 기존 제품 페이지 모델의 마스크와 인증 인장 그래픽은 유지.
+
+항목별 변경 파일 / 커밋 / 전후 캡처
+
+[2] 커밋: 32b99a5
+파일: alljet.html, company.html, en/alljet.html, en/company.html, en/events.html, en/index.html, en/invera.html, en/media.html, en/publications.html, en/technology.html, events.html, index.html, invera.html, media.html, publications.html, technology.html
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+[4] 커밋: bfd1e4d
+파일: styles.css
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+[5] 커밋: 0ccc320, 5d86042
+파일: styles.css
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+[6] 커밋: d7bae22
+파일: alljet.html, en/alljet.html, en/index.html, en/invera.html, en/technology.html, index.html, invera.html, styles.css, technology.html
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+[7] 커밋: 0c66999, 3f77928
+파일: en/index.html, index.html, script.js, styles.css
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+첫 화면 전: output/phase5/before/home-index-{1440,390}-slide-{1,2,3}.png
+첫 화면 후: output/phase5/after/hero-{ko,en}-{width}x{height}-slide-{1,2,3}.png
+크기: 1920×1080 / 1440×900 / 1280×800 / 1024×768 / 768×1024 / 390×844
+
+[10] 커밋: ffa857f
+파일: assets/media/alljet-cutout-front.webp, assets/media/invera-cutout-banner.webp, en/index.html, index.html, styles.css
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+[12] 커밋: f8d9e2b
+파일: en/index.html, index.html, styles.css
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+[13] 커밋: f33bb55
+파일: styles.css
+전: output/phase5/before/home-index-1440.png / home-index-390.png
+후: output/phase5/after/home-index-1440-full.png / home-index-390-full.png
+
+추가 캡처 및 자동 검사
+- 영문 전체 화면: output/phase5/after/home-en-index-{1440,390}-full.png
+- 전체 44개 페이지 확인 캡처: tmp/phase5-checks/ (미커밋)
+- 원시 검사 결과: output/phase5/results.json
+- 이미지·대비 결과: output/phase5/assets-and-contrast.json
+- 재실행: node tools/verify-phase5.mjs (localhost:3000 필요)
+- 4차 정적·라이트박스 회귀 확인: node tools/verify-phase4.mjs 통과
+
+유지한 항목
+- 기존 본문 문구, 영문 라벨, 제목 굵기·자간, 신뢰 띠 구조, No Needle 원 3개, 푸터 구조.
+- 기존 모델 이미지 파일 및 4차 인증·특허·수상 자료.
+- 기존 TODO 주석은 삭제하거나 새 내용으로 확정하지 않음.
+- product.html / en/product.html은 기존 All-Jet 리다이렉트 유지. 검사에는 해당 리다이렉트 도착 화면 포함.
