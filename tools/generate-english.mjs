@@ -8,7 +8,7 @@ const page = process.argv[2];
 const language = process.argv[3] || 'en';
 if (!['index.html', 'company.html', 'technology.html', 'alljet.html', 'invera.html',
       'contact.html', 'privacy.html', 'product.html', 'events.html', 'media.html',
-      'publications.html', 'image-review.html'].includes(page) || !['ko', 'en'].includes(language)) {
+      'publications.html'].includes(page) || !['ko', 'en'].includes(language)) {
   throw new Error('Provide a supported page and ko or en.');
 }
 const translations = JSON.parse(readFileSync(path.join(root, 'translations/en.json'), 'utf8'));

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pages = new Set(['index.html', 'company.html', 'technology.html', 'alljet.html',
   'invera.html', 'contact.html', 'privacy.html', 'product.html', 'events.html',
-  'media.html', 'publications.html', 'image-review.html']);
+  'media.html', 'publications.html']);
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml',
