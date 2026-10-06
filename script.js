@@ -180,7 +180,7 @@ if (inquiryForm) {
   const preview = inquiryForm.querySelector('[data-inquiry-preview]');
   const status = inquiryForm.querySelector('[data-inquiry-status]');
   const mailLink = inquiryForm.querySelector('[data-inquiry-mail]');
-  const textFields = ['name','message'].map(name => inquiryForm.elements.namedItem(name));
+  const textFields = ['organization','name','message'].map(name => inquiryForm.elements.namedItem(name));
   const selectedPurposes = () => purposes.filter(input => input.checked).map(input => labels.purposes[input.value]);
   const updateDraft = () => {
     const data = new FormData(inquiryForm);
