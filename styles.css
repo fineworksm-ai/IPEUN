@@ -722,7 +722,7 @@ body.lightbox-open { overflow:hidden; }
 .home-page .trust-grid p { font-size:14px; color:var(--home-muted); margin-top:10px; }
 .home-page .release-note { margin-top:32px; justify-content:flex-start; }
 .home-page .release-note span { font-size:13px; padding:0; border:0; border-radius:0; color:var(--home-muted); }
-.home-page .activity-card { border:0; border-radius:0; box-shadow:none; overflow:visible; }
+.home-page .activity-card { border:0; border-radius:var(--card-radius); box-shadow:none; overflow:hidden; }
 .home-page .activity-cover { border-radius:16px; }
 .home-page .activity-cover img { aspect-ratio:1.45; }
 .home-page .activity-copy { padding:24px 0 0; }
