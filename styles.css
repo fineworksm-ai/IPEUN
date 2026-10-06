@@ -933,3 +933,23 @@ body { line-height:1.5; }
   .home-page .hero-controls { left:20px; top:calc(var(--hero-visual-top) - 40px); bottom:auto; gap:10px; }
   .home-page .home-about { padding:64px 0; }
 }
+
+/* Align adjacent body copy with the first title line, below its eyebrow. */
+:root { --adjacent-copy-offset:28px; }
+.home-page { --adjacent-copy-offset:31px; }
+@media(min-width:901px) {
+  .section-head { align-items:flex-start; }
+  .section-head > .text-link { align-self:flex-end; }
+  .section-head:has(> div > .eyebrow) > p:not(.eyebrow) { margin-top:var(--adjacent-copy-offset); }
+  .split-copy { align-items:start; }
+  .split-copy:has(> div > .eyebrow) > .reading-copy { padding-top:var(--adjacent-copy-offset); margin-top:0; }
+  .home-page .home-about-copy { padding-top:var(--adjacent-copy-offset); }
+  #about.company-intro .reading-copy { padding-top:var(--adjacent-copy-offset); }
+  .contact-grid { align-items:start; }
+  .contact-grid > .contact-list { padding-top:var(--adjacent-copy-offset); }
+}
+@media(max-width:900px) {
+  .section-head > p:not(.eyebrow) { margin-top:0; }
+  .split-copy > .reading-copy,.home-page .home-about-copy,
+  #about.company-intro .reading-copy,.contact-grid > .contact-list { padding-top:0; margin-top:0; }
+}

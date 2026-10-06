@@ -1,0 +1,538 @@
+[
+  {
+    "file": "index.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "하나의 기술,두 가지 피부케어의 가능성",
+        "titleTop": 1965.78125,
+        "bodyTop": 1965.78125,
+        "titleBottom": 2094.34375,
+        "delta": 0
+      },
+      {
+        "title": "의료와 미용을 잇는새로운 피부케어의 가능성",
+        "titleTop": 821,
+        "bodyTop": 821,
+        "titleBottom": 949.5625,
+        "delta": 0
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 4766.09375,
+        "bodyTop": 4766.09375,
+        "titleBottom": 4894.65625,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "index.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "하나의 기술,두 가지 피부케어의 가능성",
+        "titleTop": 2582.96875,
+        "bodyTop": 2687.28125,
+        "titleBottom": 2667.28125,
+        "delta": 104.3125
+      },
+      {
+        "title": "의료와 미용을 잇는새로운 피부케어의 가능성",
+        "titleTop": 832,
+        "bodyTop": 940.3125,
+        "titleBottom": 916.3125,
+        "delta": 108.3125
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 7415.65625,
+        "bodyTop": 7623.96875,
+        "titleBottom": 7499.96875,
+        "delta": 208.3125
+      }
+    ]
+  },
+  {
+    "file": "company.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "특허 출원 4건",
+        "titleTop": 5711.046875,
+        "bodyTop": 5711.046875,
+        "titleBottom": 5770.4375,
+        "delta": 0
+      },
+      {
+        "title": "바늘 없는 기술로,새로운 가능성을 만듭니다",
+        "titleTop": 192,
+        "bodyTop": 192,
+        "titleBottom": 490.078125,
+        "delta": 0
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 7630.125,
+        "bodyTop": 7630.125,
+        "titleBottom": 7748.90625,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "company.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "특허 출원 4건",
+        "titleTop": 8118.0625,
+        "bodyTop": 8178.0625,
+        "titleBottom": 8158.0625,
+        "delta": 60
+      },
+      {
+        "title": "바늘 없는 기술로,새로운 가능성을 만듭니다",
+        "titleTop": 140,
+        "bodyTop": 375,
+        "titleBottom": 278,
+        "delta": 235
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 10685.953125,
+        "bodyTop": 10901.953125,
+        "titleBottom": 10765.953125,
+        "delta": 216
+      }
+    ]
+  },
+  {
+    "file": "product.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "하나의 기술,두 가지 피부케어의 가능성",
+        "titleTop": 171,
+        "bodyTop": 171,
+        "titleBottom": 299.5625,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "product.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "하나의 기술,두 가지 피부케어의 가능성",
+        "titleTop": 152,
+        "bodyTop": 256.3125,
+        "titleBottom": 236.3125,
+        "delta": 104.3125
+      }
+    ]
+  },
+  {
+    "file": "technology.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "정밀함과 사용 경험을함께 고려한 설계",
+        "titleTop": 659.71875,
+        "bodyTop": 659.71875,
+        "titleBottom": 778.5,
+        "delta": 0
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 3628.625,
+        "bodyTop": 3628.625,
+        "titleBottom": 3747.40625,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "technology.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "정밀함과 사용 경험을함께 고려한 설계",
+        "titleTop": 417.5,
+        "bodyTop": 527.5,
+        "titleBottom": 497.5,
+        "delta": 110
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 4480.15625,
+        "bodyTop": 4696.15625,
+        "titleBottom": 4560.15625,
+        "delta": 216
+      }
+    ]
+  },
+  {
+    "file": "alljet.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "All-Jet 주요 사양",
+        "titleTop": 6388.28125,
+        "bodyTop": 6388.28125,
+        "titleBottom": 6447.671875,
+        "delta": 0
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 7343.171875,
+        "bodyTop": 7343.171875,
+        "titleBottom": 7461.953125,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "alljet.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "All-Jet 주요 사양",
+        "titleTop": 8061.46875,
+        "bodyTop": 8121.46875,
+        "titleBottom": 8101.46875,
+        "delta": 60
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 9175.46875,
+        "bodyTop": 9391.46875,
+        "titleBottom": 9255.46875,
+        "delta": 216
+      }
+    ]
+  },
+  {
+    "file": "invera.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "INVERA의 핵심 기술",
+        "titleTop": 1676.890625,
+        "bodyTop": 1676.890625,
+        "titleBottom": 1736.28125,
+        "delta": 0
+      },
+      {
+        "title": "분리형 카트리지",
+        "titleTop": 3893.734375,
+        "bodyTop": 3893.734375,
+        "titleBottom": 3953.125,
+        "delta": 0
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 4694.421875,
+        "bodyTop": 4694.421875,
+        "titleBottom": 4813.203125,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "invera.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "INVERA의 핵심 기술",
+        "titleTop": 2107.640625,
+        "bodyTop": 2167.640625,
+        "titleBottom": 2147.640625,
+        "delta": 60
+      },
+      {
+        "title": "분리형 카트리지",
+        "titleTop": 4336.3125,
+        "bodyTop": 4396.3125,
+        "titleBottom": 4376.3125,
+        "delta": 60
+      },
+      {
+        "title": "이픈의 기술과 제품을더 자세히 알아보세요",
+        "titleTop": 5480.5,
+        "bodyTop": 5696.5,
+        "titleBottom": 5560.5,
+        "delta": 216
+      }
+    ]
+  },
+  {
+    "file": "en/index.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "One technology,two possibilities for skin care",
+        "titleTop": 2061.90625,
+        "bodyTop": 2061.90625,
+        "titleBottom": 2190.46875,
+        "delta": 0
+      },
+      {
+        "title": "Connecting medical and aesthetic carethrough new skin care possibiliti",
+        "titleTop": 821,
+        "bodyTop": 821,
+        "titleBottom": 1078.125,
+        "delta": 0
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 4889.21875,
+        "bodyTop": 4889.21875,
+        "titleBottom": 5082.0625,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "en/index.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "One technology,two possibilities for skin care",
+        "titleTop": 2785.9375,
+        "bodyTop": 2932.40625,
+        "titleBottom": 2912.40625,
+        "delta": 146.46875
+      },
+      {
+        "title": "Connecting medical and aesthetic carethrough new skin care possibiliti",
+        "titleTop": 832,
+        "bodyTop": 1024.625,
+        "titleBottom": 1000.625,
+        "delta": 192.625
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 7848.28125,
+        "bodyTop": 8098.75,
+        "titleBottom": 7974.75,
+        "delta": 250.46875
+      }
+    ]
+  },
+  {
+    "file": "en/company.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "4 patent applications",
+        "titleTop": 5823.96875,
+        "bodyTop": 5823.96875,
+        "titleBottom": 5883.359375,
+        "delta": 0
+      },
+      {
+        "title": "Needle-free technology,new possibilities",
+        "titleTop": 192,
+        "bodyTop": 192,
+        "titleBottom": 490.078125,
+        "delta": 0
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 7794.046875,
+        "bodyTop": 7794.046875,
+        "titleBottom": 7912.828125,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "en/company.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "4 patent applications",
+        "titleTop": 9601.0625,
+        "bodyTop": 9661.0625,
+        "titleBottom": 9641.0625,
+        "delta": 60
+      },
+      {
+        "title": "Needle-free technology,new possibilities",
+        "titleTop": 140,
+        "bodyTop": 400.5,
+        "titleBottom": 278,
+        "delta": 260.5
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 12443.453125,
+        "bodyTop": 12699.453125,
+        "titleBottom": 12563.453125,
+        "delta": 256
+      }
+    ]
+  },
+  {
+    "file": "en/product.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "One technology,two possibilities for skin care",
+        "titleTop": 171,
+        "bodyTop": 171,
+        "titleBottom": 299.5625,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "en/product.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "One technology,two possibilities for skin care",
+        "titleTop": 152,
+        "bodyTop": 298.46875,
+        "titleBottom": 278.46875,
+        "delta": 146.46875
+      }
+    ]
+  },
+  {
+    "file": "en/technology.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "Precision and user experience,designed together",
+        "titleTop": 659.71875,
+        "bodyTop": 659.71875,
+        "titleBottom": 837.890625,
+        "delta": 0
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 3713.515625,
+        "bodyTop": 3713.515625,
+        "titleBottom": 3832.296875,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "en/technology.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "Precision and user experience,designed together",
+        "titleTop": 463.5,
+        "bodyTop": 613.5,
+        "titleBottom": 583.5,
+        "delta": 150
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 4784.65625,
+        "bodyTop": 5040.65625,
+        "titleBottom": 4904.65625,
+        "delta": 256
+      }
+    ]
+  },
+  {
+    "file": "en/alljet.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "All-Jet specifications",
+        "titleTop": 6477.078125,
+        "bodyTop": 6477.078125,
+        "titleBottom": 6536.46875,
+        "delta": 0
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 7449.078125,
+        "bodyTop": 7449.078125,
+        "titleBottom": 7567.859375,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "en/alljet.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "All-Jet specifications",
+        "titleTop": 8434.265625,
+        "bodyTop": 8494.265625,
+        "titleBottom": 8474.265625,
+        "delta": 60
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 9599.265625,
+        "bodyTop": 9855.265625,
+        "titleBottom": 9719.265625,
+        "delta": 256
+      }
+    ]
+  },
+  {
+    "file": "en/invera.html",
+    "width": 1440,
+    "rows": [
+      {
+        "title": "INVERA’s core technology",
+        "titleTop": 1676.890625,
+        "bodyTop": 1676.890625,
+        "titleBottom": 1736.28125,
+        "delta": 0
+      },
+      {
+        "title": "Detachable cartridge",
+        "titleTop": 3893.734375,
+        "bodyTop": 3893.734375,
+        "titleBottom": 3953.125,
+        "delta": 0
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 4694.421875,
+        "bodyTop": 4694.421875,
+        "titleBottom": 4813.203125,
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "file": "en/invera.html",
+    "width": 390,
+    "rows": [
+      {
+        "title": "INVERA’s core technology",
+        "titleTop": 2147.640625,
+        "bodyTop": 2247.640625,
+        "titleBottom": 2227.640625,
+        "delta": 100
+      },
+      {
+        "title": "Detachable cartridge",
+        "titleTop": 4467.3125,
+        "bodyTop": 4527.3125,
+        "titleBottom": 4507.3125,
+        "delta": 60
+      },
+      {
+        "title": "Discover more aboutIPEUN’s technology and products",
+        "titleTop": 5637,
+        "bodyTop": 5893,
+        "titleBottom": 5757,
+        "delta": 256
+      }
+    ]
+  }
+]
