@@ -970,3 +970,11 @@ body { line-height:1.5; }
 .purpose-option,.inquiry-draft,.empty-state { background:var(--white); }
 .purpose-option:hover { background:var(--white); }
 .purpose-option:has(input:checked) { background:var(--ink); }
+
+/* Restore the homepage palette before the site-wide background revisions. */
+.home-page:not(.product-list-page) { --paper:#f5f7f2; }
+.home-page:not(.product-list-page) .section .card,
+.home-page:not(.product-list-page) .home-news .card,
+.home-page:not(.product-list-page) .home-products .product-card { background:var(--paper); }
+.home-page:not(.product-list-page) .section-paper .card,
+.home-page:not(.product-list-page) .home-technology .card { background:var(--white); }
