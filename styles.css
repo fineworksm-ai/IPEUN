@@ -984,3 +984,18 @@ body { line-height:1.5; }
 .site-footer,.home-page .site-footer { background:var(--white); color:var(--ink); border-top:1px solid var(--line); }
 .footer-info,.home-page .footer-info { color:var(--muted); opacity:1; }
 .footer-brand { background:none; padding:0; border-radius:0; }
+
+/* Use whitespace and soft elevation instead of decorative dividers. */
+.site-header,.nav-submenu,.page-tabs,.contact-band,.site-footer,
+.home-page .site-footer,.technical-row + .technical-row,
+.timeline-year + .timeline-year,.timeline-year ol,.gallery-item figcaption,
+.specification-table,.specification-table > div,.inquiry-details,
+.event-story + .event-story,.text-link { border:0; }
+.card,.home-page .tech-card,.home-page .activity-card,
+.home-page .home-products .product-card,
+.home-page:not(.product-list-page) .section .card,
+.technical-visual,.purpose-option,.inquiry-draft,.empty-state {
+  border:0; box-shadow:0 5px 24px rgba(6,23,19,.055);
+}
+.site-header.is-scrolled,.home-page .site-header.is-scrolled { box-shadow:0 3px 18px rgba(6,23,19,.045); }
+@media(min-width:901px) { .nav-submenu { box-shadow:0 10px 20px rgba(6,23,19,.045); } }
