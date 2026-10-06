@@ -1,0 +1,271 @@
+{
+  "validation": {
+    "pages": 22,
+    "errors": [],
+    "lightboxUnitCases": 40,
+    "fallbackUnitCases": 40,
+    "imageHttpChecks": 40,
+    "originalBytes": 17292720,
+    "thumbnailBytes": 1245056,
+    "largeBytes": 4748200,
+    "todos": [
+      {
+        "comment": "TODO: 도메인 확정 후 og:image, og:url 추가",
+        "locations": [
+          "index.html:13",
+          "en/index.html:13",
+          "company.html:13",
+          "en/company.html:13",
+          "technology.html:13",
+          "en/technology.html:13",
+          "alljet.html:13",
+          "en/alljet.html:13",
+          "invera.html:13",
+          "en/invera.html:13",
+          "contact.html:13",
+          "en/contact.html:13",
+          "privacy.html:13",
+          "en/privacy.html:13",
+          "product.html:14",
+          "en/product.html:14",
+          "events.html:13",
+          "en/events.html:13",
+          "media.html:13",
+          "en/media.html:13",
+          "publications.html:14",
+          "en/publications.html:14"
+        ]
+      },
+      {
+        "comment": "TODO: 논문자료 확보 시 활성화",
+        "locations": [
+          "index.html:31",
+          "en/index.html:31",
+          "company.html:31",
+          "en/company.html:31",
+          "technology.html:31",
+          "en/technology.html:31",
+          "alljet.html:31",
+          "en/alljet.html:31",
+          "invera.html:31",
+          "en/invera.html:31",
+          "contact.html:31",
+          "en/contact.html:31",
+          "privacy.html:31",
+          "en/privacy.html:31",
+          "events.html:31",
+          "en/events.html:31",
+          "media.html:31",
+          "en/media.html:31",
+          "publications.html:30",
+          "en/publications.html:30"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 인허가 전 'No Needle Pain/Infection' 표현 사용 가능 여부",
+        "locations": [
+          "index.html:59",
+          "en/index.html:59",
+          "invera.html:45",
+          "en/invera.html:45"
+        ]
+      },
+      {
+        "comment": "TODO: 고해상도 원본 필요",
+        "locations": [
+          "index.html:72",
+          "en/index.html:72",
+          "technology.html:41",
+          "en/technology.html:41",
+          "alljet.html:49",
+          "en/alljet.html:49"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 2026년 하반기 출시 예정 일정",
+        "locations": [
+          "index.html:74",
+          "en/index.html:74"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 대표 인사말",
+        "locations": [
+          "company.html:42",
+          "en/company.html:43"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): All-Jet 상표 출원번호",
+        "locations": [
+          "company.html:45",
+          "en/company.html:46"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 청년창업사관학교 정식 명칭",
+        "locations": [
+          "company.html:52",
+          "en/company.html:53"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 디지털이노베이션 대상 주관 기관명",
+        "locations": [
+          "company.html:57",
+          "en/company.html:58"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 특허(1) 출원일 증빙 2024.09.06, 연혁 2024.07",
+        "locations": [
+          "company.html:68",
+          "en/company.html:69"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): ISO 13485 인증서 이미지 필요",
+        "locations": [
+          "company.html:70",
+          "en/company.html:71"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): ISO 14001 인증서 이미지 필요",
+        "locations": [
+          "company.html:70",
+          "en/company.html:71"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 벤처기업 확인서 인증서 이미지 필요",
+        "locations": [
+          "company.html:71",
+          "en/company.html:72"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 디자인전문회사 신고확인증과 2025.10 디자인연구소 설립 제21059호가 같은 문서인지 확인",
+        "locations": [
+          "company.html:74",
+          "en/company.html:75"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): All-Jet 상표 출원번호 및 상표 자료 이미지 필요",
+        "locations": [
+          "company.html:88",
+          "en/company.html:89"
+        ]
+      },
+      {
+        "comment": "TODO(client confirmation): Verify official English spellings of the CEO name and program titles.",
+        "locations": [
+          "en/company.html:40"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 브로슈어 기준 사양과 최종 제품 사양 확인. 기존 사이트의 구형 모델 사양과 구분",
+        "locations": [
+          "alljet.html:65",
+          "en/alljet.html:65"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 모델 사진 웹 사용권",
+        "locations": [
+          "invera.html:41",
+          "en/invera.html:41"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): INVERA 주요 사양 자료 필요",
+        "locations": [
+          "invera.html:59",
+          "en/invera.html:59"
+        ]
+      },
+      {
+        "comment": "TODO(클라이언트 확인): 현재 메일 문의 방식과 기존 방침의 문의 양식·자동 수집·쿠키 항목 일치 여부",
+        "locations": [
+          "privacy.html:40",
+          "en/privacy.html:40"
+        ]
+      }
+    ]
+  },
+  "captures": [
+    {
+      "name": "ko-390",
+      "screenshot": true,
+      "qa": {
+        "language": "ko",
+        "layoutWidth": 390,
+        "browserViewport": 500,
+        "bodyScrollWidth": 390,
+        "height": 13505,
+        "errors": [],
+        "brokenImages": [],
+        "visibleOverflow": []
+      }
+    },
+    {
+      "name": "en-390",
+      "screenshot": true,
+      "qa": {
+        "language": "en",
+        "layoutWidth": 390,
+        "browserViewport": 500,
+        "bodyScrollWidth": 390,
+        "height": 15779,
+        "errors": [],
+        "brokenImages": [],
+        "visibleOverflow": [
+          {
+            "tag": "A",
+            "class": "",
+            "text": "Locations",
+            "insideTabs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "ko-1440",
+      "screenshot": true,
+      "qa": {
+        "language": "ko",
+        "layoutWidth": 1440,
+        "browserViewport": 1440,
+        "bodyScrollWidth": 1440,
+        "height": 9929,
+        "errors": [],
+        "brokenImages": [],
+        "visibleOverflow": []
+      }
+    },
+    {
+      "name": "en-1440",
+      "screenshot": true,
+      "qa": {
+        "language": "en",
+        "layoutWidth": 1440,
+        "browserViewport": 1440,
+        "bodyScrollWidth": 1440,
+        "height": 10322,
+        "errors": [],
+        "brokenImages": [],
+        "visibleOverflow": []
+      }
+    }
+  ],
+  "remainingBrowserChecks": [
+    "Actual browser clicks and Escape key",
+    "Console errors after interactions"
+  ],
+  "preservedUncommittedFiles": [
+    "index.html",
+    "en/index.html",
+    "styles.css"
+  ]
+}

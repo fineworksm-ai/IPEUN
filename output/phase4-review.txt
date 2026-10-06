@@ -1,0 +1,123 @@
+IPEUN 4차 작업 검증 보고서
+기준: b86d5e1 + 작업 시작 당시 미커밋 변경
+확인 주소: http://localhost:3000
+
+커밋 구분
+A: 80e2f57 — 공개 인증·특허·수상 자료 최적화 및 확대창
+B: 8fe68b8 — 내부 이미지 안내·검토 페이지 제외
+C: 083c0d4 — 논문자료 비활성화·noindex
+D: 이 보고서와 검증 도구·화면 캡처
+푸시·배포는 하지 않았다. 기존 메인 디자인의 미커밋 변경은 분리 보존했다.
+tmp/와 .openai/는 커밋 대상에 넣지 않았다.
+
+A 결과
+- 사업자등록증 참조 제거, 파일은 tmp/documents-original/bizreg.png에 보관.
+- 기존 인증·특허 16장 + 수상·언론 4장 = 공개 자료 20장.
+- 썸네일 가로 600px / 확대용 가로 최대 1600px의 WebP 각각 생성.
+- 큰 이미지가 원본보다 작았던 연구개발전담부서·내일채움 자료는 확대용 원본 크기를 유지.
+- 이미지 내용은 자르거나 수정하지 않았다. 원본 파일의 SHA-256 보존 검증 완료.
+- 원본 JPG/PNG는 tmp/documents-original/에 이동, 공개 폴더는 WebP 40개만 포함.
+- ISO 13485·14001, 벤처기업, All-Jet 상표는 기존 배지·요약 카드를 유지.
+- patent1·2: 출원사실증명원, 출원 표기 유지. patent3·4: 출원번호통지서, 기존 명칭·번호 유지.
+- 특허(1) 카드: 2024.09 출원. 연혁: 원문 2024.07 유지, 날짜 불일치 확인 주석 추가.
+- 구형 제품·효능·예전 단계 그림·동영상은 가져오지 않았다.
+- 확대 링크는 JavaScript 지원 시 dialog 확대창, 미지원 시 WebP 직접 열기.
+
+용량 비교 (10진 MB, 사업자등록증 제외한 동일 20장 기준 비교)
+기존 17장 원본(사업자등록증 포함): 9,383,588 bytes = 9.38 MB.
+사업자등록증 제외 기존 16장 원본: 8,390,937 bytes = 8.39 MB.
+추가 수상·언론 4장 원본: 8,901,783 bytes = 8.90 MB.
+공개 대상 20장 원본 합계: 17,292,720 bytes = 17.29 MB.
+WebP 썸네일 합계: 1,245,056 bytes = 1.25 MB.
+WebP 확대용 합계: 4,748,200 bytes = 4.75 MB.
+두 크기 합계: 5,993,256 bytes = 5.99 MB, 원본 대비 65.3% 감소.
+페이지 처음 읽을 때 확대용은 다운로드하지 않고, 확대 클릭 시 로드한다.
+
+추가 이미지 원본 주소
+https://www.i-peun.com/images/awards/innovation.jpg
+https://www.i-peun.com/images/awards/hankook1.jpg
+https://www.i-peun.com/images/awards/hankook2.jpg
+https://www.i-peun.com/images/awards/hankook3.jpg
+
+B·C 결과
+- 한·영 22개 페이지 source-note / image-review / 원본 교체 / 인쇄용.pdf / bizreg: 0건.
+- 기술·모델 자료 내부 안내 24개 제거. source-note 및 검토 전용 CSS 제거.
+- 푸터는 개인정보처리방침만 유지, 중복 푸터 링크 구조 정리.
+- 검토 페이지는 tmp/review/image-review.html, tmp/review/en/image-review.html로 이동.
+- 한국일보 기사 장비 차이 안내 문장 한·영 제거.
+- 논문자료는 링크·tabindex 없는 aria-disabled span, hover 반응·포커스 없음.
+- publications 파일은 유지하고 noindex 추가. 해당 페이지로 가는 href는 0건.
+- 메뉴 구조와 기술소개 진입 링크는 그 외 변경하지 않았다.
+
+D 자동 검증
+- 정적 HTML 22개: 링크·앵커·금지 문자열 오류 0건.
+- 공개 WebP 40개: HTTP 200, Content-Type, 용량, 실제 디코딩 정상.
+- /, /company.html, /en/company.html: HTTP 200.
+- 검토 페이지 2개, 공개 사업자등록증 경로, tmp 사업자등록증 경로: HTTP 404.
+- 실제 script.js 확대창 이벤트의 DOM 단위 검사: 40개 카드, 열기·이미지 교체·닫기·외부 클릭·포커스 복귀 통과.
+- dialog 미지원 환경의 직접 이미지 링크 보존: 40개 카드 통과.
+- 회사소개·논문자료 EN 생성 결과가 현재 EN 파일과 동일.
+- script.js, 생성 도구, 검증 도구 구문 및 git diff --check 통과.
+
+화면 캡처 및 렌더링 결과
+ko-390: 본문 폭 390px / scrollWidth 390px / 이미지 오류 0 / 사이트 error·console.error·unhandledrejection 0.
+en-390: 본문 폭 390px / scrollWidth 390px / 이미지 오류 0 / 사이트 error·console.error·unhandledrejection 0.
+ko-1440: 본문 폭 1440px / scrollWidth 1440px / 이미지 오류 0 / 사이트 error·console.error·unhandledrejection 0.
+en-1440: 본문 폭 1440px / scrollWidth 1440px / 이미지 오류 0 / 사이트 error·console.error·unhandledrejection 0.
+- 영문 390px의 Locations 탭은 내부 가로 스크롤 영역에 포함된다. 페이지 전체 가로 넘침은 없다.
+- 캡처: output/phase4-company-ko-390.png, output/phase4-company-ko-1440.png
+- 캡처: output/phase4-company-en-390.png, output/phase4-company-en-1440.png
+- 1440px: 격리된 실제 1440px 렌더링. 390px: Chrome CLI 최소 창 너비 500px 제약 때문에 본문·헤더를 390px로 고정하고 빈 오른쪽 부분만 제외한 정적 렌더 캡처.
+- production HTML/CSS에 캡처용 고정 너비나 오류 수집 코드를 넣지 않았다.
+
+검증 제한 및 작업 트리 확인 사항
+- 컴퓨터 사용 연결이 timeout이고 지원 브라우저가 표시되지 않아, 일반 브라우저에서 사용자 클릭·ESC·키보드 동작을 직접 확인하지 못했다.
+- 확대창 검사는 실제 script.js의 이벤트 코드를 DOM 단위 환경에서 실행한 결과이며, 브라우저 클릭 검증을 대체했다고 주장하지 않는다.
+- 렌더링 오류 검사는 페이지 초기 로드 기준. 사용자 인터랙션 이후 콘솔 오류 검증은 남아 있다.
+- 작업 트리에 별도로 존재하는 All-Jet 히어로의 '피부 속부터 차오르는 / Boost & Lift'는 EN 기존 문구와 다르고 번역 사전에 없다. 이번 A~D 커밋에는 이 기존 미커밋 문구·디자인을 포함하거나 덮어쓰지 않았다.
+
+남은 TODO 주석: 중복 제외 20종
+1. TODO: 도메인 확정 후 og:image, og:url 추가
+   위치: index.html:13, en/index.html:13, company.html:13, en/company.html:13, technology.html:13, en/technology.html:13, alljet.html:13, en/alljet.html:13, invera.html:13, en/invera.html:13, contact.html:13, en/contact.html:13, privacy.html:13, en/privacy.html:13, product.html:14, en/product.html:14, events.html:13, en/events.html:13, media.html:13, en/media.html:13, publications.html:14, en/publications.html:14
+2. TODO: 논문자료 확보 시 활성화
+   위치: index.html:31, en/index.html:31, company.html:31, en/company.html:31, technology.html:31, en/technology.html:31, alljet.html:31, en/alljet.html:31, invera.html:31, en/invera.html:31, contact.html:31, en/contact.html:31, privacy.html:31, en/privacy.html:31, events.html:31, en/events.html:31, media.html:31, en/media.html:31, publications.html:30, en/publications.html:30
+3. TODO(클라이언트 확인): 인허가 전 'No Needle Pain/Infection' 표현 사용 가능 여부
+   위치: index.html:59, en/index.html:59, invera.html:45, en/invera.html:45
+4. TODO: 고해상도 원본 필요
+   위치: index.html:72, en/index.html:72, technology.html:41, en/technology.html:41, alljet.html:49, en/alljet.html:49
+5. TODO(클라이언트 확인): 2026년 하반기 출시 예정 일정
+   위치: index.html:74, en/index.html:74
+6. TODO(클라이언트 확인): 대표 인사말
+   위치: company.html:42, en/company.html:43
+7. TODO(클라이언트 확인): All-Jet 상표 출원번호
+   위치: company.html:45, en/company.html:46
+8. TODO(클라이언트 확인): 청년창업사관학교 정식 명칭
+   위치: company.html:52, en/company.html:53
+9. TODO(클라이언트 확인): 디지털이노베이션 대상 주관 기관명
+   위치: company.html:57, en/company.html:58
+10. TODO(클라이언트 확인): 특허(1) 출원일 증빙 2024.09.06, 연혁 2024.07
+   위치: company.html:68, en/company.html:69
+11. TODO(클라이언트 확인): ISO 13485 인증서 이미지 필요
+   위치: company.html:70, en/company.html:71
+12. TODO(클라이언트 확인): ISO 14001 인증서 이미지 필요
+   위치: company.html:70, en/company.html:71
+13. TODO(클라이언트 확인): 벤처기업 확인서 인증서 이미지 필요
+   위치: company.html:71, en/company.html:72
+14. TODO(클라이언트 확인): 디자인전문회사 신고확인증과 2025.10 디자인연구소 설립 제21059호가 같은 문서인지 확인
+   위치: company.html:74, en/company.html:75
+15. TODO(클라이언트 확인): All-Jet 상표 출원번호 및 상표 자료 이미지 필요
+   위치: company.html:88, en/company.html:89
+16. TODO(client confirmation): Verify official English spellings of the CEO name and program titles.
+   위치: en/company.html:40
+17. TODO(클라이언트 확인): 브로슈어 기준 사양과 최종 제품 사양 확인. 기존 사이트의 구형 모델 사양과 구분
+   위치: alljet.html:65, en/alljet.html:65
+18. TODO(클라이언트 확인): 모델 사진 웹 사용권
+   위치: invera.html:41, en/invera.html:41
+19. TODO(클라이언트 확인): INVERA 주요 사양 자료 필요
+   위치: invera.html:59, en/invera.html:59
+20. TODO(클라이언트 확인): 현재 메일 문의 방식과 기존 방침의 문의 양식·자동 수집·쿠키 항목 일치 여부
+   위치: privacy.html:40, en/privacy.html:40
+
+재검증
+node tools/verify-phase4.mjs --http
+원본 크기·해시·변환 용량: tools/document-assets.json
