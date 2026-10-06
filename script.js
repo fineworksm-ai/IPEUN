@@ -77,6 +77,7 @@ if (slider) {
   const slides = [...slider.querySelectorAll('[data-slide]')];
   const dots = [...slider.querySelectorAll('[data-slide-to]')];
   const pauseButton = slider.querySelector('[data-slide-pause]');
+  const controls = slider.querySelector('.hero-controls');
   let current = 0;
   let timer;
   let manuallyPaused = false;
@@ -89,7 +90,7 @@ if (slider) {
     pauseButton.hidden = reducedMotion.matches;
     pauseButton.setAttribute('aria-label', manuallyPaused ? interfaceText.playSlides : interfaceText.pauseSlides);
     pauseButton.textContent = manuallyPaused ? '▶' : 'Ⅱ';
-    if (running) timer = setTimeout(() => showSlide(current + 1), 6000);
+    if (running) timer = setTimeout(() => showSlide(current + 1), 5000);
   };
   const showSlide = index => {
     current = (index + slides.length) % slides.length;
@@ -107,22 +108,36 @@ if (slider) {
   slider.querySelector('[data-slide-next]').addEventListener('click', () => showSlide(current + 1));
   dots.forEach(dot => dot.addEventListener('click', () => showSlide(Number(dot.dataset.slideTo))));
   pauseButton.addEventListener('click', () => { manuallyPaused = !manuallyPaused; updateTimer(); });
-  slider.addEventListener('mouseenter', () => { hovered = true; updateTimer(); });
-  slider.addEventListener('mouseleave', () => { hovered = false; updateTimer(); });
-  slider.addEventListener('focusin', () => { focused = true; updateTimer(); });
+  // Touch must not leave a sticky hover pause, and navigation controls should
+  // restart the full interval even while the clicked button retains focus.
+  slider.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') { hovered = true; updateTimer(); }
+  });
+  slider.addEventListener('pointerleave', () => { hovered = false; updateTimer(); });
+  controls.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') { hovered = false; updateTimer(); }
+  });
+  controls.addEventListener('pointerleave', event => {
+    if (event.pointerType === 'mouse') { hovered = slider.contains(event.relatedTarget); updateTimer(); }
+  });
+  const hasContentFocus = () => slider.contains(document.activeElement) && !controls.contains(document.activeElement);
+  slider.addEventListener('focusin', () => { focused = hasContentFocus(); updateTimer(); });
   slider.addEventListener('focusout', () => {
-    setTimeout(() => { focused = slider.contains(document.activeElement); updateTimer(); }, 0);
+    setTimeout(() => { focused = hasContentFocus(); updateTimer(); }, 0);
   });
   document.addEventListener('visibilitychange', updateTimer);
   reducedMotion.addEventListener('change', updateTimer);
   showSlide(0);
-  // Reserve the same visual area for every slide, below the tallest copy.
-  // Inactive slides retain their layout, so switching slides cannot move it.
+  // Keep controls stable while letting each mobile image follow its own copy.
   const syncHeroVisual = () => {
-    if (!window.matchMedia('(max-width: 600px)').matches) { slider.style.removeProperty('--hero-visual-top'); return; }
-    const origin = slider.getBoundingClientRect().top;
-    const copyBottom = Math.max(...slides.map(slide => slide.querySelector('.hero-copy').getBoundingClientRect().bottom - origin));
-    slider.style.setProperty('--hero-visual-top', `${Math.ceil(copyBottom + 52)}px`);
+    if (!window.matchMedia('(max-width: 600px)').matches) {
+      slider.style.removeProperty('--hero-copy-height');
+      slides.forEach(slide => slide.style.removeProperty('--slide-copy-height'));
+      return;
+    }
+    const copyHeights = slides.map(slide => Math.ceil(slide.querySelector('.hero-copy').getBoundingClientRect().height));
+    slides.forEach((slide, i) => slide.style.setProperty('--slide-copy-height', `${copyHeights[i]}px`));
+    slider.style.setProperty('--hero-copy-height', `${Math.max(...copyHeights)}px`);
   };
   syncHeroVisual();
   document.fonts?.ready.then(syncHeroVisual);
@@ -169,7 +184,7 @@ if (inquiryForm) {
   } : {
     purposes: { demo:'데모 요청', service:'A/S 접수', materials:'자료 요청', other:'기타 문의' },
     products: { alljet:'All-Jet', invera:'INVERA', unspecified:'기타 / 미정', '':'미선택' },
-    subject:'[IPEUN 제품문의]', purpose:'문의 목적', product:'제품', name:'성함', organization:'병원·기관명', email:'회신 이메일', details:'문의 내용', optional:'미입력',
+    subject:'[IPEUN 제품문의]', purpose:'문의 목적', product:'제품', name:'성함', organization:'병원, 기관명', email:'회신 이메일', details:'문의 내용', optional:'미입력',
     empty:'내용을 입력해주세요.', copied:'문의 내용을 복사했습니다. admin@i-peun.com으로 보낼 이메일에 붙여넣어주세요.',
     copyFailed:'자동 복사가 지원되지 않습니다. 위 내용을 선택해 직접 복사해주세요.',
     draft:'메일 앱에서 확인 후 직접 전송해주세요. 아직 접수된 상태는 아닙니다.',

@@ -17,8 +17,8 @@ let html = original
   .replace(/<nav class="language-switch"[\s\S]*?<\/nav>/g, '')
   .replace(/\s*<link[^>]*data-language-alternate[^>]*>/g, '')
   .replace(/<!-- 영문 3차:[\s\S]*?-->/g, '')
-  .replace(/styles\.css\?v=\d{8}-\d+/g, 'styles.css?v=20261006-22')
-  .replace(/src="(?:\.\.\/)?script\.js(?:\?v=[^"]*)?"/g, 'src="script.js?v=20261006-22"');
+  .replace(/styles\.css\?v=[^"\s]+/g, 'styles.css?v=20261006-mobile-hero-7')
+  .replace(/src="(?:\.\.\/)?script\.js(?:\?v=[^"]*)?"/g, 'src="script.js?v=20261006-mobile-hero-7"');
 const translate = value => {
   const text = value.trim();
   if (!/[가-힣]/.test(text)) return value;
