@@ -1214,29 +1214,31 @@ body { line-height:1.5; }
   .home-page .hero-alljet .hero-product img { height:100%; }
 }
 
-/* Present the three needle-free principles as one continuous surface. */
+/* Three overlapping circles share a seamless white silhouette. */
 .needle-circles,.home-page .needle-circles {
-  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0;
-  width:100%; padding:36px 20px; border-radius:28px;
-  background:var(--white); box-shadow:0 5px 24px rgba(6,23,19,.055);
+  display:flex; flex-direction:row; justify-content:center; align-items:center;
+  gap:0; width:100%; padding:0; background:none; border-radius:0; box-shadow:none;
 }
 .needle-circles .needle-circle,.home-page .needle-circles .needle-circle {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  width:100%; height:auto; aspect-ratio:auto; flex:none; padding:24px 16px;
-  margin:0; border:0; border-radius:0; background:none; box-shadow:none; text-align:center;
+  flex:0 0 calc((100% + 80px) / 3); width:calc((100% + 80px) / 3);
+  height:auto; aspect-ratio:1; padding:28px 20px; margin:0; border:0;
+  border-radius:50%; background:var(--white); box-shadow:none; text-align:center;
 }
-.needle-circles .needle-circle + .needle-circle,.home-page .needle-circles .needle-circle + .needle-circle { margin:0; }
+.needle-circles .needle-circle + .needle-circle,.home-page .needle-circles .needle-circle + .needle-circle { margin-left:-40px; margin-top:0; }
 @media(max-width:900px) {
-  .needle-circles,.home-page .needle-circles { padding:24px 12px; border-radius:24px; }
-  .needle-circles .needle-circle h3,.home-page .needle-circles .needle-circle h3 { font-size:28px; }
+  .needle-circles .needle-circle h3,.home-page .needle-circles .needle-circle h3 { font-size:30px; }
+  .needle-circles .needle-circle p { font-size:15px; margin-top:20px; }
 }
 @media(max-width:600px) {
-  .needle-circles,.home-page .needle-circles,.invera-page .needle-circles { grid-template-columns:1fr; gap:8px; padding:16px; }
+  .needle-circles,.home-page .needle-circles,.invera-page .needle-circles { flex-direction:column; margin:28px 0; }
   .needle-circles .needle-circle,.home-page .needle-circles .needle-circle,.invera-page .needle-circles .needle-circle {
-    display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:24px 12px;
-    border-radius:0; background:none; box-shadow:none; text-align:left;
+    display:flex; flex-direction:column; width:min(280px,100%); flex:none; height:auto;
+    aspect-ratio:1; padding:32px 24px; border-radius:50%; background:var(--white);
+    box-shadow:none; text-align:center;
   }
-  .needle-circles .needle-circle h3,.home-page .needle-circles .needle-circle h3 { font-size:26px; }
-  .needle-circles .needle-circle p { margin:0; font-size:15px; }
-  .invera-page .needle-circle > span { top:8px; left:12px; }
+  .needle-circles .needle-circle + .needle-circle,.home-page .needle-circles .needle-circle + .needle-circle { margin-left:0; margin-top:-28px; }
+  .needle-circles .needle-circle h3,.home-page .needle-circles .needle-circle h3 { font-size:32px; }
+  .needle-circles .needle-circle p { font-size:16px; margin-top:18px; }
+  .invera-page .needle-circle > span { position:static; margin-bottom:10px; }
 }
