@@ -1,0 +1,407 @@
+{
+  "records": [
+    {
+      "name": "iso-kr",
+      "original": "iso-kr.jpg",
+      "originalBytes": 941095,
+      "originalSha256": "b96635bef9e50290c5c3312e06e2ac74fd6d5d16f4641d7d60b3314b0bb9633b",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/iso-kr-thumb.webp",
+          "width": 600,
+          "height": 848,
+          "bytes": 65266
+        },
+        "large": {
+          "path": "assets/documents/iso-kr-large.webp",
+          "width": 1239,
+          "height": 1752,
+          "bytes": 229734
+        }
+      }
+    },
+    {
+      "name": "iso-en",
+      "original": "iso-en.jpg",
+      "originalBytes": 1010067,
+      "originalSha256": "9d4ab6802c47e59ee9332499a14a250d4448260e3b822bc1ec77ad101d009203",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/iso-en-thumb.webp",
+          "width": 600,
+          "height": 848,
+          "bytes": 76026
+        },
+        "large": {
+          "path": "assets/documents/iso-en-large.webp",
+          "width": 1239,
+          "height": 1752,
+          "bytes": 262134
+        }
+      }
+    },
+    {
+      "name": "social-venture",
+      "original": "social-venture.jpg",
+      "originalBytes": 346945,
+      "originalSha256": "e0b3950e062e1c70961eec4a6990930d710cd1b8dfce2e461522ad764220b046",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/social-venture-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 30250
+        },
+        "large": {
+          "path": "assets/documents/social-venture-large.webp",
+          "width": 1240,
+          "height": 1755,
+          "bytes": 69634
+        }
+      }
+    },
+    {
+      "name": "rnd",
+      "original": "rnd.jpg",
+      "originalBytes": 185004,
+      "originalSha256": "e41150deb93201b6d04bb73bba90527451a873fb0e4b34f3906efc4dba8b5f45",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/rnd-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 46260
+        },
+        "large": {
+          "path": "assets/documents/rnd-large.webp",
+          "width": 595,
+          "height": 842,
+          "bytes": 46406
+        }
+      }
+    },
+    {
+      "name": "design",
+      "original": "design.jpg",
+      "originalBytes": 808373,
+      "originalSha256": "69a94737440f12e193b10aac37d03f164cba41421962dd46909870946331483f",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/design-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 44124
+        },
+        "large": {
+          "path": "assets/documents/design-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 165776
+        }
+      }
+    },
+    {
+      "name": "invention",
+      "original": "invention.jpg",
+      "originalBytes": 822202,
+      "originalSha256": "9bbaf874362dab82884b2ad2d2384252d1cc935496cd465a474ee4b71e411710",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/invention-thumb.webp",
+          "width": 600,
+          "height": 848,
+          "bytes": 43922
+        },
+        "large": {
+          "path": "assets/documents/invention-large.webp",
+          "width": 1241,
+          "height": 1754,
+          "bytes": 125712
+        }
+      }
+    },
+    {
+      "name": "family-company",
+      "original": "family-company.jpg",
+      "originalBytes": 348300,
+      "originalSha256": "3c7bc8592ab62395a76e78ad89c2e559434fc9547c8f07eb440f0b7468664a80",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/family-company-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 36124
+        },
+        "large": {
+          "path": "assets/documents/family-company-large.webp",
+          "width": 1240,
+          "height": 1755,
+          "bytes": 78228
+        }
+      }
+    },
+    {
+      "name": "kyunghee",
+      "original": "kyunghee.jpg",
+      "originalBytes": 553068,
+      "originalSha256": "18dfe20c89a1f2a09b9ed6ac1de8ff47ef580c13d85cbea1e97d28b9f40cd741",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/kyunghee-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 59428
+        },
+        "large": {
+          "path": "assets/documents/kyunghee-large.webp",
+          "width": 1240,
+          "height": 1755,
+          "bytes": 135440
+        }
+      }
+    },
+    {
+      "name": "future-share",
+      "original": "future-share.jpg",
+      "originalBytes": 697428,
+      "originalSha256": "fa6859d26c632d039c3804638d52c5765c0fb50bf7609ae942aca9f5a0f94c94",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/future-share-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 73866
+        },
+        "large": {
+          "path": "assets/documents/future-share-large.webp",
+          "width": 1240,
+          "height": 1755,
+          "bytes": 230136
+        }
+      }
+    },
+    {
+      "name": "startup",
+      "original": "startup.jpg",
+      "originalBytes": 503956,
+      "originalSha256": "66fe24d9548eb7d30bc339f728e8b7ea0e92d08b8978788c457d25f18850b81c",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/startup-thumb.webp",
+          "width": 600,
+          "height": 848,
+          "bytes": 47342
+        },
+        "large": {
+          "path": "assets/documents/startup-large.webp",
+          "width": 1239,
+          "height": 1752,
+          "bytes": 156426
+        }
+      }
+    },
+    {
+      "name": "naeil",
+      "original": "naeil.jpg",
+      "originalBytes": 57458,
+      "originalSha256": "823dd90071529b59104c0125eda8869f4504cc107670a899130bc988408a8018",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/naeil-thumb.webp",
+          "width": 600,
+          "height": 845,
+          "bytes": 29532
+        },
+        "large": {
+          "path": "assets/documents/naeil-large.webp",
+          "width": 558,
+          "height": 786,
+          "bytes": 28076
+        }
+      }
+    },
+    {
+      "name": "worklife",
+      "original": "worklife.jpg",
+      "originalBytes": 298222,
+      "originalSha256": "9dfce8df2346f20e7bf11518342c96dabc4ee3df2eb0bfb20ba82163e7842452",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/worklife-thumb.webp",
+          "width": 600,
+          "height": 848,
+          "bytes": 32148
+        },
+        "large": {
+          "path": "assets/documents/worklife-large.webp",
+          "width": 1240,
+          "height": 1753,
+          "bytes": 80468
+        }
+      }
+    },
+    {
+      "name": "patent1",
+      "original": "patent1.jpg",
+      "originalBytes": 391808,
+      "originalSha256": "6cf3f8801467d596bb724131e97188b788456d5f1f64b84704a8b7c882ffe1ff",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/patent1-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 53392
+        },
+        "large": {
+          "path": "assets/documents/patent1-large.webp",
+          "width": 1240,
+          "height": 1755,
+          "bytes": 175650
+        }
+      }
+    },
+    {
+      "name": "patent2",
+      "original": "patent2.jpg",
+      "originalBytes": 414101,
+      "originalSha256": "91c0fcd20f0e036e3144808b5f76a67d5edb82d7842363c5d8d02393664bcb8d",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/patent2-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 59434
+        },
+        "large": {
+          "path": "assets/documents/patent2-large.webp",
+          "width": 1240,
+          "height": 1755,
+          "bytes": 192486
+        }
+      }
+    },
+    {
+      "name": "patent3",
+      "original": "patent3.png",
+      "originalBytes": 507337,
+      "originalSha256": "53b0a8e676f63d11e7774ad7e731f907695b59bf0923a8649691b792670852bd",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/patent3-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 64270
+        },
+        "large": {
+          "path": "assets/documents/patent3-large.webp",
+          "width": 1600,
+          "height": 2264,
+          "bytes": 203762
+        }
+      }
+    },
+    {
+      "name": "patent4",
+      "original": "patent4.png",
+      "originalBytes": 505573,
+      "originalSha256": "3370c82403ea8b8958303425fabe726a908a3d8674dc11210509045627ebc726",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/patent4-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 64076
+        },
+        "large": {
+          "path": "assets/documents/patent4-large.webp",
+          "width": 1600,
+          "height": 2264,
+          "bytes": 203066
+        }
+      }
+    },
+    {
+      "name": "innovation",
+      "original": "innovation.jpg",
+      "originalBytes": 927027,
+      "originalSha256": "2e330f3e8f614731597f030a9c736e3449f65df0d2b084397e6f891071f0cfb0",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/innovation-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 67418
+        },
+        "large": {
+          "path": "assets/documents/innovation-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 221342
+        }
+      }
+    },
+    {
+      "name": "hankook1",
+      "original": "hankook1.jpg",
+      "originalBytes": 2443959,
+      "originalSha256": "20292ff2db5de7e46b1f32b9927103acce1d952eb38029181ea93fb3bd399cd3",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/hankook1-thumb.webp",
+          "width": 600,
+          "height": 829,
+          "bytes": 125344
+        },
+        "large": {
+          "path": "assets/documents/hankook1-large.webp",
+          "width": 1600,
+          "height": 2212,
+          "bytes": 685962
+        }
+      }
+    },
+    {
+      "name": "hankook2",
+      "original": "hankook2.jpg",
+      "originalBytes": 2546525,
+      "originalSha256": "1e7e992d51d4f713c81bd4e1f0a5e0b06995c76c1746d57eb8e61d31a847136b",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/hankook2-thumb.webp",
+          "width": 600,
+          "height": 829,
+          "bytes": 156540
+        },
+        "large": {
+          "path": "assets/documents/hankook2-large.webp",
+          "width": 1600,
+          "height": 2212,
+          "bytes": 782060
+        }
+      }
+    },
+    {
+      "name": "hankook3",
+      "original": "hankook3.jpg",
+      "originalBytes": 2984272,
+      "originalSha256": "75735cd9c5438aceb62f2868e5c2b7df1b1f547dfe449307474bd8894d3c5fb2",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/hankook3-thumb.webp",
+          "width": 600,
+          "height": 829,
+          "bytes": 70294
+        },
+        "large": {
+          "path": "assets/documents/hankook3-large.webp",
+          "width": 1600,
+          "height": 2212,
+          "bytes": 675702
+        }
+      }
+    }
+  ],
+  "originalBytes": 17292720,
+  "thumbnailBytes": 1245056,
+  "largeBytes": 4748200
+}

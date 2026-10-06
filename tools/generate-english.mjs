@@ -28,7 +28,7 @@ const translate = value => {
 if (language === 'en') {
   html = html.split(/(<!--[\s\S]*?-->)/).map(part => part.startsWith('<!--') ? part : part
     .replace(/>([^<>]+)</g, (_, value) => `>${translate(value)}<`)
-    .replace(/((?:alt|aria-label|aria-roledescription|content)=")([^"]*)(")/g,
+    .replace(/((?:alt|aria-label|aria-roledescription|data-lightbox-title|content)=")([^"]*)(")/g,
       (_, start, value, end) => start + translate(value) + end)).join('');
   html = html.replace('<html lang="ko">', '<html lang="en">')
     .replace('content="ko_KR"', 'content="en_US"')

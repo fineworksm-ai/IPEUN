@@ -212,10 +212,11 @@ if (inquiryForm) {
   inquiryForm.querySelector('[data-inquiry-compose]').disabled = false;
 }
 
-if (lightbox) {
+if (lightbox && typeof lightbox.showModal === 'function') {
   let lightboxTrigger;
   document.querySelectorAll('[data-lightbox-src]').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
       lightboxTrigger = button;
       const image = document.createElement('img');
       image.src = button.dataset.lightboxSrc;

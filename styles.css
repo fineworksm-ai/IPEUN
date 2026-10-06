@@ -379,7 +379,7 @@ button.document-card:hover { transform:translateY(-3px); }
 .document-caption { display:flex; flex-direction:column; flex:1; }
 .document-caption h3 { font-size:17px; line-height:1.5; letter-spacing:-.025em; }
 .document-caption p { color:var(--muted); font-size:12px; margin-top:8px; overflow-wrap:anywhere; }
-.document-open { margin-top:auto; padding-top:18px; color:var(--mint-text); font-size:12px; font-weight:650; }
+.document-open { margin-top:auto; padding-top:18px; color:var(--mint-text); font-size:14px; font-weight:650; }
 .placeholder-card { cursor:default; }
 .document-summary { cursor:default; min-height:150px; }
 .document-summary .document-caption { justify-content:flex-start; }
@@ -434,7 +434,7 @@ body.lightbox-open { overflow:hidden; }
   .document-grid { gap:14px; }
   .document-card { padding:16px; }
   .document-thumb,.document-badge { height:170px; margin-bottom:16px; }
-  .document-caption h3 { font-size:15px; }
+  .document-caption h3 { font-size:16px; }
   .certification-seal span { font-size:17px; }
   .iso-grid { grid-template-columns:1fr; }
   .iso-grid .document-card { padding:24px; }
