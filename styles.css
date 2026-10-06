@@ -880,7 +880,7 @@ a.card:hover .activity-cover img,a.product-card:hover .product-stage img { trans
   .home-page .hero-brand .hero-copy-inner,
   .home-page .hero-slide:not(.hero-brand) .hero-copy-inner { width:100%; max-width:none; }
   .home-page .brand-visual { top:var(--hero-visual-top); bottom:0; left:0; right:0; width:100%; height:auto; }
-  .home-page .brand-photo { object-fit:cover; object-position:right bottom; }
+  .home-page .brand-photo { object-fit:cover; object-position:right top; }
   .home-page .hero-product { top:var(--hero-visual-top); bottom:20px; right:10%; width:80%; height:auto; }
   .home-page .hero-controls { left:24px; right:auto; top:calc(var(--hero-visual-top) - 48px); bottom:auto; gap:12px; }
 }
