@@ -640,3 +640,8 @@ body.lightbox-open { overflow:hidden; }
 }
 
 .product-name-label { text-transform:none; }
+
+/* Unavailable publications match the inactive Home Care menu state. */
+.main-nav > .nav-disabled { display:block; padding:26px 0; font-size:15px; font-weight:650; line-height:inherit; opacity:.48; cursor:default; pointer-events:none; }
+@media(max-width:1180px) { .main-nav > .nav-disabled { font-size:14px; } }
+@media(max-width:900px) { .main-nav > .nav-disabled { width:100%; padding:18px 0; font-size:28px; line-height:1.4; } }

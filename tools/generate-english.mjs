@@ -17,8 +17,8 @@ let html = original
   .replace(/<nav class="language-switch"[\s\S]*?<\/nav>/g, '')
   .replace(/\s*<link[^>]*data-language-alternate[^>]*>/g, '')
   .replace(/<!-- 영문 3차:[\s\S]*?-->/g, '')
-  .replace(/styles\.css\?v=\d{8}-\d+/g, 'styles.css?v=20261002-18')
-  .replace(/src="(?:\.\.\/)?script\.js(?:\?v=[^"]*)?"/g, 'src="script.js?v=20261002-18"');
+  .replace(/styles\.css\?v=\d{8}-\d+/g, 'styles.css?v=20261006-22')
+  .replace(/src="(?:\.\.\/)?script\.js(?:\?v=[^"]*)?"/g, 'src="script.js?v=20261006-22"');
 const translate = value => {
   const text = value.trim();
   if (!/[가-힣]/.test(text)) return value;
@@ -38,11 +38,12 @@ if (language === 'en') {
   if (page === 'company.html') html = html.replace('<main id="main-content">',
     '<!-- TODO(client confirmation): Verify official English spellings of the CEO name and program titles. -->\n<main id="main-content">');
 }
-const koreanPath = language === 'en' ? `../${page}` : page;
-const englishPath = language === 'en' ? page : `en/${page}`;
+const languagePage = page === 'publications.html' ? 'index.html' : page;
+const koreanPath = language === 'en' ? `../${languagePage}` : languagePage;
+const englishPath = language === 'en' ? languagePage : `en/${languagePage}`;
 const switcher = `<nav class="language-switch" aria-label="${language === 'en' ? 'Language' : '언어 선택'}"><a class="language-option" href="${koreanPath}" data-language-link data-language-path="${koreanPath}" lang="ko" hreflang="ko" aria-label="${language === 'en' ? 'View in Korean' : '한국어로 보기'}"${language === 'ko' ? ' aria-current="page"' : ''}>KR</a><span aria-hidden="true">|</span><a class="language-option" href="${englishPath}" data-language-link data-language-path="${englishPath}" lang="en" hreflang="en" aria-label="${language === 'en' ? 'View in English' : '영어로 보기'}"${language === 'en' ? ' aria-current="page"' : ''}>EN</a></nav>`;
 html = html.replace('<div class="header-actions">', `<div class="header-actions">${switcher}`);
-html = html.replace('</head>', `  <link rel="alternate" hreflang="ko" href="${koreanPath}" data-language-alternate />\n  <link rel="alternate" hreflang="en" href="${englishPath}" data-language-alternate />\n</head>`);
+if (page !== 'publications.html') html = html.replace('</head>', `  <link rel="alternate" hreflang="ko" href="${koreanPath}" data-language-alternate />\n  <link rel="alternate" hreflang="en" href="${englishPath}" data-language-alternate />\n</head>`);
 const target = language === 'en' ? `en/${page}` : page;
 const lines = html.trimEnd().split('\n');
 if (!existsSync(path.join(root, target))) {
