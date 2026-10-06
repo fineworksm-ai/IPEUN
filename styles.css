@@ -1258,3 +1258,11 @@ body { line-height:1.5; }
   .home-page .needle-circles .needle-circle h3 { font-size:28px; }
   .needle-circles .needle-circle p,.home-page .needle-circles .needle-circle p { font-size:15px; margin-top:16px; }
 }
+
+/* Reference shape: wide ellipses, rather than perfect circles. */
+.needle-circles .needle-circle,.home-page .needle-circles .needle-circle { aspect-ratio:1.3; }
+@media(max-width:600px) {
+  .needle-circles .needle-circle,.home-page .needle-circles .needle-circle,.invera-page .needle-circles .needle-circle { width:min(300px,100%); aspect-ratio:1.3; padding:24px 20px; }
+  .needle-circles .needle-circle h3,.home-page .needle-circles .needle-circle h3 { font-size:28px; }
+  .needle-circles .needle-circle p,.home-page .needle-circles .needle-circle p { font-size:15px; margin-top:14px; }
+}
