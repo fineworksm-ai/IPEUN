@@ -1375,3 +1375,10 @@ body .section-head,body.home-page .section-head { flex-direction:column; align-i
 @media(max-width:600px) {
  body.home-page .tech-card p:not(.eyebrow) { margin-top:6px; }
 }
+
+/* Directions use the shared content action style. */
+.directions-actions { flex-wrap:wrap; gap:12px; }
+.location-address { max-width:820px; color:var(--muted); }
+
+#location .location-card { min-width:0; }
+#location .directions-actions { margin-top:24px; }
