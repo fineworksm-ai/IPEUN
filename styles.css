@@ -1487,6 +1487,9 @@ body main .text-link:not(:has(> span)):hover::after { transform:translateX(4px);
 /* Document enlargement uses buttons and preserves image-copy protection. */
 button.document-card { border:0; }
 .document-card,.document-thumb img,[data-lightbox-content] img { -webkit-user-drag:none; -webkit-touch-callout:none; user-select:none; }
+/* 모바일 길게 누르기 '이미지 저장' 방지: 이미지가 터치를 받지 않고 감싼 요소가 받는다 */
+.document-thumb img,[data-lightbox-content] img { pointer-events:none; }
+.document-thumb,[data-lightbox-content] { -webkit-touch-callout:none; -webkit-user-select:none; user-select:none; }
 
 /* Small headings and labels use zero letter spacing on every page. */
 .eyebrow,.category-label { letter-spacing:0 !important; }
