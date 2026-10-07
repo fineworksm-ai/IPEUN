@@ -17,6 +17,7 @@ const PAGE_CONTENT = {
   index: ['events', 'popups'], company: ['history', 'documents'], events: ['events'], media: ['media'],
 };
 const SESSION_COOKIE = 'ipeun_admin';
+const STAFF_COOKIE = 'ipeun_staff'; // 관리자 브라우저: 방문 통계 제외
 const SESSION_HOURS = 12;
 const SITE_HOST = 'i-peun.com';
 const OLD_PATHS = { '/certifications': '/company#certifications', '/terms': '/privacy' };
@@ -204,6 +205,7 @@ async function loadContent(env, keys) {
 function recordVisit(request, env, ctx, url) {
   const agent = request.headers.get('user-agent') || '';
   if (!agent || BOT.test(agent) || request.headers.get('purpose') === 'prefetch') return null;
+  if (getCookie(request, STAFF_COOKIE) || getCookie(request, SESSION_COOKIE)) return null;
   const today = kstDate();
   const isNew = getCookie(request, 'ipeun_v') !== today;
   let path = url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
@@ -263,6 +265,10 @@ async function isAdmin(request, env) {
   if (!expires || !signature || Number(expires) < Date.now()) return false;
   return sameText(signature, await hmac(env, `session:${expires}`));
 }
+function staffCookie(request) {
+  const secure = new URL(request.url).protocol === 'https:' ? '; Secure' : '';
+  return `${STAFF_COOKIE}=1; Path=/; HttpOnly; SameSite=Lax; Max-Age=${365 * 24 * 3600}${secure}`;
+}
 function sessionCookie(request, value, maxAge) {
   const secure = new URL(request.url).protocol === 'https:' ? '; Secure' : '';
   return `${SESSION_COOKIE}=${value}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${maxAge}${secure}`;
@@ -320,7 +326,10 @@ async function login(request, env) {
   }
   const expires = Date.now() + SESSION_HOURS * 3600 * 1000;
   const value = `${expires}.${await hmac(env, `session:${expires}`)}`;
-  return json({ ok: true }, 200, { 'set-cookie': sessionCookie(request, value, SESSION_HOURS * 3600) });
+  const response = json({ ok: true }, 200, { 'set-cookie': sessionCookie(request, value, SESSION_HOURS * 3600) });
+  // 관리자로 로그인한 브라우저는 1년 동안 방문 통계에서 뺀다 (로그아웃해도 유지)
+  response.headers.append('set-cookie', staffCookie(request));
+  return response;
 }
 
 // 저장할 때 해당 콘텐츠가 영문 페이지에서 쓰는 문장을 모아, 번역이 없는 것만 자동 번역한다

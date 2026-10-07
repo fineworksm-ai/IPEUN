@@ -478,7 +478,7 @@ VIEWS.dashboard = () => {
   const max = Math.max(1, ...pages.map((page) => page.views));
   const recent = state.inquiries.slice(0, 5);
   return h('div', {},
-    head('대시보드', '사이트 방문 현황과 최근 문의를 확인하세요.', seg, h('span', { class: 'adm-live' }, '● 실시간 집계')),
+    head('대시보드', '사이트 방문 현황과 최근 문의를 확인하세요. 관리자로 로그인한 기기(브라우저)의 방문은 집계하지 않습니다.', seg, h('span', { class: 'adm-live' }, '● 실시간 집계')),
     h('div', { class: 'adm-stats' }, kpis.map(([label, n]) => h('div', { class: 'adm-stat' }, h('div', { class: 'n' }, n.toLocaleString()), h('div', { class: 'l' }, label)))),
     h('div', { class: 'adm-panel' }, h('div', { class: 'adm-panel-h' }, h('h3', {}, '일별 방문자', h('small', {}, `최근 ${range}일`))), chart(days)),
     h('div', { class: 'adm-two' },
