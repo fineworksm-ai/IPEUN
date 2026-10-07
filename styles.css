@@ -1542,3 +1542,46 @@ html body :is(main,.tech-card,.technical-copy) .result-badge.result-badge {
 }
 .needle-section .section-head.centered { display:block; }
 .needle-section .section-head .needle-summary,:is(.home-page,.invera-page) .needle-section .section-head .needle-summary { width:auto; max-width:650px; text-wrap:balance; }
+
+/* Events: photo viewer with previous / next posts. */
+.event-gallery .event-photo { cursor:zoom-in; }
+.event-gallery .event-photo:focus-visible { outline:2px solid var(--mint-text); outline-offset:3px; }
+.event-gallery .event-photo img { transition:transform .4s ease; }
+.event-gallery .event-photo:hover img { transform:scale(1.03); }
+.event-viewer { width:min(980px,calc(100% - 40px)); height:calc(100dvh - 40px); max-height:none; padding:0; border:0; border-radius:var(--card-radius); background:var(--white); color:var(--ink); overflow:hidden; }
+.event-viewer::backdrop { background:rgba(6,23,19,.8); }
+.event-viewer-bar { position:absolute; top:12px; right:16px; z-index:2; }
+.event-viewer-close { width:44px; height:44px; border:0; border-radius:50%; background:rgba(255,255,255,.92); color:var(--ink); font-size:27px; box-shadow:0 2px 10px rgba(0,0,0,.08); cursor:pointer; }
+.event-viewer-body { height:100%; overflow:auto; padding:48px 56px 40px; overscroll-behavior:contain; }
+.event-viewer-head { max-width:720px; margin-bottom:32px; }
+.event-viewer-head time { color:var(--mint-text); font-size:15px; font-weight:700; letter-spacing:0; }
+.event-viewer-head h2 { margin-top:8px; font-size:30px; line-height:1.35; letter-spacing:-.02em; }
+.event-viewer-head p { margin-top:12px; color:var(--muted); }
+.event-viewer-photos { display:flex; flex-direction:column; gap:28px; }
+.event-viewer-photos figure { margin:0; scroll-margin-top:24px; }
+.event-viewer-photos img { display:block; width:100%; height:auto; max-height:calc(100dvh - 180px); object-fit:contain; border-radius:12px; background:#f3f5f4; }
+.event-viewer-photos figcaption { margin-top:10px; color:var(--muted); font-size:15px; }
+.event-viewer-nav { margin-top:48px; border-top:1px solid var(--ink); }
+.event-viewer-nav-item { display:grid; grid-template-columns:88px 110px minmax(0,1fr); align-items:center; gap:16px; width:100%; padding:18px 4px; border:0; border-bottom:1px solid var(--line); background:none; color:var(--ink); font:inherit; text-align:left; }
+button.event-viewer-nav-item { cursor:pointer; }
+button.event-viewer-nav-item:hover strong { color:var(--mint-text); }
+.event-viewer-nav-label { font-size:14px; font-weight:700; }
+.event-viewer-nav-item time { color:var(--muted); font-size:14px; letter-spacing:0; }
+.event-viewer-nav-item strong { font-size:16px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.event-viewer-nav-empty { grid-column:2 / -1; color:var(--muted); font-size:15px; }
+@media(max-width:600px) {
+ .event-viewer { width:calc(100% - 16px); height:calc(100dvh - 16px); }
+ .event-viewer-body { padding:56px 20px 28px; }
+ .event-viewer-head h2 { font-size:24px; }
+ .event-viewer-photos { gap:20px; }
+ .event-viewer-nav-item { grid-template-columns:64px minmax(0,1fr); gap:4px 12px; }
+ .event-viewer-nav-item time { grid-column:2; }
+ .event-viewer-nav-item strong { grid-column:2; white-space:normal; }
+ .event-viewer-nav-label { grid-row:span 2; }
+}
+
+/* Products: INVERA a touch larger and centred on the same line as All-Jet. */
+.home-page .product-card-invera .product-stage { align-items:center; }
+.home-page .product-card-invera .product-stage img { max-width:76%; max-height:82%; }
+@media(max-width:900px) { .home-page .product-card-invera .product-stage img { max-width:72%; max-height:80%; } }
+.event-viewer-nav-item { border-bottom:1px solid var(--line) !important; }

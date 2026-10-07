@@ -437,3 +437,84 @@ if (lightbox && typeof lightbox.showModal === 'function') {
     document.addEventListener('webkitfullscreenchange', syncFullscreen);
   });
 }
+
+// 전시·학회: 사진을 누르면 그 행사의 사진을 위아래로 이어서 보고, 맨 아래에서 이전 글·다음 글로 넘어간다
+{
+  const stories = [...document.querySelectorAll('.event-story')].filter(story => story.querySelector('.event-gallery img'));
+  if (stories.length && typeof HTMLDialogElement === 'function') {
+    const say = (ko, en) => (isEnglish ? en : ko);
+    const posts = stories.map(story => ({
+      id: story.id,
+      date: story.querySelector('.event-heading time')?.textContent.trim() || '',
+      title: story.querySelector('.event-heading h2')?.textContent.trim() || '',
+      summary: story.querySelector('.event-heading > p')?.textContent.trim() || '',
+      photos: [...story.querySelectorAll('.event-gallery .event-photo')].map(figure => {
+        const image = figure.querySelector('img');
+        return { src: image.currentSrc || image.src, alt: image.alt, width: image.width, height: image.height,
+          caption: figure.querySelector('figcaption')?.textContent.trim() || '' };
+      }),
+    }));
+    const viewer = document.createElement('dialog');
+    viewer.className = 'event-viewer';
+    viewer.setAttribute('aria-labelledby', 'event-viewer-title');
+    viewer.innerHTML = `<div class="event-viewer-bar"><button class="event-viewer-close" type="button" aria-label="${say('사진 보기 닫기', 'Close photos')}">×</button></div><div class="event-viewer-body"></div>`;
+    document.body.append(viewer);
+    const body = viewer.querySelector('.event-viewer-body');
+    let trigger;
+    const text = (tag, className, value) => { const node = document.createElement(tag); if (className) node.className = className; node.textContent = value; return node; };
+    const navLink = (label, post) => {
+      const item = document.createElement(post ? 'button' : 'div');
+      item.className = 'event-viewer-nav-item';
+      if (post) { item.type = 'button'; item.addEventListener('click', () => show(posts.indexOf(post))); }
+      item.append(text('span', 'event-viewer-nav-label', label));
+      if (post) item.append(text('time', '', post.date), text('strong', '', post.title));
+      else item.append(text('span', 'event-viewer-nav-empty', say('글이 없습니다', 'No more posts')));
+      return item;
+    };
+    const show = (index, photoIndex = 0) => {
+      const post = posts[index];
+      const head = document.createElement('header');
+      head.className = 'event-viewer-head';
+      head.append(text('time', '', post.date), text('h2', '', post.title));
+      head.querySelector('h2').id = 'event-viewer-title';
+      if (post.summary) head.append(text('p', '', post.summary));
+      const list = document.createElement('div');
+      list.className = 'event-viewer-photos';
+      post.photos.forEach(photo => {
+        const figure = document.createElement('figure');
+        const image = document.createElement('img');
+        Object.assign(image, { src: photo.src, alt: photo.alt, width: photo.width, height: photo.height, loading: 'lazy', decoding: 'async' });
+        figure.append(image);
+        if (photo.caption) figure.append(text('figcaption', '', photo.caption));
+        list.append(figure);
+      });
+      // 목록은 최신순: 이전 글 = 더 오래된 행사, 다음 글 = 더 최근 행사
+      const nav = document.createElement('nav');
+      nav.className = 'event-viewer-nav';
+      nav.setAttribute('aria-label', say('이전 글, 다음 글', 'Previous and next posts'));
+      nav.append(navLink(say('이전 글', 'Previous'), posts[index + 1]), navLink(say('다음 글', 'Next'), posts[index - 1]));
+      body.replaceChildren(head, list, nav);
+      body.scrollTop = 0;
+      if (photoIndex) requestAnimationFrame(() => list.children[photoIndex]?.scrollIntoView({ block: 'start' }));
+      if (!viewer.open) { viewer.showModal(); document.body.classList.add('lightbox-open'); }
+      viewer.querySelector('.event-viewer-close').focus({ preventScroll: true });
+    };
+    stories.forEach((story, index) => {
+      story.querySelectorAll('.event-gallery .event-photo').forEach((figure, photoIndex) => {
+        figure.tabIndex = 0;
+        figure.setAttribute('role', 'button');
+        figure.setAttribute('aria-label', `${posts[index].title} — ${say('사진 모아보기', 'View all photos')} (${photoIndex + 1}/${posts[index].photos.length})`);
+        const open = () => { trigger = figure; show(index, photoIndex); };
+        figure.addEventListener('click', open);
+        figure.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); } });
+      });
+    });
+    viewer.querySelector('.event-viewer-close').addEventListener('click', () => viewer.close());
+    viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
+    viewer.addEventListener('close', () => {
+      document.body.classList.remove('lightbox-open');
+      body.replaceChildren();
+      trigger?.focus({ preventScroll: true });
+    });
+  }
+}
