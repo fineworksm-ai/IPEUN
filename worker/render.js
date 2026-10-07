@@ -85,14 +85,8 @@ function eventPhoto(photo, ctx) {
 }
 function eventStory(event, ctx) {
   const photos = (event.photos || []).filter((photo) => photo.src);
-  let gallery = '';
-  if (photos.length && photos.every((photo) => photo.portrait)) {
-    gallery = `<div class="event-photo-grid event-photo-grid-portrait">${photos.map((photo) => eventPhoto(photo, ctx)).join('')}</div>`;
-  } else if (photos.length) {
-    const [lead, ...rest] = photos;
-    const mixed = rest.some((photo) => photo.portrait) && rest.some((photo) => !photo.portrait);
-    gallery = eventPhoto(lead, ctx) + (rest.length ? `<div class="event-photo-grid${mixed ? ' buyers-photo-grid' : ''}">${rest.map((photo) => eventPhoto(photo, ctx)).join('')}</div>` : '');
-  }
+  // 행사 사진은 한 갤러리로 묶는다 (첫 장이 크게, 나머지는 같은 크기 타일 — styles.css .event-gallery)
+  const gallery = photos.length ? `<div class="event-gallery" data-count="${photos.length}">${photos.map((photo) => eventPhoto(photo, ctx)).join('')}</div>` : '';
   return `<article class="event-story" id="${esc(event.id)}"><div class="event-heading">${timeTag(event.date)}<h2>${plain(event.title, ctx)}</h2>${event.summary ? `<p>${plain(event.summary, ctx)}</p>` : ''}</div>\n${gallery}</article>`;
 }
 export function renderEventYears(events, ctx) {

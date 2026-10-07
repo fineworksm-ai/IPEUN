@@ -7,8 +7,8 @@ compatibility_date = "2025-09-01"
 compatibility_flags = ["nodejs_compat"]
 
 [vars]
-# 정식 도메인을 연결하는 날 "true" 로 바꾼다 (그 전까지 검색엔진 비노출)
-SITE_INDEXABLE = "false"
+# "true": i-peun.com 에서만 검색 노출. *.pages.dev 임시 주소는 항상 숨긴다 (worker/index.js indexable)
+SITE_INDEXABLE = "true"
 # Pages 정적 파일 서빙 방식에 맞춰 Worker가 주소를 맞춘다 (worker/index.js)
 PAGES_MODE = "1"
 

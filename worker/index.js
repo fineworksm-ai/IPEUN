@@ -18,11 +18,21 @@ const PAGE_CONTENT = {
 };
 const SESSION_COOKIE = 'ipeun_admin';
 const SESSION_HOURS = 12;
+const SITE_HOST = 'i-peun.com';
+const OLD_PATHS = { '/certifications': '/company.html#certifications', '/terms': '/privacy.html' };
+const SITEMAP_PAGES = [
+  '', 'company.html', 'technology.html', 'product.html', 'invera.html', 'alljet.html',
+  'events.html', 'media.html', 'publications.html', 'contact.html', 'privacy.html',
+];
 const BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|headless|lighthouse|monitor|curl|wget|python|httpclient/i;
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    // 정식 주소는 i-peun.com 하나로 모은다
+    if (url.hostname === `www.${SITE_HOST}`) return Response.redirect(`https://${SITE_HOST}${url.pathname}${url.search}`, 301);
+    // 예전 사이트(Next.js) 주소
+    if (OLD_PATHS[url.pathname]) return Response.redirect(`${url.origin}${OLD_PATHS[url.pathname]}`, 301);
     if (url.pathname === '/en' || url.pathname === '/admin') return Response.redirect(`${url.origin}${url.pathname}/${url.search}`, 301);
     // Workers(html_handling = "none"): 폴더 주소는 index.html 로. Pages 는 정적 서버가 알아서 처리한다
     if (env.PAGES_MODE !== '1' && url.pathname.endsWith('/') && !url.pathname.startsWith('/api/')) {
@@ -32,7 +42,7 @@ export default {
     }
     try {
       const response = await route(request, env, ctx, url);
-      if (env.SITE_INDEXABLE === 'true') return response;
+      if (indexable(env, url)) return response;
       // 임시 주소: 검색엔진에 노출하지 않는다
       const hidden = new Response(response.body, response);
       hidden.headers.set('x-robots-tag', 'noindex, nofollow');
@@ -45,6 +55,11 @@ export default {
   },
 };
 
+// 임시 주소(*.pages.dev)는 SITE_INDEXABLE 과 상관없이 항상 검색엔진에 숨긴다
+function indexable(env, url) {
+  return env.SITE_INDEXABLE === 'true' && url.hostname === SITE_HOST;
+}
+
 // Pages 정적 서버는 company.html 을 /company 로 돌려보낸다(308). 방문자 주소는 그대로 두고 안에서만 바꿔 요청한다
 function assetRequest(request, env) {
   if (env.PAGES_MODE !== '1') return request;
@@ -56,7 +71,16 @@ function assetRequest(request, env) {
 }
 
 async function route(request, env, ctx, url) {
-  if (url.pathname === '/robots.txt' && env.SITE_INDEXABLE !== 'true') {
+  if (url.pathname === '/robots.txt' && indexable(env, url)) {
+    const body = `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: https://${SITE_HOST}/sitemap.xml\n`;
+    return new Response(body, { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+  }
+  if (url.pathname === '/sitemap.xml') {
+    const urls = ['', 'en/'].flatMap((dir) => SITEMAP_PAGES.map((p) => `https://${SITE_HOST}/${dir}${p}`));
+    const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`;
+    return new Response(body, { headers: { 'content-type': 'application/xml; charset=utf-8' } });
+  }
+  if (url.pathname === '/robots.txt') {
     // 검색엔진은 막고, 카카오톡·SNS 링크 미리보기 봇만 허용한다
     const previewBots = ['kakaotalk-scrap', 'facebookexternalhit', 'Twitterbot', 'Slackbot', 'LinkedInBot', 'TelegramBot', 'Discordbot'];
     const body = previewBots.map((bot) => `User-agent: ${bot}\nAllow: /\n`).join('\n') + '\nUser-agent: *\nDisallow: /\n';

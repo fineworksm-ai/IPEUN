@@ -50,9 +50,10 @@ npm run dev                      # http://localhost:8787 , 관리자 http://loca
 
 - 주소: **https://ipeun.pages.dev** (Cloudflare Pages 프로젝트 `ipeun`, Fineworks Cloudflare 계정)
 - 데이터: D1 `ipeun` (id는 `deploy/pages/wrangler.toml`)
-- 검색 노출: `SITE_INDEXABLE = "false"`
-  - 임시 주소라서 모든 응답에 `X-Robots-Tag: noindex`를 붙이고, robots.txt로 크롤링을 막는다.
-  - 정식 도메인을 연결하는 날 `deploy/pages/wrangler.toml`에서 `"true"`로 바꾸고 배포한다.
+- 검색 노출: `SITE_INDEXABLE = "true"`지만 **i-peun.com 에서만** 노출된다 (`worker/index.js` `indexable`).
+  - `*.pages.dev` 임시 주소는 항상 `X-Robots-Tag: noindex` + 크롤링 차단 robots.txt.
+  - i-peun.com: robots.txt 허용(/admin/, /api/ 제외), `/sitemap.xml`은 Worker가 만든다(`SITEMAP_PAGES`).
+- 주소 정리 (Worker): `www.i-peun.com` → `i-peun.com` 301, 예전 사이트 주소 `/certifications`·`/terms` 301 (`OLD_PATHS`).
 - 예전 Worker `ipeun`(ipeun.fineworks-m.workers.dev)은 2026-10-06에 workers.dev 주소를 껐다. Worker 자체는 남아 있다.
 
 ## 배포
