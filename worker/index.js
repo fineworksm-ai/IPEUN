@@ -19,10 +19,10 @@ const PAGE_CONTENT = {
 const SESSION_COOKIE = 'ipeun_admin';
 const SESSION_HOURS = 12;
 const SITE_HOST = 'i-peun.com';
-const OLD_PATHS = { '/certifications': '/company.html#certifications', '/terms': '/privacy.html' };
+const OLD_PATHS = { '/certifications': '/company#certifications', '/terms': '/privacy' };
 const SITEMAP_PAGES = [
-  '', 'company.html', 'technology.html', 'product.html', 'invera.html', 'alljet.html',
-  'events.html', 'media.html', 'publications.html', 'contact.html', 'privacy.html',
+  '', 'company', 'technology', 'product', 'invera', 'alljet',
+  'events', 'media', 'publications', 'contact', 'privacy',
 ];
 const BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|headless|lighthouse|monitor|curl|wget|python|httpclient/i;
 
@@ -33,12 +33,18 @@ export default {
     if (url.hostname === `www.${SITE_HOST}`) return Response.redirect(`https://${SITE_HOST}${url.pathname}${url.search}`, 301);
     // 예전 사이트(Next.js) 주소
     if (OLD_PATHS[url.pathname]) return Response.redirect(`${url.origin}${OLD_PATHS[url.pathname]}`, 301);
+    // 주소에 .html 을 붙이지 않는다 (i-peun.com/ , /company , /en/)
+    if (url.pathname.endsWith('.html') && !url.pathname.startsWith('/admin/')) {
+      const clean = url.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+      return Response.redirect(`${url.origin}${clean}${url.search}`, 301);
+    }
     if (url.pathname === '/en' || url.pathname === '/admin') return Response.redirect(`${url.origin}${url.pathname}/${url.search}`, 301);
-    // Workers(html_handling = "none"): 폴더 주소는 index.html 로. Pages 는 정적 서버가 알아서 처리한다
-    if (env.PAGES_MODE !== '1' && url.pathname.endsWith('/') && !url.pathname.startsWith('/api/')) {
+    // Workers(html_handling = "none"): 폴더 주소는 index.html, /company 는 company.html 로. Pages 는 정적 서버가 알아서 처리한다
+    if (env.PAGES_MODE !== '1' && !url.pathname.startsWith('/api/')) {
       const target = new URL(url);
-      target.pathname = `${url.pathname}index.html`;
-      request = new Request(target, request);
+      if (url.pathname.endsWith('/')) target.pathname = `${url.pathname}index.html`;
+      else if (pageInfo(url.pathname).key) target.pathname = `${url.pathname}.html`;
+      if (target.pathname !== url.pathname) request = new Request(target, request);
     }
     try {
       const response = await route(request, env, ctx, url);

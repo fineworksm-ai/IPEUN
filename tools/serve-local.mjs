@@ -28,6 +28,8 @@ const server = http.createServer(async (request, response) => {
     if (filename === 'en' || filename === 'en/') filename = 'en/index.html';
     const aliases = { product:'product.html', alljet:'alljet.html', invera:'invera.html', 'en/product':'en/product.html', 'en/alljet':'en/alljet.html', 'en/invera':'en/invera.html' };
     filename = aliases[filename.replace(/\/$/, '')] || filename;
+    // 사이트 링크는 .html 없이 (/company, /en/company)
+    if (!path.extname(filename) && pages.has(`${path.basename(filename)}.html`)) filename = `${filename}.html`;
     const parts = filename.split('/');
     const extension = path.extname(filename);
     const allowed = pages.has(filename) || ['styles.css', 'script.js'].includes(filename)

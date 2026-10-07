@@ -101,7 +101,7 @@ export function renderEventYears(events, ctx) {
 export function renderLatestEvents(events, ctx) {
   return [...(events || [])].filter((event) => event.date).sort(byDateDesc).slice(0, 3).map((event) => {
     const cover = (event.photos || []).find((photo) => photo.src);
-    return `<a href="events.html#${esc(event.id)}" class="card activity-card"><div class="activity-cover">${img(cover, ctx, ' loading="lazy"')}</div><div class="activity-copy">${timeTag(event.date)}<h3>${plain(event.title, ctx)}</h3></div></a>`;
+    return `<a href="events#${esc(event.id)}" class="card activity-card"><div class="activity-cover">${img(cover, ctx, ' loading="lazy"')}</div><div class="activity-copy">${timeTag(event.date)}<h3>${plain(event.title, ctx)}</h3></div></a>`;
   }).join('');
 }
 
@@ -126,7 +126,7 @@ export function renderFooterInfo(site, ctx) {
   if (site.fax) contact.push(`F ${esc(site.fax)}`);
   if (site.email) contact.push(`M <a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`);
   if (contact.length) lines.push(`<p>${contact.join(' | ')}</p>`);
-  lines.push(`<div class="footer-links"><a href="privacy.html">${plain('개인정보처리방침', ctx)}</a></div>`);
+  lines.push(`<div class="footer-links"><a href="privacy">${plain('개인정보처리방침', ctx)}</a></div>`);
   if (site.copyright) lines.push(`<p class="copyright">${esc(site.copyright)}</p>`);
   return `\n${lines.join('\n')}\n`;
 }
@@ -174,7 +174,7 @@ export const INQUIRY_TEXT = {
 };
 export function inquiryConsent(lang) {
   const t = INQUIRY_TEXT[lang];
-  return `<label class="inquiry-consent"><input type="checkbox" name="consent" value="yes" data-inquiry-consent /><span>${esc(t.consent)} <a href="privacy.html" target="_blank" rel="noopener">${esc(t.policy)}</a></span></label><input class="inquiry-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  return `<label class="inquiry-consent"><input type="checkbox" name="consent" value="yes" data-inquiry-consent /><span>${esc(t.consent)} <a href="privacy" target="_blank" rel="noopener">${esc(t.policy)}</a></span></label><input class="inquiry-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <style>.inquiry-consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 24px;font-size:15px;line-height:1.6;color:var(--muted,#65736e)}.inquiry-consent input{width:18px;height:18px;margin-top:3px;flex:0 0 18px;accent-color:var(--ink,#061713)}.inquiry-consent a{text-decoration:underline;color:inherit}.inquiry-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}</style>`;
 }
 
@@ -211,7 +211,7 @@ export function structuredData(key, lang, origin, site) {
       email, telephone: intl, faxNumber: `+82-${(site?.fax || '02-6008-4408').replace(/^0/, '')}`,
       taxID: site?.bizNo || '470-81-03525', foundingDate: '2025-05',
       address: { '@type': 'PostalAddress', streetAddress: base.street, addressLocality: base.locality, addressRegion: base.region, addressCountry: 'KR' },
-      contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: intl, email, url: `${origin}/${lang === 'en' ? 'en/' : ''}contact.html`, availableLanguage: ['Korean', 'English'] },
+      contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: intl, email, url: `${origin}/${lang === 'en' ? 'en/' : ''}contact`, availableLanguage: ['Korean', 'English'] },
       hasCredential: ['ISO 13485:2016', 'ISO 14001:2015', 'ISO 9001:2015'].map((name) => ({ '@type': 'EducationalOccupationalCredential', name, credentialCategory: 'certification' })),
     },
     { '@type': 'WebSite', '@id': `${origin}/#website`, url: `${origin}/`, name: 'IPEUN', alternateName: '이픈', inLanguage: lang === 'en' ? 'en' : 'ko', publisher: { '@id': orgId } },
@@ -220,7 +220,7 @@ export function structuredData(key, lang, origin, site) {
   if (product) {
     const local = product[lang] || product.ko;
     graph.push({
-      '@type': 'Product', '@id': `${origin}/${key}.html#product`,
+      '@type': 'Product', '@id': `${origin}/${key}#product`,
       name: product.name, alternateName: product.alt, category: local.category, description: local.description,
       image: [`${origin}${product.image}`], brand: { '@type': 'Brand', name: 'IPEUN' }, manufacturer: { '@id': orgId },
     });
