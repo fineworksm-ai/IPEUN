@@ -4,6 +4,7 @@
 // - /api/*  관리자 API, 문의 접수
 // - /files/* 관리자에서 올린 이미지
 import { json, kstDate, getCookie, pageInfo } from './util.js';
+import { serveVideo } from './video.js';
 import { loadDictionary, translator, translateMissing, hasKorean } from './translate.js';
 import {
   collect, renderHistory, renderCertifications, renderPatents, patentHeading, renderEventYears,
@@ -61,6 +62,7 @@ async function route(request, env, ctx, url) {
     const body = previewBots.map((bot) => `User-agent: ${bot}\nAllow: /\n`).join('\n') + '\nUser-agent: *\nDisallow: /\n';
     return new Response(body, { headers: { 'content-type': 'text/plain; charset=utf-8' } });
   }
+  if (url.pathname.startsWith('/assets/media/') && url.pathname.endsWith('.mp4')) return serveVideo(request, env);
   if (url.pathname.startsWith('/api/')) return api(request, env, url);
   if (url.pathname.startsWith('/files/')) return serveFile(env, url);
   if (url.pathname.startsWith('/admin/')) return adminAsset(request, env);
@@ -150,7 +152,7 @@ async function page(request, env, ctx, url) {
     rewriter.on('form[data-inquiry-form]', { element: (el) => el.setAttribute('data-inquiry-endpoint', '/api/inquiry') });
     rewriter.on('.inquiry-delivery-note', inner(text.note));
     rewriter.on('.inquiry-submit .field-help', inner(text.help));
-    rewriter.on('[data-inquiry-compose]', inner(`${text.submit} <span aria-hidden="true">↗</span>`));
+    rewriter.on('[data-inquiry-compose]', inner(text.submit));
     rewriter.on('.inquiry-submit', { element: (el) => el.before(inquiryConsent(lang), { html: true }) });
   }
 

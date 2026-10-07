@@ -294,6 +294,7 @@ if (lightbox && typeof lightbox.showModal === 'function') {
       image.alt = button.dataset.lightboxTitle;
       image.width = Number(button.dataset.lightboxWidth);
       image.height = Number(button.dataset.lightboxHeight);
+      image.draggable = false;
       lightbox.querySelector('[data-lightbox-content]').replaceChildren(image);
       lightbox.querySelector('[data-lightbox-caption]').textContent = button.dataset.lightboxTitle;
       lightbox.showModal();
@@ -309,6 +310,21 @@ if (lightbox && typeof lightbox.showModal === 'function') {
     document.body.classList.remove('lightbox-open');
     lightbox.querySelector('[data-lightbox-content]').replaceChildren();
     lightboxTrigger?.focus({ preventScroll: true });
+  });
+}
+
+// Document previews support enlargement without browser copy/save gestures.
+{
+  document.querySelectorAll('.document-thumb img').forEach(image => { image.draggable = false; });
+  const insideDocument = target => !!target?.closest?.('.document-card, [data-lightbox-content]');
+  const protectDocument = event => {
+    if (insideDocument(event.target) ||
+        ((event.type === 'copy' || event.type === 'cut') && lightbox?.open)) event.preventDefault();
+  };
+  for (const type of ['contextmenu', 'dragstart', 'copy', 'cut']) document.addEventListener(type, protectDocument);
+  document.addEventListener('keydown', event => {
+    if ((event.ctrlKey || event.metaKey) && ['c', 's', 'x'].includes(event.key.toLowerCase()) &&
+        (insideDocument(event.target) || lightbox?.open)) event.preventDefault();
   });
 }
 

@@ -1380,7 +1380,7 @@ body .section-head,body.home-page .section-head { flex-direction:column; align-i
 /* Event dates and captions stay legible and aligned with each photograph. */
 .event-heading time,.activity-copy time,.home-page .activity-copy time {
  display:inline-block; color:var(--mint-text); font-size:18px; font-weight:700;
- line-height:1.4; letter-spacing:.025em; font-variant-numeric:tabular-nums;
+ line-height:1.4; letter-spacing:0; font-variant-numeric:tabular-nums;
 }
 .event-heading time { padding:8px 14px; border-radius:10px; background:#eaf7f3; }
 .event-heading h2 { margin-top:16px; }
@@ -1395,6 +1395,16 @@ body .section-head,body.home-page .section-head { flex-direction:column; align-i
  .event-photo-grid,.buyers-photo-grid { grid-template-columns:minmax(0,1fr); }
  .buyers-photo-grid .is-portrait { width:min(100%,300px); }
  .event-photo figcaption { margin-top:10px; }
+}
+
+/* Dates use the font's default spacing throughout the site. */
+body time,body .document-caption p { letter-spacing:0; }
+
+/* Align all five content rows in the three desktop technology cards. */
+@media(min-width:901px) {
+ .home-page .home-technology .tech-cards { grid-template-rows:repeat(5,auto); row-gap:0; }
+ .home-page .home-technology .tech-card { display:grid; grid-row:span 5; grid-template-rows:subgrid; row-gap:0; }
+ .home-page .home-technology .tech-card .result-badge { align-self:start; }
 }
 
 /* INVERA 영상: 화면에 보이면 무음 자동 재생, 하단 바(재생 위치 · 음소거 · 전체 화면) */
@@ -1428,3 +1438,50 @@ body .section-head,body.home-page .section-head { flex-direction:column; align-i
 
 /* 화면에는 숨기고 검색엔진·스크린리더에는 읽히는 텍스트 (예: 로고만 있는 제품 제목) */
 .visually-hidden { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+
+/* Site-wide: one button style, text links with arrows, and heading-left / copy-right layouts on desktop. */
+html body .button.button,body main .section .button,body.home-page main .section .button,body.home-page .hero-copy .button {
+ min-height:46px; padding:10px 24px; gap:10px; border-radius:12px; font-size:15px; font-weight:650; line-height:1.5;
+ background:var(--mint-text); color:var(--white);
+}
+html body .button.button:hover,body main .section .button:hover,body.home-page main .section .button:hover,body.home-page .hero-copy .button:hover { background:#006354; color:var(--white); }
+body main .text-link,body main .section .text-link,body.home-page main .section .text-link {
+ display:inline-flex; align-items:center; gap:8px; min-height:0; padding:0 0 6px; border-radius:0;
+ background:none; color:var(--ink); font-size:15px; font-weight:650; line-height:1.5;
+ border-bottom:1px solid currentColor !important;
+}
+body main .text-link:not(:has(> span))::after { content:"→"; transition:transform .2s ease; }
+body main .text-link:hover,body main .section .text-link:hover,body.home-page main .section .text-link:hover { background:none; color:var(--mint-text); }
+body main .text-link:not(:has(> span)):hover::after { transform:translateX(4px); }
+.directions-actions,#location .directions-actions { flex-direction:row; flex-wrap:wrap; gap:10px 24px; }
+.section-head .product-introduction { margin:0; max-width:none; }
+@media(max-width:900px) {
+ html body .button.button,body main .section .button,body.home-page main .section .button,body.home-page .hero-copy .button { min-height:44px; padding:9px 22px; }
+ body main .text-link,body main .section .text-link,body.home-page main .section .text-link { padding:8px 0 6px; }
+}
+@media(min-width:901px) {
+ :root { --head-copy-offset:34px; }
+ /* Section links sit at the right end of the heading row. */
+ .section > .container:has(> :is(.section-actions,.patent-section-link)) { display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:48px; }
+ .section > .container:has(> :is(.section-actions,.patent-section-link)) > * { grid-column:1 / -1; }
+ .section > .container:has(> :is(.section-actions,.patent-section-link)) > .section-head { grid-column:1; grid-row:1; }
+ .section > .container > :is(.section-actions,.patent-section-link) { grid-column:2; grid-row:1; align-self:end; justify-self:end; margin:0 0 48px; }
+ .home-page .section > .container > .section-actions { margin-bottom:52px; }
+ /* Heading on the left, description on the right. */
+ body .section-head:has(> div > .eyebrow):has(> p:not(.eyebrow)),
+ body.home-page .section-head:has(> div > .eyebrow):has(> p:not(.eyebrow)) { display:grid; grid-template-columns:1fr 1fr; align-items:start; gap:80px; }
+ body .section-head:has(> div > .eyebrow) > p:not(.eyebrow) { margin:0; padding-top:var(--head-copy-offset); max-width:none; }
+ .home-page .home-about-grid,.split-copy,.company-intro-grid { grid-template-columns:1fr 1fr; align-items:start; gap:80px; }
+ .home-page .home-about-copy,.split-copy:has(> div > .eyebrow) > .reading-copy { padding-top:var(--head-copy-offset); margin-top:0; max-width:none; }
+ #about.company-intro .reading-copy { padding-top:calc(var(--head-copy-offset) + 10px); margin-top:0; }
+ body main :is(.home-about-copy,.reading-copy) p,body main .section-head:has(> div > .eyebrow) > p:not(.eyebrow) { max-width:29em; text-wrap:wrap; }
+ /* Contact: details span the height of the heading and button. */
+ .contact-grid { grid-template-columns:1.35fr 1fr; align-items:stretch; gap:60px; }
+ .contact-grid > .contact-list { justify-content:space-between; gap:16px; padding:var(--head-copy-offset) 0 10px; }
+}
+.nowrap { white-space:nowrap; }
+
+/* Document enlargement uses buttons and preserves image-copy protection. */
+button.document-card { border:0; }
+.document-card,.document-thumb img,[data-lightbox-content] img { -webkit-user-drag:none; -webkit-touch-callout:none; user-select:none; }

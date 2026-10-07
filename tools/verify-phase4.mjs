@@ -37,27 +37,38 @@ for (const [file, html] of htmls) {
 }
 if (/source-note/.test(fs.readFileSync(path.join(root, 'styles.css'), 'utf8'))) errors.push('styles.css: source-note');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools/document-assets.json'), 'utf8'));
-assert.equal(manifest.records.length, 20);
+assert.equal(new Set(manifest.records.map(r => r.name)).size, manifest.records.length);
+for (const name of ["iso13485-kr", "iso13485-en", "iso14001-kr", "iso14001-en", "venture", "alljet-trademark", "alljet-trademark-mark"]) assert.ok(manifest.records.some(r => r.name === name));
 for (const record of manifest.records) {
   assert.equal(record.variants.thumb.width, 600);
   assert.ok(record.variants.large.width <= 1600);
-  const original = path.join(root, 'tmp/documents-original', record.original);
+  const original = record.sourcePage ? path.join(root, record.original) : path.join(root, 'tmp/documents-original', record.original);
   if (fs.existsSync(original)) assert.equal(createHash('sha256').update(fs.readFileSync(original)).digest('hex'), record.originalSha256);
   for (const variant of Object.values(record.variants)) assert.equal(fs.statSync(path.join(root, variant.path)).size, variant.bytes);
 }
-assert.equal(fs.readdirSync(path.join(root, 'assets/documents')).length, 40);
+const redactionPlan = JSON.parse(fs.readFileSync(path.join(root, 'tools/document-redactions.json'), 'utf8'));
+for (const entry of redactionPlan.records) {
+  const record = manifest.records.find(r => r.name === entry.name);
+  assert.ok(record?.redacted, `${entry.name}: unredacted document`);
+  assert.equal(record.originalSha256, entry.originalSha256);
+  for (const kind of ['thumb', 'large']) {
+    assert.equal(record.variants[kind].path, `assets/documents/${entry.name}-redacted-values-${kind}.webp`);
+    assert.ok(!fs.existsSync(path.join(root, `assets/documents/${entry.name}-${kind}.webp`)), `${entry.name}: unsafe public original`);
+  }
+}
+assert.equal(fs.readdirSync(path.join(root, 'assets/documents')).length, manifest.records.length * 2);
 assert.ok(!fs.existsSync(path.join(root, 'image-review.html')));
 assert.ok(!fs.existsSync(path.join(root, 'en/image-review.html')));
 
 // Exercise actual application listeners in a DOM unit fixture, not a live browser.
 function lightboxUnit(file, supported = true) {
   const html = htmls.get(file);
-  const triggers = [...html.matchAll(/<a class="card document-card" ([^]*?)>/g)].map(match => {
+  const triggers = [...html.matchAll(/<button class="card document-card" ([^]*?)>/g)].map(match => {
     const attrs = Object.fromEntries([...match[1].matchAll(/([\w-]+)="([^"]*)"/g)].map(m => [m[1], m[2]]));
     return { dataset: { lightboxSrc: attrs['data-lightbox-src'], lightboxTitle: attrs['data-lightbox-title'], lightboxWidth: attrs['data-lightbox-width'], lightboxHeight: attrs['data-lightbox-height'] },
       listeners: {}, addEventListener(type, handler) { this.listeners[type] = handler; }, focus() { this.focused = true; } };
   });
-  assert.equal(triggers.length, 20);
+  assert.equal(triggers.length, manifest.records.length);
   const classes = new Set();
   const classList = { add: name => classes.add(name), remove: name => classes.delete(name), toggle: () => {}, contains: name => classes.has(name) };
   const content = { children: [], replaceChildren(...children) { this.children = children; } };
@@ -74,7 +85,7 @@ function lightboxUnit(file, supported = true) {
     addEventListener() {}, createElement: () => ({}) };
   const window = { scrollY:0, matchMedia: () => ({ matches:false, addEventListener() {} }), addEventListener() {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'script.js'), 'utf8'), { document, window, URL, console, setTimeout, clearTimeout });
-  if (!supported) { assert.ok(triggers.every(t => !t.listeners.click)); return 20; }
+  if (!supported) { assert.ok(triggers.every(t => !t.listeners.click)); return triggers.length; }
   for (const trigger of triggers) {
     let prevented = false;
     trigger.listeners.click({ preventDefault: () => { prevented = true; } });
@@ -107,6 +118,9 @@ if (process.argv.includes('--http')) {
   }
   for (const pathname of ['/', '/company.html', '/en/company.html']) assert.equal((await fetch('http://localhost:3000' + pathname)).status, 200);
   for (const pathname of ['/image-review.html', '/en/image-review.html', '/assets/documents/bizreg.png', '/tmp/documents-original/bizreg.png']) assert.equal((await fetch('http://localhost:3000' + pathname)).status, 404);
+  for (const entry of redactionPlan.records) for (const kind of ['thumb', 'large']) {
+    assert.equal((await fetch(`http://localhost:3000/assets/documents/${entry.name}-${kind}.webp`)).status, 404);
+  }
 }
 console.log(JSON.stringify({ pages: pages.length, errors, lightboxUnitCases:lightboxCases,
   fallbackUnitCases:fallbackCases, imageHttpChecks:httpChecks.length,

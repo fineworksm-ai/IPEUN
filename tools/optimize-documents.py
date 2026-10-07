@@ -5,6 +5,9 @@ import json
 from PIL import Image, ImageOps
 
 root = Path(__file__).resolve().parents[1]
+manifest = root / "tools/document-assets.json"
+if manifest.exists() and any(r.get("redacted") for r in json.loads(manifest.read_text())["records"]):
+    raise SystemExit("Public documents are redacted. Use tools/redact-documents.py; do not restore originals.")
 originals = root / "tmp/documents-original"
 public = root / "assets/documents"
 names = ["iso-kr", "iso-en", "social-venture", "rnd", "design", "invention",

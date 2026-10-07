@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "fill": "white",
+  "records": [
+    {
+      "name": "patent1",
+      "originalSha256": "6cf3f8801467d596bb724131e97188b788456d5f1f64b84704a8b7c882ffe1ff",
+      "regions": [
+        {
+          "rect": [
+            0.716,
+            0.199,
+            0.855,
+            0.228
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.632,
+            0.865,
+            0.654
+          ],
+          "reason": "field value only; preserve labels and table"
+        }
+      ]
+    },
+    {
+      "name": "patent2",
+      "originalSha256": "91c0fcd20f0e036e3144808b5f76a67d5edb82d7842363c5d8d02393664bcb8d",
+      "regions": [
+        {
+          "rect": [
+            0.689,
+            0.19,
+            0.825,
+            0.217
+          ],
+          "reason": "field value only; preserve labels and table"
+        }
+      ]
+    },
+    {
+      "name": "patent3",
+      "originalSha256": "301c33d900eca4e0f5253048faba4f7cef9afe783df833d8e4293ab750260364",
+      "regions": [
+        {
+          "rect": [
+            0.718,
+            0.201,
+            0.852,
+            0.227
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.236,
+            0.843,
+            0.26
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.269,
+            0.834,
+            0.294
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.298,
+            0.785,
+            0.322
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.324,
+            0.86,
+            0.342
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.344,
+            0.893,
+            0.378
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.323,
+            0.402,
+            0.342
+          ],
+          "reason": "field value only; preserve labels and table"
+        }
+      ],
+      "preserveTextRegions": [
+        [
+          0.335,
+          0.198,
+          0.575,
+          0.233
+        ],
+        [
+          0.335,
+          0.262,
+          0.575,
+          0.294
+        ],
+        [
+          0.335,
+          0.234,
+          0.59,
+          0.262
+        ],
+        [
+          0.59,
+          0.552,
+          0.71,
+          0.576
+        ],
+        [
+          0.12,
+          0.579,
+          0.71,
+          0.601
+        ]
+      ]
+    },
+    {
+      "name": "patent4",
+      "originalSha256": "3cc5f1ccbef37192e463abbf5fbf9ed37fe8a74680f5395bfa0994e67230373e",
+      "regions": [
+        {
+          "rect": [
+            0.718,
+            0.201,
+            0.852,
+            0.227
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.236,
+            0.843,
+            0.26
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.269,
+            0.834,
+            0.294
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.298,
+            0.785,
+            0.322
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.324,
+            0.86,
+            0.342
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.344,
+            0.893,
+            0.378
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.323,
+            0.402,
+            0.342
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.553,
+            0.863,
+            0.578
+          ],
+          "reason": "field value only; preserve labels and table"
+        }
+      ],
+      "preserveTextRegions": [
+        [
+          0.335,
+          0.198,
+          0.575,
+          0.233
+        ],
+        [
+          0.335,
+          0.262,
+          0.575,
+          0.294
+        ],
+        [
+          0.335,
+          0.234,
+          0.59,
+          0.262
+        ],
+        [
+          0.59,
+          0.552,
+          0.71,
+          0.576
+        ],
+        [
+          0.12,
+          0.579,
+          0.71,
+          0.601
+        ]
+      ]
+    },
+    {
+      "name": "alljet-trademark",
+      "originalSha256": "1e5aa8e4aa740098439daf31d0b646fa93774757f607279f83b869c8fa078c17",
+      "regions": [
+        {
+          "rect": [
+            0.718,
+            0.201,
+            0.852,
+            0.228
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.236,
+            0.843,
+            0.26
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.718,
+            0.263,
+            0.86,
+            0.281
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.282,
+            0.893,
+            0.318
+          ],
+          "reason": "field value only; preserve labels and table"
+        },
+        {
+          "rect": [
+            0.334,
+            0.262,
+            0.402,
+            0.281
+          ],
+          "reason": "field value only; preserve labels and table"
+        }
+      ],
+      "preserveTextRegions": [
+        [
+          0.335,
+          0.198,
+          0.575,
+          0.233
+        ],
+        [
+          0.335,
+          0.234,
+          0.59,
+          0.262
+        ],
+        [
+          0.12,
+          0.515,
+          0.71,
+          0.539
+        ]
+      ]
+    }
+  ]
+}

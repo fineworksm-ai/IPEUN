@@ -60,8 +60,8 @@ function documentCard(doc, ctx) {
   }
   const open = plain('확대해서 보기', ctx);
   const large = esc(asset(doc.large.src, ctx));
-  // 링크로 두면 스크립트가 없어도 큰 이미지가 열린다. 스크립트가 있으면 라이트박스로 연다 (script.js)
-  return `<a class="card document-card" href="${large}" data-lightbox-src="${large}" data-lightbox-title="${title}" data-lightbox-width="${esc(doc.large.w || '')}" data-lightbox-height="${esc(doc.large.h || '')}" aria-label="${title} — ${open}"><div class="document-thumb">${img({ ...doc.thumb, alt: doc.title }, ctx, ' loading="lazy"')}</div>${caption}<span class="document-open">${open}</span></a>`;
+  // 확대는 라이트박스 버튼으로만 제공한다 (정적 회사소개 카드와 동일).
+  return `<button class="card document-card" type="button" data-lightbox-src="${large}" data-lightbox-title="${title}" data-lightbox-width="${esc(doc.large.w || '')}" data-lightbox-height="${esc(doc.large.h || '')}" aria-label="${title} — ${open}"><div class="document-thumb">${img({ ...doc.thumb, alt: doc.title }, ctx, ' loading="lazy"')}</div>${caption}<span class="document-open">${open}</span></button>`;
 }
 export function renderCertifications(docs, ctx) {
   const of = (group) => (docs || []).filter((doc) => doc.group === group);

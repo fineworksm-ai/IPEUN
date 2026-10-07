@@ -2,41 +2,43 @@
   "records": [
     {
       "name": "iso-kr",
-      "original": "iso-kr.jpg",
-      "originalBytes": 941095,
-      "originalSha256": "b96635bef9e50290c5c3312e06e2ac74fd6d5d16f4641d7d60b3314b0bb9633b",
+      "original": "tmp/documents-additional-original/ISO 9001_kr.pdf",
+      "sourcePage": 1,
+      "originalBytes": 1137035,
+      "originalSha256": "dd7f16d5758af7991716ae2a374c92b99cf32afb7c1d55f15bf4b0368a1f3675",
       "variants": {
         "thumb": {
           "path": "assets/documents/iso-kr-thumb.webp",
           "width": 600,
-          "height": 848,
-          "bytes": 65266
+          "height": 849,
+          "bytes": 72382
         },
         "large": {
           "path": "assets/documents/iso-kr-large.webp",
-          "width": 1239,
-          "height": 1752,
-          "bytes": 229734
+          "width": 1600,
+          "height": 2263,
+          "bytes": 243972
         }
       }
     },
     {
       "name": "iso-en",
-      "original": "iso-en.jpg",
-      "originalBytes": 1010067,
-      "originalSha256": "9d4ab6802c47e59ee9332499a14a250d4448260e3b822bc1ec77ad101d009203",
+      "original": "tmp/documents-additional-original/ISO 9001_en.pdf",
+      "sourcePage": 1,
+      "originalBytes": 1166107,
+      "originalSha256": "8749e79409cd12ab2a817ee618eabd4a44d2652db87ea62e3caeb36cdea42759",
       "variants": {
         "thumb": {
           "path": "assets/documents/iso-en-thumb.webp",
           "width": 600,
-          "height": 848,
-          "bytes": 76026
+          "height": 849,
+          "bytes": 75962
         },
         "large": {
           "path": "assets/documents/iso-en-large.webp",
-          "width": 1239,
-          "height": 1752,
-          "bytes": 262134
+          "width": 1600,
+          "height": 2263,
+          "bytes": 258584
         }
       }
     },
@@ -247,18 +249,19 @@
       "originalSha256": "6cf3f8801467d596bb724131e97188b788456d5f1f64b84704a8b7c882ffe1ff",
       "variants": {
         "thumb": {
-          "path": "assets/documents/patent1-thumb.webp",
+          "path": "assets/documents/patent1-redacted-values-thumb.webp",
           "width": 600,
           "height": 849,
-          "bytes": 53392
+          "bytes": 59942
         },
         "large": {
-          "path": "assets/documents/patent1-large.webp",
+          "path": "assets/documents/patent1-redacted-values-large.webp",
           "width": 1240,
           "height": 1755,
-          "bytes": 175650
+          "bytes": 196242
         }
-      }
+      },
+      "redacted": true
     },
     {
       "name": "patent2",
@@ -267,58 +270,63 @@
       "originalSha256": "91c0fcd20f0e036e3144808b5f76a67d5edb82d7842363c5d8d02393664bcb8d",
       "variants": {
         "thumb": {
-          "path": "assets/documents/patent2-thumb.webp",
+          "path": "assets/documents/patent2-redacted-values-thumb.webp",
           "width": 600,
           "height": 849,
-          "bytes": 59434
+          "bytes": 68140
         },
         "large": {
-          "path": "assets/documents/patent2-large.webp",
+          "path": "assets/documents/patent2-redacted-values-large.webp",
           "width": 1240,
           "height": 1755,
-          "bytes": 192486
+          "bytes": 219604
         }
-      }
+      },
+      "redacted": true
     },
     {
       "name": "patent3",
-      "original": "patent3.png",
-      "originalBytes": 507337,
-      "originalSha256": "53b0a8e676f63d11e7774ad7e731f907695b59bf0923a8649691b792670852bd",
+      "original": "tmp/documents-additional-original/출원사실증명원_분말 성형 방식의 무바늘 주사기용 카트리지(10-2026-0071422).pdf",
+      "sourcePage": 1,
+      "originalBytes": 745475,
+      "originalSha256": "301c33d900eca4e0f5253048faba4f7cef9afe783df833d8e4293ab750260364",
       "variants": {
         "thumb": {
-          "path": "assets/documents/patent3-thumb.webp",
+          "path": "assets/documents/patent3-redacted-values-thumb.webp",
           "width": 600,
           "height": 849,
-          "bytes": 64270
+          "bytes": 71730
         },
         "large": {
-          "path": "assets/documents/patent3-large.webp",
+          "path": "assets/documents/patent3-redacted-values-large.webp",
           "width": 1600,
-          "height": 2264,
-          "bytes": 203762
+          "height": 2265,
+          "bytes": 333402
         }
-      }
+      },
+      "redacted": true
     },
     {
       "name": "patent4",
-      "original": "patent4.png",
-      "originalBytes": 505573,
-      "originalSha256": "3370c82403ea8b8958303425fabe726a908a3d8674dc11210509045627ebc726",
+      "original": "tmp/documents-additional-original/출원사실증명원_히트파이프 냉각 구조의 무바늘주사기(10-2026-0071425).pdf",
+      "sourcePage": 1,
+      "originalBytes": 745540,
+      "originalSha256": "3cc5f1ccbef37192e463abbf5fbf9ed37fe8a74680f5395bfa0994e67230373e",
       "variants": {
         "thumb": {
-          "path": "assets/documents/patent4-thumb.webp",
+          "path": "assets/documents/patent4-redacted-values-thumb.webp",
           "width": 600,
           "height": 849,
-          "bytes": 64076
+          "bytes": 71328
         },
         "large": {
-          "path": "assets/documents/patent4-large.webp",
+          "path": "assets/documents/patent4-redacted-values-large.webp",
           "width": 1600,
-          "height": 2264,
-          "bytes": 203066
+          "height": 2265,
+          "bytes": 330222
         }
-      }
+      },
+      "redacted": true
     },
     {
       "name": "innovation",
@@ -399,9 +407,157 @@
           "bytes": 675702
         }
       }
+    },
+    {
+      "name": "iso13485-kr",
+      "original": "tmp/documents-additional-original/ISO 13485_주식회사 이픈.pdf",
+      "sourcePage": 2,
+      "originalBytes": 824692,
+      "originalSha256": "fb0e6c2d9e99fede7ed7a01659d2d3aa3fc9bbeab3fb6b1d8c680bec2492b4b1",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/iso13485-kr-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 82710
+        },
+        "large": {
+          "path": "assets/documents/iso13485-kr-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 271092
+        }
+      }
+    },
+    {
+      "name": "iso13485-en",
+      "original": "tmp/documents-additional-original/ISO 13485_주식회사 이픈.pdf",
+      "sourcePage": 1,
+      "originalBytes": 824692,
+      "originalSha256": "fb0e6c2d9e99fede7ed7a01659d2d3aa3fc9bbeab3fb6b1d8c680bec2492b4b1",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/iso13485-en-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 82334
+        },
+        "large": {
+          "path": "assets/documents/iso13485-en-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 294072
+        }
+      }
+    },
+    {
+      "name": "iso14001-kr",
+      "original": "tmp/documents-additional-original/ISO 14001_kr.pdf",
+      "sourcePage": 1,
+      "originalBytes": 1120463,
+      "originalSha256": "67826537bcd525e77c3a3f8d1629006adbd8f525811b74d867fe9bbda6e665ae",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/iso14001-kr-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 69680
+        },
+        "large": {
+          "path": "assets/documents/iso14001-kr-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 237086
+        }
+      }
+    },
+    {
+      "name": "iso14001-en",
+      "original": "tmp/documents-additional-original/ISO 14001_en.pdf",
+      "sourcePage": 1,
+      "originalBytes": 1163684,
+      "originalSha256": "30aa9ab3ef918003f11b9fcc1e7bca08f22508021cd6b2b9eb693395619257f5",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/iso14001-en-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 73918
+        },
+        "large": {
+          "path": "assets/documents/iso14001-en-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 254954
+        }
+      }
+    },
+    {
+      "name": "venture",
+      "original": "tmp/documents-additional-original/11. 벤처기업인증(26.08~29.08).pdf",
+      "sourcePage": 1,
+      "originalBytes": 332033,
+      "originalSha256": "c2c16eb80875ba436a6af804da154b834ca9ddd17a1a18a4065ab24496555878",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/venture-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 63816
+        },
+        "large": {
+          "path": "assets/documents/venture-large.webp",
+          "width": 1600,
+          "height": 2263,
+          "bytes": 277038
+        }
+      }
+    },
+    {
+      "name": "alljet-trademark",
+      "original": "tmp/documents-additional-original/출원사실증명원_40-2026-0142621.pdf",
+      "sourcePage": 1,
+      "originalBytes": 826158,
+      "originalSha256": "1e5aa8e4aa740098439daf31d0b646fa93774757f607279f83b869c8fa078c17",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/alljet-trademark-redacted-values-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 66196
+        },
+        "large": {
+          "path": "assets/documents/alljet-trademark-redacted-values-large.webp",
+          "width": 1600,
+          "height": 2265,
+          "bytes": 316538
+        }
+      },
+      "redacted": true
+    },
+    {
+      "name": "alljet-trademark-mark",
+      "original": "tmp/documents-additional-original/출원사실증명원_40-2026-0142621.pdf",
+      "sourcePage": 2,
+      "originalBytes": 826158,
+      "originalSha256": "1e5aa8e4aa740098439daf31d0b646fa93774757f607279f83b869c8fa078c17",
+      "variants": {
+        "thumb": {
+          "path": "assets/documents/alljet-trademark-mark-thumb.webp",
+          "width": 600,
+          "height": 849,
+          "bytes": 22056
+        },
+        "large": {
+          "path": "assets/documents/alljet-trademark-mark-large.webp",
+          "width": 1600,
+          "height": 2265,
+          "bytes": 149184
+        }
+      }
     }
   ],
-  "originalBytes": 17292720,
-  "thumbnailBytes": 1245056,
-  "largeBytes": 4748200
+  "originalBytes": 22389835,
+  "thumbnailBytes": 1742786,
+  "largeBytes": 6863358
 }
