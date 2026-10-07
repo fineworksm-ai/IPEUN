@@ -401,8 +401,9 @@ button.document-card:hover { transform:translateY(-3px); }
 .lightbox::backdrop { background:rgba(6,23,19,.8); }
 .lightbox-close { position:absolute; top:12px; right:16px; width:44px; height:44px; border:0; border-radius:50%; background:var(--white); color:var(--ink); font-size:27px; }
 .lightbox > p { padding-right:56px; font-size:17px; font-weight:600; margin-bottom:20px; }
-[data-lightbox-content] { height:calc(100% - 55px); overflow:auto; }
-[data-lightbox-content] img { max-width:100%; height:auto; margin:auto; }
+[data-lightbox-content] { height:calc(100% - 55px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+/* 스크롤 없이 화면 안에 다 보이게: 가로·세로 중 먼저 닿는 쪽에 맞춘다 */
+[data-lightbox-content] img { width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; }
 body.lightbox-open { overflow:hidden; }
 @media(max-width:1024px) { .document-grid { grid-template-columns:repeat(3,1fr); } .location-card { padding:24px; } }
 @media(max-width:900px) {
