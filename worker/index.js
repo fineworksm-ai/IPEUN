@@ -17,7 +17,7 @@ const PAGE_CONTENT = {
   index: ['events', 'popups'], company: ['history', 'documents'], events: ['events'], media: ['media'],
 };
 const SESSION_COOKIE = 'ipeun_admin';
-const STAFF_COOKIE = 'ipeun_staff'; // 관리자 브라우저: 방문 통계 제외
+const STAFF_COOKIE = 'ipeun_staff'; // 관리자 화면을 연 브라우저: 방문 통계 제외
 const SESSION_HOURS = 12;
 const SITE_HOST = 'i-peun.com';
 const OLD_PATHS = { '/certifications': '/company#certifications', '/terms': '/privacy' };
@@ -231,6 +231,8 @@ async function adminAsset(request, env) {
   out.headers.set('x-robots-tag', 'noindex, nofollow');
   out.headers.set('cache-control', 'no-store');
   out.headers.set('x-frame-options', 'DENY');
+  // 관리자 화면을 연 브라우저는 로그인하지 않아도 방문 통계에서 뺀다
+  if (!getCookie(request, STAFF_COOKIE)) out.headers.append('set-cookie', staffCookie(request));
   return out;
 }
 
@@ -327,7 +329,7 @@ async function login(request, env) {
   const expires = Date.now() + SESSION_HOURS * 3600 * 1000;
   const value = `${expires}.${await hmac(env, `session:${expires}`)}`;
   const response = json({ ok: true }, 200, { 'set-cookie': sessionCookie(request, value, SESSION_HOURS * 3600) });
-  // 관리자로 로그인한 브라우저는 1년 동안 방문 통계에서 뺀다 (로그아웃해도 유지)
+  // 로그인한 브라우저도 1년 동안 방문 통계에서 뺀다 (로그아웃해도 유지)
   response.headers.append('set-cookie', staffCookie(request));
   return response;
 }
