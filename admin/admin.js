@@ -442,18 +442,17 @@ const move = (list, index, dir) => {
   if (target < 0 || target >= list.length) return;
   [list[index], list[target]] = [list[target], list[index]];
 };
-// 순서 번호 입력: 숫자를 바꾸고 Enter(또는 다른 곳 클릭)하면 그 자리로 옮긴다
+// 순서 번호: 칸을 눌러 번호를 고르면 그 자리로 옮긴다
 function orderInput(index, total, onMoveTo) {
-  const input = h('input', { type: 'number', min: 1, max: total, inputmode: 'numeric', 'aria-label': '순서' });
-  input.value = index + 1;
-  input.addEventListener('keydown', (event) => { if (event.key === 'Enter') input.blur(); });
-  input.addEventListener('change', () => {
-    const to = Math.min(total, Math.max(1, Math.round(Number(input.value) || index + 1))) - 1;
-    if (to === index) { input.value = index + 1; return; }
+  const options = Array.from({ length: total }, (_, i) => [String(i), `${i + 1}번`]);
+  const picker = select(options, String(index), (value) => {
+    const to = Number(value);
+    if (to === index) return;
     onMoveTo(to);
     toast(`${to + 1}번으로 옮겼습니다. 저장을 눌러야 사이트에 반영됩니다.`);
   });
-  return h('label', { class: 'adm-order' }, '순서', input, h('span', {}, `/ ${total}`));
+  picker.setAttribute('aria-label', '순서');
+  return h('label', { class: 'adm-order' }, '순서', picker, h('span', {}, `/ ${total}개`));
 }
 // list 안에서 subset(화면에 보이는 순서대로의 항목들) 기준 from번째 항목을 to번째 자리로 옮긴다
 function moveTo(list, subset, from, to) {
@@ -780,18 +779,35 @@ VIEWS.documents = () => {
 VIEWS.popups = () => {
   const list = state.content.popups;
   const rerender = () => { touch('popups'); renderShell(); };
+  // 뜨는 위치 미리보기: 메인 화면(PC·휴대폰)을 줄여 그리고 팝업이 뜰 자리에 이미지를 놓는다
+  const placement = (popup) => {
+    const wrap = h('div', { class: 'adm-pop-prev' });
+    const box = () => h('div', { class: 'adm-pop-box' },
+      popup.image?.src ? h('img', { src: preview(popup.image.src), alt: '' }) : h('div', { class: 'empty' }, '팝업'),
+      h('div', { class: 'foot' }));
+    const paint = () => {
+      const position = popup.position || 'bottom-left';
+      wrap.replaceChildren(
+        h('figure', {}, h('div', { class: `adm-pop-screen desk pos-${position}` }, h('div', { class: 'bar' }), box()), h('figcaption', {}, 'PC')),
+        h('figure', {}, h('div', { class: `adm-pop-screen mob pos-${position}` }, h('div', { class: 'bar' }), box()), h('figcaption', {}, '휴대폰')));
+    };
+    paint();
+    wrap.paint = paint;
+    return wrap;
+  };
   return h('div', {},
     head('팝업/배너', '메인 페이지에 표시되는 팝업입니다. 위치, 기간, 노출 여부를 지정할 수 있습니다.',
       btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '', position: 'bottom-left' }); rerender(); }),
       saveBtn('popups')),
     list.length ? list.map((popup, index) => {
-      const set = (patch) => { Object.assign(popup, patch); touch('popups'); };
+      const where = placement(popup);
+      const set = (patch) => { Object.assign(popup, patch); touch('popups'); where.paint(); };
       return h('div', { class: 'adm-card' },
         imageInput(popup.image, (image) => set({ image }), { ratio: '1 / 1', maxSide: 1200 }),
         h('div', { class: 'adm-fields' },
           field('제목 (화면 읽기용)', popup.title, (title) => set({ title }), { full: true }),
           field('클릭 시 이동할 주소', popup.link, (link) => set({ link }), { full: true, placeholder: 'contact.html 또는 https://' }),
-          h('div', { class: 'adm-field full' }, h('label', {}, '뜨는 위치'), select(POPUP_POSITIONS, popup.position || 'bottom-left', (position) => set({ position }))),
+          h('div', { class: 'adm-field full' }, h('label', {}, '뜨는 위치'), select(POPUP_POSITIONS, popup.position || 'bottom-left', (position) => set({ position })), where),
           field('시작일', popup.start, (start) => set({ start }), { type: 'date' }),
           field('종료일', popup.end, (end) => set({ end }), { type: 'date' }),
           rowCtrl(index, list.length, {
