@@ -26,9 +26,6 @@ const DOC_GROUPS = [
   ['iso', 'ISO 인증 (상단 강조)'], ['cert', '인증, 확인서'], ['award', '수상, 언론'], ['patent', '특허'], ['trademark', '상표'],
 ];
 const STATUS = ['신규', '처리중', '완료'];
-const POPUP_POSITIONS = [
-  ['bottom-left', '왼쪽 아래'], ['bottom-right', '오른쪽 아래'], ['top-left', '왼쪽 위'], ['top-right', '오른쪽 위'], ['center', '화면 가운데'],
-];
 
 const state = {
   content: {}, fromStatic: new Set(), dirty: new Set(), inquiries: [], analytics: null,
@@ -619,7 +616,7 @@ function convertPost(item, from, to) {
   if (to === 'history') return { year: day.slice(0, 4) || String(new Date().getFullYear()), month: day.slice(5, 7), text: title, note: '' };
   if (to === 'documents') return { group: 'cert', title, dateText: day ? day.slice(0, 7).replace('-', '.') : '', notes: String(summary || '').split('\n').map((s) => s.trim()).filter(Boolean), thumb: image, large: image };
   // 팝업은 옮기자마자 사이트에 뜨지 않도록 '노출'을 꺼 둔다
-  return { title, image, link: '', active: false, start: '', end: '', position: 'bottom-left' };
+  return { title, image, link: '', active: false, start: '', end: '' };
 }
 function copyMoveCtrl(from, list, index) {
   let target = from;
@@ -779,35 +776,37 @@ VIEWS.documents = () => {
 VIEWS.popups = () => {
   const list = state.content.popups;
   const rerender = () => { touch('popups'); renderShell(); };
-  // 뜨는 위치 미리보기: 메인 화면(PC·휴대폰)을 줄여 그리고 팝업이 뜰 자리에 이미지를 놓는다
-  const placement = (popup) => {
-    const wrap = h('div', { class: 'adm-pop-prev' });
-    const box = () => h('div', { class: 'adm-pop-box' },
-      popup.image?.src ? h('img', { src: preview(popup.image.src), alt: '' }) : h('div', { class: 'empty' }, '팝업'),
+  // 배치 미리보기: 노출이 켜진 팝업을 순서대로 왼쪽 위부터 놓는다 (PC 1440×900, 휴대폰 390×844를 줄인 비율)
+  const layout = h('div', { class: 'adm-pop-prev' });
+  const paintLayout = () => {
+    const shown = list.filter((popup) => popup.active);
+    const box = (popup, n) => h('div', { class: 'adm-pop-box' },
+      h('span', { class: 'num' }, n),
+      popup.image?.src ? h('img', { src: preview(popup.image.src), alt: '' }) : h('div', { class: 'empty' }, '이미지 없음'),
       h('div', { class: 'foot' }));
-    const paint = () => {
-      const position = popup.position || 'bottom-left';
-      wrap.replaceChildren(
-        h('figure', {}, h('div', { class: `adm-pop-screen desk pos-${position}` }, h('div', { class: 'bar' }), box()), h('figcaption', {}, 'PC')),
-        h('figure', {}, h('div', { class: `adm-pop-screen mob pos-${position}` }, h('div', { class: 'bar' }), box()), h('figcaption', {}, '휴대폰')));
-    };
-    paint();
-    wrap.paint = paint;
-    return wrap;
+    const numberOf = (popup) => list.indexOf(popup) + 1;
+    layout.replaceChildren(
+      h('figure', {}, h('div', { class: 'adm-pop-screen desk' }, h('div', { class: 'bar' }), h('div', { class: 'layer' }, shown.map((popup) => box(popup, numberOf(popup))))), h('figcaption', {}, 'PC')),
+      h('figure', {}, h('div', { class: 'adm-pop-screen mob' }, h('div', { class: 'bar' }), h('div', { class: 'layer' }, shown.slice(0, 1).map((popup) => box(popup, numberOf(popup))))), h('figcaption', {}, '휴대폰')),
+      h('div', { class: 'adm-pop-note' },
+        h('p', {}, h('b', {}, `노출 중 ${shown.length}개`), ' · 순서 번호대로 왼쪽 위부터 가로로 놓입니다.'),
+        h('p', {}, 'PC는 한 줄에 3개까지 들어가고, 넘으면 아래 줄로 내려갑니다. 2~3개를 권장합니다.'),
+        h('p', {}, '휴대폰은 1개씩 보이고, 닫으면 다음 순서 팝업이 나옵니다.'),
+        shown.length > 3 ? h('p', { class: 'warn' }, '4개 이상이면 PC 첫 화면을 대부분 가립니다.') : null));
   };
+  paintLayout();
   return h('div', {},
-    head('팝업/배너', '메인 페이지에 표시되는 팝업입니다. 위치, 기간, 노출 여부를 지정할 수 있습니다.',
-      btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '', position: 'bottom-left' }); rerender(); }),
+    head('팝업/배너', '메인 페이지에 표시되는 팝업입니다. 순서, 기간, 노출 여부를 지정할 수 있습니다.',
+      btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '' }); rerender(); }),
       saveBtn('popups')),
+    list.length ? h('div', { class: 'adm-card block' }, h('h3', { class: 'adm-sub' }, '메인 화면 배치 미리보기'), layout) : null,
     list.length ? list.map((popup, index) => {
-      const where = placement(popup);
-      const set = (patch) => { Object.assign(popup, patch); touch('popups'); where.paint(); };
+      const set = (patch) => { Object.assign(popup, patch); touch('popups'); paintLayout(); };
       return h('div', { class: 'adm-card' },
         imageInput(popup.image, (image) => set({ image }), { ratio: '1 / 1', maxSide: 1200 }),
         h('div', { class: 'adm-fields' },
           field('제목 (화면 읽기용)', popup.title, (title) => set({ title }), { full: true }),
           field('클릭 시 이동할 주소', popup.link, (link) => set({ link }), { full: true, placeholder: 'contact.html 또는 https://' }),
-          h('div', { class: 'adm-field full' }, h('label', {}, '뜨는 위치'), select(POPUP_POSITIONS, popup.position || 'bottom-left', (position) => set({ position })), where),
           field('시작일', popup.start, (start) => set({ start }), { type: 'date' }),
           field('종료일', popup.end, (end) => set({ end }), { type: 'date' }),
           rowCtrl(index, list.length, {

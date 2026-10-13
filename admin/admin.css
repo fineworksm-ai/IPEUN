@@ -188,28 +188,26 @@ img { display: block; max-width: 100%; }
 .adm-order { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #71717a; }
 .adm-order .adm-select { min-width: 84px; padding: 7px 10px; font-size: 13.5px; font-weight: 700; color: #18181b; }
 .adm-row-ctrl .adm-order { margin-right: auto; }
-/* 팝업 뜨는 위치 미리보기 (PC 1440×900, 휴대폰 390×844 화면을 줄인 비율) */
-.adm-pop-prev { display: flex; gap: 18px; align-items: flex-end; margin-top: 12px; }
+/* 팝업 배치 미리보기 (PC 1440×900, 휴대폰 390×844 화면을 줄인 비율) */
+.adm-pop-prev { display: flex; gap: 22px; align-items: flex-end; flex-wrap: wrap; }
 .adm-pop-prev figure { margin: 0; display: grid; gap: 6px; justify-items: center; }
 .adm-pop-prev figcaption { font-size: 12px; color: #71717a; font-weight: 600; }
 .adm-pop-screen { position: relative; overflow: hidden; background: linear-gradient(135deg, #eef6f4, #f4f4f5); border: 1px solid #d4d4d8; border-radius: 8px; }
-.adm-pop-screen.desk { width: 300px; aspect-ratio: 1440 / 900; }
-.adm-pop-screen.mob { width: 92px; aspect-ratio: 390 / 844; border-radius: 12px; }
+.adm-pop-screen.desk { width: 420px; aspect-ratio: 1440 / 900; }
+.adm-pop-screen.mob { width: 120px; aspect-ratio: 390 / 844; border-radius: 14px; }
 .adm-pop-screen .bar { position: absolute; left: 0; right: 0; top: 0; background: #fff; border-bottom: 1px solid #e4e4e7; }
 .adm-pop-screen.desk .bar { height: 9.8%; }
 .adm-pop-screen.mob .bar { height: 7.6%; }
-.adm-pop-box { position: absolute; overflow: hidden; background: #fff; border-radius: 3px; box-shadow: 0 3px 10px rgba(6,23,19,.25); outline: 2px solid #00a88c; }
-.adm-pop-box img { display: block; width: 100%; height: auto; }
-.adm-pop-box .empty { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #e4e4e7; color: #71717a; font-size: 10px; font-weight: 700; }
-.adm-pop-box .foot { height: 6px; border-top: 1px solid #f4f4f5; }
+.adm-pop-screen .layer { position: absolute; display: flex; flex-wrap: wrap; align-items: flex-start; }
+.adm-pop-screen.desk .layer { left: 1.7%; right: 1.7%; top: 11.6%; gap: 4px; }
+.adm-pop-screen.mob .layer { left: 4.1%; right: 4.1%; top: 9%; }
+.adm-pop-box { position: relative; overflow: hidden; background: #fff; border-radius: 3px; box-shadow: 0 3px 10px rgba(6,23,19,.25); }
 .desk .adm-pop-box { width: 25%; }
-.desk.pos-bottom-left .adm-pop-box { left: 1.7%; bottom: 2.7%; }
-.desk.pos-bottom-right .adm-pop-box { right: 1.7%; bottom: 2.7%; }
-.desk.pos-top-left .adm-pop-box { left: 1.7%; top: 11.6%; }
-.desk.pos-top-right .adm-pop-box { right: 1.7%; top: 11.6%; }
-.desk.pos-center .adm-pop-box { left: 50%; top: 50%; transform: translate(-50%, -50%); }
-.mob .adm-pop-box { left: 4.1%; right: 4.1%; }
-.mob .adm-pop-box .foot { height: 4px; }
-.mob.pos-bottom-left .adm-pop-box, .mob.pos-bottom-right .adm-pop-box { bottom: 1.9%; }
-.mob.pos-top-left .adm-pop-box, .mob.pos-top-right .adm-pop-box { top: 9.5%; }
-.mob.pos-center .adm-pop-box { top: 50%; transform: translateY(-50%); }
+.mob .adm-pop-box { width: 100%; }
+.adm-pop-box img { display: block; width: 100%; height: auto; }
+.adm-pop-box .empty { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #e4e4e7; color: #71717a; font-size: 9px; font-weight: 700; }
+.adm-pop-box .foot { height: 6px; border-top: 1px solid #f4f4f5; }
+.adm-pop-box .num { position: absolute; left: 3px; top: 3px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: #00a88c; color: #fff; font-size: 10px; font-weight: 800; line-height: 16px; text-align: center; }
+.adm-pop-note { flex: 1 1 220px; font-size: 13px; color: #52525b; line-height: 1.6; }
+.adm-pop-note p { margin: 0 0 4px; }
+.adm-pop-note .warn { color: #b45309; font-weight: 600; }
