@@ -253,13 +253,14 @@ async function loadAll() {
       state.fromStatic.add(key);
     }
   }
-  if (Array.isArray(state.content.history)) sortHistory(state.content.history);
-  if (Array.isArray(state.content.events)) state.content.events.sort((a, b) => String(b.date).localeCompare(String(a.date)));
   state.inquiries = inquiries;
   state.analytics = analytics;
   state.translations = null;
 }
 const sortHistory = (list) => list.sort((a, b) => Number(b.year) - Number(a.year) || Number(b.month) - Number(a.month));
+const sortByDate = (list) => list.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+// 사이트는 연도별로 묶어 보여주므로, 관리자 목록도 연도 최신순으로 묶는다 (같은 연도 안의 순서는 그대로)
+const groupByYear = (list, yearOf) => list.sort((a, b) => (Number(yearOf(b)) || 0) - (Number(yearOf(a)) || 0));
 
 /* ───────── 화면 틀 ───────── */
 function renderShell() {
@@ -440,7 +441,7 @@ const move = (list, index, dir) => {
   [list[index], list[target]] = [list[target], list[index]];
 };
 // 순서 번호: 칸을 눌러 번호를 고르면 그 자리로 옮긴다
-function orderInput(index, total, onMoveTo) {
+function orderInput(index, total, onMoveTo, { compact = false } = {}) {
   const options = Array.from({ length: total }, (_, i) => [String(i), `${i + 1}번`]);
   const picker = select(options, String(index), (value) => {
     const to = Number(value);
@@ -449,6 +450,7 @@ function orderInput(index, total, onMoveTo) {
     toast(`${to + 1}번으로 옮겼습니다. 저장을 눌러야 사이트에 반영됩니다.`);
   });
   picker.setAttribute('aria-label', '순서');
+  if (compact) { picker.title = `순서 (${total}개 중)`; return h('label', { class: 'adm-order' }, picker); }
   return h('label', { class: 'adm-order' }, '순서', picker, h('span', {}, `/ ${total}개`));
 }
 // list 안에서 subset(화면에 보이는 순서대로의 항목들) 기준 from번째 항목을 to번째 자리로 옮긴다
@@ -653,15 +655,22 @@ function ensureEventIds() {
 VIEWS.events = () => {
   const list = state.content.events;
   const rerender = () => { touch('events'); renderShell(); };
+  const yearOf = (event) => String(event.date || '').slice(0, 4);
+  groupByYear(list, yearOf);
+  let lastYear = null;
   return h('div', {},
-    head('전시·학회', '전시·학회 페이지와 메인 "이픈의 새로운 소식"(최신 3건)에 날짜순으로 표시됩니다.',
+    head('전시·학회', '연도별로 묶여 표시되고, 같은 연도 안에서는 순서 번호대로 표시됩니다. 메인 "이픈의 새로운 소식"에는 맨 앞 3건이 나옵니다.',
       btn('+ 행사 추가', () => { list.unshift({ id: '', date: new Date().toISOString().slice(0, 10), title: '', summary: '', photos: [] }); rerender(); }),
+      btn('날짜순 정렬', () => { sortByDate(list); rerender(); }),
       saveBtn('events')),
     staticNotice('events'),
     list.length ? list.map((event, index) => {
       const set = (patch) => { Object.assign(event, patch); touch('events'); };
       event.photos ||= [];
-      return h('div', { class: 'adm-card block' },
+      const sameYear = list.filter((other) => yearOf(other) === yearOf(event));
+      const yearHead = yearOf(event) !== lastYear ? h('div', { class: 'adm-hist-year' }, yearOf(event) || '날짜 미입력') : null;
+      lastYear = yearOf(event);
+      return [yearHead, h('div', { class: 'adm-card block' },
         h('div', { class: 'adm-fields' },
           field('날짜', event.date, (date) => set({ date }), { type: 'date' }),
           field('주소 이름 (영문, 링크용)', event.id, (id) => set({ id }), { placeholder: '예: forum-2026 (비워두면 자동)' }),
@@ -677,8 +686,12 @@ VIEWS.events = () => {
               btn('삭제', () => { event.photos.splice(i, 1); rerender(); }, 'sm danger')))),
           h('div', { class: 'adm-photo', style: 'justify-content:center;align-items:center;min-height:120px' },
             btn('+ 사진 추가', () => { event.photos.push({ src: '', caption: '', alt: '', portrait: false }); rerender(); }))),
-          rowCtrl(index, list.length, { extra: copyMoveCtrl('events', list, index), onDelete: () => { if (confirm('이 행사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })),
-        h('p', { class: 'adm-hint' }, '첫 번째 사진이 크게 표시되고 나머지는 아래에 나란히 표시됩니다. 사진이 모두 세로 사진이면 나란히 표시됩니다.'));
+          rowCtrl(sameYear.indexOf(event), sameYear.length, {
+            extra: copyMoveCtrl('events', list, index),
+            onMoveTo: (to) => { moveTo(list, sameYear, sameYear.indexOf(event), to); rerender(); },
+            onDelete: () => { if (confirm('이 행사를 삭제할까요?')) { list.splice(index, 1); rerender(); } },
+          })),
+        h('p', { class: 'adm-hint' }, '첫 번째 사진이 크게 표시되고 나머지는 아래에 나란히 표시됩니다. 사진이 모두 세로 사진이면 나란히 표시됩니다.'))];
     }) : h('p', { class: 'adm-empty' }, '등록된 행사가 없습니다.'));
 };
 
@@ -687,8 +700,9 @@ VIEWS.media = () => {
   const list = state.content.media;
   const rerender = () => { touch('media'); renderShell(); };
   return h('div', {},
-    head('미디어', '미디어 페이지 보도자료에 날짜순으로 표시됩니다.',
+    head('미디어', '미디어 페이지 보도자료에 순서 번호대로 표시됩니다.',
       btn('+ 기사 추가', () => { list.unshift({ outlet: '', date: new Date().toISOString().slice(0, 10), title: '', summary: '', url: '', image: null }); rerender(); }),
+      btn('날짜순 정렬', () => { sortByDate(list); rerender(); }),
       saveBtn('media')),
     staticNotice('media'),
     list.length ? list.map((item, index) => {
@@ -702,7 +716,7 @@ VIEWS.media = () => {
           field('기사 제목', item.title, (title) => set({ title }), { full: true }),
           field('요약', item.summary, (summary) => set({ summary }), { textarea: true, full: true, rows: 2 }),
           field('기사 주소 (URL)', item.url, (url) => set({ url }), { full: true, placeholder: 'https://' }),
-          rowCtrl(index, list.length, { extra: copyMoveCtrl('media', list, index), onDelete: () => { if (confirm('이 기사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })));
+          rowCtrl(index, list.length, { extra: copyMoveCtrl('media', list, index), onMoveTo: (to) => { moveTo(list, [...list], index, to); rerender(); }, onDelete: () => { if (confirm('이 기사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })));
     }) : h('p', { class: 'adm-empty' }, '등록된 기사가 없습니다.'));
 };
 
@@ -710,6 +724,7 @@ VIEWS.media = () => {
 VIEWS.history = () => {
   const list = state.content.history;
   const rerender = () => { touch('history'); renderShell(); };
+  groupByYear(list, (item) => item.year);
   const rows = [];
   let lastYear = null;
   list.forEach((item, index) => {
@@ -725,15 +740,18 @@ VIEWS.history = () => {
     textarea.addEventListener('input', () => { item.text = textarea.value; touch('history'); });
     rows.push(h('div', { class: 'adm-hist-row' },
       input('year', '연도'), input('month', '월'), textarea, input('note', '번호 등 (선택)'),
-      h('div', { class: 'ctrl' }, copyMoveCtrl('history', list, index), btn('삭제', () => { list.splice(index, 1); rerender(); }, 'sm danger'))));
+      h('div', { class: 'ctrl' }, (() => {
+        const sameYear = list.filter((other) => other.year === item.year);
+        return sameYear.length > 1 ? orderInput(sameYear.indexOf(item), sameYear.length, (to) => { moveTo(list, sameYear, sameYear.indexOf(item), to); rerender(); }, { compact: true }) : null;
+      })(), copyMoveCtrl('history', list, index), btn('삭제', () => { list.splice(index, 1); rerender(); }, 'sm danger'))));
   });
   return h('div', {},
-    head('연혁', '회사소개 > 연혁에 연도·월 순서(최신순)로 표시됩니다. 연도나 월을 바꾸면 저장 후 자동으로 정렬됩니다.',
+    head('연혁', '회사소개 > 연혁에 연도별(최신순)로 표시되고, 같은 연도 안에서는 순서 번호대로 표시됩니다.',
       btn('+ 항목 추가', () => { list.unshift({ year: String(new Date().getFullYear()), month: String(new Date().getMonth() + 1).padStart(2, '0'), text: '', note: '' }); rerender(); }),
-      btn('정렬', () => { sortHistory(list); rerender(); }),
+      btn('날짜순 정렬', () => { sortHistory(list); rerender(); }),
       saveBtn('history')),
     staticNotice('history'),
-    h('div', { class: 'adm-card block' }, h('div', { class: 'adm-hist-row', style: 'font-size:12px;color:#71717a;font-weight:600' }, h('span', {}, '연도'), h('span', {}, '월'), h('span', {}, '내용'), h('span', {}, '번호 등'), h('span', {})), rows));
+    h('div', { class: 'adm-card block' }, h('div', { class: 'adm-hist-row', style: 'font-size:12px;color:#71717a;font-weight:600' }, h('span', {}, '연도'), h('span', {}, '월'), h('span', {}, '내용'), h('span', {}, '번호 등'), h('span', {}, '순서 · 복사/이동')), rows));
 };
 
 // 인증·특허

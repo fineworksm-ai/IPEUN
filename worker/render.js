@@ -15,7 +15,6 @@ const img = (image, ctx, extra = '', cls = '') => (image && image.src
   ? `<img${cls ? ` class="${cls}"` : ''} src="${esc(asset(image.src, ctx))}"${image.w ? ` width="${esc(image.w)}"` : ''}${image.h ? ` height="${esc(image.h)}"` : ''} alt="${plain(image.alt || '', ctx)}"${extra} />`
   : '');
 const timeTag = (date) => (date ? `<time datetime="${esc(date)}">${esc(dotDate(date))}</time>` : '');
-const byDateDesc = (a, b) => String(b.date || '').localeCompare(String(a.date || ''));
 
 // 관리자 화면에서 새 문구를 미리 번역해 둘 수 있도록, 렌더러가 쓰는 한글 문장을 모은다
 export function collect(render, data) {
@@ -24,7 +23,8 @@ export function collect(render, data) {
   return strings;
 }
 
-/* ───────── 연혁 (company.html #history .timeline) ───────── */
+/* ───────── 연혁 (company.html #history .timeline) ─────────
+   연도는 최신순, 같은 연도 안에서는 관리자에서 정한 순서대로 */
 export function renderHistory(items, ctx) {
   const years = new Map();
   (items || []).forEach((item, index) => {
@@ -34,7 +34,6 @@ export function renderHistory(items, ctx) {
     years.get(year).push({ ...item, index });
   });
   return [...years.entries()].sort((a, b) => Number(b[0]) - Number(a[0])).map(([year, rows]) => {
-    rows.sort((a, b) => Number(b.month || 0) - Number(a.month || 0) || a.index - b.index);
     const list = rows.map((row) => {
       const month = String(row.month || '').padStart(2, '0');
       return `<li><time datetime="${esc(year)}-${esc(month)}">${esc(month)}</time><div><p>${text(row.text, ctx)}</p>${row.note ? `<small>${plain(row.note, ctx)}</small>` : ''}</div></li>`;
@@ -89,17 +88,21 @@ function eventStory(event, ctx) {
   const gallery = photos.length ? `<div class="event-gallery" data-count="${photos.length}">${photos.map((photo) => eventPhoto(photo, ctx)).join('')}</div>` : '';
   return `<article class="event-story" id="${esc(event.id)}"><div class="event-heading">${timeTag(event.date)}<h2>${plain(event.title, ctx)}</h2>${event.summary ? `<p>${plain(event.summary, ctx)}</p>` : ''}</div>\n${gallery}</article>`;
 }
-export function renderEventYears(events, ctx) {
+// 연도는 최신순, 같은 연도 안에서는 관리자에서 정한 순서대로
+function eventsByYear(events) {
   const years = new Map();
-  [...(events || [])].filter((event) => event.date).sort(byDateDesc).forEach((event) => {
+  (events || []).filter((event) => event.date).forEach((event) => {
     const year = event.date.slice(0, 4);
     if (!years.has(year)) years.set(year, []);
     years.get(year).push(event);
   });
-  return [...years.entries()].map(([year, list], index) => `<section class="section${index % 2 ? ' section-paper' : ''}" id="year-${esc(year)}"><div class="container"><p class="eyebrow">${esc(year)}</p>\n${list.map((event) => eventStory(event, ctx)).join('\n')}\n</div></section>`).join('\n');
+  return [...years.entries()].sort((a, b) => Number(b[0]) - Number(a[0]));
+}
+export function renderEventYears(events, ctx) {
+  return eventsByYear(events).map(([year, list], index) => `<section class="section${index % 2 ? ' section-paper' : ''}" id="year-${esc(year)}"><div class="container"><p class="eyebrow">${esc(year)}</p>\n${list.map((event) => eventStory(event, ctx)).join('\n')}\n</div></section>`).join('\n');
 }
 export function renderLatestEvents(events, ctx) {
-  return [...(events || [])].filter((event) => event.date).sort(byDateDesc).slice(0, 3).map((event) => {
+  return eventsByYear(events).flatMap(([, list]) => list).slice(0, 3).map((event) => {
     const cover = (event.photos || []).find((photo) => photo.src);
     return `<a href="events#${esc(event.id)}" class="card activity-card"><div class="activity-cover">${img(cover, ctx, ' loading="lazy"')}</div><div class="activity-copy">${timeTag(event.date)}<h3>${plain(event.title, ctx)}</h3></div></a>`;
   }).join('');
@@ -107,7 +110,8 @@ export function renderLatestEvents(events, ctx) {
 
 /* ───────── 미디어 (media.html #press .press-grid) ───────── */
 export function renderPress(items, ctx) {
-  return [...(items || [])].sort(byDateDesc).map((item) => {
+  // 관리자에서 정한 순서대로
+  return (items || []).map((item) => {
     const image = item.image?.src ? item.image : null;
     let cover = '';
     if (image && item.image.product) cover = `<div class="press-cover press-product">${img(image, ctx, ' loading="lazy"')}</div>`;

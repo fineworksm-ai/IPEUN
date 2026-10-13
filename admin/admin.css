@@ -146,11 +146,11 @@ img { display: block; max-width: 100%; }
 .adm-photo .ctrl { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 
 /* history table */
-.adm-hist-row { display: grid; grid-template-columns: 84px 62px 1fr 200px auto; gap: 8px; align-items: start; padding: 10px 0; border-top: 1px solid #f4f4f5; }
+.adm-hist-row { display: grid; grid-template-columns: 70px 52px minmax(240px, 1fr) 170px auto; gap: 8px; align-items: start; padding: 10px 0; border-top: 1px solid #f4f4f5; }
 .adm-hist-row:first-child { border-top: 0; }
 .adm-hist-row input, .adm-hist-row textarea { border: 1px solid #d4d4d8; border-radius: 8px; padding: 8px 10px; font: inherit; font-size: 13.5px; width: 100%; }
 .adm-hist-row textarea { resize: vertical; min-height: 38px; line-height: 1.5; }
-.adm-hist-row .ctrl { display: flex; gap: 4px; }
+.adm-hist-row .ctrl { display: flex; gap: 4px; align-items: center; }
 .adm-hist-year { font-size: 18px; font-weight: 800; margin: 24px 0 4px; }
 
 /* translations */
@@ -211,3 +211,4 @@ img { display: block; max-width: 100%; }
 .adm-pop-note { flex: 1 1 220px; font-size: 13px; color: #52525b; line-height: 1.6; }
 .adm-pop-note p { margin: 0 0 4px; }
 .adm-pop-note .warn { color: #b45309; font-weight: 600; }
+.adm-hist-row .adm-order .adm-select { min-width: 70px; }
