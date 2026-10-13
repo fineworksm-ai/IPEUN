@@ -442,11 +442,29 @@ const move = (list, index, dir) => {
   if (target < 0 || target >= list.length) return;
   [list[index], list[target]] = [list[target], list[index]];
 };
-function rowCtrl(index, total, { onUp, onDown, onDelete, extra } = {}) {
+// 순서 번호 입력: 숫자를 바꾸고 Enter(또는 다른 곳 클릭)하면 그 자리로 옮긴다
+function orderInput(index, total, onMoveTo) {
+  const input = h('input', { type: 'number', min: 1, max: total, inputmode: 'numeric', 'aria-label': '순서' });
+  input.value = index + 1;
+  input.addEventListener('keydown', (event) => { if (event.key === 'Enter') input.blur(); });
+  input.addEventListener('change', () => {
+    const to = Math.min(total, Math.max(1, Math.round(Number(input.value) || index + 1))) - 1;
+    if (to === index) { input.value = index + 1; return; }
+    onMoveTo(to);
+    toast(`${to + 1}번으로 옮겼습니다. 저장을 눌러야 사이트에 반영됩니다.`);
+  });
+  return h('label', { class: 'adm-order' }, '순서', input, h('span', {}, `/ ${total}`));
+}
+// list 안에서 subset(화면에 보이는 순서대로의 항목들) 기준 from번째 항목을 to번째 자리로 옮긴다
+function moveTo(list, subset, from, to) {
+  const item = subset[from];
+  const target = subset[to];
+  list.splice(list.indexOf(item), 1);
+  list.splice(list.indexOf(target) + (to > from ? 1 : 0), 0, item);
+}
+function rowCtrl(index, total, { onMoveTo, onDelete, extra } = {}) {
   return h('div', { class: 'adm-row-ctrl' },
-    h('span', { class: 'no' }, `#${index + 1}`), extra,
-    onUp ? btn('↑', onUp, 'sm', { disabled: index === 0 }) : null,
-    onDown ? btn('↓', onDown, 'sm', { disabled: index === total - 1 }) : null,
+    onMoveTo && total > 1 ? orderInput(index, total, onMoveTo) : h('span', { class: 'no' }, `#${index + 1}`), extra,
     btn('삭제', onDelete, 'sm danger'));
 }
 
@@ -659,8 +677,7 @@ VIEWS.events = () => {
             field('대체 텍스트 (시각장애인용)', photo.alt, (alt) => { photo.alt = alt; touch('events'); }),
             h('div', { class: 'ctrl' },
               toggle('세로 사진', photo.portrait, (portrait) => { photo.portrait = portrait; touch('events'); }),
-              btn('←', () => { move(event.photos, i, -1); rerender(); }, 'sm', { disabled: i === 0, title: '앞으로' }),
-              btn('→', () => { move(event.photos, i, 1); rerender(); }, 'sm', { disabled: i === event.photos.length - 1, title: '뒤로' }),
+              event.photos.length > 1 ? orderInput(i, event.photos.length, (to) => { moveTo(event.photos, [...event.photos], i, to); rerender(); }) : null,
               btn('삭제', () => { event.photos.splice(i, 1); rerender(); }, 'sm danger')))),
           h('div', { class: 'adm-photo', style: 'justify-content:center;align-items:center;min-height:120px' },
             btn('+ 사진 추가', () => { event.photos.push({ src: '', caption: '', alt: '', portrait: false }); rerender(); }))),
@@ -742,7 +759,6 @@ VIEWS.documents = () => {
           btn('+ 추가', () => { list.splice(items.length ? items[0].index : list.length, 0, { group, title: '', dateText: '', notes: [], thumb: null, large: null }); rerender(); }, 'sm')),
         items.map(({ doc, index }, position) => {
           const set = (patch) => { Object.assign(doc, patch); touch('documents'); };
-          const swap = (dir) => { const other = items[position + dir]; if (!other) return; [list[index], list[other.index]] = [list[other.index], list[index]]; rerender(); };
           return h('div', { class: 'adm-card' },
             imageInput(doc.thumb, (next) => (next?.thumb ? set(next) : set({ thumb: next, large: next ? { ...(doc.large || {}), src: doc.large?.src || next.src } : null })), { ratio: '3 / 4', uploader }),
             h('div', { class: 'adm-fields' },
@@ -752,7 +768,7 @@ VIEWS.documents = () => {
               field('설명 (한 줄에 하나)', (doc.notes || []).join('\n'), (value) => set({ notes: value.split('\n').map((s) => s.trim()).filter(Boolean) }), { textarea: true, full: true, rows: 2, placeholder: '예: 의료기기 품질경영시스템\n출원번호 10-2024-0121731' }),
               rowCtrl(position, items.length, {
                 extra: copyMoveCtrl('documents', list, index),
-                onUp: () => swap(-1), onDown: () => swap(1),
+                onMoveTo: (to) => { moveTo(list, items.map((entry) => entry.doc), position, to); rerender(); },
                 onDelete: () => { if (confirm('이 항목을 삭제할까요?')) { list.splice(index, 1); rerender(); } },
               })));
         }));
@@ -780,6 +796,7 @@ VIEWS.popups = () => {
           field('종료일', popup.end, (end) => set({ end }), { type: 'date' }),
           rowCtrl(index, list.length, {
             extra: [toggle('노출', popup.active, (active) => set({ active })), copyMoveCtrl('popups', list, index)],
+            onMoveTo: (to) => { moveTo(list, [...list], index, to); rerender(); },
             onDelete: () => { if (confirm('이 팝업을 삭제할까요?')) { list.splice(index, 1); rerender(); } },
           })));
     }) : h('p', { class: 'adm-empty' }, '등록된 팝업이 없습니다.'));

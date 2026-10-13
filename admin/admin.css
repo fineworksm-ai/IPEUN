@@ -185,3 +185,7 @@ img { display: block; max-width: 100%; }
 }
 .adm-copymove { display: inline-flex; gap: 6px; align-items: center; }
 .adm-copymove .adm-select { padding: 5px 8px; font-size: 12.5px; }
+.adm-order { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #71717a; }
+.adm-order input { width: 58px; padding: 5px 8px; border: 1px solid #d4d4d8; border-radius: 8px; font: inherit; color: #18181b; text-align: center; }
+.adm-order input:focus { outline: none; border-color: #18181b; }
+.adm-row-ctrl .adm-order { margin-right: auto; }
