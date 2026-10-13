@@ -183,3 +183,5 @@ img { display: block; max-width: 100%; }
   .adm-content-inner { padding: 20px; }
   .adm-content-bar { padding: 10px 20px; }
 }
+.adm-copymove { display: inline-flex; gap: 6px; align-items: center; }
+.adm-copymove .adm-select { padding: 5px 8px; font-size: 12.5px; }

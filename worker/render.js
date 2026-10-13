@@ -142,17 +142,23 @@ export function activePopups(popups, today) {
   return (popups || []).filter((popup) => popup.active && popup.image?.src
     && (!popup.start || popup.start <= today) && (!popup.end || popup.end >= today));
 }
+// 팝업 위치: 관리자 > 팝업/배너의 '뜨는 위치' (값이 없으면 예전처럼 왼쪽 아래)
+const POPUP_POSITIONS = ['bottom-left', 'bottom-right', 'top-left', 'top-right', 'center'];
 export function renderPopups(popups, ctx) {
   if (!popups.length) return '';
   const label = ctx.lang === 'en' ? { hide: "Don't show today", close: 'Close', dialog: 'Notice' } : { hide: '오늘 하루 보지 않기', close: '닫기', dialog: '공지' };
-  const items = popups.map((popup, index) => {
+  const slots = new Map();
+  popups.forEach((popup, index) => {
+    const position = POPUP_POSITIONS.includes(popup.position) ? popup.position : 'bottom-left';
     const picture = img({ ...popup.image, alt: popup.title || '' }, ctx);
     const body = popup.link ? `<a href="${esc(popup.link)}">${picture}</a>` : picture;
-    return `<div class="ipeun-popup" role="dialog" aria-label="${plain(popup.title || label.dialog, ctx)}" data-popup="${index}" style="--i:${index}">${body}<div class="ipeun-popup-bar"><button type="button" data-popup-hide>${label.hide}</button><button type="button" data-popup-close>${label.close}</button></div></div>`;
-  }).join('');
+    if (!slots.has(position)) slots.set(position, []);
+    slots.get(position).push(`<div class="ipeun-popup" role="dialog" aria-label="${plain(popup.title || label.dialog, ctx)}" data-popup="${index}">${body}<div class="ipeun-popup-bar"><button type="button" data-popup-hide>${label.hide}</button><button type="button" data-popup-close>${label.close}</button></div></div>`);
+  });
+  const items = [...slots.entries()].map(([position, list]) => `<div class="ipeun-popup-slot is-${position}">${list.join('')}</div>`).join('');
   return `<div class="ipeun-popups" hidden>${items}</div>
-<style>.ipeun-popups{position:fixed;z-index:200;left:24px;bottom:24px;display:flex;gap:16px;align-items:flex-end}.ipeun-popup{width:min(360px,calc(100vw - 48px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(6,23,19,.22)}.ipeun-popup img{display:block;width:100%;height:auto}.ipeun-popup-bar{display:flex;justify-content:space-between;padding:12px 16px;font-size:14px}.ipeun-popup-bar button{border:0;background:none;color:#061713;cursor:pointer;font:inherit}@media(max-width:600px){.ipeun-popups{left:16px;right:16px;bottom:16px;flex-direction:column}.ipeun-popup{width:100%}}</style>
-<script>(()=>{const box=document.querySelector('.ipeun-popups');if(!box)return;const key='ipeun-popup-hide';let hide='';try{hide=localStorage.getItem(key)||''}catch{}const today=new Date(Date.now()+324e5).toISOString().slice(0,10);if(hide===today)return;box.hidden=false;const close=()=>{box.remove()};box.addEventListener('click',e=>{if(e.target.closest('[data-popup-close]'))close();if(e.target.closest('[data-popup-hide]')){try{localStorage.setItem(key,today)}catch{}close()}});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()},{once:true})})();</script>`;
+<style>.ipeun-popups{position:fixed;inset:0;z-index:200;pointer-events:none}.ipeun-popup-slot{position:absolute;display:flex;gap:16px;max-width:calc(100vw - 48px)}.ipeun-popup-slot.is-bottom-left{left:24px;bottom:24px;align-items:flex-end}.ipeun-popup-slot.is-bottom-right{right:24px;bottom:24px;align-items:flex-end}.ipeun-popup-slot.is-top-left{left:24px;top:calc(var(--header-height,88px) + 16px);align-items:flex-start}.ipeun-popup-slot.is-top-right{right:24px;top:calc(var(--header-height,88px) + 16px);align-items:flex-start}.ipeun-popup-slot.is-center{left:50%;top:50%;transform:translate(-50%,-50%);align-items:center}.ipeun-popup{pointer-events:auto;width:min(360px,calc(100vw - 48px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(6,23,19,.22)}.ipeun-popup img{display:block;width:100%;height:auto}.ipeun-popup-bar{display:flex;justify-content:space-between;padding:12px 16px;font-size:14px}.ipeun-popup-bar button{border:0;background:none;color:#061713;cursor:pointer;font:inherit}@media(max-width:600px){.ipeun-popup-slot{left:16px!important;right:16px!important;max-width:none;flex-direction:column;max-height:calc(100svh - 32px);overflow-y:auto}.ipeun-popup-slot.is-bottom-left,.ipeun-popup-slot.is-bottom-right{bottom:16px}.ipeun-popup-slot.is-center{transform:translateY(-50%)}.ipeun-popup{width:100%;flex:0 0 auto}}</style>
+<script>(()=>{const box=document.querySelector('.ipeun-popups');if(!box)return;const key='ipeun-popup-hide';let hide='';try{hide=localStorage.getItem(key)||''}catch{}const today=new Date(Date.now()+324e5).toISOString().slice(0,10);if(hide===today)return;box.hidden=false;const closeAll=()=>{box.remove()};box.addEventListener('click',e=>{const one=e.target.closest('[data-popup-close]');if(one){const slot=one.closest('.ipeun-popup-slot');one.closest('.ipeun-popup').remove();if(!slot.querySelector('.ipeun-popup'))slot.remove();if(!box.querySelector('.ipeun-popup'))closeAll()}if(e.target.closest('[data-popup-hide]')){try{localStorage.setItem(key,today)}catch{}closeAll()}});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()},{once:true})})();</script>`;
 }
 
 /* ───────── 고객센터 문의 폼: 사이트에 저장되는 접수 방식으로 전환 ───────── */

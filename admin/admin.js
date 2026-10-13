@@ -26,6 +26,9 @@ const DOC_GROUPS = [
   ['iso', 'ISO 인증 (상단 강조)'], ['cert', '인증, 확인서'], ['award', '수상, 언론'], ['patent', '특허'], ['trademark', '상표'],
 ];
 const STATUS = ['신규', '처리중', '완료'];
+const POPUP_POSITIONS = [
+  ['bottom-left', '왼쪽 아래'], ['bottom-right', '오른쪽 아래'], ['top-left', '왼쪽 위'], ['top-right', '오른쪽 위'], ['center', '화면 가운데'],
+];
 
 const state = {
   content: {}, fromStatic: new Set(), dirty: new Set(), inquiries: [], analytics: null,
@@ -572,6 +575,41 @@ VIEWS.inquiries = () => {
     }) : h('p', { class: 'adm-empty' }, '접수된 문의가 없습니다.'));
 };
 
+// 게시물 복사·이동: 전시·학회, 미디어 글을 같은 메뉴나 다른 메뉴(연혁 포함)로 복사하거나 옮긴다
+const POST_MENUS = [['events', '전시·학회'], ['media', '미디어'], ['history', '연혁']];
+function convertPost(item, from, to) {
+  const copy = structuredClone(item);
+  const cover = from === 'events' ? (copy.photos || []).find((photo) => photo.src) : copy.image?.src ? copy.image : null;
+  if (to === 'events') {
+    if (from === 'events') return { ...copy, id: '' };
+    return { id: '', date: copy.date || '', title: copy.title || '', summary: copy.summary || '', photos: cover ? [{ src: cover.src, w: cover.w, h: cover.h, alt: cover.alt || '', caption: '', portrait: false }] : [] };
+  }
+  if (to === 'media') {
+    if (from === 'media') return copy;
+    return { outlet: '', date: copy.date || '', title: copy.title || '', summary: copy.summary || '', url: '', image: cover ? { src: cover.src, w: cover.w, h: cover.h, alt: cover.alt || '', product: false } : null };
+  }
+  const date = String(copy.date || '');
+  return { year: date.slice(0, 4) || String(new Date().getFullYear()), month: date.slice(5, 7), text: copy.title || '', note: '' };
+}
+function copyMoveCtrl(from, list, index) {
+  let target = from;
+  const run = (moveIt) => {
+    if (moveIt && target === from) { toast('같은 메뉴로는 이동할 수 없습니다. 복사를 눌러주세요.', 'err'); return; }
+    const label = Object.fromEntries(POST_MENUS)[target];
+    state.content[target].unshift(convertPost(list[index], from, target));
+    touch(target);
+    if (moveIt) { list.splice(index, 1); touch(from); }
+    state.active = target;
+    renderShell();
+    window.scrollTo(0, 0);
+    toast(`${label} 맨 위에 ${moveIt ? '옮겼습니다' : '복사했습니다'}. ${moveIt ? '두 메뉴 모두 ' : ''}저장을 눌러야 사이트에 반영됩니다.`);
+  };
+  return h('span', { class: 'adm-copymove' },
+    select(POST_MENUS, target, (value) => { target = value; }),
+    btn('복사', () => run(false), 'sm'),
+    btn('이동', () => run(true), 'sm'));
+}
+
 // 전시·학회
 function ensureEventIds() {
   const used = new Set();
@@ -612,7 +650,7 @@ VIEWS.events = () => {
               btn('삭제', () => { event.photos.splice(i, 1); rerender(); }, 'sm danger')))),
           h('div', { class: 'adm-photo', style: 'justify-content:center;align-items:center;min-height:120px' },
             btn('+ 사진 추가', () => { event.photos.push({ src: '', caption: '', alt: '', portrait: false }); rerender(); }))),
-          rowCtrl(index, list.length, { onDelete: () => { if (confirm('이 행사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })),
+          rowCtrl(index, list.length, { extra: copyMoveCtrl('events', list, index), onDelete: () => { if (confirm('이 행사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })),
         h('p', { class: 'adm-hint' }, '첫 번째 사진이 크게 표시되고 나머지는 아래에 나란히 표시됩니다. 사진이 모두 세로 사진이면 나란히 표시됩니다.'));
     }) : h('p', { class: 'adm-empty' }, '등록된 행사가 없습니다.'));
 };
@@ -637,7 +675,7 @@ VIEWS.media = () => {
           field('기사 제목', item.title, (title) => set({ title }), { full: true }),
           field('요약', item.summary, (summary) => set({ summary }), { textarea: true, full: true, rows: 2 }),
           field('기사 주소 (URL)', item.url, (url) => set({ url }), { full: true, placeholder: 'https://' }),
-          rowCtrl(index, list.length, { onDelete: () => { if (confirm('이 기사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })));
+          rowCtrl(index, list.length, { extra: copyMoveCtrl('media', list, index), onDelete: () => { if (confirm('이 기사를 삭제할까요?')) { list.splice(index, 1); rerender(); } } })));
     }) : h('p', { class: 'adm-empty' }, '등록된 기사가 없습니다.'));
 };
 
@@ -686,7 +724,8 @@ VIEWS.documents = () => {
       const items = list.map((doc, index) => ({ doc, index })).filter(({ doc }) => doc.group === group);
       return h('div', {},
         h('div', { class: 'adm-sechead', style: 'margin:28px 0 12px' }, h('h3', { class: 'adm-sub', style: 'margin:0' }, `${label} (${items.length})`),
-          btn('+ 추가', () => { list.push({ group, title: '', dateText: '', notes: [], thumb: null, large: null }); rerender(); }, 'sm')),
+          // 새 항목은 그 구분의 맨 위에 넣는다 (사이트에도 같은 순서로 표시)
+          btn('+ 추가', () => { list.splice(items.length ? items[0].index : list.length, 0, { group, title: '', dateText: '', notes: [], thumb: null, large: null }); rerender(); }, 'sm')),
         items.map(({ doc, index }, position) => {
           const set = (patch) => { Object.assign(doc, patch); touch('documents'); };
           const swap = (dir) => { const other = items[position + dir]; if (!other) return; [list[index], list[other.index]] = [list[other.index], list[index]]; rerender(); };
@@ -711,8 +750,8 @@ VIEWS.popups = () => {
   const list = state.content.popups;
   const rerender = () => { touch('popups'); renderShell(); };
   return h('div', {},
-    head('팝업/배너', '메인 페이지 왼쪽 아래에 표시되는 팝업입니다. 기간과 노출 여부를 지정할 수 있습니다.',
-      btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '' }); rerender(); }),
+    head('팝업/배너', '메인 페이지에 표시되는 팝업입니다. 위치, 기간, 노출 여부를 지정할 수 있습니다.',
+      btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '', position: 'bottom-left' }); rerender(); }),
       saveBtn('popups')),
     list.length ? list.map((popup, index) => {
       const set = (patch) => { Object.assign(popup, patch); touch('popups'); };
@@ -721,6 +760,7 @@ VIEWS.popups = () => {
         h('div', { class: 'adm-fields' },
           field('제목 (화면 읽기용)', popup.title, (title) => set({ title }), { full: true }),
           field('클릭 시 이동할 주소', popup.link, (link) => set({ link }), { full: true, placeholder: 'contact.html 또는 https://' }),
+          h('div', { class: 'adm-field full' }, h('label', {}, '뜨는 위치'), select(POPUP_POSITIONS, popup.position || 'bottom-left', (position) => set({ position }))),
           field('시작일', popup.start, (start) => set({ start }), { type: 'date' }),
           field('종료일', popup.end, (end) => set({ end }), { type: 'date' }),
           rowCtrl(index, list.length, {
