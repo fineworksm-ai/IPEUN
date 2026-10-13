@@ -575,21 +575,34 @@ VIEWS.inquiries = () => {
     }) : h('p', { class: 'adm-empty' }, '접수된 문의가 없습니다.'));
 };
 
-// 게시물 복사·이동: 전시·학회, 미디어 글을 같은 메뉴나 다른 메뉴(연혁 포함)로 복사하거나 옮긴다
-const POST_MENUS = [['events', '전시·학회'], ['media', '미디어'], ['history', '연혁']];
+// 게시물 복사·이동: 콘텐츠 메뉴의 항목을 같은 메뉴나 다른 메뉴로 복사하거나 옮긴다
+// 메뉴마다 칸이 달라서 날짜·제목·설명·대표 이미지만 공통으로 옮긴다
+const POST_MENUS = [['events', '전시·학회'], ['media', '미디어'], ['history', '연혁'], ['documents', '인증·특허'], ['popups', '팝업/배너']];
+const pic = (image) => (image?.src ? { src: image.src, w: image.w || null, h: image.h || null, alt: image.alt || '' } : null);
+function commonOf(item, from) {
+  if (from === 'events') return { date: item.date, title: item.title, summary: item.summary, image: pic((item.photos || []).find((photo) => photo.src)) };
+  if (from === 'media') return { date: item.date, title: item.title, summary: item.summary, image: pic(item.image) };
+  if (from === 'history') {
+    const month = String(item.month || '').padStart(2, '0');
+    return { date: item.year ? `${item.year}-${month === '00' ? '01' : month}-01` : '', title: item.text, summary: item.note, image: null };
+  }
+  if (from === 'documents') {
+    const [, year, month] = String(item.dateText || '').match(/(\d{4})\D?(\d{1,2})?/) || [];
+    return { date: year ? `${year}-${String(month || '1').padStart(2, '0')}-01` : '', title: item.title, summary: (item.notes || []).join('\n'), image: pic(item.large || item.thumb) };
+  }
+  return { date: item.start, title: item.title, summary: '', image: pic(item.image) };
+}
 function convertPost(item, from, to) {
   const copy = structuredClone(item);
-  const cover = from === 'events' ? (copy.photos || []).find((photo) => photo.src) : copy.image?.src ? copy.image : null;
-  if (to === 'events') {
-    if (from === 'events') return { ...copy, id: '' };
-    return { id: '', date: copy.date || '', title: copy.title || '', summary: copy.summary || '', photos: cover ? [{ src: cover.src, w: cover.w, h: cover.h, alt: cover.alt || '', caption: '', portrait: false }] : [] };
-  }
-  if (to === 'media') {
-    if (from === 'media') return copy;
-    return { outlet: '', date: copy.date || '', title: copy.title || '', summary: copy.summary || '', url: '', image: cover ? { src: cover.src, w: cover.w, h: cover.h, alt: cover.alt || '', product: false } : null };
-  }
-  const date = String(copy.date || '');
-  return { year: date.slice(0, 4) || String(new Date().getFullYear()), month: date.slice(5, 7), text: copy.title || '', note: '' };
+  if (from === to) return to === 'events' ? { ...copy, id: '' } : copy;
+  const { date = '', title = '', summary = '', image } = commonOf(copy, from);
+  const day = String(date || '');
+  if (to === 'events') return { id: '', date: day, title, summary, photos: image ? [{ ...image, caption: '', portrait: false }] : [] };
+  if (to === 'media') return { outlet: '', date: day, title, summary, url: '', image: image ? { ...image, product: false } : null };
+  if (to === 'history') return { year: day.slice(0, 4) || String(new Date().getFullYear()), month: day.slice(5, 7), text: title, note: '' };
+  if (to === 'documents') return { group: 'cert', title, dateText: day ? day.slice(0, 7).replace('-', '.') : '', notes: String(summary || '').split('\n').map((s) => s.trim()).filter(Boolean), thumb: image, large: image };
+  // 팝업은 옮기자마자 사이트에 뜨지 않도록 '노출'을 꺼 둔다
+  return { title, image, link: '', active: false, start: '', end: '', position: 'bottom-left' };
 }
 function copyMoveCtrl(from, list, index) {
   let target = from;
@@ -602,7 +615,8 @@ function copyMoveCtrl(from, list, index) {
     state.active = target;
     renderShell();
     window.scrollTo(0, 0);
-    toast(`${label} 맨 위에 ${moveIt ? '옮겼습니다' : '복사했습니다'}. ${moveIt ? '두 메뉴 모두 ' : ''}저장을 눌러야 사이트에 반영됩니다.`);
+    const popupNote = target === 'popups' && from !== 'popups' ? ' 팝업은 노출이 꺼진 상태로 들어갑니다.' : '';
+    toast(`${label} 맨 위에 ${moveIt ? '옮겼습니다' : '복사했습니다'}. ${moveIt ? '두 메뉴 모두 ' : ''}저장을 눌러야 사이트에 반영됩니다.${popupNote}`);
   };
   return h('span', { class: 'adm-copymove' },
     select(POST_MENUS, target, (value) => { target = value; }),
@@ -698,7 +712,7 @@ VIEWS.history = () => {
     textarea.addEventListener('input', () => { item.text = textarea.value; touch('history'); });
     rows.push(h('div', { class: 'adm-hist-row' },
       input('year', '연도'), input('month', '월'), textarea, input('note', '번호 등 (선택)'),
-      h('div', { class: 'ctrl' }, btn('삭제', () => { list.splice(index, 1); rerender(); }, 'sm danger'))));
+      h('div', { class: 'ctrl' }, copyMoveCtrl('history', list, index), btn('삭제', () => { list.splice(index, 1); rerender(); }, 'sm danger'))));
   });
   return h('div', {},
     head('연혁', '회사소개 > 연혁에 연도·월 순서(최신순)로 표시됩니다. 연도나 월을 바꾸면 저장 후 자동으로 정렬됩니다.',
@@ -737,6 +751,7 @@ VIEWS.documents = () => {
               field('이름', doc.title, (title) => set({ title }), { full: true }),
               field('설명 (한 줄에 하나)', (doc.notes || []).join('\n'), (value) => set({ notes: value.split('\n').map((s) => s.trim()).filter(Boolean) }), { textarea: true, full: true, rows: 2, placeholder: '예: 의료기기 품질경영시스템\n출원번호 10-2024-0121731' }),
               rowCtrl(position, items.length, {
+                extra: copyMoveCtrl('documents', list, index),
                 onUp: () => swap(-1), onDown: () => swap(1),
                 onDelete: () => { if (confirm('이 항목을 삭제할까요?')) { list.splice(index, 1); rerender(); } },
               })));
@@ -764,7 +779,7 @@ VIEWS.popups = () => {
           field('시작일', popup.start, (start) => set({ start }), { type: 'date' }),
           field('종료일', popup.end, (end) => set({ end }), { type: 'date' }),
           rowCtrl(index, list.length, {
-            extra: toggle('노출', popup.active, (active) => set({ active })),
+            extra: [toggle('노출', popup.active, (active) => set({ active })), copyMoveCtrl('popups', list, index)],
             onDelete: () => { if (confirm('이 팝업을 삭제할까요?')) { list.splice(index, 1); rerender(); } },
           })));
     }) : h('p', { class: 'adm-empty' }, '등록된 팝업이 없습니다.'));
