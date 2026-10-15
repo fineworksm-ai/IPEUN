@@ -263,6 +263,18 @@ const sortByDate = (list) => list.sort((a, b) => String(b.date || '').localeComp
 const groupByYear = (list, yearOf) => list.sort((a, b) => (Number(yearOf(b)) || 0) - (Number(yearOf(a)) || 0));
 
 /* ───────── 화면 틀 ───────── */
+// 휴대폰에서는 대시보드·문의 관리만 쓴다 (콘텐츠 수정은 화면이 넓은 PC에서)
+const MOBILE = window.matchMedia('(max-width: 760px)');
+const MOBILE_KEYS = ['dashboard', 'inquiries'];
+MOBILE.addEventListener('change', () => { if (document.querySelector('.adm-shell')) renderShell(); });
+function desktopOnly() {
+  const label = NAV.flatMap((group) => group.items).find(([key]) => key === state.active)?.[1] || '이 메뉴';
+  const go = (key) => { state.active = key; renderShell(); window.scrollTo(0, 0); };
+  return h('div', { class: 'adm-desktop-only' },
+    h('h2', {}, 'PC에서 이용해주세요'),
+    h('p', {}, `'${label}' 메뉴는 화면이 넓은 PC에서 수정할 수 있습니다.`), h('p', {}, '휴대폰에서는 대시보드와 문의 관리만 볼 수 있습니다.'),
+    h('div', { class: 'acts' }, btn('대시보드', () => go('dashboard'), 'primary'), btn('문의 관리', () => go('inquiries'))));
+}
 function renderShell() {
   const nav = h('nav', { class: 'adm-nav' }, NAV.map((group) => h('div', { class: 'adm-navgroup' },
     h('div', { class: 'adm-navgroup-t' }, group.group),
@@ -283,7 +295,7 @@ function renderShell() {
     h('button', { type: 'button', class: 'adm-reload', onClick: reload }, '↻ 새로고침'));
   const inner = h('div', { class: 'adm-content-inner' });
   app.replaceChildren(h('div', { class: 'adm-shell' }, sidebar, h('main', { class: 'adm-content' }, bar, inner)));
-  inner.append(VIEWS[state.active]());
+  inner.append(MOBILE.matches && !MOBILE_KEYS.includes(state.active) ? desktopOnly() : VIEWS[state.active]());
 }
 function touch(key) {
   if (state.dirty.has(key)) return;
@@ -498,6 +510,7 @@ VIEWS.dashboard = () => {
   const recent = state.inquiries.slice(0, 5);
   return h('div', {},
     head('대시보드', '사이트 방문 현황과 최근 문의를 확인하세요. 관리자 페이지를 연 기기(브라우저)의 방문은 집계하지 않습니다.', seg, h('span', { class: 'adm-live' }, '● 실시간 집계')),
+    h('div', { class: 'adm-notice info adm-mobile-only' }, '휴대폰에서는 대시보드와 문의 관리만 볼 수 있습니다. 전시·학회, 미디어, 연혁, 인증·특허, 팝업/배너, SEO, 사이트 설정, 영문 번역은 PC에서 수정해주세요.'),
     h('div', { class: 'adm-stats' }, kpis.map(([label, n]) => h('div', { class: 'adm-stat' }, h('div', { class: 'n' }, n.toLocaleString()), h('div', { class: 'l' }, label)))),
     h('div', { class: 'adm-panel' }, h('div', { class: 'adm-panel-h' }, h('h3', {}, '일별 방문자', h('small', {}, `최근 ${range}일`))), chart(days)),
     h('div', { class: 'adm-two' },

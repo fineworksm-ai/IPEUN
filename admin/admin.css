@@ -169,13 +169,19 @@ img { display: block; max-width: 100%; }
 .adm-inq-body dd { white-space: pre-wrap; word-break: break-word; }
 
 @media (max-width: 900px) {
-  .adm-shell { grid-template-columns: 1fr; }
-  .adm-sidebar { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .adm-nav { display: flex; flex-wrap: wrap; width: 100%; order: 3; }
-  .adm-navgroup { margin: 0; display: flex; flex-wrap: wrap; }
+  /* 왼쪽 메뉴 → 위쪽 막대: 로고·바로가기 한 줄, 메뉴는 가로로 넘겨 보기 */
+  .adm-shell { display: block; }
+  .adm-sidebar { position: sticky; top: 0; z-index: 30; height: auto; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "logo foot" "nav nav"; align-items: center; gap: 4px 8px; padding: 10px 16px 8px; }
+  .adm-logo { grid-area: logo; padding: 4px 0; font-size: 16px; }
+  .adm-side-foot { grid-area: foot; flex-direction: row; gap: 2px; border: 0; padding: 0; }
+  .adm-side-foot a, .adm-side-foot button { font-size: 12.5px; padding: 6px 8px; white-space: nowrap; }
+  .adm-nav { grid-area: nav; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .adm-nav::-webkit-scrollbar { display: none; }
+  .adm-navgroup { display: contents; }
   .adm-navgroup-t { display: none; }
-  .adm-navitem { width: auto; }
-  .adm-side-foot { flex-direction: row; border: 0; padding: 0; margin-left: auto; }
+  .adm-navitem { width: auto; flex: 0 0 auto; white-space: nowrap; padding: 8px 12px; font-size: 13.5px; }
+  .adm-navitem .changed { margin-left: 6px; }
+  .adm-content-bar { position: static; }
   .adm-stats { grid-template-columns: repeat(2, 1fr); }
   .adm-card { grid-template-columns: 1fr; }
   .adm-fields, .adm-two, .adm-photos { grid-template-columns: 1fr; }
@@ -242,3 +248,30 @@ img { display: block; max-width: 100%; }
 .adm-pop-guide tr:last-child td { border-bottom: 0; }
 .adm-pop-guide td.strong { font-weight: 800; color: #0f766e; }
 .adm-pop-guide ul { margin: 12px 0 0; padding-left: 18px; font-size: 12.5px; color: #3f3f46; line-height: 1.7; }
+/* 휴대폰: 대시보드·문의 관리만 (나머지는 PC 안내) */
+.adm-mobile-only { display: none; }
+.adm-desktop-only { max-width: 420px; margin: 40px auto; padding: 28px 22px; border-radius: 16px; background: #fff; border: 1px solid #e4e4e7; text-align: center; }
+.adm-desktop-only h2 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+.adm-desktop-only p { font-size: 14px; line-height: 1.7; color: #52525b; }
+.adm-desktop-only .acts { display: flex; gap: 8px; justify-content: center; margin-top: 18px; flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .adm-mobile-only { display: block; }
+  .adm-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; overflow: visible; }
+  .adm-navitem:not([data-nav="dashboard"]):not([data-nav="inquiries"]) { display: none; }
+  .adm-navitem { justify-content: center; padding: 10px 8px; background: rgba(255,255,255,.06); color: #d4d4d8; }
+  .adm-navitem.active { background: #fff; color: #18181b; }
+  .adm-content-bar { padding: 8px 16px; }
+  .adm-content-bar .save-hint { display: none; }
+  .adm-content-bar { justify-content: flex-end; }
+  .adm-content-inner { padding: 18px 16px 60px; }
+  .adm-sechead { margin-bottom: 16px; }
+  .adm-sechead h2 { font-size: 22px; }
+  .adm-sechead .right { width: 100%; justify-content: space-between; }
+  .adm-stat .n { font-size: 26px; }
+  .adm-inq-row { grid-template-columns: 58px 1fr; }
+  .adm-inq-row .date { grid-column: 2; text-align: left; margin-top: -6px; }
+  .adm-inq-head { gap: 8px 10px; }
+  .adm-inq-head .date { order: 3; width: 100%; font-size: 12.5px; }
+  .adm-inq-body { grid-template-columns: 84px 1fr; gap: 6px 10px; font-size: 13.5px; }
+  .adm-card { padding: 14px; }
+}
