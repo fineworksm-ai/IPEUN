@@ -188,27 +188,28 @@ img { display: block; max-width: 100%; }
 .adm-order { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #71717a; }
 .adm-order .adm-select { min-width: 84px; padding: 7px 10px; font-size: 13.5px; font-weight: 700; color: #18181b; }
 .adm-row-ctrl .adm-order { margin-right: auto; }
-/* 팝업 배치 미리보기 (PC 1440×900, 휴대폰 390×844 화면을 줄인 비율) */
-.adm-pop-prev { display: flex; gap: 22px; align-items: flex-end; flex-wrap: wrap; }
-.adm-pop-prev figure { margin: 0; display: grid; gap: 6px; justify-items: center; }
-.adm-pop-prev figcaption { font-size: 12px; color: #71717a; font-weight: 600; }
-.adm-pop-screen { position: relative; overflow: hidden; background: linear-gradient(135deg, #eef6f4, #f4f4f5); border: 1px solid #d4d4d8; border-radius: 8px; }
-.adm-pop-screen.desk { width: 420px; aspect-ratio: 1440 / 900; }
-.adm-pop-screen.mob { width: 120px; aspect-ratio: 390 / 844; border-radius: 14px; }
-.adm-pop-screen .bar { position: absolute; left: 0; right: 0; top: 0; background: #fff; border-bottom: 1px solid #e4e4e7; }
-.adm-pop-screen.desk .bar { height: 9.8%; }
-.adm-pop-screen.mob .bar { height: 7.6%; }
-.adm-pop-screen .layer { position: absolute; display: flex; flex-wrap: wrap; align-items: flex-start; }
-.adm-pop-screen.desk .layer { left: 1.7%; right: 1.7%; top: 11.6%; gap: 4px; }
-.adm-pop-screen.mob .layer { left: 4.1%; right: 4.1%; top: 9%; }
-.adm-pop-box { position: relative; overflow: hidden; background: #fff; border-radius: 3px; box-shadow: 0 3px 10px rgba(6,23,19,.25); }
-.desk .adm-pop-box { width: 25%; }
-.mob .adm-pop-box { width: 100%; }
-.adm-pop-box img { display: block; width: 100%; height: auto; }
-.adm-pop-box .empty { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #e4e4e7; color: #71717a; font-size: 9px; font-weight: 700; }
-.adm-pop-box .foot { height: 6px; border-top: 1px solid #f4f4f5; }
-.adm-pop-box .num { position: absolute; left: 3px; top: 3px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: #00a88c; color: #fff; font-size: 10px; font-weight: 800; line-height: 16px; text-align: center; }
-.adm-pop-note { flex: 1 1 220px; font-size: 13px; color: #52525b; line-height: 1.6; }
-.adm-pop-note p { margin: 0 0 4px; }
-.adm-pop-note .warn { color: #b45309; font-weight: 600; }
-.adm-hist-row .adm-order .adm-select { min-width: 70px; }
+/* 팝업 위치 정하기: 실제 메인 화면(1440×900)을 절반 크기로 띄운 위에서 드래그 */
+.adm-pop-editor { display: flex; gap: 22px; align-items: flex-end; flex-wrap: wrap; }
+.adm-pop-editor figure { margin: 0; display: grid; gap: 6px; justify-items: center; }
+.adm-pop-editor figcaption { font-size: 12px; color: #71717a; font-weight: 600; }
+.adm-pop-pc { position: relative; overflow: hidden; border: 1px solid #d4d4d8; border-radius: 8px; background: #fff; }
+.adm-pop-pc .frame { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.adm-pop-pc iframe { width: 100%; height: 100%; border: 0; }
+.adm-pop-layer { position: absolute; inset: 0; }
+.adm-pop-drag { position: absolute; overflow: hidden; border-radius: 8px; background: #fff; box-shadow: 0 9px 25px rgba(6,23,19,.28); cursor: grab; touch-action: none; user-select: none; outline: 2px solid transparent; transition: outline-color .15s; }
+.adm-pop-drag:hover, .adm-pop-drag.dragging { outline-color: #00a88c; }
+.adm-pop-drag.dragging { cursor: grabbing; box-shadow: 0 14px 34px rgba(6,23,19,.38); }
+.adm-pop-drag .img { background: #f4f4f5; }
+.adm-pop-drag img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.adm-pop-drag .foot { display: flex; justify-content: space-between; align-items: center; padding: 0 8px; font-size: 7px; color: #061713; }
+.adm-pop-coords { position: absolute; left: 8px; bottom: 8px; padding: 5px 10px; border-radius: 999px; background: rgba(6,23,19,.85); color: #fff; font-size: 12px; font-weight: 600; pointer-events: none; }
+.adm-pop-where { margin: 0; padding: 9px 0; font-size: 13px; color: #52525b; }
+.num { position: absolute; left: 4px; top: 4px; z-index: 1; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: #00a88c; color: #fff; font-size: 11px; font-weight: 800; line-height: 18px; text-align: center; }
+.adm-pop-screen { position: relative; overflow: hidden; background: linear-gradient(135deg, #eef6f4, #f4f4f5); border: 1px solid #d4d4d8; }
+.adm-pop-screen.mob { width: 150px; aspect-ratio: 390 / 844; border-radius: 16px; }
+.adm-pop-phone { position: absolute; inset: 0; }
+.adm-pop-phone .bar { position: absolute; left: 0; right: 0; top: 0; height: 7.6%; background: #fff; border-bottom: 1px solid #e4e4e7; }
+.adm-pop-box { position: absolute; left: 4.1%; right: 4.1%; top: 9.5%; overflow: hidden; background: #fff; border-radius: 5px; box-shadow: 0 3px 10px rgba(6,23,19,.25); }
+.adm-pop-box .img { background: #f4f4f5; }
+.adm-pop-box img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.adm-pop-box .foot { height: 8px; border-top: 1px solid #f4f4f5; }

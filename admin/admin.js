@@ -618,7 +618,7 @@ function convertPost(item, from, to) {
   if (to === 'history') return { year: day.slice(0, 4) || String(new Date().getFullYear()), month: day.slice(5, 7), text: title, note: '' };
   if (to === 'documents') return { group: 'cert', title, dateText: day ? day.slice(0, 7).replace('-', '.') : '', notes: String(summary || '').split('\n').map((s) => s.trim()).filter(Boolean), thumb: image, large: image };
   // 팝업은 옮기자마자 사이트에 뜨지 않도록 '노출'을 꺼 둔다
-  return { title, image, link: '', active: false, start: '', end: '' };
+  return { title, image, link: '', active: false, start: '', end: '', size: 'portrait' };
 }
 function copyMoveCtrl(from, list, index) {
   let target = from;
@@ -791,48 +791,136 @@ VIEWS.documents = () => {
 };
 
 // 팝업/배너
+// 팝업 크기·화면 기준값 (worker/render.js 의 POPUP_SIZES, POPUP_SCREEN 과 같게 유지)
+const POPUP_SIZES = { square: [400, 400], portrait: [400, 500], landscape: [600, 400] };
+const POPUP_SIZE_OPTIONS = [['portrait', '세로형 400 × 500 (기본)'], ['square', '정사각형 400 × 400'], ['landscape', '가로형 600 × 400']];
+const POPUP_SCREEN = { width: 1440, height: 900, top: 104, side: 24, gap: 16, bar: 44, header: 88 };
+const popupSize = (popup) => POPUP_SIZES[popup.size] || POPUP_SIZES.portrait;
+function popupPositions(popups) {
+  const { width, height, top, side, gap, bar } = POPUP_SCREEN;
+  let x = side; let y = top; let rowHeight = 0;
+  return popups.map((popup) => {
+    const [w, h] = popupSize(popup);
+    if (Number.isFinite(popup.x) && Number.isFinite(popup.y)) return { x: popup.x, y: popup.y, w, h };
+    if (x > side && x + w > width - side) { x = side; y += rowHeight + gap; rowHeight = 0; }
+    // 다음 줄이 화면 아래로 넘치면 화면 안쪽 끝에 맞춘다 (겹치면 관리자에서 끌어서 옮긴다)
+    const spot = { x: Math.min(x, width - w - 16), y: Math.max(top, Math.min(y, height - h - bar - 16)), w, h };
+    x += w + gap; rowHeight = Math.max(rowHeight, h + bar);
+    return spot;
+  });
+}
 VIEWS.popups = () => {
   const list = state.content.popups;
   const rerender = () => { touch('popups'); renderShell(); };
-  // 배치 미리보기: 노출이 켜진 팝업을 순서대로 왼쪽 위부터 놓는다 (PC 1440×900, 휴대폰 390×844를 줄인 비율)
-  const layout = h('div', { class: 'adm-pop-prev' });
-  const paintLayout = () => {
-    const shown = list.filter((popup) => popup.active);
-    const box = (popup, n) => h('div', { class: 'adm-pop-box' },
-      h('span', { class: 'num' }, n),
-      popup.image?.src ? h('img', { src: preview(popup.image.src), alt: '' }) : h('div', { class: 'empty' }, '이미지 없음'),
-      h('div', { class: 'foot' }));
-    const numberOf = (popup) => list.indexOf(popup) + 1;
-    layout.replaceChildren(
-      h('figure', {}, h('div', { class: 'adm-pop-screen desk' }, h('div', { class: 'bar' }), h('div', { class: 'layer' }, shown.map((popup) => box(popup, numberOf(popup))))), h('figcaption', {}, 'PC')),
-      h('figure', {}, h('div', { class: 'adm-pop-screen mob' }, h('div', { class: 'bar' }), h('div', { class: 'layer' }, shown.slice(0, 1).map((popup) => box(popup, numberOf(popup))))), h('figcaption', {}, '휴대폰')),
-      h('div', { class: 'adm-pop-note' },
-        h('p', {}, h('b', {}, `노출 중 ${shown.length}개`), ' · 순서 번호대로 왼쪽 위부터 가로로 놓입니다.'),
-        h('p', {}, 'PC는 한 줄에 3개까지 들어가고, 넘으면 아래 줄로 내려갑니다. 2~3개를 권장합니다.'),
-        h('p', {}, '휴대폰은 1개씩 보이고, 닫으면 다음 순서 팝업이 나옵니다.'),
-        shown.length > 3 ? h('p', { class: 'warn' }, '4개 이상이면 PC 첫 화면을 대부분 가립니다.') : null));
+  const shownList = () => list.filter((popup) => popup.active && popup.image?.src);
+  const SCALE = 0.5;
+  const { width: SW, height: SH, bar: BAR } = POPUP_SCREEN;
+
+  // PC 화면 미리보기: 실제 메인 페이지를 절반 크기로 띄우고, 그 위에서 팝업을 끌어 위치를 정한다
+  const frame = h('iframe', { src: '/?__static=1', title: '메인 화면', tabindex: '-1', 'aria-hidden': 'true' });
+  const layer = h('div', { class: 'adm-pop-layer' });
+  const coords = h('div', { class: 'adm-pop-coords', hidden: true });
+  const phone = h('div', { class: 'adm-pop-phone' });
+  const paintLayer = () => {
+    const shown = shownList();
+    const spots = popupPositions(shown);
+    layer.replaceChildren(...shown.map((popup, i) => {
+      const { x, y, w, h: ih } = spots[i];
+      const el = h('div', { class: 'adm-pop-drag', style: `left:${x * SCALE}px;top:${y * SCALE}px;width:${w * SCALE}px;z-index:${shown.length - i}`, title: '끌어서 위치를 정하세요' },
+        h('span', { class: 'num' }, list.indexOf(popup) + 1),
+        h('div', { class: 'img', style: `height:${ih * SCALE}px` }, h('img', { src: preview(popup.image.src), alt: '', draggable: 'false' })),
+        h('div', { class: 'foot', style: `height:${BAR * SCALE}px` }, h('span', {}, '오늘 하루 보지 않기'), h('span', {}, '닫기')));
+      el.addEventListener('pointerdown', (event) => {
+        event.preventDefault();
+        // 처음 끌 때, 자동 배치였던 팝업들도 지금 자리에 고정해서 다른 팝업이 따라 움직이지 않게 한다
+        shown.forEach((other, j) => { if (!Number.isFinite(other.x)) { other.x = spots[j].x; other.y = spots[j].y; } });
+        const startX = event.clientX; const startY = event.clientY;
+        const baseX = popup.x; const baseY = popup.y;
+        const maxX = SW - w - 16; const maxY = SH - ih - BAR - 16;
+        const minY = POPUP_SCREEN.header + 12;
+        el.setPointerCapture(event.pointerId);
+        el.classList.add('dragging');
+        const onMove = (moveEvent) => {
+          popup.x = Math.round(Math.min(maxX, Math.max(16, baseX + (moveEvent.clientX - startX) / SCALE)));
+          popup.y = Math.round(Math.min(Math.max(minY, maxY), Math.max(minY, baseY + (moveEvent.clientY - startY) / SCALE)));
+          el.style.left = `${popup.x * SCALE}px`;
+          el.style.top = `${popup.y * SCALE}px`;
+          coords.hidden = false;
+          coords.textContent = `${list.indexOf(popup) + 1}번 · 왼쪽 ${popup.x}px · 위 ${popup.y}px`;
+        };
+        const onUp = () => {
+          el.removeEventListener('pointermove', onMove);
+          el.classList.remove('dragging');
+          coords.hidden = true;
+          touch('popups');
+          paintCards();
+        };
+        el.addEventListener('pointermove', onMove);
+        el.addEventListener('pointerup', onUp, { once: true });
+        el.addEventListener('pointercancel', onUp, { once: true });
+      });
+      return el;
+    }));
+    const first = shown[0];
+    phone.replaceChildren(h('div', { class: 'bar' }), first ? h('div', { class: 'adm-pop-box' },
+      h('span', { class: 'num' }, list.indexOf(first) + 1),
+      h('div', { class: 'img', style: `aspect-ratio:${popupSize(first).join(' / ')}` }, h('img', { src: preview(first.image.src), alt: '' })),
+      h('div', { class: 'foot' })) : null);
   };
-  paintLayout();
-  return h('div', {},
-    head('팝업/배너', '메인 페이지에 표시되는 팝업입니다. 순서, 기간, 노출 여부를 지정할 수 있습니다.',
-      btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '' }); rerender(); }),
-      saveBtn('popups')),
-    list.length ? h('div', { class: 'adm-card block' }, h('h3', { class: 'adm-sub' }, '메인 화면 배치 미리보기'), layout) : null,
-    list.length ? list.map((popup, index) => {
-      const set = (patch) => { Object.assign(popup, patch); touch('popups'); paintLayout(); };
+  const resetBtn = btn('자동 배치로 되돌리기', () => {
+    if (!confirm('직접 정한 위치를 모두 지우고, 왼쪽 위부터 순서대로 다시 놓을까요?')) return;
+    list.forEach((popup) => { delete popup.x; delete popup.y; });
+    rerender();
+  }, 'sm');
+  const stage = h('div', { class: 'adm-pop-editor' },
+    h('figure', {}, h('div', { class: 'adm-pop-pc', style: `width:${SW * SCALE}px;height:${SH * SCALE}px` }, h('div', { class: 'frame', style: `width:${SW}px;height:${SH}px;transform:scale(${SCALE})` }, frame), layer, coords), h('figcaption', {}, 'PC (1440 × 900 화면을 절반 크기로 표시)')),
+    h('figure', {}, h('div', { class: 'adm-pop-screen mob' }, phone), h('figcaption', {}, '휴대폰 (1개씩 표시)')));
+
+  // 팝업별 입력 카드
+  const cardsWrap = h('div', {});
+  const paintCards = () => {
+    const shown = shownList();
+    const spots = popupPositions(shown);
+    cardsWrap.replaceChildren(...(list.length ? list.map((popup, index) => {
+      const set = (patch) => { Object.assign(popup, patch); touch('popups'); paintLayer(); };
+      const [w, ih] = popupSize(popup);
+      const spot = spots[shown.indexOf(popup)];
+      const where = !popup.active ? '노출이 꺼져 있어 화면에 뜨지 않습니다.'
+        : !popup.image?.src ? '이미지를 올리면 화면에 표시됩니다.'
+          : Number.isFinite(popup.x) ? `직접 정한 위치 · 왼쪽 ${popup.x}px, 위 ${popup.y}px` : `자동 배치 · 왼쪽 ${spot.x}px, 위 ${spot.y}px`;
       return h('div', { class: 'adm-card' },
-        imageInput(popup.image, (image) => set({ image }), { ratio: '1 / 1', maxSide: 1200 }),
+        h('div', {}, imageInput(popup.image, (image) => { set({ image }); paintCards(); }, { ratio: `${w} / ${ih}`, maxSide: 1200 }),
+          h('p', { class: 'adm-hint', style: 'margin:6px 0 0' }, `권장 이미지 ${w * 2} × ${ih * 2}px`)),
         h('div', { class: 'adm-fields' },
           field('제목 (화면 읽기용)', popup.title, (title) => set({ title }), { full: true }),
           field('클릭 시 이동할 주소', popup.link, (link) => set({ link }), { full: true, placeholder: 'contact.html 또는 https://' }),
+          h('div', { class: 'adm-field' }, h('label', {}, '팝업 크기'), select(POPUP_SIZE_OPTIONS, popup.size || 'portrait', (size) => { popup.size = size; rerender(); })),
+          h('div', { class: 'adm-field' }, h('label', {}, '위치'), h('p', { class: 'adm-pop-where' }, where)),
           field('시작일', popup.start, (start) => set({ start }), { type: 'date' }),
           field('종료일', popup.end, (end) => set({ end }), { type: 'date' }),
           rowCtrl(index, list.length, {
-            extra: [toggle('노출', popup.active, (active) => set({ active })), copyMoveCtrl('popups', list, index)],
+            extra: [toggle('노출', popup.active, (active) => { set({ active }); paintCards(); }), copyMoveCtrl('popups', list, index)],
             onMoveTo: (to) => { moveTo(list, [...list], index, to); rerender(); },
             onDelete: () => { if (confirm('이 팝업을 삭제할까요?')) { list.splice(index, 1); rerender(); } },
           })));
-    }) : h('p', { class: 'adm-empty' }, '등록된 팝업이 없습니다.'));
+    }) : [h('p', { class: 'adm-empty' }, '등록된 팝업이 없습니다.')]));
+  };
+  paintLayer();
+  paintCards();
+  const shownCount = shownList().length;
+  return h('div', {},
+    head('팝업/배너', '메인 페이지에 뜨는 팝업입니다. 크기를 고르고, 아래 화면에서 팝업을 끌어 위치를 정하세요.',
+      btn('+ 팝업 추가', () => { list.unshift({ title: '', image: null, link: '', active: true, start: '', end: '', size: 'portrait' }); rerender(); }),
+      saveBtn('popups')),
+    list.length ? h('div', { class: 'adm-card block' },
+      h('div', { class: 'adm-sechead', style: 'margin-bottom:12px' },
+        h('div', {}, h('h3', { class: 'adm-sub', style: 'margin:0' }, '메인 화면에서 위치 정하기'),
+          h('p', { class: 'adm-hint', style: 'margin:4px 0 0' }, `노출 중이고 이미지가 있는 팝업 ${shownCount}개가 보입니다. 끌어서 놓으면 위치가 정해지고, 저장을 눌러야 사이트에 반영됩니다. 번호가 작을수록 위에 겹쳐집니다.`)),
+        resetBtn),
+      stage,
+      shownCount > 3 ? h('p', { class: 'adm-hint', style: 'color:#b45309;font-weight:600' }, '4개 이상이면 PC 첫 화면을 대부분 가립니다. 2~3개를 권장합니다.') : null,
+      h('p', { class: 'adm-hint' }, '화면 크기가 다른 PC에서는 같은 비율의 자리에 뜨고, 화면 밖으로 나가지 않게 맞춰집니다. 휴대폰에서는 위치와 상관없이 위쪽에 1개씩 뜨고, 닫으면 다음 순서 팝업이 나옵니다.')) : null,
+    cardsWrap);
 };
 
 // SEO

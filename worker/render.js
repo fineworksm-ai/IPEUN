@@ -146,18 +146,41 @@ export function activePopups(popups, today) {
   return (popups || []).filter((popup) => popup.active && popup.image?.src
     && (!popup.start || popup.start <= today) && (!popup.end || popup.end >= today));
 }
-// 팝업 배치: 관리자 순서대로 왼쪽 위부터 가로로 1, 2, 3… (줄이 차면 다음 줄)
-// 휴대폰은 한 번에 1개만 보이고, 닫으면 다음 순서 팝업이 나온다
+// 팝업 크기와 위치
+// 크기: 정사각형 400×400 / 세로 400×500(기본) / 가로 600×400 — 이미지 높이 기준, 아래 버튼 줄 44px 별도
+// 위치: 관리자에서 PC 화면(1440×900 기준)에 드래그한 x, y. 화면 크기가 다르면 같은 비율 자리로 옮기고, 화면 밖으로 나가지 않게 막는다
+// 휴대폰(600px 이하)은 위치와 상관없이 위쪽에 1개씩 보이고, 닫으면 다음 순서 팝업이 나온다
+export const POPUP_SIZES = { square: [400, 400], portrait: [400, 500], landscape: [600, 400] };
+export const POPUP_SCREEN = { width: 1440, height: 900, top: 104, side: 24, gap: 16, bar: 44 };
+export const popupSize = (popup) => POPUP_SIZES[popup.size] || POPUP_SIZES.portrait;
+// 위치를 정하지 않은 팝업은 왼쪽 위부터 가로로 차례대로 놓는다
+export function popupPositions(popups) {
+  const { width, height, top, side, gap, bar } = POPUP_SCREEN;
+  let x = side; let y = top; let rowHeight = 0;
+  return popups.map((popup) => {
+    const [w, h] = popupSize(popup);
+    if (Number.isFinite(popup.x) && Number.isFinite(popup.y)) return { x: popup.x, y: popup.y, w, h };
+    if (x > side && x + w > width - side) { x = side; y += rowHeight + gap; rowHeight = 0; }
+    // 다음 줄이 화면 아래로 넘치면 화면 안쪽 끝에 맞춘다 (겹치면 관리자에서 끌어서 옮긴다)
+    const spot = { x: Math.min(x, width - w - 16), y: Math.max(top, Math.min(y, height - h - bar - 16)), w, h };
+    x += w + gap; rowHeight = Math.max(rowHeight, h + bar);
+    return spot;
+  });
+}
 export function renderPopups(popups, ctx) {
   if (!popups.length) return '';
   const label = ctx.lang === 'en' ? { hide: "Don't show today", close: 'Close', dialog: 'Notice' } : { hide: '오늘 하루 보지 않기', close: '닫기', dialog: '공지' };
+  const { width, height, bar } = POPUP_SCREEN;
+  const spots = popupPositions(popups);
   const items = popups.map((popup, index) => {
+    const { x, y, w, h } = spots[index];
     const picture = img({ ...popup.image, alt: popup.title || '' }, ctx);
     const body = popup.link ? `<a href="${esc(popup.link)}">${picture}</a>` : picture;
-    return `<div class="ipeun-popup" role="dialog" aria-label="${plain(popup.title || label.dialog, ctx)}" data-popup="${index}">${body}<div class="ipeun-popup-bar"><button type="button" data-popup-hide>${label.hide}</button><button type="button" data-popup-close>${label.close}</button></div></div>`;
+    const vars = `--x:${(x / width) * 100};--y:${(y / height) * 100};--w:${w}px;--h:${h}px;--ratio:${w} / ${h};--bar:${bar}px;z-index:${popups.length - index}`;
+    return `<div class="ipeun-popup" role="dialog" aria-label="${plain(popup.title || label.dialog, ctx)}" data-popup="${index}" style="${vars}"><div class="ipeun-popup-img">${body}</div><div class="ipeun-popup-bar"><button type="button" data-popup-hide>${label.hide}</button><button type="button" data-popup-close>${label.close}</button></div></div>`;
   }).join('');
   return `<div class="ipeun-popups" hidden>${items}</div>
-<style>.ipeun-popups{position:fixed;z-index:200;left:24px;top:calc(var(--header-height,88px) + 16px);display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;max-width:calc(100vw - 48px);max-height:calc(100vh - var(--header-height,88px) - 32px);overflow-y:auto}.ipeun-popup{width:min(360px,calc(100vw - 48px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(6,23,19,.22)}.ipeun-popup img{display:block;width:100%;height:auto}.ipeun-popup-bar{display:flex;justify-content:space-between;padding:12px 16px;font-size:14px}.ipeun-popup-bar button{border:0;background:none;color:#061713;cursor:pointer;font:inherit}@media(max-width:600px){.ipeun-popups{left:16px;right:16px;top:calc(var(--header-height,64px) + 12px);max-width:none}.ipeun-popup{width:100%}.ipeun-popup~.ipeun-popup{display:none}}</style>
+<style>.ipeun-popups{position:fixed;inset:0;z-index:200;pointer-events:none}.ipeun-popup{position:absolute;pointer-events:auto;width:min(var(--w),calc(100vw - 32px));left:clamp(16px,calc(var(--x) * 1vw),calc(100vw - min(var(--w),calc(100vw - 32px)) - 16px));top:clamp(calc(var(--header-height,88px) + 12px),calc(var(--y) * 1vh),calc(100vh - var(--h) - var(--bar) - 16px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(6,23,19,.22)}.ipeun-popup-img{aspect-ratio:var(--ratio);background:#f4f4f5}.ipeun-popup-img a{display:block;height:100%}.ipeun-popup-img img{display:block;width:100%;height:100%;object-fit:cover}.ipeun-popup-bar{display:flex;justify-content:space-between;height:var(--bar);align-items:center;padding:0 16px;font-size:14px}.ipeun-popup-bar button{border:0;background:none;color:#061713;cursor:pointer;font:inherit}@media(max-width:600px){.ipeun-popup{left:16px;right:16px;width:auto;top:calc(var(--header-height,64px) + 12px)}.ipeun-popup~.ipeun-popup{display:none}}</style>
 <script>(()=>{const box=document.querySelector('.ipeun-popups');if(!box)return;const key='ipeun-popup-hide';let hide='';try{hide=localStorage.getItem(key)||''}catch{}const today=new Date(Date.now()+324e5).toISOString().slice(0,10);if(hide===today)return;box.hidden=false;const closeAll=()=>{box.remove()};box.addEventListener('click',e=>{const one=e.target.closest('[data-popup-close]');if(one){one.closest('.ipeun-popup').remove();if(!box.querySelector('.ipeun-popup'))closeAll()}if(e.target.closest('[data-popup-hide]')){try{localStorage.setItem(key,today)}catch{}closeAll()}});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()},{once:true})})();</script>`;
 }
 
