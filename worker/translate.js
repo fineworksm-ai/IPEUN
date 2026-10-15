@@ -27,6 +27,15 @@ export async function loadDictionary(env) {
   return { lookup, rows };
 }
 
+// 영문 → 한글 (관리자 > 영문 번역에서 각 영문 문장의 한글 원문을 보여줄 때)
+export async function reverseDictionary(env) {
+  const map = new Map();
+  BASE.forEach((en, ko) => { const key = norm(en); if (key && !map.has(key)) map.set(key, ko); });
+  const { results } = await env.DB.prepare('SELECT ko, en FROM translations').all();
+  (results || []).forEach((row) => { const key = norm(row.en); if (key) map.set(key, row.ko); });
+  return map;
+}
+
 // 렌더러에 넘기는 번역 함수. 번역이 없으면 한글을 그대로 둔다.
 export const translator = (dictionary) => (value) => {
   if (value == null || value === '') return value;

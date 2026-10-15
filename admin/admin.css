@@ -213,3 +213,23 @@ img { display: block; max-width: 100%; }
 .adm-pop-box .img { background: #f4f4f5; }
 .adm-pop-box img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .adm-pop-box .foot { height: 8px; border-top: 1px solid #f4f4f5; }
+/* 영문 번역: 페이지 탭 + 영역별 문구 */
+.adm-en-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.adm-en-tabs button { border: 1px solid #d4d4d8; background: #fff; border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 13px; font-weight: 600; color: #3f3f46; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.adm-en-tabs button.on { background: #18181b; border-color: #18181b; color: #fff; }
+.adm-en-tabs .n { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: #00a88c; color: #fff; font-size: 11px; line-height: 18px; text-align: center; }
+.adm-en-group .adm-sub small { font-weight: 500; color: #71717a; }
+.adm-en-row { display: grid; grid-template-columns: 110px 1fr 88px; gap: 12px; padding: 12px 0; border-top: 1px solid #f4f4f5; align-items: start; }
+.adm-en-row.changed { background: linear-gradient(90deg, #f0fdf4, transparent 60%); }
+.adm-en-row .meta { display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; padding-top: 6px; }
+.adm-en-row .meta .adm-badge { background: #f4f4f5; color: #52525b; }
+.adm-en-row .meta .adm-badge.t-missing { background: #fee2e2; color: #dc2626; }
+.adm-en-row .meta .adm-badge.t-manual { background: #dcfce7; color: #15803d; }
+.adm-en-row .cnt { font-size: 11.5px; color: #a1a1aa; }
+.adm-en-row .body { display: grid; gap: 4px; min-width: 0; }
+.adm-en-row .ko { font-size: 12.5px; color: #71717a; }
+.adm-en-row .ctx { font-size: 12px; color: #a1a1aa; }
+.adm-en-row .orig { font-size: 12px; color: #a1a1aa; }
+.adm-en-row textarea { border: 1px solid #d4d4d8; border-radius: 8px; padding: 8px 10px; font: inherit; font-size: 13.5px; width: 100%; min-height: 38px; line-height: 1.5; resize: vertical; }
+.adm-en-row .side { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+@media (max-width: 860px) { .adm-en-row { grid-template-columns: 1fr; } .adm-en-row .side { flex-direction: row; } }

@@ -5,7 +5,8 @@
 // - /files/* 관리자에서 올린 이미지
 import { json, kstDate, getCookie, pageInfo } from './util.js';
 import { serveVideo } from './video.js';
-import { loadDictionary, translator, translateMissing, hasKorean } from './translate.js';
+import { loadDictionary, translator, translateMissing, hasKorean, reverseDictionary } from './translate.js';
+import { overridesFor, applyEnglishText, normText } from './entext.js';
 import {
   collect, renderHistory, renderCertifications, renderPatents, patentHeading, renderEventYears,
   renderLatestEvents, renderPress, renderFooterInfo, renderLocations, activePopups, renderPopups,
@@ -117,7 +118,7 @@ async function page(request, env, ctx, url) {
   const visitor = recordVisit(request, env, ctx, url);
   if (!key) return withVisitor(response, visitor);
 
-  const keys = ['site', 'seo', ...(PAGE_CONTENT[key] || [])];
+  const keys = ['site', 'seo', ...(PAGE_CONTENT[key] || []), ...(lang === 'en' ? ['entext'] : [])];
   // DB를 못 읽어도 페이지는 정적 내용 + 공유 태그·구조화 데이터로 서빙한다
   const content = await loadContent(env, keys).catch((error) => { console.error('content:', error?.message); return {}; });
   const dictionary = lang === 'en' ? await loadDictionary(env).catch(() => null) : null;
@@ -187,9 +188,15 @@ async function page(request, env, ctx, url) {
     rewriter.on('.inquiry-submit', { element: (el) => el.before(inquiryConsent(lang), { html: true }) });
   }
 
-  const out = rewriter.transform(response);
+  let out = rewriter.transform(response);
+  // 영문 페이지: 관리자 > 영문 번역에서 고친 문구를 마지막에 반영한다
+  // (관리자 화면이 원래 문구를 불러올 때는 __entext 로 반영 전 상태를 받는다)
+  if (lang === 'en') {
+    const original = url.searchParams.has('__entext') && await isAdmin(request, env);
+    if (!original) out = applyEnglishText(out, overridesFor(content.entext, key));
+  }
   const final = new Response(out.body, out);
-  final.headers.set('cache-control', 'no-cache');
+  final.headers.set('cache-control', url.searchParams.has('__entext') ? 'no-store' : 'no-cache');
   return withVisitor(final, visitor);
 }
 
@@ -298,6 +305,8 @@ async function api(request, env, url) {
   if (path === '/api/admin/translations' && method === 'GET') return listTranslations(env);
   if (path === '/api/admin/translations' && method === 'PUT') return saveTranslation(request, env);
   if (path === '/api/admin/translations/refresh' && method === 'POST') return refreshTranslations(request, env);
+  if (path === '/api/admin/entext' && method === 'GET') return listEnglishText(env);
+  if (path === '/api/admin/entext' && method === 'PUT') return saveEnglishText(request, env);
   if (path === '/api/admin/inquiries' && method === 'GET') {
     const { results } = await env.DB.prepare('SELECT id, created_at, lang, purposes, product, organization, name, email, message, status, memo FROM inquiries ORDER BY id DESC LIMIT 500').all();
     return json(results || []);
@@ -408,6 +417,26 @@ async function refreshTranslations(request, env) {
   const strings = Array.isArray(body.ko) && body.ko.length ? body.ko : await managedStrings(env);
   const result = await translateMissing(env, strings, { force: body.force ? strings : [] });
   return json({ ok: true, ...result });
+}
+
+// 영문 페이지 문구: 저장된 수정 내용 + 영문 → 한글 원문 (화면에서 어느 문장인지 알아보기 쉽게)
+async function listEnglishText(env) {
+  const content = await loadContent(env, ['entext']);
+  return json({ overrides: content.entext?.overrides || {}, korean: Object.fromEntries(await reverseDictionary(env)) });
+}
+async function saveEnglishText(request, env) {
+  const { page, from, to } = await request.json().catch(() => ({}));
+  const key = normText(from);
+  if (!page || !/^[a-z]+$/.test(page) || !key) return json({ error: 'page, from required' }, 400);
+  const content = await loadContent(env, ['entext']);
+  const overrides = content.entext?.overrides || {};
+  overrides[page] ||= {};
+  if (to == null || !String(to).trim() || String(to).trim() === key) delete overrides[page][key];
+  else overrides[page][key] = String(to).trim().slice(0, 4000);
+  if (!Object.keys(overrides[page]).length) delete overrides[page];
+  await env.DB.prepare("INSERT INTO content (key, value, updated_at) VALUES ('entext', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at")
+    .bind(JSON.stringify({ overrides })).run();
+  return json({ ok: true, overrides });
 }
 
 async function analytics(env) {

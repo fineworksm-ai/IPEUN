@@ -21,7 +21,7 @@
 | | 팝업/배너 | `index.html` 팝업 |
 | 설정 | SEO · 메타태그 | 각 페이지 `<title>`, description, og 태그 |
 | | 사이트 설정 | 모든 페이지 푸터, `company.html` #location |
-| | 영문 번역 | 관리자 문장의 영문 번역 확인·수정 |
+| | 영문 번역 | 영문 페이지(`/en/*`)에 보이는 모든 영어를 페이지·영역별로 확인·수정. 저장 즉시 반영 (`worker/entext.js`, content 키 `entext`) |
 
 ## 동작 방식
 

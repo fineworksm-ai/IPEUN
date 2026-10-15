@@ -975,39 +975,175 @@ VIEWS.site = () => {
     h('p', { class: 'adm-hint' }, '문의 폼의 안내 문구에 있는 이메일 주소(admin@i-peun.com)는 페이지 문구라서 여기서 바뀌지 않습니다.'));
 };
 
-// 영문 번역
+// 영문 번역: 영문 페이지마다 실제로 보이는 영어를 영역별로 보여주고 고친다
+// 고친 문구는 /api/admin/entext 에 저장되고, Worker가 영문 페이지를 보낼 때 마지막에 바꿔 넣는다 (worker/entext.js)
+const EN_PAGES = [
+  ['common', '공통 (메뉴·푸터)', '/en/'], ['index', '메인', '/en/'], ['company', '회사소개', '/en/company'],
+  ['technology', '기술소개', '/en/technology'], ['product', '제품소개', '/en/product'], ['alljet', 'All-Jet', '/en/alljet'],
+  ['invera', 'INVERA', '/en/invera'], ['events', '전시·학회', '/en/events'], ['media', '미디어', '/en/media'],
+  ['publications', '논문자료', '/en/publications'], ['contact', '고객센터', '/en/contact'], ['privacy', '개인정보처리방침', '/en/privacy'],
+];
+const enPageCache = new Map();
+const normText = (value) => String(value || '').replace(/\s+/g, ' ').trim();
+const KIND = [
+  ['h1, h2, h3, h4, h5, h6', '제목'], ['.eyebrow, .cx-kicker, .category-label', '작은 제목'], ['button, .button, .header-cta', '버튼'],
+  ['nav a, .nav-item', '메뉴'], ['a', '링크'], ['figcaption', '사진 설명'], ['label, legend', '입력 항목'], ['option', '선택지'],
+  ['th, td, dt, dd', '표'], ['li', '목록'], ['p', '문단'],
+];
+// 안쪽 글자 조각을 띄어 붙여 읽는다 (제목·문장 전체 표시용: "Care Beyond Needles", "08 Obtained …")
+const spacedText = (el) => {
+  if (!el) return '';
+  const parts = [];
+  const walker = el.ownerDocument.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) parts.push(node.textContent);
+  return normText(parts.join(' '));
+};
+// 글자 조각의 자리(태그·순서 경로). 한글 페이지와 영문 페이지는 구조가 같아서 같은 자리의 한글을 원문으로 보여준다
+function textPath(node, root) {
+  const parts = [];
+  let index = 0;
+  for (let sib = node.previousSibling; sib; sib = sib.previousSibling) if (sib.nodeType === 3 && normText(sib.textContent)) index += 1;
+  parts.push(`#${index}`);
+  for (let el = node.parentElement; el && el !== root; el = el.parentElement) {
+    let n = 0;
+    for (let sib = el.previousElementSibling; sib; sib = sib.previousElementSibling) if (sib.tagName === el.tagName) n += 1;
+    parts.push(`${el.tagName}${n}`);
+  }
+  return parts.reverse().join('/');
+}
+function koreanByPosition(koDoc) {
+  const map = new Map();
+  if (!koDoc) return map;
+  const walker = koDoc.createTreeWalker(koDoc.body, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const text = normText(node.textContent);
+    if (text && /[가-힣]/.test(text)) map.set(textPath(node, koDoc.body), text);
+  }
+  return map;
+}
+function englishTexts(doc, page, koDoc) {
+  const koAt = koreanByPosition(koDoc);
+  const isCommon = (node) => Boolean(node.parentElement?.closest('header.site-header, footer.site-footer, .skip-link'));
+  const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+  const groups = new Map();
+  const seen = new Map();
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const parent = node.parentElement;
+    const text = normText(node.textContent);
+    if (!text || !parent || parent.closest('script, style, noscript, template')) continue;
+    // 숫자·기호만 있는 글(월, 번호 등)은 번역할 게 없어서 뺀다
+    if (!/[A-Za-z가-힣]/.test(text)) continue;
+    if ((page === 'common') !== isCommon(node)) continue;
+    if (seen.has(text)) { seen.get(text).count += 1; continue; }
+    // '본문 바로가기'는 맨 위 메뉴와 같이 보여준다
+    const area = parent.closest('.skip-link') ? (doc.querySelector('header.site-header') || doc.body)
+      : parent.closest('.hero-controls, .hero-slide, section, header, footer, nav.cx-subnav, form') || doc.body;
+    if (!groups.has(area)) {
+      const heading = area === doc.body ? null : area.querySelector('h1, h2, h3');
+      let title = heading ? (heading.getAttribute('aria-label') || spacedText(heading) || heading.querySelector('img')?.alt || '') : '';
+      if (!title && area !== doc.body) title = spacedText(area.querySelector('.eyebrow, .cx-kicker'));
+      if (area.matches('header')) title = '맨 위 메뉴';
+      if (area.matches('footer')) title = '맨 아래 (푸터)';
+      if (area.matches('.hero-controls')) title = '첫 화면 슬라이드 버튼';
+      if (area === doc.body) title = '기타 (화면 위에 뜨는 창, 버튼 등)';
+      groups.set(area, { title: title || area.id || '본문', items: [] });
+    }
+    const block = parent.closest('p, h1, h2, h3, h4, h5, h6, li, dd, dt, figcaption, a, button, label, td, th');
+    const whole = block ? spacedText(block) : '';
+    const item = {
+      text,
+      koAt: koAt.get(textPath(node, doc.body)) || '',
+      kind: (KIND.find(([selector]) => parent.closest(selector)) || [null, '글'])[1],
+      hidden: Boolean(parent.closest('.visually-hidden, [aria-hidden="true"]')),
+      context: whole && whole !== text ? whole : '',
+      count: 1,
+    };
+    seen.set(text, item);
+    groups.get(area).items.push(item);
+  }
+  return [...groups.values()].filter((group) => group.items.length);
+}
+async function loadEnPage(page) {
+  const path = EN_PAGES.find(([key]) => key === page)[2];
+  const koPath = path.replace(/^\/en\//, '/');
+  const get = (url) => {
+    if (!enPageCache.has(url)) {
+      enPageCache.set(url, fetch(url, { credentials: 'same-origin', cache: 'no-store' })
+        .then((response) => response.text()).then((html) => new DOMParser().parseFromString(html, 'text/html')));
+    }
+    return enPageCache.get(url);
+  };
+  const [doc, koDoc] = await Promise.all([get(`${path}?__entext=1`), get(`${koPath}?__entext=1`).catch(() => null)]);
+  return englishTexts(doc, page, koDoc);
+}
 VIEWS.translations = () => {
   const wrap = h('div', {});
-  const status = { base: '기존 번역', auto: '자동 번역', manual: '직접 수정', missing: '번역 없음' };
+  state.enPage ||= 'index';
   let filter = 'all';
   let query = '';
+  let groups = null;
   const listEl = h('div', {});
+  const tabs = h('div', { class: 'adm-en-tabs' });
+  const overridesOf = () => (state.entext?.overrides || {})[state.enPage] || {};
+  const paintTabs = () => tabs.replaceChildren(...EN_PAGES.map(([key, label]) => {
+    const changed = Object.keys((state.entext?.overrides || {})[key] || {}).length;
+    return h('button', { type: 'button', class: state.enPage === key ? 'on' : '', onClick: () => { state.enPage = key; groups = null; paintTabs(); load(); } },
+      label, changed ? h('span', { class: 'n' }, changed) : null);
+  }));
   const paint = () => {
-    const rows = (state.translations || []).filter((row) => (filter === 'all' || row.source === filter)
-      && (!query || row.ko.includes(query) || String(row.en || '').toLowerCase().includes(query.toLowerCase())));
-    listEl.replaceChildren(...(rows.length ? rows.map((row) => {
-      const area = h('textarea', { rows: 2, placeholder: '영문 번역 입력' });
-      area.value = row.en || '';
-      const saveRow = async (en) => {
-        try {
-          await api('/api/admin/translations', { method: 'PUT', body: { ko: row.ko, en } });
-          state.translations = null;
-          await loadTranslations();
-          toast(en ? '번역을 저장했습니다 (직접 수정)' : '자동 번역으로 되돌렸습니다');
-        } catch (error) { toast(error.message, 'err'); }
-      };
-      return h('div', { class: 'adm-tr-row' },
-        h('div', { class: 'ko' }, row.ko),
-        area,
-        h('div', { class: 'side' },
-          h('span', { class: `adm-badge t-${row.source}` }, status[row.source] || row.source),
-          btn('저장', () => saveRow(area.value.trim()), 'sm'),
-          row.source === 'manual' ? btn('되돌리기', () => saveRow(''), 'sm') : null));
-    }) : [h('p', { class: 'adm-empty' }, state.translations ? '해당하는 문장이 없습니다.' : '불러오는 중…')]));
+    if (!groups) { listEl.replaceChildren(h('p', { class: 'adm-empty' }, '불러오는 중…')); return; }
+    const overrides = overridesOf();
+    const korean = state.entext?.korean || {};
+    const q = query.toLowerCase();
+    const sections = groups.map((group) => {
+      const rows = group.items.filter((item) => {
+        const changed = overrides[item.text] != null;
+        if (filter === 'changed' && !changed) return false;
+        if (filter === 'missing' && !/[가-힣]/.test(item.text)) return false;
+        if (!q) return true;
+        return [item.text, overrides[item.text], korean[item.text], item.koAt].some((value) => String(value || '').toLowerCase().includes(q));
+      });
+      if (!rows.length) return null;
+      return h('div', { class: 'adm-card block adm-en-group' },
+        h('h3', { class: 'adm-sub' }, group.title, korean[group.title] ? h('small', {}, ` · ${korean[group.title]}`) : null),
+        rows.map((item) => {
+          const changed = overrides[item.text] != null;
+          const area = h('textarea', { rows: item.text.length > 90 ? 3 : 1 });
+          area.value = changed ? overrides[item.text] : item.text;
+          const saveRow = async (to) => {
+            try {
+              const result = await api('/api/admin/entext', { method: 'PUT', body: { page: state.enPage, from: item.text, to } });
+              state.entext.overrides = result.overrides;
+              toast(to ? '저장했습니다. 영문 페이지에 바로 반영됩니다.' : '원래 문구로 되돌렸습니다.');
+              paintTabs(); paint();
+            } catch (error) { toast(`저장 실패: ${error.message}`, 'err'); }
+          };
+          return h('div', { class: `adm-en-row${changed ? ' changed' : ''}` },
+            h('div', { class: 'meta' },
+              h('span', { class: 'adm-badge' }, item.kind),
+              item.hidden ? h('span', { class: 'adm-badge', title: '화면에는 안 보이고 화면 낭독기가 읽는 글입니다' }, '숨은 글') : null,
+              /[가-힣]/.test(item.text) ? h('span', { class: 'adm-badge t-missing' }, '번역 없음') : null,
+              changed ? h('span', { class: 'adm-badge t-manual' }, '수정함') : null,
+              item.count > 1 ? h('span', { class: 'cnt' }, `이 페이지 ${item.count}곳`) : null),
+            h('div', { class: 'body' },
+              (korean[item.text] || item.koAt) ? h('div', { class: 'ko' }, korean[item.text] || item.koAt) : null,
+              item.context ? h('div', { class: 'ctx' }, '문장 전체: ', item.context) : null,
+              area,
+              changed ? h('div', { class: 'orig' }, '원래 영문: ', item.text) : null),
+            h('div', { class: 'side' },
+              btn('저장', () => saveRow(area.value.trim()), 'sm'),
+              changed ? btn('되돌리기', () => saveRow(''), 'sm') : null));
+        }));
+    }).filter(Boolean);
+    listEl.replaceChildren(...(sections.length ? sections : [h('p', { class: 'adm-empty' }, '해당하는 문구가 없습니다.')]));
   };
-  const loadTranslations = async () => {
-    try { state.translations = await api('/api/admin/translations'); } catch (error) { toast(error.message, 'err'); state.translations = []; }
+  const load = async () => {
     paint();
+    try {
+      if (!state.entext) state.entext = await api('/api/admin/entext');
+      groups = await loadEnPage(state.enPage);
+    } catch (error) { toast(`불러오지 못했습니다: ${error.message}`, 'err'); groups = []; }
+    paintTabs(); paint();
   };
   const run = async (force, button) => {
     button.disabled = true;
@@ -1016,23 +1152,29 @@ VIEWS.translations = () => {
     try {
       const result = await api('/api/admin/translations/refresh', { method: 'POST', body: { force } });
       toast(`자동 번역 ${result.translated || 0}건 완료`);
-      await loadTranslations();
+      enPageCache.clear(); state.entext = null; groups = null; load();
     } catch (error) { toast(`번역 실패: ${error.message}`, 'err'); }
     button.disabled = false;
     button.textContent = label;
   };
-  const missingBtn = btn('번역 없는 문장 번역', () => run(false, missingBtn));
-  const redoBtn = btn('자동 번역 다시 하기', () => run(true, redoBtn));
-  const search = h('input', { class: 'adm-search', placeholder: '검색' });
+  const missingBtn = btn('번역 없는 문장 자동 번역', () => run(false, missingBtn), 'sm');
+  const redoBtn = btn('자동 번역 다시 하기', () => run(true, redoBtn), 'sm');
+  const search = h('input', { class: 'adm-search', placeholder: '영문·한글 검색' });
   search.addEventListener('input', () => { query = search.value.trim(); paint(); });
+  const pageLink = h('a', { class: 'adm-btn sm', target: '_blank', rel: 'noopener' }, '영문 페이지 열기 ↗');
+  const syncLink = () => { pageLink.href = EN_PAGES.find(([key]) => key === state.enPage)[2]; };
+  tabs.addEventListener('click', syncLink);
+  syncLink();
   wrap.append(
-    head('영문 번역', `관리자에서 입력한 한글 문장의 영문 번역입니다. 저장할 때 새 문장은 자동 번역되고(${state.translator === 'claude' ? 'Claude' : 'Cloudflare AI'}), 여기서 직접 고치면 그 번역이 우선 적용됩니다.`, missingBtn, redoBtn),
-    h('div', { class: 'adm-notice info' }, '“기존 번역”은 현재 영문 사이트에 쓰인 번역입니다. 관리자에서 아직 저장하지 않은 메뉴의 문장은 이 목록에 나오지 않습니다.'),
-    h('div', { style: 'display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap' },
-      select([['all', '전체'], ['missing', '번역 없음'], ['auto', '자동 번역'], ['manual', '직접 수정'], ['base', '기존 번역']], filter, (value) => { filter = value; paint(); }),
-      search),
-    h('div', { class: 'adm-card block' }, listEl));
-  if (state.translations) paint(); else loadTranslations();
+    head('영문 번역', '영문 페이지에 실제로 보이는 영어를 페이지·영역별로 보여줍니다. 고쳐서 저장하면 영문 페이지에 바로 반영됩니다.', missingBtn, redoBtn),
+    h('div', { class: 'adm-notice info' }, '메뉴와 푸터는 "공통"에서 고치면 모든 영문 페이지에 바뀝니다. 같은 문구가 한 페이지에 여러 곳 있으면 함께 바뀝니다. 전시·학회, 미디어 같은 관리자 콘텐츠는 한글을 고치면 영문이 새로 번역되므로, 그 문구는 다시 확인해 주세요.'),
+    tabs,
+    h('div', { style: 'display:flex;gap:10px;align-items:center;margin:12px 0;flex-wrap:wrap' },
+      select([['all', '전체'], ['changed', '수정한 것만'], ['missing', '번역 없는 것만']], filter, (value) => { filter = value; paint(); }),
+      search, pageLink),
+    listEl);
+  paintTabs();
+  load();
   return wrap;
 };
 
