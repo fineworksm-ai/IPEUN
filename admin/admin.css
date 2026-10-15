@@ -256,9 +256,16 @@ img { display: block; max-width: 100%; }
 .adm-desktop-only .acts { display: flex; gap: 8px; justify-content: center; margin-top: 18px; flex-wrap: wrap; }
 @media (max-width: 760px) {
   .adm-mobile-only { display: block; }
-  .adm-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; overflow: visible; }
-  .adm-navitem:not([data-nav="dashboard"]):not([data-nav="inquiries"]) { display: none; }
-  .adm-navitem { justify-content: center; padding: 10px 8px; background: rgba(255,255,255,.06); color: #d4d4d8; }
+  .adm-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; overflow: visible; }
+  .adm-navitem:not([data-nav="dashboard"]):not([data-nav="inquiries"]):not([data-nav="events"]):not([data-nav="media"]) { display: none; }
+  .adm-navitem { position: relative; justify-content: center; padding: 10px 2px; font-size: 13px; background: rgba(255,255,255,.06); color: #d4d4d8; }
+  .adm-navitem .dot { position: absolute; top: 6px; right: 6px; margin: 0; }
+  .adm-navitem .changed { position: absolute; top: -4px; right: -2px; margin: 0; font-size: 0; width: 9px; height: 9px; border-radius: 50%; background: #f59e0b; }
+  .adm-sechead .right .adm-btn { flex: 1 1 auto; }
+  .adm-img-prev { max-height: 260px; }
+  .adm-photo .ctrl { row-gap: 8px; }
+  .adm-row-ctrl { gap: 8px; }
+  .adm-copymove { flex-wrap: wrap; }
   .adm-navitem.active { background: #fff; color: #18181b; }
   .adm-content-bar { padding: 8px 16px; }
   .adm-content-bar .save-hint { display: none; }
@@ -274,4 +281,10 @@ img { display: block; max-width: 100%; }
   .adm-inq-head .date { order: 3; width: 100%; font-size: 12.5px; }
   .adm-inq-body { grid-template-columns: 84px 1fr; gap: 6px 10px; font-size: 13.5px; }
   .adm-card { padding: 14px; }
+}
+.adm-mobile-save { display: none; }
+@media (max-width: 760px) {
+  .adm-mobile-save { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(244,244,245,.92); backdrop-filter: blur(8px); border-top: 1px solid #e4e4e7; }
+  .adm-mobile-save .adm-btn { width: 100%; padding: 13px; font-size: 15px; }
+  .adm-content-inner { padding-bottom: 96px; }
 }

@@ -263,16 +263,16 @@ const sortByDate = (list) => list.sort((a, b) => String(b.date || '').localeComp
 const groupByYear = (list, yearOf) => list.sort((a, b) => (Number(yearOf(b)) || 0) - (Number(yearOf(a)) || 0));
 
 /* ───────── 화면 틀 ───────── */
-// 휴대폰에서는 대시보드·문의 관리만 쓴다 (콘텐츠 수정은 화면이 넓은 PC에서)
+// 휴대폰에서는 대시보드·문의 관리와, 현장 사진을 바로 올리는 전시·학회·미디어만 쓴다 (나머지는 화면이 넓은 PC에서)
 const MOBILE = window.matchMedia('(max-width: 760px)');
-const MOBILE_KEYS = ['dashboard', 'inquiries'];
+const MOBILE_KEYS = ['dashboard', 'inquiries', 'events', 'media'];
 MOBILE.addEventListener('change', () => { if (document.querySelector('.adm-shell')) renderShell(); });
 function desktopOnly() {
   const label = NAV.flatMap((group) => group.items).find(([key]) => key === state.active)?.[1] || '이 메뉴';
   const go = (key) => { state.active = key; renderShell(); window.scrollTo(0, 0); };
   return h('div', { class: 'adm-desktop-only' },
     h('h2', {}, 'PC에서 이용해주세요'),
-    h('p', {}, `'${label}' 메뉴는 화면이 넓은 PC에서 수정할 수 있습니다.`), h('p', {}, '휴대폰에서는 대시보드와 문의 관리만 볼 수 있습니다.'),
+    h('p', {}, `'${label}' 메뉴는 화면이 넓은 PC에서 수정할 수 있습니다.`), h('p', {}, '휴대폰에서는 대시보드, 문의 관리, 전시·학회, 미디어만 쓸 수 있습니다.'),
     h('div', { class: 'acts' }, btn('대시보드', () => go('dashboard'), 'primary'), btn('문의 관리', () => go('inquiries'))));
 }
 function renderShell() {
@@ -296,6 +296,12 @@ function renderShell() {
   const inner = h('div', { class: 'adm-content-inner' });
   app.replaceChildren(h('div', { class: 'adm-shell' }, sidebar, h('main', { class: 'adm-content' }, bar, inner)));
   inner.append(MOBILE.matches && !MOBILE_KEYS.includes(state.active) ? desktopOnly() : VIEWS[state.active]());
+  // 휴대폰: 긴 글 아래쪽에서 사진을 올린 뒤 바로 저장할 수 있게 화면 아래에 저장 버튼을 붙인다
+  if (MOBILE.matches && ['events', 'media'].includes(state.active)) {
+    const key = state.active;
+    const button = btn('저장', () => save(key, button), 'primary');
+    inner.append(h('div', { class: 'adm-mobile-save' }, button));
+  }
 }
 function touch(key) {
   if (state.dirty.has(key)) return;
@@ -389,7 +395,7 @@ function select(options, value, onChange) {
   return el;
 }
 
-// 이미지는 브라우저에서 줄여(WebP) 올린다
+// 이미지는 브라우저에서 줄여(WebP) 올린다. WebP를 만들지 못하는 브라우저(아이폰 Safari 등)는 JPEG로
 async function shrink(file, maxSide) {
   const bitmap = await createImageBitmap(file);
   let scale = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
@@ -399,7 +405,8 @@ async function shrink(file, maxSide) {
     const height = Math.max(1, Math.round(bitmap.height * scale));
     const canvas = h('canvas', { width, height });
     canvas.getContext('2d').drawImage(bitmap, 0, 0, width, height);
-    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/webp', quality));
+    let blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/webp', quality));
+    if (blob && blob.type !== 'image/webp') blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', quality));
     if (blob && blob.size <= 1300000) return { blob, width, height };
     if (quality > 0.62) quality -= 0.08; else scale *= 0.8;
   }
@@ -510,7 +517,7 @@ VIEWS.dashboard = () => {
   const recent = state.inquiries.slice(0, 5);
   return h('div', {},
     head('대시보드', '사이트 방문 현황과 최근 문의를 확인하세요. 관리자 페이지를 연 기기(브라우저)의 방문은 집계하지 않습니다.', seg, h('span', { class: 'adm-live' }, '● 실시간 집계')),
-    h('div', { class: 'adm-notice info adm-mobile-only' }, '휴대폰에서는 대시보드와 문의 관리만 볼 수 있습니다. 전시·학회, 미디어, 연혁, 인증·특허, 팝업/배너, SEO, 사이트 설정, 영문 번역은 PC에서 수정해주세요.'),
+    h('div', { class: 'adm-notice info adm-mobile-only' }, '휴대폰에서는 대시보드, 문의 관리, 전시·학회, 미디어만 쓸 수 있습니다. 연혁, 인증·특허, 팝업/배너, SEO, 사이트 설정, 영문 번역은 PC에서 수정해주세요.'),
     h('div', { class: 'adm-stats' }, kpis.map(([label, n]) => h('div', { class: 'adm-stat' }, h('div', { class: 'n' }, n.toLocaleString()), h('div', { class: 'l' }, label)))),
     h('div', { class: 'adm-panel' }, h('div', { class: 'adm-panel-h' }, h('h3', {}, '일별 방문자', h('small', {}, `최근 ${range}일`))), chart(days)),
     h('div', { class: 'adm-two' },
@@ -647,8 +654,9 @@ function copyMoveCtrl(from, list, index) {
     const popupNote = target === 'popups' && from !== 'popups' ? ' 팝업은 노출이 꺼진 상태로 들어갑니다.' : '';
     toast(`${label} 맨 위에 ${moveIt ? '옮겼습니다' : '복사했습니다'}. ${moveIt ? '두 메뉴 모두 ' : ''}저장을 눌러야 사이트에 반영됩니다.${popupNote}`);
   };
+  const menus = MOBILE.matches ? POST_MENUS.filter(([key]) => MOBILE_KEYS.includes(key)) : POST_MENUS;
   return h('span', { class: 'adm-copymove' },
-    select(POST_MENUS, target, (value) => { target = value; }),
+    select(menus, target, (value) => { target = value; }),
     btn('복사', () => run(false), 'sm'),
     btn('이동', () => run(true), 'sm'));
 }
@@ -690,7 +698,13 @@ VIEWS.events = () => {
           field('행사명', event.title, (title) => set({ title }), { full: true }),
           field('소개 문장', event.summary, (summary) => set({ summary }), { textarea: true, full: true, rows: 2 }),
           h('div', { class: 'adm-photos' }, event.photos.map((photo, i) => h('div', { class: 'adm-photo' },
-            imageInput(photo, (next) => { Object.assign(photo, next || { src: '' }); touch('events'); }, { ratio: '4 / 3' }),
+            imageInput(photo, (next) => {
+              const before = photo.portrait;
+              Object.assign(photo, next || { src: '' });
+              if (next?.w && next?.h) photo.portrait = next.h > next.w;
+              touch('events');
+              if (photo.portrait !== before) rerender();
+            }, { ratio: '4 / 3' }),
             field('사진 설명 (캡션)', photo.caption, (caption) => { photo.caption = caption; touch('events'); }),
             field('대체 텍스트 (시각장애인용)', photo.alt, (alt) => { photo.alt = alt; touch('events'); }),
             h('div', { class: 'ctrl' },
